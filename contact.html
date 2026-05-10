@@ -63,24 +63,16 @@
 <div class="contact-grid">
 <div class="contact-form-card">
 <div class="card-title">Send us a message</div>
-<script charset="utf-8" type="text/javascript" src="//js-eu1.hsforms.net/forms/embed/v2.js"></script>
-<script>
-  hbspt.forms.create({
-    region: "eu1",
-    portalId: "148091872",
-    formId: "ec69c533",
-    css: ""
-  });
-</script>
-<style>
-.hs-form input,.hs-form textarea,.hs-form select{width:100%;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:14px;color:var(--text);font-family:"Manrope",sans-serif;margin-bottom:12px}
-.hs-form label{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:6px;display:block}
-.hs-form .hs-button{background:var(--blue);color:#fff;width:100%;padding:14px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;border:none;font-family:"Manrope",sans-serif;margin-top:4px}
-.hs-form .hs-button:hover{background:#0047b0}
-.hs-form .hs-error-msgs{color:#f87171;font-size:12px;list-style:none;margin-top:4px}
-.submitted-message{color:var(--teal);font-size:14px;padding:16px;background:rgba(0,196,154,0.1);border-radius:8px;border:1px solid rgba(0,196,154,0.3)}
-</style>
-</div>
+<form id="contact-form" action="https://formsubmit.co/tal@thedealmentor.ai" method="POST">
+<input type="hidden" name="_subject" value="New message from TheDealMentor.AI website">
+<input type="hidden" name="_next" value="https://thedealmentor-website.vercel.app/contact">
+<input type="hidden" name="_captcha" value="false">
+<input type="text" name="_honey" style="display:none">
+<div class="form-group"><label class="form-label" for="name">Your Name</label><input class="form-input" type="text" id="name" name="name" placeholder="John Smith" required></div>
+<div class="form-group"><label class="form-label" for="email">Email Address</label><input class="form-input" type="email" id="email" name="email" placeholder="you@company.com" required></div>
+<div class="form-group"><label class="form-label" for="message">Message</label><textarea class="form-input form-textarea" id="message" name="message" placeholder="Tell us about your sales challenge..." required></textarea></div>
+<button type="submit" class="form-submit">Send Message &rarr;</button>
+</form></div>
 <div class="contact-info-card">
 <div class="card-title">Contact Information</div>
 <div class="contact-item"><div class="contact-icon">&#128231;</div><div><div class="contact-detail-label">Email</div><div class="contact-detail-val"><a href="mailto:info@thedealmentor.ai">info@thedealmentor.ai</a></div></div></div>
@@ -89,7 +81,7 @@
 <hr class="contact-divider">
 <div class="card-title" style="font-size:16px">Book a Strategy Call</div>
 <p style="font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:20px">Want to discuss a custom engagement or enterprise implementation? Book 30 minutes with Tal directly.</p>
-<a href="https://meetings-eu1.hubspot.com/tpaperin/thedealmentor" class="book-call-btn">Book a Call &rarr;</a>
+<a href="https://meetings-eu1.hubspot.com/tpaperin/thedealmentor" target="_blank" rel="noopener" class="book-call-btn">Book a Call &rarr;</a>
 <a href="https://wa.me/972545308119" target="_blank" rel="noopener" class="whatsapp-btn">&#128172; WhatsApp the CEO directly</a>
 </div>
 </div>
