@@ -31,8 +31,8 @@
 .billing-btn{padding:9px 22px;border-radius:7px;font-size:13px;font-weight:700;background:transparent;color:var(--text2);cursor:pointer;border:none;font-family:'Manrope',sans-serif}
 .billing-btn.active{background:var(--blue);color:#fff}
 .billing-note{font-size:12px;color:var(--teal);margin-bottom:48px}
-.plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;max-width:1100px;margin:0 auto 20px;padding:0 32px}
-.plan-card{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:28px 24px;position:relative;display:flex;flex-direction:column}
+.plans-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1100px;margin:0 auto 20px;padding:0 32px}@media(max-width:1000px){.plans-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.plans-grid{grid-template-columns:1fr}}
+.plan-card{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:28px 24px;position:relative;display:flex;flex-direction:column;align-items:stretch}
 .plan-card.popular{border-color:var(--blue-bd)}
 .popular-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 16px;border-radius:20px;white-space:nowrap}
 .plan-name{font-size:20px;font-weight:900;margin-bottom:6px}
@@ -70,13 +70,13 @@
 <a href="/whyus">Why Us</a>
 <a href="/about">About KSW</a>
 <a href="/contact">Contact</a>
-<a href="https://www.thedealmentor.ai/help">Guide</a>
+<a href="/platform">Platform</a>
 </div>
 <div class="nav-right"><a href="https://www.thedealmentor.ai/login" class="btn-ghost">Log In</a><a href="https://www.thedealmentor.ai/register" class="btn-primary">Start Free</a></div>
 </nav>
 <div class="pricing-hero">
 <div class="label">Pricing</div>
-<h1>Start free. Pay when it works.</h1>
+<h1>Your Virtual CRO. Starting at $149/month.</h1>
 <p class="sub">Your CRO, VP Sales, Business Consultant, SDR Team Leader and AE Manager in one platform.</p>
 <span class="anchor">A fractional CRO costs $15,000-$25,000/month. A VP Sales costs $200K/year. This starts at $149/month.</span>
 <div class="billing-toggle">
