@@ -63,14 +63,23 @@
 <div class="contact-grid">
 <div class="contact-form-card">
 <div class="card-title">Send us a message</div>
-<form id="contact-form" action="https://formspree.io/f/xpwzbkvw" method="POST" onsubmit="handleSubmit(event)">
-<div class="form-group"><label class="form-label" for="name">Your Name</label><input class="form-input" type="text" id="name" name="name" placeholder="John Smith" required></div>
-<div class="form-group"><label class="form-label" for="email">Email Address</label><input class="form-input" type="email" id="email" name="email" placeholder="you@company.com" required></div>
-<div class="form-group"><label class="form-label" for="message">Message</label><textarea class="form-input form-textarea" id="message" name="message" placeholder="Tell us about your sales challenge..." required></textarea></div>
-<input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-<button type="submit" class="form-submit">Send Message &rarr;</button>
-<div class="success-msg" id="success-msg">Thank you! We'll be in touch within 24 hours.</div>
-</form>
+<script charset="utf-8" type="text/javascript" src="//js-eu1.hsforms.net/forms/embed/v2.js"></script>
+<script>
+  hbspt.forms.create({
+    region: "eu1",
+    portalId: "148091872",
+    formId: "ec69c533",
+    css: ""
+  });
+</script>
+<style>
+.hs-form input,.hs-form textarea,.hs-form select{width:100%;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:14px;color:var(--text);font-family:"Manrope",sans-serif;margin-bottom:12px}
+.hs-form label{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:6px;display:block}
+.hs-form .hs-button{background:var(--blue);color:#fff;width:100%;padding:14px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;border:none;font-family:"Manrope",sans-serif;margin-top:4px}
+.hs-form .hs-button:hover{background:#0047b0}
+.hs-form .hs-error-msgs{color:#f87171;font-size:12px;list-style:none;margin-top:4px}
+.submitted-message{color:var(--teal);font-size:14px;padding:16px;background:rgba(0,196,154,0.1);border-radius:8px;border:1px solid rgba(0,196,154,0.3)}
+</style>
 </div>
 <div class="contact-info-card">
 <div class="card-title">Contact Information</div>
@@ -103,15 +112,5 @@
 </div>
 </div>
 </footer>
-<script>
-function handleSubmit(e){
-  e.preventDefault();
-  var form=document.getElementById('contact-form');
-  fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
-  .then(function(r){
-    if(r.ok){form.reset();document.getElementById('success-msg').style.display='block';}
-    else{window.location.href='mailto:info@thedealmentor.ai';}
-  }).catch(function(){window.location.href='mailto:info@thedealmentor.ai';});
-}
-</script>
+
 </body></html>
