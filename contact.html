@@ -22,8 +22,8 @@
 <link rel="stylesheet" href="/style.css">
 </head>
 <body><style>
-.contact-hero{padding:80px 32px 56px;max-width:1000px;margin:0 auto}
-.contact-hero h1{font-size:clamp(28px,5vw,48px);font-weight:900;color:var(--heading);margin-bottom:0;line-height:1.2}
+.contact-hero{padding:60px 32px 40px;max-width:1000px;margin:0 auto}
+.contact-hero h1{font-size:clamp(28px,5vw,44px);font-weight:900;color:var(--heading);line-height:1.2}
 .contact-hero h1 span{color:var(--blue)}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1000px;margin:0 auto;padding:0 32px 80px}
 @media(max-width:768px){.contact-grid{grid-template-columns:1fr;padding:0 16px 56px}}
@@ -34,18 +34,17 @@
 .form-input{width:100%;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;font-size:14px;color:var(--text);font-family:'Manrope',sans-serif;outline:none;transition:border-color 0.2s}
 .form-input:focus{border-color:var(--blue)}
 .form-textarea{height:120px;resize:vertical}
-.form-submit{background:var(--blue);color:#fff;width:100%;padding:14px;border-radius:10px;font-size:15px;font-weight:700;margin-top:8px;cursor:pointer;border:none;font-family:'Manrope',sans-serif}
-.form-submit:hover{background:#0047b0}
+.form-submit{background:var(--teal);color:#fff;width:100%;padding:14px;border-radius:10px;font-size:15px;font-weight:700;margin-top:8px;cursor:pointer;border:none;font-family:'Manrope',sans-serif}
+.form-submit:hover{background:var(--teal-dk)}
 .contact-item{display:flex;gap:14px;align-items:flex-start;margin-bottom:20px}
 .contact-icon{font-size:18px;flex-shrink:0;margin-top:2px}
 .contact-detail-label{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--text3);font-weight:700;margin-bottom:4px}
 .contact-detail-val{font-size:14px;color:var(--text);font-weight:600}
 .contact-divider{border:none;border-top:1px solid var(--border);margin:24px 0}
-.book-call-btn{width:100%;background:var(--teal);color:#fff;padding:14px;border-radius:10px;font-size:14px;font-weight:700;display:block;text-align:center;margin-bottom:12px}
-.book-call-btn:hover{background:var(--teal-dk);opacity:1}
+.book-call-btn{width:100%;background:var(--teal);color:#fff;padding:14px;border-radius:10px;font-size:14px;font-weight:700;display:block;text-align:center;margin-bottom:12px;border:none;cursor:pointer;font-family:'Manrope',sans-serif}
+.book-call-btn:hover{background:var(--teal-dk)}
 .whatsapp-btn{width:100%;background:transparent;border:1px solid var(--border);color:var(--text);padding:12px;border-radius:10px;font-size:14px;font-weight:600;text-align:center;display:block}
 .whatsapp-btn:hover{border-color:#25d366;color:#25d366;opacity:1}
-.success-msg{display:none;background:rgba(0,196,154,0.1);border:1px solid rgba(0,196,154,0.3);border-radius:10px;padding:16px;font-size:14px;color:var(--teal);text-align:center;margin-top:16px}
 </style><nav>
 <div class="nav-logo"><a href="/"><img src="https://www.thedealmentor.ai/DealMentor%20horizontal%20logo%20white.jpg" alt="TheDealMentor.AI"></a></div>
 <div class="nav-links">
@@ -53,7 +52,7 @@
 <a href="/whyus">Why Us</a>
 <a href="/about">About KSW</a>
 <a href="/contact" class="active">Contact</a>
-<a href="https://www.thedealmentor.ai/help">Guide</a>
+<a href="/platform">Platform</a>
 </div>
 <div class="nav-right"><a href="https://www.thedealmentor.ai/login" class="btn-ghost">Log In</a><a href="https://www.thedealmentor.ai/register" class="btn-primary">Start Free</a></div>
 </nav>
@@ -61,16 +60,19 @@
 <h1>Let's talk about your <span>sales challenges</span></h1>
 </div>
 <div class="contact-grid">
+
 <div class="contact-form-card">
 <div class="card-title">Send us a message</div>
 <form id="contact-form">
 <div class="form-group"><label class="form-label">Your Name</label><input class="form-input" type="text" id="cf-name" placeholder="John Smith" required></div>
 <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" type="email" id="cf-email" placeholder="you@company.com" required></div>
 <div class="form-group"><label class="form-label">Message</label><textarea class="form-input form-textarea" id="cf-message" placeholder="Tell us about your sales challenge..." required></textarea></div>
-<button type="button" class="form-submit" onclick="submitForm()">Send Message &rarr;</button>
+<button type="button" class="form-submit" id="cf-btn" onclick="submitForm()">Send Message &rarr;</button>
 <div id="cf-success" style="display:none;margin-top:14px;background:rgba(0,196,154,0.1);border:1px solid rgba(0,196,154,0.3);border-radius:8px;padding:14px;font-size:14px;color:var(--teal)">Thank you! We will be in touch within 24 hours.</div>
-<div id="cf-error" style="display:none;margin-top:14px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:8px;padding:14px;font-size:14px;color:#f87171">Something went wrong. Please email us at <a href="mailto:info@thedealmentor.ai" style="color:#f87171">info@thedealmentor.ai</a></div>
+<div id="cf-error" style="display:none;margin-top:14px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:8px;padding:14px;font-size:14px;color:#f87171">Something went wrong. Please email <a href="mailto:info@thedealmentor.ai" style="color:#f87171">info@thedealmentor.ai</a></div>
 </form>
+</div>
+
 <div class="contact-info-card">
 <div class="card-title">Contact Information</div>
 <div class="contact-item"><div class="contact-icon">&#128231;</div><div><div class="contact-detail-label">Email</div><div class="contact-detail-val"><a href="mailto:info@thedealmentor.ai">info@thedealmentor.ai</a></div></div></div>
@@ -79,9 +81,21 @@
 <hr class="contact-divider">
 <div class="card-title" style="font-size:16px">Book a Strategy Call</div>
 <p style="font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:20px">Want to discuss a custom engagement or enterprise implementation? Book 30 minutes with Tal directly.</p>
-<button class="book-call-btn" onclick="openCalendar()" style="border:none;cursor:pointer;font-family:'Manrope',sans-serif;font-size:14px">Book a Call &rarr;</button>
+<button class="book-call-btn" onclick="openCalendar()">Book a Call &rarr;</button>
 <a href="https://wa.me/972545308119" target="_blank" rel="noopener" class="whatsapp-btn">&#128172; WhatsApp the CEO directly</a>
 </div>
+
+</div>
+
+<!-- CALENDAR MODAL -->
+<div id="cal-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:9999;align-items:center;justify-content:center">
+  <div style="background:#0d1829;border:1px solid #1e2d45;border-radius:16px;width:90%;max-width:780px;height:82vh;position:relative;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid #1e2d45">
+      <span style="font-weight:700;font-size:15px;color:#f0f6ff">Book a Strategy Call with Tal</span>
+      <button onclick="closeCalendar()" style="background:none;border:none;color:#9ca3b0;font-size:24px;cursor:pointer;line-height:1">&times;</button>
+    </div>
+    <iframe src="https://meetings-eu1.hubspot.com/tpaperin/thedealmentor" style="flex:1;border:none;border-radius:0 0 16px 16px" title="Book a call with Tal"></iframe>
+  </div>
 </div>
 <footer>
 <div class="footer-inner">
@@ -102,58 +116,35 @@
 </div>
 </div>
 </footer>
-
-
-<!-- CALENDAR MODAL -->
-<div id="cal-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:9999;align-items:center;justify-content:center">
-  <div style="background:#0d1829;border:1px solid #1e2d45;border-radius:16px;width:90%;max-width:780px;height:80vh;position:relative;display:flex;flex-direction:column">
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid #1e2d45">
-      <span style="font-weight:700;font-size:15px;color:#f0f6ff">Book a Strategy Call</span>
-      <button onclick="closeCalendar()" style="background:none;border:none;color:#9ca3b0;font-size:22px;cursor:pointer;line-height:1">&times;</button>
-    </div>
-    <iframe src="https://meetings-eu1.hubspot.com/tpaperin/thedealmentor" style="flex:1;border:none;border-radius:0 0 16px 16px" title="Book a call"></iframe>
-  </div>
-</div>
-
 <script>
-function openCalendar() {
-  var m = document.getElementById('cal-modal');
-  m.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
+function openCalendar(){
+  var m=document.getElementById('cal-modal');
+  m.style.display='flex';
+  document.body.style.overflow='hidden';
 }
-function closeCalendar() {
-  document.getElementById('cal-modal').style.display = 'none';
-  document.body.style.overflow = '';
+function closeCalendar(){
+  document.getElementById('cal-modal').style.display='none';
+  document.body.style.overflow='';
 }
-document.getElementById('cal-modal').addEventListener('click', function(e) {
-  if (e.target === this) closeCalendar();
-});
-
-function submitForm() {
-  var name = document.getElementById('cf-name').value.trim();
-  var email = document.getElementById('cf-email').value.trim();
-  var message = document.getElementById('cf-message').value.trim();
-  if (!name || !email || !message) return;
-  var btn = document.querySelector('.form-submit');
-  btn.textContent = 'Sending...';
-  btn.disabled = true;
-  fetch('https://formspree.io/f/xpwzbkvw', {
-    method: 'POST',
-    headers: {'Accept':'application/json','Content-Type':'application/json'},
-    body: JSON.stringify({name: name, email: email, message: message})
-  }).then(function(r) {
-    if (r.ok) {
-      document.getElementById('cf-success').style.display = 'block';
-      document.getElementById('contact-form').reset();
-    } else {
-      document.getElementById('cf-error').style.display = 'block';
-    }
-    btn.textContent = 'Send Message →';
-    btn.disabled = false;
-  }).catch(function() {
-    document.getElementById('cf-error').style.display = 'block';
-    btn.textContent = 'Send Message →';
-    btn.disabled = false;
+document.getElementById('cal-modal').addEventListener('click',function(e){if(e.target===this)closeCalendar();});
+function submitForm(){
+  var name=document.getElementById('cf-name').value.trim();
+  var email=document.getElementById('cf-email').value.trim();
+  var msg=document.getElementById('cf-message').value.trim();
+  if(!name||!email||!msg)return;
+  var btn=document.getElementById('cf-btn');
+  btn.textContent='Sending...';btn.disabled=true;
+  fetch('https://formspree.io/f/xpwzbkvw',{
+    method:'POST',
+    headers:{'Accept':'application/json','Content-Type':'application/json'},
+    body:JSON.stringify({name:name,email:email,message:msg})
+  }).then(function(r){
+    if(r.ok){document.getElementById('cf-success').style.display='block';document.getElementById('contact-form').reset();}
+    else{document.getElementById('cf-error').style.display='block';}
+    btn.textContent='Send Message →';btn.disabled=false;
+  }).catch(function(){
+    document.getElementById('cf-error').style.display='block';
+    btn.textContent='Send Message →';btn.disabled=false;
   });
 }
 </script>
