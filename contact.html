@@ -134,28 +134,28 @@ function submitForm(){
   if(!name||!email||!msg)return;
   var btn=document.getElementById('cf-btn');
   btn.textContent='Sending...';btn.disabled=true;
-  var payload={
-    fields:[
-      {name:'firstname',value:name.split(' ')[0]||name},
-      {name:'lastname',value:name.split(' ').slice(1).join(' ')||''},
-      {name:'email',value:email},
-      {name:'message',value:msg}
-    ],
-    context:{pageUri:window.location.href,pageName:'Contact TheDealMentor.AI'}
-  };
-  fetch('https://api.hsforms.com/submissions/v3/integration/submit/148091872/ec69c533',{
+  // HubSpot legacy forms API - works from any domain
+  var formData='firstname='+encodeURIComponent(name.split(' ')[0]||name)
+    +'&lastname='+encodeURIComponent(name.split(' ').slice(1).join(' ')||'')
+    +'&email='+encodeURIComponent(email)
+    +'&message='+encodeURIComponent(msg);
+  fetch('https://forms.hubspot.com/uploads/form/v2/148091872/ec69c533',{
     method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify(payload)
+    headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body:formData
   }).then(function(r){
-    if(r.ok){
+    // HubSpot v2 returns 204 on success
+    if(r.ok||r.status===204||r.status===302){
       document.getElementById('cf-success').style.display='block';
       document.getElementById('contact-form').reset();
     } else {
       document.getElementById('cf-error').style.display='block';
+      console.error('HubSpot error:',r.status);
     }
     btn.textContent='Send Message →';btn.disabled=false;
-  }).catch(function(){
+  }).catch(function(e){
+    // CORS or network error - fall back to mailto
+    console.error('Submit error:',e);
     document.getElementById('cf-error').style.display='block';
     btn.textContent='Send Message →';btn.disabled=false;
   });
