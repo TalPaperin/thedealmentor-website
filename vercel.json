@@ -1,6 +1,24 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/login",          "destination": "https://app.thedealmentor.ai/login",          "permanent": false },
+    { "source": "/register",       "destination": "https://app.thedealmentor.ai/register",       "permanent": false },
+    { "source": "/dashboard",      "destination": "https://app.thedealmentor.ai/dashboard",      "permanent": false },
+    { "source": "/onboarding",     "destination": "https://app.thedealmentor.ai/onboarding",     "permanent": false },
+    { "source": "/reset-password", "destination": "https://app.thedealmentor.ai/reset-password", "permanent": false },
+    { "source": "/founder",        "destination": "https://app.thedealmentor.ai/founder",        "permanent": false },
+    { "source": "/intake",         "destination": "https://app.thedealmentor.ai/intake",         "permanent": false },
+    { "source": "/team",           "destination": "https://app.thedealmentor.ai/team",           "permanent": false },
+    { "source": "/copilot",        "destination": "https://app.thedealmentor.ai/copilot",        "permanent": false },
+    { "source": "/simulation",     "destination": "https://app.thedealmentor.ai/simulation",     "permanent": false },
+    { "source": "/certification",  "destination": "https://app.thedealmentor.ai/certification",  "permanent": false },
+    { "source": "/outreach",       "destination": "https://app.thedealmentor.ai/outreach",       "permanent": false },
+    { "source": "/outputs",        "destination": "https://app.thedealmentor.ai/outputs",        "permanent": false },
+    { "source": "/knowledge",      "destination": "https://app.thedealmentor.ai/knowledge",      "permanent": false },
+    { "source": "/materials",      "destination": "https://app.thedealmentor.ai/materials",      "permanent": false },
+    { "source": "/help",           "destination": "https://app.thedealmentor.ai/help",           "permanent": false }
+  ],
   "headers": [
     {
       "source": "/(.*)",
