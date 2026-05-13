@@ -4,7 +4,7 @@
   "redirects": [
     { "source": "/privacy", "destination": "https://app.thedealmentor.ai/privacy", "permanent": false },
     { "source": "/terms",   "destination": "https://app.thedealmentor.ai/terms",   "permanent": false },
-    { "source": "/refund",  "destination": "https://app.thedealmentor.ai/refund",  "permanent": false }
+    { "source": "/refund",  "destination": "https://app.thedealmentor.ai/refund",  "permanent": false },
     { "source": "/login",          "destination": "https://app.thedealmentor.ai/login",          "permanent": false },
     { "source": "/register",       "destination": "https://app.thedealmentor.ai/register",       "permanent": false },
     { "source": "/dashboard",      "destination": "https://app.thedealmentor.ai/dashboard",      "permanent": false },
