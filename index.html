@@ -92,6 +92,7 @@ display: flex; align-items: center; justify-content: space-between;
 .nav-links { display: flex; align-items: center; gap: 36px; }
 .nav-links a { color: var(--text2); font-size: 15px; font-weight: 500; }
 .nav-links a:hover { color: var(--text); }
+.nav-login-m { display: none; }
 .nav-right { display: flex; align-items: center; gap: 14px; }
 .btn-ghost {
 background: transparent; border: 1px solid var(--border);
@@ -463,6 +464,7 @@ color: var(--text);
 border-bottom: 1px solid var(--border);
 }
 .nav-links a:last-child { border-bottom: none; }
+.nav-links .nav-login-m { display: block; color: var(--blue); font-weight: 700; }
 .nav-right .btn-ghost { display: none; }
 section { padding: 56px 16px; }
 .hero { padding: 48px 16px 56px; }
@@ -480,6 +482,7 @@ footer { padding: 32px 16px 24px; }
 <nav>
 <div class="nav-logo"><a href="/"><img src="https://www.thedealmentor.ai/DealMentor%20horizontal%20logo%20white.jpg" alt="TheDealMentor.AI"></a></div>
 <div class="nav-links" id="navLinks">
+<a href="https://app.thedealmentor.ai/login" class="nav-login-m">Log In</a>
 <a href="/pricing">Pricing</a>
 <a href="/whyus">Why Us</a>
 <a href="/about">About KSW</a>
