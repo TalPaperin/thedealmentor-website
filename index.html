@@ -72,7 +72,7 @@ line-height: 1.7;
 overflow-x: hidden;
 position: relative;
 }
-h1, h2, h3, .display { font-family: 'Bricolage Grotesque', 'Inter', sans-serif; }
+h1, h2, h3, .display, .wordmark, .footer-wordmark { font-family: 'Bricolage Grotesque', 'Inter', sans-serif; }
 a { color: var(--brand-hi); text-decoration: none; }
 img { max-width: 100%; display: block; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
@@ -84,19 +84,48 @@ outline-offset: 3px;
 border-radius: 6px;
 }
 
+/* SCROLL-ANIMATION PRE-HIDE (only while JS is preparing entrances) */
+html.anim-pending .hero-eyebrow,
+html.anim-pending .hero-h1,
+html.anim-pending .hero-promise,
+html.anim-pending .hero-sub,
+html.anim-pending .hero-tagline,
+html.anim-pending .toggle-group,
+html.anim-pending .hero-ctas,
+html.anim-pending .hero-badges,
+html.anim-pending .founder-card,
+html.anim-pending .eyebrow,
+html.anim-pending .section-h2,
+html.anim-pending .section-sub,
+html.anim-pending .pain-card,
+html.anim-pending .tool-card,
+html.anim-pending .step,
+html.anim-pending .cro-header,
+html.anim-pending .plan-card,
+html.anim-pending .logos-label,
+html.anim-pending .logo-box,
+html.anim-pending .testi-card,
+html.anim-pending .faq-list,
+html.anim-pending .final-cta h2,
+html.anim-pending .final-cta p,
+html.anim-pending .final-cta .btn-primary { opacity: 0; }
+
 /* STAGE (Three.js canvas + fallback + overlay) */
 #galaxy { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -2; display: none; }
 .stage-fallback {
 position: fixed; inset: 0; z-index: -2;
 background:
-radial-gradient(60% 50% at 50% 32%, rgba(79,139,255,0.20), transparent 70%),
-radial-gradient(40% 40% at 62% 28%, rgba(179,107,255,0.16), transparent 70%),
-radial-gradient(50% 45% at 38% 30%, rgba(52,229,255,0.12), transparent 70%),
+radial-gradient(45% 45% at 72% 72%, rgba(79,139,255,0.20), transparent 70%),
+radial-gradient(40% 40% at 80% 64%, rgba(179,107,255,0.16), transparent 70%),
+radial-gradient(38% 40% at 64% 80%, rgba(52,229,255,0.10), transparent 70%),
 var(--bg);
 }
+/* dark vignette behind the hero text for AA contrast over the galaxy */
 .stage-overlay {
 position: fixed; inset: 0; z-index: -1; pointer-events: none;
-background: radial-gradient(120% 80% at 50% 0%, transparent 45%, rgba(4,7,20,0.55) 80%, var(--bg) 100%);
+background:
+radial-gradient(72% 60% at 50% 32%, rgba(4,7,20,0.85) 0%, rgba(4,7,20,0.55) 40%, rgba(4,7,20,0.12) 65%, transparent 80%),
+linear-gradient(180deg, rgba(4,7,20,0.45) 0%, transparent 26%, transparent 72%, var(--bg) 100%);
 }
 
 /* GLASS */
@@ -146,8 +175,11 @@ background: rgba(7,11,24,0.55);
 -webkit-backdrop-filter: blur(16px) saturate(120%);
 backdrop-filter: blur(16px) saturate(120%);
 border-bottom: 1px solid var(--glass-bd);
+transition: padding .25s ease, background .25s ease;
 }
-.nav-logo img { height: 28px; width: auto; object-fit: contain; }
+nav.shrink { padding-top: 8px; padding-bottom: 8px; background: rgba(7,11,24,0.9); }
+.wordmark { font-weight: 800; font-size: 22px; letter-spacing: -0.02em; color: #fff; line-height: 1; display: inline-block; transition: font-size .25s ease; }
+nav.shrink .wordmark { font-size: 19px; }
 .nav-links { display: flex; align-items: center; gap: 32px; }
 .nav-links a { color: var(--text-muted); font-size: 15px; font-weight: 500; transition: color .15s; }
 .nav-links a:hover { color: #fff; }
@@ -186,22 +218,26 @@ margin-bottom: 16px;
 .icon-chip svg { width: 22px; height: 22px; color: var(--accent-cyan); }
 .ico { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 
-/* HERO */
-.hero { max-width: 920px; margin: 0 auto; padding: 90px 32px 96px; text-align: center; }
-.hero-eyebrow { font-size: clamp(18px, 2.6vw, 24px); color: var(--text); font-weight: 500; margin-bottom: 16px; }
-.hero-h1 { font-size: clamp(40px, 7vw, 76px); font-weight: 800; line-height: 1.04; letter-spacing: -0.02em; color: var(--heading); margin-bottom: 20px; }
-.hero-promise { font-size: clamp(22px, 3.5vw, 28px); font-weight: 700; color: var(--heading); line-height: 1.3; margin-bottom: 14px; }
-.hero-sub { font-size: 17px; color: var(--text-muted); margin-bottom: 10px; }
-.hero-tagline { font-size: clamp(18px, 2.4vw, 22px); font-weight: 600; color: var(--text); margin: 0 auto 34px; }
-.toggle-group { display: inline-flex; padding: 5px; gap: 4px; border-radius: 14px; margin-bottom: 28px; }
+/* HERO (tightened to fit above the fold on 1366x768 / 1440x900) */
+.hero { max-width: 940px; margin: 0 auto; padding: 38px 24px 44px; text-align: center; }
+.hero-eyebrow, .hero-h1, .hero-promise, .hero-sub, .hero-tagline { text-shadow: 0 2px 16px rgba(4,7,20,0.65); }
+.hero-eyebrow { font-size: clamp(16px, 2vw, 20px); color: var(--text); font-weight: 500; margin-bottom: 10px; }
+.hero-h1 { font-size: clamp(34px, 4.6vw, 58px); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; color: var(--heading); margin-bottom: 14px; }
+.hero-promise { font-size: clamp(20px, 2.6vw, 26px); font-weight: 700; color: var(--heading); line-height: 1.3; margin-bottom: 8px; }
+.hero-sub { font-size: 16px; color: var(--text); margin-bottom: 6px; }
+.hero-tagline { font-size: clamp(16px, 2vw, 20px); font-weight: 600; color: var(--text); margin: 6px auto 22px; }
+.toggle-group { display: inline-flex; padding: 5px; gap: 4px; border-radius: 14px; margin-bottom: 20px; }
 .toggle-btn {
 padding: 12px 24px; border-radius: 10px; font-size: 14px; font-weight: 600;
 color: var(--text-muted); display: flex; flex-direction: column; align-items: center; gap: 2px;
-transition: background .2s ease, color .2s ease;
+transition: background .2s ease, color .2s ease, box-shadow .2s ease;
 }
 .toggle-btn .sub { font-size: 12px; font-weight: 500; opacity: .85; }
-.toggle-btn[aria-pressed="true"] { background: var(--brand); color: #fff; box-shadow: 0 6px 20px rgba(45,107,255,.35); }
-.hero-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px; }
+.toggle-btn[aria-pressed="true"] {
+background: rgba(255,255,255,0.08); color: #fff;
+box-shadow: inset 0 0 0 1px rgba(52,229,255,0.55), 0 0 18px rgba(52,229,255,0.12);
+}
+.hero-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 18px; }
 .hero-badges { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
 .hero-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text); padding: 9px 16px; border-radius: 24px; }
 .hero-badge svg { width: 16px; height: 16px; color: var(--accent-cyan); flex-shrink: 0; }
@@ -219,8 +255,8 @@ transition: background .2s ease, color .2s ease;
 .founder-name { font-size: 15px; font-weight: 700; color: var(--text); }
 .founder-role { font-size: 14px; color: var(--text-muted); }
 
-/* GRIDS / CARDS */
-.card { padding: 28px; border-radius: var(--radius); transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+/* GRIDS / CARDS (one identical dark glass treatment for every card) */
+.card { padding: 28px; border-radius: var(--radius); background: var(--glass-bg); border: 1px solid var(--glass-bd); transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
 .card:hover { transform: translateY(-4px); border-color: rgba(52,229,255,0.35); box-shadow: 0 16px 44px rgba(4,7,20,0.6), 0 0 0 1px rgba(52,229,255,0.12); }
 .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
 .pain-quote { font-size: 14px; color: var(--text-muted); font-style: italic; margin-bottom: 14px; }
@@ -237,19 +273,20 @@ transition: background .2s ease, color .2s ease;
 .tool-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
 
 /* HOW IT WORKS */
-.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
-.step { text-align: center; padding: 32px 24px; }
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; position: relative; }
+.steps-line { position: absolute; top: 62px; left: 18%; right: 18%; height: 2px; background: var(--grad); opacity: 0.5; transform-origin: left center; z-index: 0; }
+.step { text-align: center; padding: 32px 24px; position: relative; z-index: 1; }
 .step-num { width: 60px; height: 60px; margin: 0 auto 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Bricolage Grotesque', sans-serif; font-size: 22px; font-weight: 800; color: #fff; background: rgba(45,107,255,0.14); border: 1px solid rgba(52,229,255,0.30); box-shadow: 0 0 24px rgba(79,139,255,0.18); }
 .step-title { font-size: 20px; font-weight: 700; color: var(--heading); margin-bottom: 10px; }
 .step-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
 
-/* PLANS */
+/* PLANS (all four structurally identical) */
 .cro-header { text-align: center; padding: 26px 32px; margin-bottom: 28px; }
 .cro-header p { font-size: 15px; color: var(--text-muted); max-width: 620px; margin: 0 auto; }
-.plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-.plan-card { padding: 26px 22px; }
-.plan-name { font-size: 18px; font-weight: 800; margin-bottom: 4px; }
-.plan-price { font-family: 'Bricolage Grotesque', sans-serif; font-size: 26px; font-weight: 800; color: #fff; margin-bottom: 18px; }
+.plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; align-items: stretch; }
+.plan-card { padding: 26px 22px; display: flex; flex-direction: column; }
+.plan-name { font-size: 18px; font-weight: 800; margin: 0 0 6px; }
+.plan-price { font-family: 'Bricolage Grotesque', sans-serif; font-size: 26px; font-weight: 800; color: #fff; margin: 0 0 18px; }
 .plan-price span { font-size: 13px; font-weight: 400; color: var(--text-muted); }
 .plan-feature { font-size: 13px; color: var(--text-muted); padding: 7px 0; border-bottom: 1px solid var(--glass-bd); display: flex; align-items: center; gap: 8px; }
 .plan-feature:last-child { border-bottom: none; }
@@ -297,7 +334,7 @@ transition: background .2s ease, color .2s ease;
 /* FOOTER */
 footer { background: var(--bg-2); border-top: 1px solid var(--glass-bd); padding: 44px 32px 36px; position: relative; z-index: 1; }
 .footer-inner { max-width: var(--maxw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 22px; }
-.footer-logo img { height: 26px; width: auto; object-fit: contain; }
+.footer-wordmark { font-weight: 800; font-size: 20px; letter-spacing: -0.02em; color: #fff; display: inline-block; }
 .footer-copy { font-size: 12px; color: var(--text-faint); margin-top: 8px; line-height: 1.6; }
 .footer-links { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; }
 .footer-links a { font-size: 13px; color: var(--text-muted); }
@@ -315,6 +352,7 @@ section { padding: 84px 24px; }
 }
 @media (max-width: 768px) {
 nav { padding: 12px 16px; }
+nav.shrink { padding-top: 8px; padding-bottom: 8px; }
 .nav-toggle { display: flex; }
 .nav-links {
 display: none; position: absolute; top: 64px; left: 0; right: 0;
@@ -330,16 +368,17 @@ border-bottom: 1px solid var(--glass-bd); z-index: 99;
 .nav-links .nav-login-m { display: block; color: var(--accent-cyan); font-weight: 700; }
 .nav-right .btn-ghost { display: none; }
 section { padding: 64px 16px; }
-.hero { padding: 60px 16px 64px; }
+.hero { padding: 28px 16px 44px; }
 .founder { padding: 64px 16px; }
 .founder-card { padding: 28px; gap: 28px; }
 .founder-text { padding-left: 18px; }
 .testimonials-grid { grid-template-columns: 1fr; }
+.steps-line { display: none; }
 footer { padding: 36px 16px 28px; }
 .footer-inner { flex-direction: column; align-items: flex-start; }
 }
 @media (max-width: 480px) {
-.hero { padding: 44px 16px 52px; }
+.hero { padding: 24px 16px 40px; }
 .toggle-group { width: 100%; }
 .toggle-btn { flex: 1; }
 .hero-ctas .btn-primary, .hero-ctas .btn-ghost { width: 100%; justify-content: center; }
@@ -349,11 +388,29 @@ footer { padding: 36px 16px 28px; }
 @media (prefers-reduced-motion: reduce) {
 html { scroll-behavior: auto; }
 #galaxy { display: none !important; }
+html.anim-pending .hero-eyebrow, html.anim-pending .hero-h1, html.anim-pending .hero-promise,
+html.anim-pending .hero-sub, html.anim-pending .hero-tagline, html.anim-pending .toggle-group,
+html.anim-pending .hero-ctas, html.anim-pending .hero-badges, html.anim-pending .founder-card,
+html.anim-pending .eyebrow, html.anim-pending .section-h2, html.anim-pending .section-sub,
+html.anim-pending .pain-card, html.anim-pending .tool-card, html.anim-pending .step,
+html.anim-pending .cro-header, html.anim-pending .plan-card, html.anim-pending .logos-label,
+html.anim-pending .logo-box, html.anim-pending .testi-card, html.anim-pending .faq-list,
+html.anim-pending .final-cta h2, html.anim-pending .final-cta p, html.anim-pending .final-cta .btn-primary { opacity: 1 !important; }
 *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
 .card:hover { transform: none; }
 .btn-primary:hover { transform: none; }
 }
 </style>
+<script>
+/* Pre-hide animated elements so scroll entrances do not flash. Skipped for reduced-motion. Failsafe reveals everything if the animation script never runs. */
+(function(){
+var d = document.documentElement;
+if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+d.classList.add('anim-pending');
+setTimeout(function(){ d.classList.remove('anim-pending'); }, 2500);
+}
+})();
+</script>
 <script src="https://analytics.ahrefs.com/analytics.js" data-key="qK0TOYIw7ybLQxIl+NYVmw" async></script>
 </head>
 <body>
@@ -365,7 +422,7 @@ html { scroll-behavior: auto; }
 
 <!-- NAV -->
 <nav>
-<div class="nav-logo"><a href="/"><img src="/DealMentor%20horizontal%20logo%20white.jpg" alt="TheDealMentor.AI" width="150" height="28"></a></div>
+<div class="nav-logo"><a href="/" class="wordmark">DealMentor</a></div>
 <div class="nav-links" id="navLinks">
 <a href="https://app.thedealmentor.ai/login" class="nav-login-m">Log In</a>
 <a href="/pricing">Pricing</a>
@@ -486,7 +543,7 @@ html { scroll-behavior: auto; }
 <hr class="divider">
 
 <!-- TOOLS -->
-<section class="solid-2">
+<section class="solid">
 <div class="section-inner">
 <p class="eyebrow">Built for the whole deal</p>
 <h2 class="section-h2">One platform. Ten tools. Every stage. Every deal.</h2>
@@ -509,12 +566,13 @@ html { scroll-behavior: auto; }
 <hr class="divider">
 
 <!-- HOW IT WORKS -->
-<section class="solid">
+<section class="solid-2">
 <div class="section-inner">
 <p class="eyebrow">How it works</p>
 <h2 class="section-h2">Built from your business. Not a template.</h2>
 <p class="section-sub">Your ICP. Your competitors. Your sales motion. Live in under 15 minutes.</p>
 <div class="steps">
+<div class="steps-line" aria-hidden="true"></div>
 <article class="step card glass">
 <div class="step-num">01</div>
 <h3 class="step-title">Describe your business</h3>
@@ -540,7 +598,7 @@ html { scroll-behavior: auto; }
 <hr class="divider">
 
 <!-- CRO ACCESS -->
-<section class="solid-2">
+<section class="solid">
 <div class="section-inner">
 <p class="eyebrow">Not just AI</p>
 <h2 class="section-h2">Live Business Consultant Access, On Every Plan.</h2>
@@ -591,7 +649,7 @@ html { scroll-behavior: auto; }
 <hr class="divider">
 
 <!-- CLIENT LOGOS -->
-<div class="logos block solid">
+<div class="logos block solid-2">
 <div class="logos-label">Founders did sales for</div>
 <div class="logos-row">
 <div class="logo-box"><img src="https://ksw.solutions/wp-content/uploads/2023/03/ksw-logo-clients-_0003_Levels-1-copy-3.png" alt="PepsiCo" width="120" height="44" loading="lazy"></div>
@@ -606,7 +664,7 @@ html { scroll-behavior: auto; }
 <hr class="divider">
 
 <!-- TESTIMONIALS -->
-<section class="solid-2">
+<section class="solid">
 <div class="section-inner">
 <p class="eyebrow">Proven in the field</p>
 <h2 class="section-h2">What our clients say</h2>
@@ -661,7 +719,7 @@ html { scroll-behavior: auto; }
 <hr class="divider">
 
 <!-- FAQ -->
-<section class="solid">
+<section class="solid-2">
 <div class="section-inner">
 <p class="eyebrow">Common questions</p>
 <h2 class="section-h2">Everything you need to know</h2>
@@ -709,7 +767,7 @@ html { scroll-behavior: auto; }
 <footer>
 <div class="footer-inner">
 <div class="footer-logo">
-<a href="/"><img src="/DealMentor%20horizontal%20logo%20white.jpg" alt="TheDealMentor.AI" width="140" height="26" loading="lazy"></a>
+<a href="/" class="footer-wordmark">DealMentor</a>
 <div class="footer-copy">by KSW Solutions &middot; Virtual CRO Platform<br>&copy; 2026 KSW Solutions. TheDealMentor.AI&trade; is a trademark of Tal Paperin.</div>
 </div>
 <div class="footer-links">
@@ -843,13 +901,18 @@ blending: THREE.AdditiveBlending, vertexColors: true, transparent: true,
 map: sprite, alphaTest: 0.001
 });
 const points = new THREE.Points(geo, mat);
-scene.add(points);
 
-// glowing core
-const coreMat = new THREE.SpriteMaterial({ map: discTexture(), color: new THREE.Color('#aee6ff'), blending: THREE.AdditiveBlending, depthWrite: false, transparent: true, opacity: 0.85 });
+// dimmer glowing core, kept off-centre so it does not sit behind the hero text
+const coreMat = new THREE.SpriteMaterial({ map: discTexture(), color: new THREE.Color('#9fd6ff'), blending: THREE.AdditiveBlending, depthWrite: false, transparent: true, opacity: 0.6 });
 const core = new THREE.Sprite(coreMat);
-core.scale.set(3.2, 3.2, 1);
-scene.add(core);
+core.scale.set(2.6, 2.6, 1);
+
+// offset the whole galaxy toward the lower-right so the bright centre clears the centred hero text
+const galaxy = new THREE.Group();
+galaxy.add(points);
+galaxy.add(core);
+galaxy.position.set(1.7, -1.9, 0);
+scene.add(galaxy);
 
 // reveal canvas, hide fallback
 canvas.style.display = 'block';
@@ -900,6 +963,124 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 start();
 }).catch(() => { /* CDN failed: keep static gradient fallback */ });
 }
+</script>
+
+<!-- GSAP SCROLL ANIMATION LAYER -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+// Nav shrink runs regardless of motion preference.
+var nav = document.querySelector('nav');
+if (nav) {
+var onScroll = function(){ nav.classList.toggle('shrink', window.scrollY > 200); };
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+}
+
+var docEl = document.documentElement;
+var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var hasGSAP = window.gsap && window.ScrollTrigger;
+
+// Reduced motion or no GSAP: reveal everything in its final state, no animation.
+if (reduce || !hasGSAP) { docEl.classList.remove('anim-pending'); return; }
+
+var isMobile = window.matchMedia('(max-width: 768px)').matches || window.matchMedia('(pointer: coarse)').matches;
+gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.config({ ignoreMobileResize: true });
+docEl.classList.remove('anim-pending');
+
+var D = isMobile ? 0.5 : 0.8;   // base duration
+var Y = isMobile ? 22 : 44;     // base translate
+
+// HERO entrance on load
+gsap.timeline({ defaults: { ease: 'power3.out' } })
+.from('.hero-eyebrow', { opacity: 0, y: 18, duration: 0.6 })
+.from('.hero-h1', { opacity: 0, y: 28, duration: 0.8 }, '-=0.30')
+.from('.hero-promise', { opacity: 0, y: 18, duration: 0.55 }, '-=0.45')
+.from('.hero-sub', { opacity: 0, y: 14, duration: 0.5 }, '-=0.40')
+.from('.hero-tagline', { opacity: 0, y: 14, duration: 0.5 }, '-=0.38')
+.from('.toggle-group', { opacity: 0, y: 14, duration: 0.5 }, '-=0.35')
+.from('.hero-ctas', { opacity: 0, y: 14, duration: 0.5 }, '-=0.35')
+.from('.hero-badges', { opacity: 0, y: 14, duration: 0.5 }, '-=0.35');
+
+// Generic section headers (eyebrow / h2 / sub)
+gsap.utils.toArray('section .section-inner').forEach(function(inner){
+var heads = inner.querySelectorAll(':scope > .eyebrow, :scope > .section-h2, :scope > .section-sub');
+if (heads.length) {
+gsap.from(heads, { opacity: 0, y: 26, duration: D, stagger: 0.12, ease: 'power3.out',
+scrollTrigger: { trigger: inner, start: 'top 85%', once: true } });
+}
+});
+
+// Founder quote
+gsap.from('.founder-card', { opacity: 0, y: 50, duration: D + 0.1, ease: 'power3.out',
+scrollTrigger: { trigger: '.founder', start: 'top 82%', once: true } });
+gsap.from(['.founder-photo', '.founder-text'], { opacity: 0, y: 26, duration: D, stagger: 0.15, ease: 'power3.out',
+scrollTrigger: { trigger: '.founder', start: 'top 78%', once: true } });
+
+// Pain cards + chips
+gsap.from('.pain-grid .pain-card', { opacity: 0, y: Y + 16, duration: D, stagger: 0.08, ease: 'power3.out',
+scrollTrigger: { trigger: '.pain-grid', start: 'top 82%', once: true } });
+gsap.from('.pain-grid .icon-chip', { opacity: 0, scale: 0.5, duration: 0.5, stagger: 0.08, ease: 'back.out(1.7)',
+scrollTrigger: { trigger: '.pain-grid', start: 'top 80%', once: true } });
+
+// Tools cards + chips
+gsap.from('.tools-grid .tool-card', { opacity: 0, y: Y, duration: D - 0.1, stagger: 0.06, ease: 'power3.out',
+scrollTrigger: { trigger: '.tools-grid', start: 'top 84%', once: true } });
+gsap.from('.tools-grid .icon-chip', { opacity: 0, scale: 0.6, duration: 0.45, stagger: 0.06, ease: 'back.out(1.6)',
+scrollTrigger: { trigger: '.tools-grid', start: 'top 82%', once: true } });
+
+// How it works
+gsap.from('.steps .step', { opacity: 0, y: Y, duration: D, stagger: 0.18, ease: 'power3.out',
+scrollTrigger: { trigger: '.steps', start: 'top 80%', once: true } });
+if (!isMobile) {
+gsap.from('.steps-line', { scaleX: 0, duration: 0.9, ease: 'power2.out',
+scrollTrigger: { trigger: '.steps', start: 'top 74%', once: true } });
+}
+
+// Plan cards
+gsap.from('.plans-grid .plan-card', { opacity: 0, y: Y, scale: 0.96, duration: D, stagger: 0.1, ease: 'power3.out',
+scrollTrigger: { trigger: '.plans-grid', start: 'top 84%', once: true } });
+gsap.from('.cro-header', { opacity: 0, y: 24, duration: D, ease: 'power3.out',
+scrollTrigger: { trigger: '.cro-header', start: 'top 86%', once: true } });
+
+// Client logos
+gsap.from('.logos-label', { opacity: 0, y: 18, duration: 0.5, ease: 'power2.out',
+scrollTrigger: { trigger: '.logos', start: 'top 85%', once: true } });
+gsap.from('.logos-row .logo-box', { opacity: 0, y: 22, duration: 0.5, stagger: 0.08, ease: 'power2.out',
+scrollTrigger: { trigger: '.logos-row', start: 'top 88%', once: true } });
+
+// Testimonials
+gsap.from('.testimonials-grid .testi-card', { opacity: 0, y: Y, duration: D, stagger: 0.1, ease: 'power3.out',
+scrollTrigger: { trigger: '.testimonials-grid', start: 'top 84%', once: true } });
+
+// FAQ
+gsap.from('.faq-list', { opacity: 0, y: 28, duration: D, ease: 'power3.out',
+scrollTrigger: { trigger: '.faq-list', start: 'top 86%', once: true } });
+
+// Final CTA + subtle attention pulse
+gsap.from('.final-cta h2', { opacity: 0, scale: 0.86, y: 26, duration: 0.8, ease: 'power3.out',
+scrollTrigger: { trigger: '.final-cta', start: 'top 82%', once: true } });
+gsap.from('.final-cta p', { opacity: 0, y: 18, duration: 0.6, ease: 'power3.out',
+scrollTrigger: { trigger: '.final-cta', start: 'top 80%', once: true } });
+gsap.from('.final-cta .btn-primary', { opacity: 0, y: 18, duration: 0.6, ease: 'power3.out',
+scrollTrigger: { trigger: '.final-cta', start: 'top 78%', once: true },
+onComplete: function(){
+gsap.to('.final-cta .btn-primary', { scale: 1.035, duration: 1.0, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+} });
+
+// Cinematic: pin the hero briefly, scrub headline scale + galaxy parallax (desktop only)
+if (!isMobile) {
+try {
+gsap.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: '+=50%', pin: true, scrub: 0.5, anticipatePin: 1 } })
+.to('.hero-h1', { scale: 0.9, ease: 'none' }, 0)
+.to(['#galaxy', '.stage-fallback'], { yPercent: 8, ease: 'none' }, 0);
+} catch (e) {}
+}
+
+window.addEventListener('load', function(){ ScrollTrigger.refresh(); });
+})();
 </script>
 
 </body>
