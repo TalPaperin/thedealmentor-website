@@ -49,6 +49,8 @@
 --glass-bg: rgba(255,255,255,0.045);
 --glass-bd: rgba(255,255,255,0.10);
 --glass-bd-hi: rgba(255,255,255,0.16);
+--card-bg: #0f1830;
+--card-bd: rgba(255,255,255,0.12);
 --heading: #ffffff;
 --text: #eef2fb;
 --text-muted: #aab4c8;
@@ -163,6 +165,14 @@ font-size: 15px; font-weight: 600; display: inline-flex; align-items: center; ga
 transition: border-color .2s ease, color .2s ease, background .2s ease;
 }
 .btn-ghost:hover { border-color: rgba(52,229,255,.5); color: #fff; background: rgba(52,229,255,0.06); }
+/* solid secondary CTA, readable on the bright galaxy */
+.btn-secondary {
+background: #101a33; border: 1px solid rgba(255,255,255,0.22);
+color: #fff; padding: 13px 26px; border-radius: 11px;
+font-size: 15px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px;
+transition: background .2s ease, border-color .2s ease, transform .2s ease;
+}
+.btn-secondary:hover { background: #182747; border-color: rgba(52,229,255,0.55); transform: translateY(-1px); }
 .btn-lg { padding: 16px 32px; font-size: 16px; }
 .btn-icon { width: 18px; height: 18px; }
 
@@ -247,7 +257,7 @@ box-shadow: inset 0 0 0 1px rgba(52,229,255,0.55), 0 0 18px rgba(52,229,255,0.12
 
 /* FOUNDER QUOTE */
 .founder { max-width: var(--maxw); margin: 0 auto; padding: 90px 32px; }
-.founder-card { display: flex; align-items: center; gap: 48px; flex-wrap: wrap; padding: 40px; }
+.founder-card { display: flex; align-items: center; gap: 48px; flex-wrap: wrap; padding: 40px; background: var(--card-bg); border-color: var(--card-bd); -webkit-backdrop-filter: none; backdrop-filter: none; }
 .founder-photo { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; object-position: top center; flex-shrink: 0; border: 1px solid var(--glass-bd-hi); box-shadow: 0 0 40px rgba(79,139,255,0.20); }
 .founder-text { flex: 1; min-width: 280px; padding-left: 28px; border-left: 2px solid; border-image: var(--grad) 1; }
 .founder-label { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; color: var(--accent-cyan); margin-bottom: 14px; }
@@ -255,8 +265,8 @@ box-shadow: inset 0 0 0 1px rgba(52,229,255,0.55), 0 0 18px rgba(52,229,255,0.12
 .founder-name { font-size: 15px; font-weight: 700; color: var(--text); }
 .founder-role { font-size: 14px; color: var(--text-muted); }
 
-/* GRIDS / CARDS (one identical dark glass treatment for every card) */
-.card { padding: 28px; border-radius: var(--radius); background: var(--glass-bg); border: 1px solid var(--glass-bd); transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+/* GRIDS / CARDS (one identical opaque dark treatment for every card, so the page background never bleeds through by position) */
+.card { padding: 28px; border-radius: var(--radius); background: var(--card-bg); border: 1px solid var(--card-bd); -webkit-backdrop-filter: none; backdrop-filter: none; transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
 .card:hover { transform: translateY(-4px); border-color: rgba(52,229,255,0.35); box-shadow: 0 16px 44px rgba(4,7,20,0.6), 0 0 0 1px rgba(52,229,255,0.12); }
 .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
 .pain-quote { font-size: 14px; color: var(--text-muted); font-style: italic; margin-bottom: 14px; }
@@ -281,7 +291,7 @@ box-shadow: inset 0 0 0 1px rgba(52,229,255,0.55), 0 0 18px rgba(52,229,255,0.12
 .step-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
 
 /* PLANS (all four structurally identical) */
-.cro-header { text-align: center; padding: 26px 32px; margin-bottom: 28px; }
+.cro-header { text-align: center; padding: 26px 32px; margin-bottom: 28px; background: var(--card-bg); border-color: var(--card-bd); -webkit-backdrop-filter: none; backdrop-filter: none; }
 .cro-header p { font-size: 15px; color: var(--text-muted); max-width: 620px; margin: 0 auto; }
 .plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; align-items: stretch; }
 .plan-card { padding: 26px 22px; display: flex; flex-direction: column; }
@@ -318,7 +328,7 @@ box-shadow: inset 0 0 0 1px rgba(52,229,255,0.55), 0 0 18px rgba(52,229,255,0.12
 
 /* FAQ */
 .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
-.faq-item { border-radius: 12px; overflow: hidden; }
+.faq-item { border-radius: 12px; overflow: hidden; background: var(--card-bg); border: 1px solid var(--card-bd); -webkit-backdrop-filter: none; backdrop-filter: none; }
 .faq-h { margin: 0; }
 .faq-q { width: 100%; color: var(--text); font-size: 16px; font-weight: 600; font-family: 'Inter', sans-serif; text-align: left; padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; gap: 12px; transition: color .15s; }
 .faq-q:hover { color: #fff; }
@@ -381,7 +391,7 @@ footer { padding: 36px 16px 28px; }
 .hero { padding: 24px 16px 40px; }
 .toggle-group { width: 100%; }
 .toggle-btn { flex: 1; }
-.hero-ctas .btn-primary, .hero-ctas .btn-ghost { width: 100%; justify-content: center; }
+.hero-ctas .btn-primary, .hero-ctas .btn-ghost, .hero-ctas .btn-secondary { width: 100%; justify-content: center; }
 }
 
 /* REDUCED MOTION */
@@ -452,7 +462,7 @@ setTimeout(function(){ d.classList.remove('anim-pending'); }, 2500);
 </div>
 <div class="hero-ctas">
 <a href="https://app.thedealmentor.ai/register" class="btn-primary btn-lg" id="hero-cta">Start Founder Mode, Free</a>
-<a href="/pricing" class="btn-ghost btn-lg">View Pricing</a>
+<a href="/pricing" class="btn-secondary btn-lg">View Pricing</a>
 </div>
 <div class="hero-badges">
 <div class="hero-badge glass"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> 7-day free trial</div>
@@ -589,7 +599,7 @@ setTimeout(function(){ d.classList.remove('anim-pending'); }, 2500);
 <p class="step-desc">Open DealMentor before every call, every email, every deal. Practice in Simulation. Certify your reps.</p>
 </article>
 </div>
-<div style="text-align:center; margin-top: 48px;">
+<div style="text-align:center; margin-top: 56px; clear: both;">
 <a href="https://app.thedealmentor.ai/register" class="btn-primary btn-lg">Start Free. No Credit Card.</a>
 </div>
 </div>
@@ -966,8 +976,8 @@ start();
 </script>
 
 <!-- GSAP SCROLL ANIMATION LAYER -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://unpkg.com/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script>
 (function(){
 // Nav shrink runs regardless of motion preference.
