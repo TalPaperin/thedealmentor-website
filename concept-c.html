@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Concept C — Field &amp; Friction · DealMentor</title>
+<meta name="description" content="Concept C prototype — atmospheric WebGL/canvas flow field reactive to cursor.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#040714;
+  --ink:#F2F4FB;
+  --muted:#9AA3BE;
+  --line:rgba(255,255,255,.10);
+  --line-hi:rgba(255,255,255,.22);
+  --accent:#7A6CFF;
+  --teal:#34E5FF;
+  --violet:#B36BFF;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font-family:'Inter Tight',Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{min-height:100vh;display:flex;flex-direction:column;position:relative}
+
+/* Canvas field */
+#field{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+
+/* Soft vignette and text-readable patch behind the hero */
+.veil{position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(60% 50% at 50% 55%,rgba(4,7,20,.55) 0%,rgba(4,7,20,0) 70%),
+    linear-gradient(180deg,rgba(4,7,20,.4),rgba(4,7,20,0) 30%,rgba(4,7,20,0) 70%,rgba(4,7,20,.55) 100%);
+}
+
+/* Nav */
+.nav{position:relative;z-index:3;display:flex;justify-content:space-between;align-items:center;padding:22px clamp(20px,4vw,48px);}
+.crumb{display:inline-flex;align-items:center;gap:10px;color:var(--muted);text-decoration:none;font-size:13px;letter-spacing:.04em}
+.crumb:hover{color:var(--ink)}
+.tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);padding:6px 10px;border-radius:999px}
+
+/* Hero */
+main{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center;padding:clamp(40px,7vh,80px) clamp(20px,4vw,64px);max-width:1240px;margin:0 auto;width:100%}
+.eyebrow{display:inline-flex;align-items:center;gap:14px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:26px}
+.eyebrow .ring{width:10px;height:10px;border-radius:50%;border:1px solid var(--teal);box-shadow:0 0 18px var(--teal),inset 0 0 6px var(--teal)}
+h1{
+  font-family:'Bricolage Grotesque',serif;font-weight:700;
+  font-size:clamp(46px,7.8vw,128px);line-height:.95;letter-spacing:-.035em;
+  max-width:16ch;
+}
+h1 .grad{
+  background:linear-gradient(110deg,#34E5FF 0%,#7A6CFF 45%,#B36BFF 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.sub{margin-top:26px;max-width:58ch;color:var(--ink);opacity:.85;font-size:clamp(16px,1.5vw,20px);line-height:1.5}
+
+/* Control deck */
+.deck{
+  margin-top:42px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;max-width:780px;
+}
+.deck .panel{
+  position:relative;border:1px solid var(--line);border-radius:14px;
+  background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  padding:16px 16px 18px;
+  overflow:hidden;
+}
+.deck .panel .label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;display:block}
+.deck .panel .value{font-family:'Bricolage Grotesque',serif;font-weight:700;font-size:clamp(22px,2.4vw,30px);letter-spacing:-.02em}
+.deck .panel .meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);margin-top:4px}
+.bar{margin-top:10px;height:4px;border-radius:2px;background:rgba(255,255,255,.08);overflow:hidden;position:relative}
+.bar .fill{position:absolute;left:0;top:0;height:100%;background:linear-gradient(90deg,var(--teal),var(--accent),var(--violet));}
+
+.row{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;align-items:center}
+.cta{
+  display:inline-flex;align-items:center;gap:10px;color:#0A0A14;text-decoration:none;font-weight:600;font-size:15px;
+  background:linear-gradient(180deg,#fff,#E6E9F4);
+  padding:14px 22px;border-radius:999px;border:1px solid rgba(255,255,255,.5);
+  box-shadow:0 16px 40px rgba(122,108,255,.35);
+  transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s;
+}
+.cta:hover{transform:translateY(-1px);box-shadow:0 22px 50px rgba(122,108,255,.55)}
+.cta svg{transition:transform .3s}
+.cta:hover svg{transform:translateX(3px)}
+.ghost{
+  display:inline-flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;
+  padding:14px 18px;border-radius:999px;border:1px solid var(--line-hi);font-weight:500;font-size:15px;
+  background:rgba(255,255,255,.02);
+  transition:border-color .25s,background .25s;
+}
+.ghost:hover{border-color:rgba(255,255,255,.36);background:rgba(255,255,255,.05)}
+
+@media (max-width:720px){
+  h1{font-size:clamp(40px,11vw,72px)}
+  .sub{font-size:16px}
+  .deck{grid-template-columns:1fr 1fr;gap:10px;max-width:none}
+}
+
+@media (prefers-reduced-motion: reduce){
+  #field{display:none}
+  body{background:
+    radial-gradient(60% 60% at 30% 30%,rgba(52,229,255,.10),transparent 60%),
+    radial-gradient(60% 60% at 80% 70%,rgba(179,107,255,.10),transparent 60%),
+    var(--bg);
+  }
+}
+</style>
+</head>
+<body>
+
+<canvas id="field" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
+
+<nav class="nav">
+  <a class="crumb" href="concepts.html">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Concept prototypes
+  </a>
+  <span class="tag">Concept C · Field &amp; Friction</span>
+</nav>
+
+<main>
+  <span class="eyebrow"><span class="ring"></span>Move your cursor through the field</span>
+  <h1>Flow state<br>for <span class="grad">every close.</span></h1>
+  <p class="sub">DealMentor is the calm in the chaos — scripts, playbooks, live CRO. The platform reacts to every conversation and routes the next move.</p>
+
+  <div class="deck" aria-label="Live control deck">
+    <div class="panel">
+      <span class="label">Pipeline</span>
+      <span class="value">$1.24M</span>
+      <span class="meta">+18% wk</span>
+      <div class="bar"><div class="fill" style="width:72%"></div></div>
+    </div>
+    <div class="panel">
+      <span class="label">Close rate</span>
+      <span class="value">34%</span>
+      <span class="meta">vs 19% avg</span>
+      <div class="bar"><div class="fill" style="width:34%"></div></div>
+    </div>
+    <div class="panel">
+      <span class="label">Friction</span>
+      <span class="value">low</span>
+      <span class="meta">CRO in session</span>
+      <div class="bar"><div class="fill" style="width:18%"></div></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <a class="cta" href="#">Start free
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+    <a class="ghost" href="#">See platform</a>
+  </div>
+</main>
+
+<script>
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var canvas = document.getElementById('field');
+  var ctx = canvas.getContext('2d', { alpha: true });
+  var DPR = Math.min(window.devicePixelRatio || 1, 2);
+  var W=0, H=0;
+
+  // Smooth value noise (cheap)
+  function hash(i){ var n = Math.sin(i) * 43758.5453; return n - Math.floor(n); }
+  function vn(x, y){
+    var ix = Math.floor(x), iy = Math.floor(y);
+    var fx = x - ix, fy = y - iy;
+    fx = fx*fx*(3-2*fx); fy = fy*fy*(3-2*fy);
+    var a = hash(ix*0.31415 + iy*1.61803);
+    var b = hash((ix+1)*0.31415 + iy*1.61803);
+    var c = hash(ix*0.31415 + (iy+1)*1.61803);
+    var d = hash((ix+1)*0.31415 + (iy+1)*1.61803);
+    return ((a*(1-fx) + b*fx) * (1-fy)) + ((c*(1-fx) + d*fx) * fy);
+  }
+
+  // Flow direction from noise (angle)
+  function flow(x, y, t){
+    // domain-warped twice for organic look
+    var nx = vn(x*0.0026 + t*0.04, y*0.0026 - t*0.03);
+    var ny = vn(x*0.0026 + 91.1, y*0.0026 - 13.7);
+    var n  = vn(x*0.0019 + nx*1.2 + t*0.05, y*0.0019 + ny*1.2 - t*0.04);
+    return n * Math.PI * 4;
+  }
+
+  // Particles
+  var particles = [];
+  var COUNT = 0;
+  function targetCount(){
+    var area = W*H;
+    // ~1 particle per 900 px²; cap based on device
+    var mobile = window.matchMedia('(max-width:720px)').matches;
+    var max = mobile ? 700 : 1700;
+    return Math.min(max, Math.max(400, Math.floor(area / 900)));
+  }
+  function makeParticle(p){
+    if (!p) p = {};
+    p.x = Math.random() * W;
+    p.y = Math.random() * H;
+    p.life = 60 + Math.random()*220;
+    p.age = 0;
+    p.hueSeed = Math.random();
+    return p;
+  }
+
+  function resize(){
+    var r = canvas.getBoundingClientRect();
+    W = r.width; H = r.height;
+    canvas.width = W * DPR; canvas.height = H * DPR;
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+    // paint background once
+    ctx.fillStyle = 'rgba(4,7,20,1)';
+    ctx.fillRect(0,0,W,H);
+    COUNT = targetCount();
+    particles = [];
+    for (var i=0;i<COUNT;i++) particles.push(makeParticle());
+  }
+
+  // Mouse: tracked + spawn injector + radial push
+  var mouse = { x:0, y:0, px:0, py:0, vx:0, vy:0, active:false, last:0 };
+  function onPointer(e){
+    var x = e.clientX, y = e.clientY;
+    mouse.vx = x - mouse.px; mouse.vy = y - mouse.py;
+    mouse.px = mouse.x; mouse.py = mouse.y;
+    mouse.x = x; mouse.y = y;
+    mouse.active = true; mouse.last = performance.now();
+    // Inject some particles at cursor with cursor velocity bias
+    var inject = Math.min(8, Math.floor(Math.hypot(mouse.vx, mouse.vy) * 0.4));
+    for (var k=0;k<inject;k++){
+      particles.push({
+        x: x + (Math.random()-.5)*16,
+        y: y + (Math.random()-.5)*16,
+        life: 60 + Math.random()*120,
+        age: 0,
+        hueSeed: Math.random(),
+        injected: true,
+        ivx: mouse.vx * (0.4 + Math.random()*0.4),
+        ivy: mouse.vy * (0.4 + Math.random()*0.4)
+      });
+    }
+    // Cap particle count so injection doesn't explode
+    if (particles.length > COUNT * 1.6){
+      particles.splice(0, particles.length - COUNT * 1.6 | 0);
+    }
+  }
+  window.addEventListener('pointermove', onPointer, { passive:true });
+
+  var t0 = performance.now();
+  var visible = true;
+  document.addEventListener('visibilitychange', function(){ visible = !document.hidden; });
+
+  function frame(){
+    if (!visible){ requestAnimationFrame(frame); return; }
+    var now = performance.now();
+    var t = (now - t0) * 0.001;
+
+    // Fade previous frame slightly (creates trails)
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.fillStyle = 'rgba(4,7,20,0.08)';
+    ctx.fillRect(0,0,W,H);
+
+    ctx.globalCompositeOperation = 'lighter';
+
+    // Mouse influence radius
+    var mr = 140, mr2 = mr*mr;
+    var mx = mouse.x, my = mouse.y;
+    var mActive = mouse.active && (now - mouse.last) < 400;
+
+    for (var i=0;i<particles.length;i++){
+      var p = particles[i];
+      var a = flow(p.x, p.y, t);
+      var vx = Math.cos(a) * 1.1;
+      var vy = Math.sin(a) * 1.1;
+
+      // Initial injection velocity (decays)
+      if (p.injected){
+        vx += p.ivx * 0.08;
+        vy += p.ivy * 0.08;
+        p.ivx *= 0.92; p.ivy *= 0.92;
+      }
+
+      // Cursor push: radial outward
+      if (mActive){
+        var dx = p.x - mx, dy = p.y - my;
+        var d2 = dx*dx + dy*dy;
+        if (d2 < mr2 && d2 > 1){
+          var d = Math.sqrt(d2);
+          var force = (1 - d/mr) * 2.4;
+          vx += (dx/d) * force;
+          vy += (dy/d) * force;
+        }
+      }
+
+      p.x += vx;
+      p.y += vy;
+      p.age++;
+
+      // Color: iridescent — hue from violet (270) through 220 (blue) to 190 (teal)
+      var hueBase = 190 + p.hueSeed * 90;  // 190..280
+      var lifeAlpha = (1 - p.age / p.life);
+      if (lifeAlpha <= 0 || p.x < -20 || p.x > W+20 || p.y < -20 || p.y > H+20){
+        if (p.injected){ particles.splice(i,1); i--; continue; }
+        makeParticle(p);
+        continue;
+      }
+
+      var alpha = 0.06 + 0.10 * lifeAlpha;
+      ctx.fillStyle = 'hsla(' + hueBase.toFixed(1) + ',88%,66%,' + alpha.toFixed(3) + ')';
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 1.1 + (p.injected ? 1 : 0), 0, Math.PI*2);
+      ctx.fill();
+    }
+
+    // Cursor halo
+    if (mActive){
+      var hg = ctx.createRadialGradient(mx,my,0,mx,my,80);
+      hg.addColorStop(0, 'rgba(180,160,255,0.18)');
+      hg.addColorStop(1, 'rgba(180,160,255,0)');
+      ctx.fillStyle = hg;
+      ctx.beginPath(); ctx.arc(mx,my,80,0,Math.PI*2); ctx.fill();
+    }
+
+    requestAnimationFrame(frame);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  // warm-pulse from center on load so hero isn't dead before mouse moves
+  mouse.x = W/2; mouse.y = H/2; mouse.active = true; mouse.last = performance.now();
+  setTimeout(function(){ mouse.active = false; }, 1500);
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
