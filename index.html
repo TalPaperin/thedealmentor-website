@@ -801,20 +801,9 @@ margin-bottom: 16px;
 .hero-eyebrow { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: clamp(12px, 1.2vw, 14px); letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-cyan); font-weight: 500; margin-bottom: 22px; display: inline-flex; align-items: center; gap: 12px; }
 .hero-eyebrow::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-cyan); box-shadow: 0 0 14px var(--accent-cyan); animation: heroDot 1.6s ease-in-out infinite; }
 @keyframes heroDot { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.35); opacity: 0.55; } }
-.hero-h1 { font-size: clamp(40px, 7.2vw, 108px); font-weight: 800; line-height: 1.16; letter-spacing: -0.035em; color: var(--heading); margin-bottom: 26px; }
+.hero-h1 { font-size: clamp(40px, 7.2vw, 108px); font-weight: 800; line-height: 1.22; letter-spacing: -0.035em; color: var(--heading); margin-bottom: 26px; }
 .hero-h1 .line { display: block; }
-.hero-h1 .real {
-  background: linear-gradient(110deg, #34E5FF 0%, #6F8BFF 25%, #B36BFF 50%, #6F8BFF 75%, #34E5FF 100%);
-  background-size: 220% 100%;
-  background-position: 0% 50%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  font-weight: 800;
-  animation: heroShimmer 6s ease-in-out infinite alternate;
-}
-@keyframes heroShimmer { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+.hero-h1 .real { color: var(--accent-cyan); font-weight: 800; }
 .hero-sub { font-size: clamp(15px, 1.4vw, 19px); color: var(--text); line-height: 1.55; max-width: 62ch; margin: 0 auto 28px; }
 .hero-telemetry { display: flex; justify-content: center; gap: clamp(20px, 4vw, 56px); flex-wrap: wrap; max-width: 920px; margin: 38px auto 0; padding-top: 28px; border-top: 1px solid var(--glass-bd); }
 .hero-telemetry .metric { display: flex; flex-direction: column; gap: 4px; min-width: 120px; align-items: center; }
@@ -1211,21 +1200,6 @@ document.documentElement.classList.add('js');
 </div>
 </div>
 </section>
-
-<hr class="divider">
-
-<!-- CLIENT LOGOS -->
-<div class="logos block solid-2">
-<div class="logos-label">Tal&apos;s clients have included</div>
-<div class="logos-row">
-<div class="logo-box"><img src="https://ksw.solutions/wp-content/uploads/2023/03/ksw-logo-clients-_0003_Levels-1-copy-3.png" alt="PepsiCo" width="120" height="44" loading="lazy"></div>
-<div class="logo-box"><img src="https://ksw.solutions/wp-content/uploads/2023/04/Filtersafe-logo-rgb-01-1024x561.png" alt="Filtersafe" width="120" height="44" loading="lazy"></div>
-<div class="logo-box"><img src="https://ksw.solutions/wp-content/uploads/2023/04/Tag-logo.png" alt="TAG Medical" width="120" height="44" loading="lazy"></div>
-<div class="logo-box"><img src="https://ksw.solutions/wp-content/uploads/2023/04/bacsoft.png" alt="BacSoft" width="120" height="44" loading="lazy"></div>
-<div class="logo-box"><img src="https://ksw.solutions/wp-content/uploads/2023/04/lone-star.png" alt="LoneStar Tracking" width="120" height="44" loading="lazy"></div>
-<div class="logo-box"><img src="https://ksw.solutions/wp-content/uploads/2023/04/ION-rectangle-edit-1024x684.jpg" alt="ION" width="120" height="44" loading="lazy"></div>
-</div>
-</div>
 
 <hr class="divider">
 
