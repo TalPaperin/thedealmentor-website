@@ -4,68 +4,70 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Theme 1 — Obsidian Cyan · DealMentor</title>
+<title>Theme 1 — Neural Web · DealMentor</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
 <style>
 :root{
-  --bg:#06080F; --bg-2:#0A0F1F;
-  --ink:#F4F1EA; --muted:#9AA3B8; --faint:rgba(244,241,234,.55);
-  --line:rgba(255,255,255,.08); --glass:rgba(255,255,255,.04);
-  --cyan:#34E5FF; --gold:#FFC857; --violet:#B36BFF;
+  --bg:#040B1F; --bg-2:#070F26;
+  --ink:#FFFFFF; --muted:#9AA6BE; --faint:rgba(255,255,255,.55);
+  --line:rgba(255,255,255,.10); --glass:rgba(255,255,255,.04);
+  --accent:#34E5FF;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.55}
-body{overflow-x:hidden;position:relative}
+body{overflow-x:hidden;position:relative;min-height:100vh}
 
-/* Ambient — three slow drifting blurred gradients */
-.ambient{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.ambient .b{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55;mix-blend-mode:screen;will-change:transform}
-.ambient .b1{width:760px;height:760px;left:-200px;top:-120px;background:radial-gradient(circle,rgba(52,229,255,.65),transparent 70%);animation:drift1 28s ease-in-out infinite alternate}
-.ambient .b2{width:680px;height:680px;right:-160px;top:8%;background:radial-gradient(circle,rgba(255,200,87,.55),transparent 70%);animation:drift2 32s ease-in-out infinite alternate}
-.ambient .b3{width:840px;height:840px;left:18%;bottom:-260px;background:radial-gradient(circle,rgba(179,107,255,.50),transparent 70%);animation:drift3 36s ease-in-out infinite alternate}
-@keyframes drift1{from{transform:translate(0,0)}to{transform:translate(120px,80px)}}
-@keyframes drift2{from{transform:translate(0,0)}to{transform:translate(-100px,60px)}}
-@keyframes drift3{from{transform:translate(0,0)}to{transform:translate(80px,-100px)}}
+#net{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.veil{position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(70% 60% at 50% 38%,transparent 0%,rgba(4,11,31,.55) 70%,rgba(4,11,31,.92) 100%),
+    linear-gradient(180deg,rgba(4,11,31,0) 0%,rgba(4,11,31,.5) 100%);}
 
-/* Nav */
-nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(6,8,15,.72);border-bottom:1px solid var(--line);padding:14px 32px;display:flex;justify-content:space-between;align-items:center}
+nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(4,11,31,.6);border-bottom:1px solid var(--line);padding:14px 32px;display:flex;justify-content:space-between;align-items:center}
 .logo{font-family:'Bricolage Grotesque',serif;font-weight:800;font-size:22px;letter-spacing:-.02em}
-.logo b{color:var(--cyan)}
+.logo b{color:var(--accent)}
 .nav-links{display:flex;gap:28px}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:15px;font-weight:500}
 .nav-links a:hover{color:var(--ink)}
 
-/* Hero */
-.hero{position:relative;z-index:1;padding:120px 32px 100px;text-align:center;max-width:1100px;margin:0 auto}
-.eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan);font-weight:500;margin-bottom:22px;display:inline-flex;align-items:center;gap:12px}
-.eyebrow::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 14px var(--cyan);animation:dot 1.6s ease-in-out infinite}
+.hero{position:relative;z-index:2;padding:120px 32px 100px;text-align:center;max-width:1100px;margin:0 auto}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:24px}
+.eyebrow::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px var(--accent);animation:dot 1.6s ease-in-out infinite}
 @keyframes dot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.35);opacity:.55}}
-.h1{font-family:'Bricolage Grotesque',serif;font-size:clamp(40px,7vw,100px);font-weight:800;line-height:1.18;letter-spacing:-.035em;margin-bottom:26px}
+.h1{font-family:'Bricolage Grotesque',serif;font-size:clamp(40px,7.2vw,108px);font-weight:800;line-height:1.12;letter-spacing:-.035em;margin-bottom:28px;color:#fff}
 .h1 .line{display:block}
-.h1 .real{color:var(--gold);font-weight:800;text-shadow:0 2px 24px rgba(255,200,87,.28)}
-.sub{font-size:clamp(15px,1.4vw,19px);color:var(--ink);max-width:62ch;margin:0 auto 32px;opacity:.92}
-.cta{display:inline-block;padding:16px 32px;border-radius:999px;background:linear-gradient(110deg,var(--cyan),var(--gold));color:#06080F;font-weight:700;text-decoration:none;font-size:15px;box-shadow:0 12px 38px rgba(52,229,255,.32)}
-.cta:hover{transform:translateY(-1px)}
+.h1 em{font-style:normal;color:var(--accent);font-weight:800;text-shadow:0 2px 28px rgba(52,229,255,.35)}
+.sub{font-size:clamp(15px,1.4vw,19px);color:#fff;opacity:.88;max-width:62ch;margin:0 auto 32px}
+.cta{display:inline-block;padding:16px 34px;border-radius:999px;background:var(--accent);color:#04081A;font-weight:700;text-decoration:none;font-size:15px;box-shadow:0 14px 44px rgba(52,229,255,.30);transition:transform .2s}
+.cta:hover{transform:translateY(-2px)}
 
-/* Together section */
-.together{position:relative;z-index:1;padding:90px 32px;max-width:1280px;margin:0 auto;text-align:center}
-.h2{font-family:'Bricolage Grotesque',serif;font-size:clamp(30px,4.2vw,52px);font-weight:800;line-height:1.1;letter-spacing:-.025em;margin-bottom:14px}
-.h2 em{font-style:normal;color:var(--cyan)}
-.together-sub{color:var(--muted);max-width:60ch;margin:0 auto 48px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-.card{background:var(--glass);border:1px solid var(--line);border-radius:18px;padding:28px;text-align:left;backdrop-filter:blur(10px)}
-.card-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:14px}
-.card h3{font-family:'Bricolage Grotesque',serif;font-size:22px;font-weight:700;margin-bottom:10px}
-.card p{color:var(--muted);font-size:14.5px}
+.together{position:relative;z-index:2;padding:80px 32px 100px;max-width:1280px;margin:0 auto;text-align:center}
+.h2{font-family:'Bricolage Grotesque',serif;font-size:clamp(30px,4.4vw,54px);font-weight:800;line-height:1.08;letter-spacing:-.025em;margin-bottom:14px;color:#fff}
+.h2 em{font-style:normal;color:var(--accent)}
+.together-sub{color:var(--muted);max-width:60ch;margin:0 auto 44px}
 
-footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:32px;text-align:center;color:var(--muted);font-size:13px}
-footer a{color:var(--cyan);text-decoration:none}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;text-align:left}
+.card{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:18px;padding:24px;backdrop-filter:blur(8px);position:relative;overflow:hidden}
+.card-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.card-tag{color:var(--accent)}
+.card-state{display:flex;align-items:center;gap:10px;margin-bottom:14px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.card-state .lbl{display:inline-flex;align-items:center;gap:6px;color:#FF6B6B;transition:color .3s}
+.card-state .lbl::before{content:'';width:7px;height:7px;border-radius:50%;background:currentColor;box-shadow:0 0 10px currentColor}
+.card-state.is-out .lbl{color:#5BD7A8}
+.card-state .arr{color:var(--muted)}
+.card-line{font-family:'JetBrains Mono',monospace;font-size:14.5px;line-height:1.5;min-height:3.6em;color:#fff}
+.card-line .caret{display:inline-block;width:.55ch;height:1em;background:var(--accent);vertical-align:-.15em;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:30px;text-align:center;color:var(--muted);font-size:13px}
+footer a{color:var(--accent);text-decoration:none}
 </style>
 </head>
 <body>
-<div class="ambient" aria-hidden="true"><span class="b b1"></span><span class="b b2"></span><span class="b b3"></span></div>
+<canvas id="net" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
 
 <nav>
   <div class="logo">Deal<b>Mentor</b></div>
@@ -73,11 +75,11 @@ footer a{color:var(--cyan);text-decoration:none}
 </nav>
 
 <header class="hero">
-  <p class="eyebrow">Half human. Half AI. All sales.</p>
+  <p class="eyebrow">Half human · Half AI · All sales</p>
   <h1 class="h1">
-    <span class="line">One <span class="real">REAL</span> CRO.</span>
-    <span class="line"><span class="real">Ten</span> AI Sales Tools.</span>
-    <span class="line"><span class="real">One</span> Platform.</span>
+    <span class="line">One <em>real</em> CRO.</span>
+    <span class="line"><em>Ten</em> AI Sales Tools.</span>
+    <span class="line"><em>One</em> Platform.</span>
   </h1>
   <p class="sub">A live fractional CRO and ten must-have AI sales tools — scripts, playbooks, objection handlers, simulator, copilot, certification — under one login, on every plan.</p>
   <a href="#" class="cta">Start Free →</a>
@@ -87,12 +89,110 @@ footer a{color:var(--cyan);text-decoration:none}
   <h2 class="h2">AI drafts it. <em>A real CRO sharpens it.</em></h2>
   <p class="together-sub">Together, on every plan — not stitched together from five vendors.</p>
   <div class="cards">
-    <article class="card"><div class="card-tag">01 · Objection Handler</div><h3>"Too expensive" → answered.</h3><p>AI surfaces the objection. The CRO rewrites the response in your voice.</p></article>
-    <article class="card"><div class="card-tag">02 · ICP Scripts</div><h3>Generic → personalized.</h3><p>Drop your ICP. Get scripts that sound like a senior closer, not a template.</p></article>
-    <article class="card"><div class="card-tag">03 · Competition Battlecard</div><h3>Competitor → counter.</h3><p>Live battlecards that update when a competitor moves.</p></article>
+    <article class="card" data-card="objection">
+      <div class="card-head"><span class="card-tag">01 · Objection Handler</span><span>live</span></div>
+      <div class="card-state"><span class="lbl">Objection</span><span class="arr">→</span></div>
+      <div class="card-line"><span class="t"></span><span class="caret" aria-hidden="true"></span></div>
+    </article>
+    <article class="card" data-card="scripts">
+      <div class="card-head"><span class="card-tag">02 · ICP Scripts</span><span>live</span></div>
+      <div class="card-state"><span class="lbl">Generic</span><span class="arr">→</span></div>
+      <div class="card-line"><span class="t"></span><span class="caret" aria-hidden="true"></span></div>
+    </article>
+    <article class="card" data-card="battle">
+      <div class="card-head"><span class="card-tag">03 · Battlecard</span><span>live</span></div>
+      <div class="card-state"><span class="lbl">Competitor</span><span class="arr">→</span></div>
+      <div class="card-line"><span class="t"></span><span class="caret" aria-hidden="true"></span></div>
+    </article>
   </div>
 </section>
 
-<footer>Theme 1 · Obsidian Cyan · <a href="themes.html">← back to picker</a></footer>
+<footer>Theme 1 · Neural Web · <a href="themes.html">← back to picker</a></footer>
+
+<script>
+/* ====== Canvas particle network (concept-A style) ====== */
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var canvas=document.getElementById('net'),ctx=canvas.getContext('2d',{alpha:true});
+  var DPR=Math.min(window.devicePixelRatio||1,2),W=0,H=0;
+  var nodes=[],edges=[],pulses=[];
+  function resize(){var r=canvas.getBoundingClientRect();W=r.width;H=r.height;canvas.width=W*DPR;canvas.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);build()}
+  function build(){
+    nodes=[];edges=[];pulses=[];
+    var count=Math.max(50,Math.min(130,Math.floor(W*H/16000)));
+    for(var i=0;i<count;i++){nodes.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.07,vy:(Math.random()-.5)*.07,glow:0,neighbors:[]})}
+    var R=Math.min(W,H)*.16,R2=R*R;
+    for(var i=0;i<count;i++)for(var j=i+1;j<count;j++){
+      var dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y,d2=dx*dx+dy*dy;
+      if(d2<R2){edges.push({a:i,b:j});nodes[i].neighbors.push(j);nodes[j].neighbors.push(i)}
+    }
+    for(var p=0;p<5;p++)spawn();
+  }
+  function spawn(){for(var t=0;t<40;t++){var i=Math.floor(Math.random()*nodes.length);if(nodes[i].neighbors.length){var j=nodes[i].neighbors[Math.floor(Math.random()*nodes[i].neighbors.length)];pulses.push({a:i,b:j,t:0,speed:.005+Math.random()*.005,trail:[]});return}}}
+  function draw(){
+    ctx.fillStyle='rgba(4,11,31,0.22)';ctx.fillRect(0,0,W,H);
+    for(var i=0;i<nodes.length;i++){var n=nodes[i];n.x+=n.vx;n.y+=n.vy;if(n.x<0||n.x>W)n.vx*=-1;if(n.y<0||n.y>H)n.vy*=-1;if(n.glow>0)n.glow*=.96}
+    ctx.globalCompositeOperation='lighter';
+    var R=Math.min(W,H)*.16;
+    for(var e=0;e<edges.length;e++){var ed=edges[e],a=nodes[ed.a],b=nodes[ed.b],dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy),t=1-Math.min(1,d/R);ctx.strokeStyle='rgba(80,170,255,'+(.06+.13*t).toFixed(3)+')';ctx.lineWidth=.8;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}
+    for(var p=pulses.length-1;p>=0;p--){var pu=pulses[p];pu.t+=pu.speed;var a=nodes[pu.a],b=nodes[pu.b],px=a.x+(b.x-a.x)*pu.t,py=a.y+(b.y-a.y)*pu.t;pu.trail.push({x:px,y:py});if(pu.trail.length>28)pu.trail.shift();
+      for(var k=0;k<pu.trail.length;k++){var tp=pu.trail[k],aa=k/pu.trail.length;ctx.fillStyle='rgba(120,235,255,'+(.10+aa*.55).toFixed(3)+')';ctx.beginPath();ctx.arc(tp.x,tp.y,1.4+aa*2.2,0,Math.PI*2);ctx.fill()}
+      var g=ctx.createRadialGradient(px,py,0,px,py,20);g.addColorStop(0,'rgba(255,255,255,0.95)');g.addColorStop(.25,'rgba(120,235,255,0.7)');g.addColorStop(1,'rgba(120,235,255,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(px,py,20,0,Math.PI*2);ctx.fill();
+      if(pu.t>=1){nodes[pu.b].glow=1;var nb=nodes[pu.b].neighbors;if(nb.length){var nx=nb[Math.floor(Math.random()*nb.length)];if(nb.length>1&&nx===pu.a)nx=nb[(nb.indexOf(nx)+1)%nb.length];pu.a=pu.b;pu.b=nx;pu.t=0;pu.trail=pu.trail.slice(-6)}else{pulses.splice(p,1);spawn()}}}
+    for(var i=0;i<nodes.length;i++){var n=nodes[i];ctx.fillStyle='rgba(160,200,255,0.5)';ctx.beginPath();ctx.arc(n.x,n.y,1.2,0,Math.PI*2);ctx.fill();if(n.glow>.02){var gg=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,30);gg.addColorStop(0,'rgba(255,255,255,'+(.7*n.glow).toFixed(3)+')');gg.addColorStop(.3,'rgba(120,235,255,'+(.55*n.glow).toFixed(3)+')');gg.addColorStop(1,'rgba(120,235,255,0)');ctx.fillStyle=gg;ctx.beginPath();ctx.arc(n.x,n.y,30,0,Math.PI*2);ctx.fill()}}
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',resize);resize();requestAnimationFrame(draw);
+})();
+
+/* ====== Morph cards (concept-B style scramble) ====== */
+(function(){
+  var pairs={
+    objection:[
+      {a:'"It costs too much."',b:'Cost is friction. Show the outcome first.',la:'Objection',lb:'Response'},
+      {a:'"We’ll think about it."',b:'Decisions get smaller after the call ends.',la:'Objection',lb:'Response'},
+      {a:'"Send us a deck."',b:'Decks don’t close. Conversations do.',la:'Objection',lb:'Response'}
+    ],
+    scripts:[
+      {a:'Hi, we sell software.',b:'Hi Sarah — saw you scaled the SDR team to 12.',la:'Generic',lb:'Personalized'},
+      {a:'Our product helps companies grow.',b:'Series A SaaS founders close 23% more with us.',la:'Generic',lb:'Personalized'},
+      {a:'Are you the decision maker?',b:'Who else weighs in on the GTM stack with you?',la:'Generic',lb:'Personalized'}
+    ],
+    battle:[
+      {a:'"Apollo has more contacts."',b:'Apollo sells lists. We sell outcomes.',la:'Competitor',lb:'Counter'},
+      {a:'"Outreach is cheaper."',b:'Outreach without a CRO is automation alone.',la:'Competitor',lb:'Counter'},
+      {a:'"Gong has the data."',b:'Gong tells you what happened. We help you close.',la:'Competitor',lb:'Counter'}
+    ]
+  };
+  var glyphs='!@#$%&*+=?<>{}/\\|~^abcdefghijklmnopqrstuvwxyz';
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function rand(){return glyphs[Math.floor(Math.random()*glyphs.length)]}
+  function morph(el,from,to){return new Promise(function(res){
+    if(reduced){el.textContent=to;return res()}
+    var L=Math.max(from.length,to.length),ops=[];
+    for(var i=0;i<L;i++)ops.push({f:from[i]||' ',t:to[i]||' ',s:Math.floor(Math.random()*16),e:0,c:' '});
+    for(var i=0;i<ops.length;i++)ops[i].e=ops[i].s+10+Math.floor(Math.random()*16);
+    var fr=0;
+    function tick(){var out='',done=true;for(var i=0;i<ops.length;i++){var o=ops[i];if(fr>=o.e)out+=o.t;else if(fr<o.s){out+=o.f;done=false}else{done=false;var p=(fr-o.s)/(o.e-o.s);o.c=Math.random()<p*.4?o.t:rand();out+=o.c}}el.textContent=out;fr++;if(done)res();else requestAnimationFrame(tick)}
+    requestAnimationFrame(tick);
+  })}
+  function wait(ms){return new Promise(function(r){setTimeout(r,ms)})}
+  document.querySelectorAll('.card[data-card]').forEach(function(card,idx){
+    var key=card.getAttribute('data-card'),list=pairs[key],t=card.querySelector('.t'),state=card.querySelector('.card-state'),lbl=card.querySelector('.lbl');
+    (async function(){
+      await wait(idx*700);
+      var cur='',i=0;
+      while(true){
+        var p=list[i%list.length];
+        state.classList.remove('is-out');lbl.textContent=p.la;
+        await morph(t,cur,p.a);cur=p.a;await wait(1400);
+        state.classList.add('is-out');lbl.textContent=p.lb;
+        await morph(t,cur,p.b);cur=p.b;await wait(1900);
+        i++;
+      }
+    })();
+  });
+})();
+</script>
 </body>
 </html>

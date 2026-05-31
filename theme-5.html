@@ -4,71 +4,67 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Theme 5 — Soft Tech · DealMentor</title>
+<title>Theme 5 — Light Studio · DealMentor</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
 <style>
 :root{
-  --bg:#FAFAF7; --bg-2:#F1ECDD;
-  --ink:#1A1B1E; --muted:#5A5F6B; --faint:#9CA0AC;
-  --line:rgba(26,27,30,.08); --glass:rgba(255,255,255,.55);
-  --sage:#5C8A6E; --peach:#F8A07E; --butter:#F5D77A;
+  --bg:#FFFFFF; --bg-soft:#F4F7FB;
+  --ink:#0A1226; --muted:#5A6580;
+  --line:rgba(10,18,38,.10); --glass:rgba(255,255,255,.7);
+  --accent:#2D6BFF;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.55}
-body{overflow-x:hidden;position:relative}
+body{overflow-x:hidden;position:relative;min-height:100vh}
 
-/* Soft mesh background — gentle sage + peach + butter blobs */
-.mesh{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.mesh .b{position:absolute;border-radius:50%;filter:blur(110px);opacity:.7;will-change:transform}
-.mesh .b1{width:760px;height:760px;left:-180px;top:-160px;background:radial-gradient(circle,rgba(92,138,110,.45),transparent 70%);animation:m1 26s ease-in-out infinite alternate}
-.mesh .b2{width:680px;height:680px;right:-180px;top:18%;background:radial-gradient(circle,rgba(248,160,126,.50),transparent 70%);animation:m2 30s ease-in-out infinite alternate}
-.mesh .b3{width:720px;height:720px;left:22%;bottom:-240px;background:radial-gradient(circle,rgba(245,215,122,.50),transparent 70%);animation:m3 34s ease-in-out infinite alternate}
-@keyframes m1{from{transform:translate(0,0)}to{transform:translate(100px,80px)}}
-@keyframes m2{from{transform:translate(0,0)}to{transform:translate(-80px,60px)}}
-@keyframes m3{from{transform:translate(0,0)}to{transform:translate(60px,-80px)}}
+#mesh{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.veil{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(70% 60% at 50% 38%,rgba(255,255,255,0) 0%,rgba(255,255,255,.55) 75%,rgba(255,255,255,.85) 100%)}
 
-nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);background:rgba(250,250,247,.78);border-bottom:1px solid var(--line);padding:16px 32px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-family:Manrope,sans-serif;font-weight:800;font-size:22px;letter-spacing:-.025em}
-.logo b{color:var(--sage)}
-.nav-links{display:flex;gap:28px;align-items:center}
+nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(255,255,255,.78);border-bottom:1px solid var(--line);padding:14px 32px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Bricolage Grotesque',serif;font-weight:800;font-size:22px;letter-spacing:-.02em;color:var(--ink)}
+.logo b{color:var(--accent)}
+.nav-links{display:flex;gap:28px}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:15px;font-weight:500}
 .nav-links a:hover{color:var(--ink)}
 
 .hero{position:relative;z-index:2;padding:120px 32px 100px;text-align:center;max-width:1100px;margin:0 auto}
-.eyebrow{display:inline-flex;align-items:center;gap:10px;padding:7px 14px;border-radius:999px;background:var(--glass);border:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sage);font-weight:600;margin-bottom:26px;backdrop-filter:blur(6px)}
-.eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--sage);box-shadow:0 0 0 4px rgba(92,138,110,.18)}
-.h1{font-family:Manrope,sans-serif;font-size:clamp(42px,7.5vw,108px);font-weight:800;line-height:1.06;letter-spacing:-.035em;margin-bottom:26px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:24px}
+.eyebrow::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px rgba(45,107,255,.6);animation:dot 1.6s ease-in-out infinite}
+@keyframes dot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.35);opacity:.55}}
+.h1{font-family:'Bricolage Grotesque',serif;font-size:clamp(40px,7.2vw,108px);font-weight:800;line-height:1.12;letter-spacing:-.035em;margin-bottom:28px;color:var(--ink)}
 .h1 .line{display:block}
-.h1 em{font-style:normal;color:var(--sage);font-weight:800}
-.h1 .line:nth-child(2) em{color:var(--peach)}
-.h1 .line:nth-child(3) em{color:var(--sage)}
-.sub{font-size:clamp(16px,1.4vw,19px);color:var(--muted);max-width:60ch;margin:0 auto 36px}
-.cta{display:inline-flex;align-items:center;gap:8px;padding:15px 30px;border-radius:999px;background:var(--ink);color:var(--bg);font-weight:600;text-decoration:none;font-size:15px;box-shadow:0 14px 38px rgba(26,27,30,.18);transition:transform .15s,box-shadow .15s}
-.cta:hover{transform:translateY(-2px);box-shadow:0 18px 46px rgba(26,27,30,.22)}
+.h1 em{font-style:normal;color:var(--accent);font-weight:800}
+.sub{font-size:clamp(15px,1.4vw,19px);color:var(--muted);max-width:62ch;margin:0 auto 32px}
+.cta{display:inline-block;padding:16px 34px;border-radius:999px;background:var(--accent);color:#fff;font-weight:700;text-decoration:none;font-size:15px;box-shadow:0 14px 44px rgba(45,107,255,.30);transition:transform .2s}
+.cta:hover{transform:translateY(-2px)}
 
-.together{position:relative;z-index:2;padding:90px 32px;max-width:1280px;margin:0 auto;text-align:center}
-.h2{font-family:Manrope,sans-serif;font-weight:800;font-size:clamp(32px,4.6vw,56px);line-height:1.08;letter-spacing:-.028em;margin-bottom:14px}
-.h2 em{font-style:normal;color:var(--sage)}
-.together-sub{color:var(--muted);max-width:60ch;margin:0 auto 52px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-.card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:30px;text-align:left;box-shadow:0 4px 18px rgba(26,27,30,.04);transition:transform .25s,box-shadow .25s}
-.card:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(26,27,30,.10)}
-.card-icon{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--sage),#7BA38B);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-family:'JetBrains Mono',monospace;font-size:13px;margin-bottom:18px}
-.card:nth-child(2) .card-icon{background:linear-gradient(135deg,var(--peach),#FBC0A6)}
-.card:nth-child(3) .card-icon{background:linear-gradient(135deg,var(--butter),#F0BE52)}
-.card-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;font-weight:600}
-.card h3{font-family:Manrope,sans-serif;font-size:21px;font-weight:700;margin-bottom:10px;letter-spacing:-.015em}
-.card h3 em{font-style:normal;color:var(--sage)}
-.card p{color:var(--muted);font-size:14.5px}
+.together{position:relative;z-index:2;padding:80px 32px 100px;max-width:1280px;margin:0 auto;text-align:center}
+.h2{font-family:'Bricolage Grotesque',serif;font-size:clamp(30px,4.4vw,54px);font-weight:800;line-height:1.08;letter-spacing:-.025em;margin-bottom:14px;color:var(--ink)}
+.h2 em{font-style:normal;color:var(--accent)}
+.together-sub{color:var(--muted);max-width:60ch;margin:0 auto 44px}
 
-footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:32px;text-align:center;color:var(--muted);font-size:13px}
-footer a{color:var(--sage);text-decoration:none;font-weight:600}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;text-align:left}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 8px 28px rgba(10,18,38,.06);position:relative;overflow:hidden}
+.card-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.card-tag{color:var(--accent);font-weight:600}
+.card-state{display:flex;align-items:center;gap:10px;margin-bottom:14px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.card-state .lbl{display:inline-flex;align-items:center;gap:6px;color:#D14848;transition:color .3s}
+.card-state .lbl::before{content:'';width:7px;height:7px;border-radius:50%;background:currentColor;box-shadow:0 0 10px currentColor}
+.card-state.is-out .lbl{color:#2D9568}
+.card-state .arr{color:var(--muted)}
+.card-line{font-family:'JetBrains Mono',monospace;font-size:14.5px;line-height:1.5;min-height:3.6em;color:var(--ink)}
+.card-line .caret{display:inline-block;width:.55ch;height:1em;background:var(--accent);vertical-align:-.15em;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:30px;text-align:center;color:var(--muted);font-size:13px}
+footer a{color:var(--accent);text-decoration:none;font-weight:600}
 </style>
 </head>
 <body>
-<div class="mesh" aria-hidden="true"><span class="b b1"></span><span class="b b2"></span><span class="b b3"></span></div>
+<canvas id="mesh" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
 
 <nav>
   <div class="logo">Deal<b>Mentor</b></div>
@@ -90,12 +86,110 @@ footer a{color:var(--sage);text-decoration:none;font-weight:600}
   <h2 class="h2">AI drafts it. <em>A real CRO sharpens it.</em></h2>
   <p class="together-sub">Together, on every plan — not stitched together from five vendors.</p>
   <div class="cards">
-    <article class="card"><div class="card-icon">01</div><div class="card-tag">Objection Handler</div><h3>"Too <em>expensive</em>" → answered.</h3><p>AI surfaces the objection. The CRO rewrites the response in your voice.</p></article>
-    <article class="card"><div class="card-icon">02</div><div class="card-tag">ICP Scripts</div><h3>Generic → <em>personalized</em>.</h3><p>Drop your ICP. Get scripts that sound like a senior closer, not a template.</p></article>
-    <article class="card"><div class="card-icon">03</div><div class="card-tag">Battlecards</div><h3>Competitor → <em>counter</em>.</h3><p>Live battlecards that update when a competitor moves.</p></article>
+    <article class="card" data-card="objection">
+      <div class="card-head"><span class="card-tag">01 · Objection Handler</span><span>live</span></div>
+      <div class="card-state"><span class="lbl">Objection</span><span class="arr">→</span></div>
+      <div class="card-line"><span class="t"></span><span class="caret" aria-hidden="true"></span></div>
+    </article>
+    <article class="card" data-card="scripts">
+      <div class="card-head"><span class="card-tag">02 · ICP Scripts</span><span>live</span></div>
+      <div class="card-state"><span class="lbl">Generic</span><span class="arr">→</span></div>
+      <div class="card-line"><span class="t"></span><span class="caret" aria-hidden="true"></span></div>
+    </article>
+    <article class="card" data-card="battle">
+      <div class="card-head"><span class="card-tag">03 · Battlecard</span><span>live</span></div>
+      <div class="card-state"><span class="lbl">Competitor</span><span class="arr">→</span></div>
+      <div class="card-line"><span class="t"></span><span class="caret" aria-hidden="true"></span></div>
+    </article>
   </div>
 </section>
 
-<footer>Theme 5 · Soft Tech · <a href="themes.html">← back to picker</a></footer>
+<footer>Theme 5 · Light Studio · <a href="themes.html">← back to picker</a></footer>
+
+<script>
+/* ====== Light Studio — soft drifting pastel mesh on white ====== */
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var canvas=document.getElementById('mesh'),ctx=canvas.getContext('2d');
+  var DPR=Math.min(window.devicePixelRatio||1,2),W=0,H=0,t=0;
+  var blobs=[
+    {hue:[45,107,255],  r:.55, sx:.20, sy:.30, ax:.20, ay:.15, fx:.0005, fy:.0007, p:0},
+    {hue:[91,180,255],  r:.50, sx:.80, sy:.25, ax:.18, ay:.12, fx:.0006, fy:.0005, p:1.3},
+    {hue:[160,120,255], r:.55, sx:.55, sy:.75, ax:.20, ay:.18, fx:.0004, fy:.0008, p:2.5},
+    {hue:[80,200,200],  r:.45, sx:.25, sy:.85, ax:.18, ay:.12, fx:.0007, fy:.0006, p:0.6},
+    {hue:[255,150,160], r:.40, sx:.85, sy:.85, ax:.14, ay:.13, fx:.0006, fy:.0007, p:1.9}
+  ];
+  function resize(){var r=canvas.getBoundingClientRect();W=r.width;H=r.height;canvas.width=W*DPR;canvas.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0)}
+  function draw(){
+    ctx.globalCompositeOperation='source-over';
+    ctx.fillStyle='#FFFFFF';ctx.fillRect(0,0,W,H);
+    ctx.globalCompositeOperation='multiply';
+    for(var i=0;i<blobs.length;i++){
+      var b=blobs[i];
+      var cx=W*(b.sx+Math.sin(t*b.fx+b.p)*b.ax);
+      var cy=H*(b.sy+Math.cos(t*b.fy+b.p)*b.ay);
+      var rad=Math.min(W,H)*b.r;
+      var g=ctx.createRadialGradient(cx,cy,0,cx,cy,rad);
+      g.addColorStop(0,'rgba('+b.hue[0]+','+b.hue[1]+','+b.hue[2]+',0.30)');
+      g.addColorStop(0.5,'rgba('+b.hue[0]+','+b.hue[1]+','+b.hue[2]+',0.10)');
+      g.addColorStop(1,'rgba('+b.hue[0]+','+b.hue[1]+','+b.hue[2]+',0)');
+      ctx.fillStyle=g;
+      ctx.beginPath();ctx.arc(cx,cy,rad,0,Math.PI*2);ctx.fill();
+    }
+    t++;
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',resize);resize();requestAnimationFrame(draw);
+})();
+
+/* Morph cards */
+(function(){
+  var pairs={
+    objection:[
+      {a:'"It costs too much."',b:'Cost is friction. Show the outcome first.',la:'Objection',lb:'Response'},
+      {a:'"We’ll think about it."',b:'Decisions get smaller after the call ends.',la:'Objection',lb:'Response'},
+      {a:'"Send us a deck."',b:'Decks don’t close. Conversations do.',la:'Objection',lb:'Response'}
+    ],
+    scripts:[
+      {a:'Hi, we sell software.',b:'Hi Sarah — saw you scaled SDR to 12.',la:'Generic',lb:'Personalized'},
+      {a:'Our product helps companies grow.',b:'Series A SaaS founders close 23% more.',la:'Generic',lb:'Personalized'},
+      {a:'Are you the decision maker?',b:'Who else weighs in on the GTM stack?',la:'Generic',lb:'Personalized'}
+    ],
+    battle:[
+      {a:'"Apollo has more contacts."',b:'Apollo sells lists. We sell outcomes.',la:'Competitor',lb:'Counter'},
+      {a:'"Outreach is cheaper."',b:'Outreach without a CRO is automation alone.',la:'Competitor',lb:'Counter'},
+      {a:'"Gong has the data."',b:'Gong tells what happened. We help you close.',la:'Competitor',lb:'Counter'}
+    ]
+  };
+  var glyphs='!@#$%&*+=?<>{}/\\|~^abcdefghijklmnopqrstuvwxyz';
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function rand(){return glyphs[Math.floor(Math.random()*glyphs.length)]}
+  function morph(el,from,to){return new Promise(function(res){
+    if(reduced){el.textContent=to;return res()}
+    var L=Math.max(from.length,to.length),ops=[];
+    for(var i=0;i<L;i++)ops.push({f:from[i]||' ',t:to[i]||' ',s:Math.floor(Math.random()*16),e:0,c:' '});
+    for(var i=0;i<ops.length;i++)ops[i].e=ops[i].s+10+Math.floor(Math.random()*16);
+    var fr=0;
+    function tick(){var out='',done=true;for(var i=0;i<ops.length;i++){var o=ops[i];if(fr>=o.e)out+=o.t;else if(fr<o.s){out+=o.f;done=false}else{done=false;var p=(fr-o.s)/(o.e-o.s);o.c=Math.random()<p*.4?o.t:rand();out+=o.c}}el.textContent=out;fr++;if(done)res();else requestAnimationFrame(tick)}
+    requestAnimationFrame(tick);
+  })}
+  function wait(ms){return new Promise(function(r){setTimeout(r,ms)})}
+  document.querySelectorAll('.card[data-card]').forEach(function(card,idx){
+    var key=card.getAttribute('data-card'),list=pairs[key],t=card.querySelector('.t'),state=card.querySelector('.card-state'),lbl=card.querySelector('.lbl');
+    (async function(){
+      await wait(idx*700);
+      var cur='',i=0;
+      while(true){
+        var p=list[i%list.length];
+        state.classList.remove('is-out');lbl.textContent=p.la;
+        await morph(t,cur,p.a);cur=p.a;await wait(1400);
+        state.classList.add('is-out');lbl.textContent=p.lb;
+        await morph(t,cur,p.b);cur=p.b;await wait(1900);
+        i++;
+      }
+    })();
+  });
+})();
+</script>
 </body>
 </html>

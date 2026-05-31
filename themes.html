@@ -7,12 +7,9 @@
 <title>DealMentor — Theme Picker</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-:root{
-  --bg:#06080F; --ink:#F4F1EA; --muted:#8A93A8;
-  --line:rgba(255,255,255,.08);
-}
+:root{--bg:#040B1F;--ink:#FFFFFF;--muted:#9AA6BE;--line:rgba(255,255,255,.10)}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;min-height:100%}
 body{padding:clamp(28px,4.5vw,64px);display:flex;flex-direction:column;gap:clamp(36px,5vw,64px)}
@@ -21,19 +18,14 @@ header{display:flex;justify-content:space-between;align-items:baseline;border-bo
 .title{font-family:'Bricolage Grotesque',serif;font-weight:800;font-size:clamp(28px,4vw,48px);line-height:1.05;letter-spacing:-.02em;margin-top:8px}
 .lede{max-width:760px;color:var(--muted);font-size:clamp(15px,1.3vw,18px);line-height:1.55}
 
-.grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
-.card{
-  position:relative;display:flex;flex-direction:column;justify-content:space-between;
-  text-decoration:none;color:var(--ink);
+.grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.card{position:relative;display:flex;flex-direction:column;text-decoration:none;color:var(--ink);
   border:1px solid var(--line);border-radius:20px;overflow:hidden;
   background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0));
-  padding:0;min-height:380px;
-  transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s;
-}
+  min-height:420px;transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s}
 .card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.22)}
-
-.card-art{height:170px;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
-.card-body{padding:22px 24px 24px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card-art{height:200px;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.card-body{padding:22px 24px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
 .card-foot{padding:0 24px 22px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
 .tag{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
 .card h2{font-family:'Bricolage Grotesque',serif;font-weight:800;font-size:26px;line-height:1.1;letter-spacing:-.02em}
@@ -44,40 +36,60 @@ header{display:flex;justify-content:space-between;align-items:baseline;border-bo
 .spec{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted);text-align:right;line-height:1.5}
 .spec b{color:var(--ink);font-weight:600;display:block;margin-bottom:2px}
 
-/* Theme card art previews */
-.art-1{background:
-  radial-gradient(60% 60% at 20% 20%,rgba(52,229,255,.55),transparent 65%),
-  radial-gradient(50% 50% at 85% 30%,rgba(255,200,87,.55),transparent 65%),
-  radial-gradient(60% 60% at 50% 90%,rgba(179,107,255,.50),transparent 65%),
-  #06080F;
-  filter:blur(0)}
-.art-1::after{content:'REAL';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',serif;font-weight:800;font-size:60px;color:#FFC857;text-shadow:0 2px 24px rgba(255,200,87,.4);letter-spacing:-.03em}
+/* === Live preview thumbnails (real CSS animations on each card) === */
 
-.art-2{background:#03050C;position:relative;overflow:hidden}
-.art-2::before{content:'';position:absolute;inset:-20%;background:
-  radial-gradient(ellipse 60% 40% at 30% 30%,rgba(91,215,168,.7),transparent 60%),
-  radial-gradient(ellipse 60% 40% at 70% 50%,rgba(52,229,255,.7),transparent 60%),
-  radial-gradient(ellipse 60% 40% at 40% 80%,rgba(179,107,255,.7),transparent 60%),
-  radial-gradient(ellipse 60% 40% at 80% 80%,rgba(255,107,197,.6),transparent 60%);
-  filter:blur(28px)}
-.art-2::after{content:'real';position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',serif;font-weight:400;font-style:italic;font-size:64px;color:#5BD7A8;letter-spacing:-.02em}
+/* Theme 1: Neural Web — animated dot network */
+.art-1{background:#040B1F;position:relative}
+.art-1::before,.art-1::after{content:'';position:absolute;border-radius:50%;filter:blur(1px)}
+.art-1 .nd{position:absolute;width:3px;height:3px;border-radius:50%;background:#34E5FF;box-shadow:0 0 12px #34E5FF;opacity:.85;animation:nd 3s ease-in-out infinite}
+.art-1 .ln{position:absolute;height:1px;background:linear-gradient(90deg,transparent,rgba(120,200,255,.45),transparent);transform-origin:left center}
+.art-1 .pulse{position:absolute;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 18px #34E5FF,0 0 32px rgba(52,229,255,.6);animation:pul 3.2s linear infinite}
+@keyframes nd{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.5)}}
+@keyframes pul{0%{transform:translate(0,0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translate(220px,90px);opacity:0}}
+.art-1 .word{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',serif;font-weight:800;font-size:48px;color:#34E5FF;text-shadow:0 2px 24px rgba(52,229,255,.55);letter-spacing:-.03em;z-index:3}
 
-.art-3{background:#F5F0E6;position:relative;
-  background-image:repeating-linear-gradient(0deg,transparent 0,transparent 19px,rgba(11,14,19,.06) 19px,rgba(11,14,19,.06) 20px),
-                   radial-gradient(120% 80% at 50% -10%,rgba(197,58,42,.08),transparent 60%);}
-.art-3::after{content:'real';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',serif;font-weight:400;font-style:italic;font-size:64px;color:#C53A2A;letter-spacing:-.02em}
+/* Theme 2: Live Script — scrolling marquee */
+.art-2{background:#050C22;position:relative;overflow:hidden}
+.art-2 .mq{position:absolute;left:0;right:0;white-space:nowrap;font-family:'Bricolage Grotesque',serif;font-weight:800;font-size:32px;letter-spacing:-.02em;line-height:1;animation:mq 14s linear infinite;will-change:transform}
+.art-2 .mq.r1{top:30px;color:rgba(255,255,255,.10)}
+.art-2 .mq.r2{top:80px;color:rgba(255,77,166,.18);font-style:italic;animation-duration:18s;animation-direction:reverse}
+.art-2 .mq.r3{top:130px;color:rgba(255,255,255,.07);animation-duration:22s}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.art-2 .word{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',serif;font-style:italic;font-weight:500;font-size:48px;color:#FF4DA6;text-shadow:0 2px 32px rgba(255,77,166,.55);letter-spacing:-.03em;z-index:3}
 
-.art-4{background:#000;position:relative;overflow:hidden}
-.art-4::before{content:'';position:absolute;inset:-30%;background:conic-gradient(from 0deg at 50% 50%,rgba(255,43,214,.35) 0deg,rgba(0,240,255,.32) 90deg,rgba(200,255,0,.25) 180deg,rgba(255,43,214,.35) 360deg);filter:blur(36px)}
-.art-4::after{content:'REAL';position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:62px;color:#FF2BD6;text-shadow:0 0 28px rgba(255,43,214,.7);letter-spacing:-.04em}
+/* Theme 3: Aurora Flow — slow color blobs */
+.art-3{background:#020716;position:relative;overflow:hidden}
+.art-3::before{content:'';position:absolute;inset:-30%;background:
+  radial-gradient(circle 160px at 25% 30%,rgba(52,229,255,.55),transparent 70%),
+  radial-gradient(circle 180px at 75% 30%,rgba(255,200,87,.55),transparent 70%),
+  radial-gradient(circle 200px at 50% 80%,rgba(179,107,255,.55),transparent 70%),
+  radial-gradient(circle 160px at 85% 80%,rgba(91,215,168,.45),transparent 70%);
+  filter:blur(28px);animation:au 12s ease-in-out infinite alternate}
+@keyframes au{from{transform:translate(-12px,-8px) scale(1)}to{transform:translate(16px,12px) scale(1.08)}}
+.art-3 .word{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',serif;font-weight:800;font-size:48px;color:#FFC857;text-shadow:0 2px 36px rgba(255,200,87,.6);letter-spacing:-.03em;z-index:3}
 
-.art-5{background:#FAFAF7;position:relative;overflow:hidden}
-.art-5::before{content:'';position:absolute;inset:-20%;background:
-  radial-gradient(circle 200px at 25% 30%,rgba(92,138,110,.55),transparent 70%),
-  radial-gradient(circle 220px at 75% 40%,rgba(248,160,126,.55),transparent 70%),
-  radial-gradient(circle 200px at 50% 90%,rgba(245,215,122,.55),transparent 70%);
-  filter:blur(40px)}
-.art-5::after{content:'real';position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;font-family:Manrope,sans-serif;font-weight:800;font-size:64px;color:#5C8A6E;letter-spacing:-.035em}
+/* Theme 4: Pulse Grid — dot grid with wave */
+.art-4{background:#030914;position:relative;overflow:hidden;
+  background-image:radial-gradient(circle,rgba(140,200,180,.30) 1.2px,transparent 1.5px);
+  background-size:18px 18px;background-position:0 0}
+.art-4::before{content:'';position:absolute;inset:0;background:
+  radial-gradient(circle 80px at 30% 50%,rgba(91,215,168,.5),transparent 70%);
+  animation:wv 3s ease-out infinite}
+.art-4::after{content:'';position:absolute;inset:0;background:
+  radial-gradient(circle 80px at 70% 50%,rgba(91,255,200,.45),transparent 70%);
+  animation:wv 3s ease-out infinite 1.5s}
+@keyframes wv{0%{transform:scale(.3);opacity:0}30%{opacity:1}100%{transform:scale(3);opacity:0}}
+.art-4 .word{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:42px;color:#5BD7A8;text-shadow:0 2px 28px rgba(91,215,168,.6);background:rgba(91,215,168,.08);width:fit-content;height:fit-content;margin:auto;padding:4px 14px;border-radius:8px;z-index:3}
+
+/* Theme 5: Light Studio — pastel mesh on white */
+.art-5{background:#FFFFFF;position:relative;overflow:hidden}
+.art-5::before{content:'';position:absolute;inset:-30%;background:
+  radial-gradient(circle 180px at 25% 30%,rgba(45,107,255,.28),transparent 70%),
+  radial-gradient(circle 200px at 75% 30%,rgba(91,180,255,.30),transparent 70%),
+  radial-gradient(circle 180px at 50% 85%,rgba(160,120,255,.28),transparent 70%),
+  radial-gradient(circle 160px at 85% 80%,rgba(255,150,160,.26),transparent 70%);
+  filter:blur(24px);mix-blend-mode:multiply;animation:au 14s ease-in-out infinite alternate}
+.art-5 .word{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',serif;font-weight:800;font-size:48px;color:#2D6BFF;letter-spacing:-.03em;z-index:3}
 
 footer{border-top:1px solid var(--line);padding-top:22px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
 footer a{color:var(--muted);text-decoration:none;border-bottom:1px solid transparent}
@@ -87,88 +99,110 @@ footer a:hover{color:var(--ink);border-bottom-color:var(--ink)}
 <body>
 <header>
   <div>
-    <div class="kicker">DealMentor · Theme Prototypes</div>
+    <div class="kicker">DealMentor · Theme Prototypes · v2</div>
     <h1 class="title">Pick the look.</h1>
   </div>
-  <div class="kicker" style="text-align:right">internal preview · 5 directions</div>
+  <div class="kicker" style="text-align:right">5 directions · stunning motion · same content</div>
 </header>
 
 <section>
-  <p class="lede">Five whole-page directions for the redesign. Each prototype is the hero + the "Together" section, fully rendered — open it, scroll, see the real fonts, colors, and motion. The one that <em style="color:var(--ink);font-style:italic">feels right</em> becomes the spine for all nine pages.</p>
+  <p class="lede">Five whole-page directions. Each is the hero + the "Together" section with three morph cards — the AI <em style="color:#fff;font-style:italic">drafts</em> the script, then the CRO <em style="color:#fff;font-style:italic">sharpens</em> it (watch the cards scramble between Generic → Personalized). All five use white text on dark blue (or one on white) — only the animation, the accent color, and the type personality change.</p>
 </section>
 
 <div class="grid">
 
   <a class="card" href="theme-1.html">
-    <div class="card-art art-1"></div>
+    <div class="card-art art-1">
+      <span class="nd" style="left:18%;top:30%"></span>
+      <span class="nd" style="left:35%;top:55%;animation-delay:.5s"></span>
+      <span class="nd" style="left:62%;top:25%;animation-delay:1s"></span>
+      <span class="nd" style="left:78%;top:60%;animation-delay:1.5s"></span>
+      <span class="nd" style="left:48%;top:78%;animation-delay:.8s"></span>
+      <span class="ln" style="left:18%;top:30%;width:80px;transform:rotate(20deg)"></span>
+      <span class="ln" style="left:35%;top:55%;width:100px;transform:rotate(-30deg)"></span>
+      <span class="ln" style="left:62%;top:25%;width:90px;transform:rotate(45deg)"></span>
+      <span class="pulse" style="left:10%;top:40%"></span>
+      <span class="word">REAL</span>
+    </div>
     <div class="card-body">
-      <span class="tag">Theme 01</span>
-      <h2>Obsidian Cyan</h2>
-      <p>Deep navy + cyan + gold. Ambient gradient blobs drift behind the hero. Premium SaaS dark mode — Linear / Vercel feel.</p>
+      <span class="tag">Theme 01 · dark blue</span>
+      <h2>Neural Web</h2>
+      <p>Full-viewport particle network. Pulses of light travel along edges, lighting nodes as they pass — the visual IS the pipeline. Cyan accent on emphasized words.</p>
     </div>
     <div class="card-foot">
       <span class="go">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-      <div class="spec"><b>Dark · Brand-native</b>Closest to today · refined</div>
+      <div class="spec"><b>Canvas network</b>Most "product" · pipeline metaphor</div>
     </div>
   </a>
 
   <a class="card" href="theme-2.html">
-    <div class="card-art art-2"></div>
+    <div class="card-art art-2">
+      <div class="mq r1"><span style="padding-right:40px">"It costs too much." · "Send us a deck." · "We'll think about it." · "It costs too much." · "Send us a deck." · "We'll think about it." ·</span></div>
+      <div class="mq r2"><span style="padding-right:40px">price · timing · trust · authority · price · timing · trust · authority · price · timing · trust · authority ·</span></div>
+      <div class="mq r3"><span style="padding-right:40px">show value before cost · earn the close · show value before cost · earn the close · show value before cost ·</span></div>
+      <span class="word">real</span>
+    </div>
     <div class="card-body">
-      <span class="tag">Theme 02</span>
-      <h2>Aurora Midnight</h2>
-      <p>Midnight base with slow sweeping aurora bands — green, cyan, magenta. Serif italic accent words. Dreamy, atmospheric.</p>
+      <span class="tag">Theme 02 · dark blue</span>
+      <h2>Live Script</h2>
+      <p>Layered marquees of objections drift behind the hero. The whole page reads like the inside of a sales conversation. Hot magenta accent.</p>
     </div>
     <div class="card-foot">
       <span class="go">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-      <div class="spec"><b>Dark · Atmospheric</b>Most ambient motion · serif</div>
+      <div class="spec"><b>Layered marquees</b>Most copywriter · ties to USP</div>
     </div>
   </a>
 
   <a class="card" href="theme-3.html">
-    <div class="card-art art-3"></div>
+    <div class="card-art art-3">
+      <span class="word">REAL</span>
+    </div>
     <div class="card-body">
-      <span class="tag">Theme 03</span>
-      <h2>Editorial Cream</h2>
-      <p>Warm paper. Heavy serif headlines, italic accents in editorial red. Ruler lines and masthead. Magazine gravitas — Stripe Press / NYT.</p>
+      <span class="tag">Theme 03 · dark blue</span>
+      <h2>Aurora Flow</h2>
+      <p>Slow drifting metaball blobs in brand colors create a calm, premium aurora behind the hero. Gold accent on emphasized words.</p>
     </div>
     <div class="card-foot">
       <span class="go">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-      <div class="spec"><b>Light · Editorial</b>Most opinionated · gravitas</div>
+      <div class="spec"><b>Canvas blobs</b>Calmest · most premium</div>
     </div>
   </a>
 
   <a class="card" href="theme-4.html">
-    <div class="card-art art-4"></div>
+    <div class="card-art art-4">
+      <span class="word">real</span>
+    </div>
     <div class="card-body">
-      <span class="tag">Theme 04</span>
-      <h2>Neon Noir</h2>
-      <p>Pure black, hot pink + neon cyan + lime. Slow-rotating conic glow, film grain, scan-lines. Agency-bold — early Vercel / Framer.</p>
+      <span class="tag">Theme 04 · dark blue</span>
+      <h2>Pulse Grid</h2>
+      <p>A grid of dots, ripples of light propagating outward from random epicenters. Mono headline. Electric green accent. Dashboard / data feel.</p>
     </div>
     <div class="card-foot">
       <span class="go">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-      <div class="spec"><b>Dark · Bold</b>Loudest · most personality</div>
+      <div class="spec"><b>Canvas dot grid + waves</b>Most "data" · technical edge</div>
     </div>
   </a>
 
   <a class="card" href="theme-5.html">
-    <div class="card-art art-5"></div>
+    <div class="card-art art-5">
+      <span class="word">real</span>
+    </div>
     <div class="card-body">
-      <span class="tag">Theme 05</span>
-      <h2>Soft Tech</h2>
-      <p>Warm white with sage + peach mesh. Manrope rounded sans, white cards with gentle shadow. Friendly, approachable — Notion / daytime Linear.</p>
+      <span class="tag">Theme 05 · white</span>
+      <h2>Light Studio</h2>
+      <p>Pure white base with soft pastel mesh blobs drifting underneath. Navy text, bold electric blue accent. The only light theme — Stripe / Linear daytime.</p>
     </div>
     <div class="card-foot">
       <span class="go">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-      <div class="spec"><b>Light · Friendly</b>Warmest · most accessible</div>
+      <div class="spec"><b>Canvas pastel mesh</b>Only light · most approachable</div>
     </div>
   </a>
 
 </div>
 
 <footer>
-  <span>Phase 0.2 theme prototypes · branch: <code style="font-family:'JetBrains Mono',monospace">claude/trusting-darwin-7IX4z</code></span>
-  <span><a href="index.html">← back to current live landing</a></span>
+  <span>Phase 0.3 theme prototypes · branch: <code style="font-family:'JetBrains Mono',monospace">claude/trusting-darwin-7IX4z</code></span>
+  <span><a href="index.html">← current live landing</a></span>
 </footer>
 </body>
 </html>

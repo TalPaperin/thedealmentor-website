@@ -4,85 +4,88 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Theme 2 — Aurora Midnight · DealMentor</title>
+<title>Theme 2 — Live Script · DealMentor</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
 <style>
 :root{
-  --bg:#03050C; --ink:#EAF0FF; --muted:#7E8BA8;
-  --line:rgba(255,255,255,.06); --glass:rgba(255,255,255,.03);
-  --aurora-1:#5BD7A8; --aurora-2:#34E5FF; --aurora-3:#B36BFF; --aurora-4:#FF6BC5;
+  --bg:#050C22; --ink:#FFFFFF; --muted:#9AA6BE;
+  --line:rgba(255,255,255,.10); --glass:rgba(255,255,255,.04);
+  --accent:#FF4DA6;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.55}
-body{overflow-x:hidden;position:relative}
+body{overflow-x:hidden;position:relative;min-height:100vh}
 
-/* Aurora background — slow sweeping curved bands */
-.aurora{position:fixed;inset:-10%;z-index:0;pointer-events:none;overflow:hidden;filter:blur(70px);opacity:.65}
-.aurora .band{position:absolute;left:-30%;right:-30%;height:48vh;border-radius:50%;mix-blend-mode:screen;will-change:transform}
-.aurora .band1{top:-10%;background:radial-gradient(ellipse at center,rgba(91,215,168,.85),transparent 60%);animation:sweep1 22s ease-in-out infinite alternate}
-.aurora .band2{top:20%;background:radial-gradient(ellipse at center,rgba(52,229,255,.80),transparent 60%);animation:sweep2 26s ease-in-out infinite alternate}
-.aurora .band3{top:55%;background:radial-gradient(ellipse at center,rgba(179,107,255,.75),transparent 60%);animation:sweep3 30s ease-in-out infinite alternate}
-.aurora .band4{top:80%;background:radial-gradient(ellipse at center,rgba(255,107,197,.65),transparent 60%);animation:sweep4 34s ease-in-out infinite alternate}
-@keyframes sweep1{from{transform:translate(0,0) rotate(-3deg)}to{transform:translate(-12%,30px) rotate(2deg)}}
-@keyframes sweep2{from{transform:translate(0,0) rotate(2deg)}to{transform:translate(15%,-40px) rotate(-3deg)}}
-@keyframes sweep3{from{transform:translate(0,0) rotate(-2deg)}to{transform:translate(-10%,50px) rotate(3deg)}}
-@keyframes sweep4{from{transform:translate(0,0) rotate(3deg)}to{transform:translate(12%,-30px) rotate(-2deg)}}
+.marquee-stack{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:clamp(36px,6vh,72px)}
+.marquee{white-space:nowrap;display:flex;font-family:'Bricolage Grotesque',serif;font-weight:800;letter-spacing:-.02em;font-size:clamp(48px,8vw,128px);line-height:1;will-change:transform}
+.marquee span{display:inline-block;padding-right:48px}
+.marquee.r1{animation:scrollX 60s linear infinite;color:rgba(255,255,255,.045)}
+.marquee.r2{animation:scrollX 80s linear infinite reverse;transform:translateX(-20%);font-style:italic;color:rgba(255,77,166,.075);font-weight:500}
+.marquee.r3{animation:scrollX 95s linear infinite;transform:translateX(10%);font-weight:500;color:rgba(255,255,255,.035)}
+@keyframes scrollX{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* Star noise overlay */
-body::after{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;
-  background-image:radial-gradient(rgba(255,255,255,.6) 0.5px,transparent 1px);
-  background-size:42px 42px;opacity:.08}
+.veil{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(70% 60% at 50% 38%,transparent 0%,rgba(5,12,34,.55) 70%,rgba(5,12,34,.90) 100%)}
 
-nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(16px);background:rgba(3,5,12,.6);border-bottom:1px solid var(--line);padding:14px 32px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-family:'Instrument Serif',serif;font-weight:400;font-size:26px;letter-spacing:-.01em}
-.logo em{font-style:italic;background:linear-gradient(90deg,var(--aurora-1),var(--aurora-2),var(--aurora-3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(5,12,34,.7);border-bottom:1px solid var(--line);padding:14px 32px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Bricolage Grotesque',serif;font-weight:800;font-size:22px;letter-spacing:-.02em}
+.logo b{color:var(--accent)}
 .nav-links{display:flex;gap:28px}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:15px;font-weight:500}
 .nav-links a:hover{color:var(--ink)}
 
-.hero{position:relative;z-index:2;padding:130px 32px 100px;text-align:center;max-width:1100px;margin:0 auto}
-.eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--aurora-2);font-weight:500;margin-bottom:28px;opacity:.85}
-.h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(48px,8.4vw,128px);line-height:1.04;letter-spacing:-.02em;margin-bottom:30px}
+.hero{position:relative;z-index:2;padding:120px 32px 100px;text-align:center;max-width:1100px;margin:0 auto}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:24px}
+.eyebrow::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px var(--accent);animation:dot 1.6s ease-in-out infinite}
+@keyframes dot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.35);opacity:.55}}
+.h1{font-family:'Bricolage Grotesque',serif;font-size:clamp(40px,7.2vw,108px);font-weight:800;line-height:1.12;letter-spacing:-.035em;margin-bottom:28px;color:#fff}
 .h1 .line{display:block}
-.h1 em{font-style:italic;font-family:'Instrument Serif',serif;color:var(--aurora-1)}
-.h1 .line:nth-child(2) em{color:var(--aurora-2)}
-.h1 .line:nth-child(3) em{color:var(--aurora-3)}
-.sub{font-size:clamp(15px,1.4vw,19px);color:var(--ink);max-width:60ch;margin:0 auto 36px;opacity:.82}
-.cta{display:inline-block;padding:16px 36px;border-radius:999px;background:linear-gradient(110deg,var(--aurora-1),var(--aurora-2) 45%,var(--aurora-3));color:#03050C;font-weight:700;text-decoration:none;font-size:15px;letter-spacing:.01em;box-shadow:0 16px 50px rgba(91,215,168,.30)}
-.cta:hover{transform:translateY(-1px)}
+.h1 em{font-style:italic;font-weight:500;color:var(--accent);text-shadow:0 2px 32px rgba(255,77,166,.4)}
+.sub{font-size:clamp(15px,1.4vw,19px);color:#fff;opacity:.88;max-width:62ch;margin:0 auto 32px}
+.cta{display:inline-block;padding:16px 34px;border-radius:8px;background:var(--accent);color:#fff;font-weight:700;text-decoration:none;font-size:15px;box-shadow:0 14px 44px rgba(255,77,166,.35);transition:transform .2s}
+.cta:hover{transform:translateY(-2px)}
 
-.together{position:relative;z-index:2;padding:100px 32px;max-width:1280px;margin:0 auto;text-align:center}
-.h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(34px,5vw,62px);line-height:1.08;letter-spacing:-.02em;margin-bottom:14px}
-.h2 em{font-style:italic;background:linear-gradient(90deg,var(--aurora-1),var(--aurora-2) 50%,var(--aurora-3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.together-sub{color:var(--muted);max-width:60ch;margin:0 auto 56px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
-.card{background:var(--glass);border:1px solid var(--line);border-radius:22px;padding:30px;text-align:left;backdrop-filter:blur(14px)}
-.card-tag{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--aurora-2);margin-bottom:18px;opacity:.85}
-.card h3{font-family:'Instrument Serif',serif;font-weight:400;font-size:25px;margin-bottom:10px;letter-spacing:-.01em}
-.card h3 em{font-style:italic;color:var(--aurora-1)}
-.card:nth-child(2) h3 em{color:var(--aurora-2)}
-.card:nth-child(3) h3 em{color:var(--aurora-3)}
-.card p{color:var(--muted);font-size:14.5px}
+.together{position:relative;z-index:2;padding:80px 32px 100px;max-width:1280px;margin:0 auto;text-align:center}
+.h2{font-family:'Bricolage Grotesque',serif;font-size:clamp(30px,4.4vw,54px);font-weight:800;line-height:1.08;letter-spacing:-.025em;margin-bottom:14px;color:#fff}
+.h2 em{font-style:italic;font-weight:500;color:var(--accent)}
+.together-sub{color:var(--muted);max-width:60ch;margin:0 auto 44px}
 
-footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:34px;text-align:center;color:var(--muted);font-size:13px}
-footer a{color:var(--aurora-2);text-decoration:none}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;text-align:left}
+.card{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:14px;padding:24px;backdrop-filter:blur(10px);position:relative;overflow:hidden}
+.card-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.card-tag{color:var(--accent)}
+.card-state{display:flex;align-items:center;gap:10px;margin-bottom:14px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.card-state .lbl{display:inline-flex;align-items:center;gap:6px;color:#FF6B6B;transition:color .3s}
+.card-state .lbl::before{content:'';width:7px;height:7px;border-radius:50%;background:currentColor;box-shadow:0 0 10px currentColor}
+.card-state.is-out .lbl{color:#5BD7A8}
+.card-state .arr{color:var(--muted)}
+.card-line{font-family:'JetBrains Mono',monospace;font-size:14.5px;line-height:1.5;min-height:3.6em;color:#fff}
+.card-line .caret{display:inline-block;width:.55ch;height:1em;background:var(--accent);vertical-align:-.15em;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:30px;text-align:center;color:var(--muted);font-size:13px}
+footer a{color:var(--accent);text-decoration:none}
+
+@media (prefers-reduced-motion: reduce){.marquee{animation:none}}
 </style>
 </head>
 <body>
-<div class="aurora" aria-hidden="true">
-  <span class="band band1"></span><span class="band band2"></span>
-  <span class="band band3"></span><span class="band band4"></span>
+
+<div class="marquee-stack" aria-hidden="true">
+  <div class="marquee r1"><span>"It costs too much." · "We'll think about it." · "Send us a deck." · "Not this quarter." · "We're going with someone else." · "It costs too much." · "We'll think about it." · "Send us a deck." · "Not this quarter." · "We're going with someone else." · </span></div>
+  <div class="marquee r2"><span>price · timing · authority · need · trust · price · timing · authority · need · trust · price · timing · authority · need · trust · price · timing · authority · need · trust · </span></div>
+  <div class="marquee r3"><span>show value before cost · build urgency around outcomes · earn the close · listen, then respond · show value before cost · build urgency around outcomes · earn the close · listen, then respond · </span></div>
 </div>
+<div class="veil" aria-hidden="true"></div>
 
 <nav>
-  <div class="logo">Deal<em>Mentor</em></div>
+  <div class="logo">Deal<b>Mentor</b></div>
   <div class="nav-links"><a href="#">Platform</a><a href="#">Pricing</a><a href="#">Why us</a></div>
 </nav>
 
 <header class="hero">
-  <p class="eyebrow">Half human. Half AI. All sales.</p>
+  <p class="eyebrow">Half human · Half AI · All sales</p>
   <h1 class="h1">
     <span class="line">One <em>real</em> CRO.</span>
     <span class="line"><em>Ten</em> AI Sales Tools.</span>
@@ -96,12 +99,75 @@ footer a{color:var(--aurora-2);text-decoration:none}
   <h2 class="h2">AI drafts it. <em>A real CRO sharpens it.</em></h2>
   <p class="together-sub">Together, on every plan — not stitched together from five vendors.</p>
   <div class="cards">
-    <article class="card"><div class="card-tag">01 · Objection Handler</div><h3>"Too <em>expensive</em>" → answered.</h3><p>AI surfaces the objection. The CRO rewrites the response in your voice.</p></article>
-    <article class="card"><div class="card-tag">02 · ICP Scripts</div><h3>Generic → <em>personalized</em>.</h3><p>Drop your ICP. Get scripts that sound like a senior closer, not a template.</p></article>
-    <article class="card"><div class="card-tag">03 · Competition</div><h3>Competitor → <em>counter</em>.</h3><p>Live battlecards that update when a competitor moves.</p></article>
+    <article class="card" data-card="objection">
+      <div class="card-head"><span class="card-tag">01 · Objection Handler</span><span>live</span></div>
+      <div class="card-state"><span class="lbl">Objection</span><span class="arr">→</span></div>
+      <div class="card-line"><span class="t"></span><span class="caret" aria-hidden="true"></span></div>
+    </article>
+    <article class="card" data-card="scripts">
+      <div class="card-head"><span class="card-tag">02 · ICP Scripts</span><span>live</span></div>
+      <div class="card-state"><span class="lbl">Generic</span><span class="arr">→</span></div>
+      <div class="card-line"><span class="t"></span><span class="caret" aria-hidden="true"></span></div>
+    </article>
+    <article class="card" data-card="battle">
+      <div class="card-head"><span class="card-tag">03 · Battlecard</span><span>live</span></div>
+      <div class="card-state"><span class="lbl">Competitor</span><span class="arr">→</span></div>
+      <div class="card-line"><span class="t"></span><span class="caret" aria-hidden="true"></span></div>
+    </article>
   </div>
 </section>
 
-<footer>Theme 2 · Aurora Midnight · <a href="themes.html">← back to picker</a></footer>
+<footer>Theme 2 · Live Script · <a href="themes.html">← back to picker</a></footer>
+
+<script>
+/* Morph cards — scramble between before/after */
+(function(){
+  var pairs={
+    objection:[
+      {a:'"It costs too much."',b:'Cost is friction. Show the outcome first.',la:'Objection',lb:'Response'},
+      {a:'"We’ll think about it."',b:'Decisions get smaller after the call ends.',la:'Objection',lb:'Response'},
+      {a:'"Send us a deck."',b:'Decks don’t close. Conversations do.',la:'Objection',lb:'Response'}
+    ],
+    scripts:[
+      {a:'Hi, we sell software.',b:'Hi Sarah — saw you scaled SDR to 12.',la:'Generic',lb:'Personalized'},
+      {a:'Our product helps companies grow.',b:'Series A SaaS founders close 23% more.',la:'Generic',lb:'Personalized'},
+      {a:'Are you the decision maker?',b:'Who else weighs in on the GTM stack?',la:'Generic',lb:'Personalized'}
+    ],
+    battle:[
+      {a:'"Apollo has more contacts."',b:'Apollo sells lists. We sell outcomes.',la:'Competitor',lb:'Counter'},
+      {a:'"Outreach is cheaper."',b:'Outreach without a CRO is automation alone.',la:'Competitor',lb:'Counter'},
+      {a:'"Gong has the data."',b:'Gong tells what happened. We help you close.',la:'Competitor',lb:'Counter'}
+    ]
+  };
+  var glyphs='!@#$%&*+=?<>{}/\\|~^abcdefghijklmnopqrstuvwxyz';
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function rand(){return glyphs[Math.floor(Math.random()*glyphs.length)]}
+  function morph(el,from,to){return new Promise(function(res){
+    if(reduced){el.textContent=to;return res()}
+    var L=Math.max(from.length,to.length),ops=[];
+    for(var i=0;i<L;i++)ops.push({f:from[i]||' ',t:to[i]||' ',s:Math.floor(Math.random()*16),e:0,c:' '});
+    for(var i=0;i<ops.length;i++)ops[i].e=ops[i].s+10+Math.floor(Math.random()*16);
+    var fr=0;
+    function tick(){var out='',done=true;for(var i=0;i<ops.length;i++){var o=ops[i];if(fr>=o.e)out+=o.t;else if(fr<o.s){out+=o.f;done=false}else{done=false;var p=(fr-o.s)/(o.e-o.s);o.c=Math.random()<p*.4?o.t:rand();out+=o.c}}el.textContent=out;fr++;if(done)res();else requestAnimationFrame(tick)}
+    requestAnimationFrame(tick);
+  })}
+  function wait(ms){return new Promise(function(r){setTimeout(r,ms)})}
+  document.querySelectorAll('.card[data-card]').forEach(function(card,idx){
+    var key=card.getAttribute('data-card'),list=pairs[key],t=card.querySelector('.t'),state=card.querySelector('.card-state'),lbl=card.querySelector('.lbl');
+    (async function(){
+      await wait(idx*700);
+      var cur='',i=0;
+      while(true){
+        var p=list[i%list.length];
+        state.classList.remove('is-out');lbl.textContent=p.la;
+        await morph(t,cur,p.a);cur=p.a;await wait(1400);
+        state.classList.add('is-out');lbl.textContent=p.lb;
+        await morph(t,cur,p.b);cur=p.b;await wait(1900);
+        i++;
+      }
+    })();
+  });
+})();
+</script>
 </body>
 </html>
