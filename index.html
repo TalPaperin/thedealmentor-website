@@ -89,7 +89,7 @@ border-radius: 6px;
 
 /* SCROLL REVEAL (CSS-transition driven; only active when html.js is set, so content stays visible without JS or under reduced-motion) */
 html.js .hero-eyebrow, html.js .hero-h1, html.js .hero-sub,
-html.js .hero-ctas, html.js .hero-telemetry,
+html.js .hero-ctas, html.js .hero-telemetry, html.js .morph-card,
 html.js .founder-card, html.js .eyebrow, html.js .section-h2, html.js .section-sub,
 html.js .pain-card, html.js .tool-card, html.js .step, html.js .cro-header,
 html.js .plan-card, html.js .logos-label, html.js .logo-box, html.js .testi-card,
@@ -121,7 +121,80 @@ html.js .is-in { opacity: 1 !important; transform: none !important; }
 .marquee span { display: inline-block; padding-right: 56px; }
 .marquee.objections { color: rgba(255,108,108,0.16); font-weight: 700; animation: marqueeX 78s linear infinite; }
 .marquee.battlecards { color: rgba(120,235,255,0.16); font-style: italic; animation: marqueeX 96s linear infinite reverse; animation-delay: -14s; }
-.marquee.scripts { color: rgba(255,220,140,0.14); font-weight: 500; animation: marqueeX 116s linear infinite; animation-delay: -38s; }
+.marquee.scripts { color: rgba(255,220,140,0.16); font-weight: 500; animation: marqueeX 116s linear infinite; animation-delay: -38s; }
+
+/* TOGETHER SECTION — three morph cards (live demos of platform output) */
+.together { position: relative; padding: 88px 24px 96px; max-width: 1200px; margin: 0 auto; }
+.together .together-head { text-align: center; max-width: 760px; margin: 0 auto 56px; }
+.together .section-h2 em { font-style: italic; font-weight: 500; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.morph-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+@media (max-width: 980px) { .morph-grid { grid-template-columns: 1fr; } }
+.morph-card {
+  position: relative; overflow: hidden;
+  background: var(--glass-bg); border: 1px solid var(--glass-bd); border-radius: 16px;
+  padding: 22px 22px 26px;
+  display: flex; flex-direction: column;
+  min-height: 240px;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  transition: border-color .3s, transform .3s cubic-bezier(.2,.7,.2,1);
+}
+.morph-card:hover { border-color: var(--glass-bd-hi); transform: translateY(-2px); }
+.morph-card::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(140deg, rgba(255,255,255,0.05), transparent 55%);
+}
+.morph-card::after {
+  content: ''; position: absolute; left: 0; right: 0; top: 0; height: 1px;
+  background: var(--grad); opacity: 0.5;
+}
+.morph-head {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 18px;
+  position: relative;
+}
+.morph-tag { color: var(--accent-cyan); font-weight: 600; }
+.morph-state {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase;
+  margin-bottom: 16px; position: relative;
+}
+.morph-label { display: inline-flex; align-items: center; gap: 7px; transition: opacity .35s; }
+.morph-label .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; box-shadow: 0 0 10px currentColor; }
+.morph-arrow { color: var(--text-faint); opacity: 0.6; font-weight: 400; letter-spacing: 0; }
+.morph-state .a, .morph-state .b { opacity: 0.35; }
+.morph-state.is-a .a { opacity: 1; }
+.morph-state.is-b .b { opacity: 1; }
+/* Per-card label colors */
+.morph-card.objections .a { color: #FF6E6E; }
+.morph-card.objections .b { color: #5BD7A8; }
+.morph-card.competition .a { color: #FF6E6E; }
+.morph-card.competition .b { color: var(--accent-cyan); }
+.morph-card.scripts .a { color: #FFA060; }
+.morph-card.scripts .b { color: var(--gold); }
+.morph-line {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-weight: 500; font-size: clamp(14px, 1.2vw, 17px); line-height: 1.55;
+  color: var(--text); flex: 1;
+  min-height: 5em;
+  position: relative;
+}
+.morph-line .caret {
+  display: inline-block; width: 0.55ch; height: 1em;
+  background: var(--accent-cyan); vertical-align: -.15em; margin-left: 2px;
+  animation: caretBlink 1.05s steps(1) infinite;
+}
+@keyframes caretBlink { 50% { opacity: 0; } }
+@media (max-width: 720px) {
+  .together { padding: 64px 18px 72px; }
+  .together .together-head { margin-bottom: 36px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .morph-line .caret { animation: none; opacity: .5; }
+}
 @keyframes marqueeX { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .stage-fallback {
 position: fixed; inset: 0; z-index: -3;
@@ -417,7 +490,7 @@ footer { padding: 36px 16px 28px; }
 html { scroll-behavior: auto; }
 #galaxy, #net { display: none !important; }
 html.js .hero-eyebrow, html.js .hero-h1, html.js .hero-sub,
-html.js .hero-ctas, html.js .hero-telemetry,
+html.js .hero-ctas, html.js .hero-telemetry, html.js .morph-card,
 html.js .founder-card, html.js .eyebrow, html.js .section-h2, html.js .section-sub,
 html.js .pain-card, html.js .tool-card, html.js .step, html.js .cro-header,
 html.js .plan-card, html.js .logos-label, html.js .logo-box, html.js .testi-card,
@@ -507,6 +580,48 @@ document.documentElement.classList.add('js');
 </div>
 </figure>
 </div>
+
+<hr class="divider">
+
+<!-- TOGETHER: 3 morph cards (live demos of platform output, AI drafted + CRO sharpened) -->
+<section class="together" id="meet-cro" aria-labelledby="together-title">
+<div class="together-head">
+<p class="eyebrow">Together, on every plan</p>
+<h2 class="section-h2" id="together-title">AI drafts it. <em>A real CRO sharpens it.</em></h2>
+<p class="section-sub">Three of the ten AI tools, live. Each one calibrated by the CRO who built the methodology.</p>
+</div>
+<div class="morph-grid">
+<article class="morph-card objections" id="morph-card-1">
+<header class="morph-head"><span class="morph-tag">01 &middot; Objection Handler</span><span>generated</span></header>
+<div class="morph-state is-a">
+<span class="morph-label a"><span class="dot"></span>Objection</span>
+<span class="morph-arrow">&rarr;</span>
+<span class="morph-label b"><span class="dot"></span>Response</span>
+</div>
+<p class="morph-line"><span></span><span class="caret" aria-hidden="true"></span></p>
+</article>
+
+<article class="morph-card competition" id="morph-card-2">
+<header class="morph-head"><span class="morph-tag">03 &middot; Competition Analysis</span><span>battlecard</span></header>
+<div class="morph-state is-a">
+<span class="morph-label a"><span class="dot"></span>Competitor</span>
+<span class="morph-arrow">&rarr;</span>
+<span class="morph-label b"><span class="dot"></span>Counter</span>
+</div>
+<p class="morph-line"><span></span><span class="caret" aria-hidden="true"></span></p>
+</article>
+
+<article class="morph-card scripts" id="morph-card-3">
+<header class="morph-head"><span class="morph-tag">02 &middot; ICP Scripts</span><span>personalized</span></header>
+<div class="morph-state is-a">
+<span class="morph-label a"><span class="dot"></span>Generic</span>
+<span class="morph-arrow">&rarr;</span>
+<span class="morph-label b"><span class="dot"></span>Personalized</span>
+</div>
+<p class="morph-line"><span></span><span class="caret" aria-hidden="true"></span></p>
+</article>
+</div>
+</section>
 
 <hr class="divider">
 
@@ -869,10 +984,10 @@ if (marqueeStack && heroForMarquee && 'IntersectionObserver' in window) {
 }
 // Reveals only run when html.js is set (added in <head>, skipped under reduced motion / no JS).
 if (!docEl.classList.contains('js')) return;
-var SEL = '.hero-eyebrow,.hero-h1,.hero-sub,.hero-ctas,.hero-telemetry,.founder-card,.eyebrow,.section-h2,.section-sub,.pain-card,.tool-card,.step,.cro-header,.plan-card,.logos-label,.logo-box,.testi-card,.faq-list,.final-cta h2,.final-cta p,.final-cta .btn-primary';
+var SEL = '.hero-eyebrow,.hero-h1,.hero-sub,.hero-ctas,.hero-telemetry,.founder-card,.eyebrow,.section-h2,.section-sub,.morph-card,.pain-card,.tool-card,.step,.cro-header,.plan-card,.logos-label,.logo-box,.testi-card,.faq-list,.final-cta h2,.final-cta p,.final-cta .btn-primary';
 var els = Array.prototype.slice.call(document.querySelectorAll(SEL));
 function stagger(sel){ var g = document.querySelectorAll(sel); Array.prototype.forEach.call(g, function(e,i){ e.style.transitionDelay = (i * 0.07) + 's'; }); }
-stagger('.pain-grid .pain-card'); stagger('.tools-grid .tool-card'); stagger('.plans-grid .plan-card');
+stagger('.pain-grid .pain-card'); stagger('.tools-grid .tool-card'); stagger('.plans-grid .plan-card'); stagger('.morph-grid .morph-card');
 stagger('.testimonials-grid .testi-card'); stagger('.logos-row .logo-box'); stagger('.steps .step');
 stagger('.hero .hero-eyebrow, .hero .hero-h1, .hero .hero-sub, .hero .hero-ctas, .hero .hero-telemetry');
 function reveal(e){ e.classList.add('is-in'); }
@@ -885,6 +1000,129 @@ els.forEach(function(e){ io.observe(e); });
 window.addEventListener('load', function(){ setTimeout(function(){
 els.forEach(function(e){ if (e.getBoundingClientRect().top < window.innerHeight) reveal(e); });
 }, 250); });
+})();
+</script>
+
+<!-- MORPH ENGINE: drives the three "Together" cards -->
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var glyphs = '!@#$%&*+=?<>{}/\\|~^abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  function rand(){ return glyphs.charAt(Math.floor(Math.random() * glyphs.length)); }
+  function wait(ms){ return new Promise(function(r){ setTimeout(r, ms); }); }
+
+  function makeMorph(opts){
+    var line = opts.cardEl.querySelector('.morph-line span');
+    var state = opts.cardEl.querySelector('.morph-state');
+    if (!line || !state) return;
+    var current = '';
+    var idx = 0;
+    var pauseA = opts.pauseA || 1500;
+    var pauseB = opts.pauseB || 1800;
+
+    function morph(from, to){
+      return new Promise(function(resolve){
+        if (reduced){ line.textContent = to; return resolve(); }
+        var len = Math.max(from.length, to.length);
+        var ops = [];
+        for (var i = 0; i < len; i++){
+          var start = Math.floor(Math.random() * 14);
+          var end = start + 12 + Math.floor(Math.random() * 16);
+          ops.push({ from: from[i] || ' ', to: to[i] || ' ', start: start, end: end, ch: ' ' });
+        }
+        var frame = 0;
+        function tick(){
+          var out = '', done = true;
+          for (var i = 0; i < ops.length; i++){
+            var op = ops[i];
+            if (frame >= op.end) out += op.to;
+            else if (frame < op.start) out += op.from;
+            else {
+              done = false;
+              var p = (frame - op.start) / (op.end - op.start);
+              op.ch = (Math.random() < p * 0.4) ? op.to : rand();
+              out += op.ch;
+            }
+          }
+          line.textContent = out;
+          frame++;
+          if (done) resolve(); else requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      });
+    }
+    function setState(which){
+      state.classList.toggle('is-a', which === 'a');
+      state.classList.toggle('is-b', which === 'b');
+    }
+    async function run(){
+      while (true){
+        var p = opts.pairs[idx % opts.pairs.length];
+        setState('a');
+        await morph(current, p[0]);
+        current = p[0];
+        await wait(pauseA);
+        setState('b');
+        await morph(current, p[1]);
+        current = p[1];
+        await wait(pauseB);
+        idx++;
+      }
+    }
+    setState('a');
+    // small randomized stagger so the three cards don't morph in lockstep
+    setTimeout(run, opts.startDelay || 0);
+  }
+
+  // Pause when section is offscreen (don't waste CPU)
+  var section = document.getElementById('meet-cro');
+  if (!section) return;
+
+  function start(){
+    var c1 = document.getElementById('morph-card-1');
+    var c2 = document.getElementById('morph-card-2');
+    var c3 = document.getElementById('morph-card-3');
+    if (c1) makeMorph({
+      cardEl: c1, startDelay: 100,
+      pairs: [
+        ['"It costs too much."',                'Cost is friction. Show the outcome first.'],
+        ["“We’ll think about it.”",  'Decisions get smaller after the call ends.'],
+        ['"Send us a deck."',                   "Decks don’t close. Conversations do."],
+        ['"Not this quarter."',                 "Then let’s plan next quarter — today."],
+        ["“Email me the pricing.”",       'Pricing without context is the wrong number.']
+      ]
+    });
+    if (c2) makeMorph({
+      cardEl: c2, startDelay: 700,
+      pairs: [
+        ['Gong records the call.',          'We tell you what to do next.'],
+        ['Salesloft sequences the email.',  'We write the email that closes.'],
+        ['Apollo builds the list.',         'We help you talk to the list.'],
+        ['HubSpot stores the deal.',        'We move the deal forward.'],
+        ['Chorus scores the moment.',       'We coach the moment in real time.']
+      ]
+    });
+    if (c3) makeMorph({
+      cardEl: c3, startDelay: 1300,
+      pairs: [
+        ['Hi {Name}, just checking in.',          "Maria — you mentioned the Q4 board review. Here’s how it lands."],
+        ['Following up on our last email.',       "David — the integration question your CTO raised has an answer."],
+        ['Wanted to share a case study.',         "Sarah — the Pepsi rollout mirrors your situation exactly."],
+        ['Just touching base.',                   "Alex — after your team’s pricing concern, here’s a 1-page exec summary."]
+      ]
+    });
+  }
+
+  if ('IntersectionObserver' in window){
+    var started = false;
+    new IntersectionObserver(function(entries){
+      if (entries[0].isIntersecting && !started){
+        started = true; start();
+      }
+    }, { threshold: 0.15 }).observe(section);
+  } else {
+    start();
+  }
 })();
 </script>
 
