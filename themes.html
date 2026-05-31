@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>DealMentor — Theme Picker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#06080F; --ink:#F4F1EA; --muted:#8A93A8;
+  --line:rgba(255,255,255,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;min-height:100%}
+body{padding:clamp(28px,4.5vw,64px);display:flex;flex-direction:column;gap:clamp(36px,5vw,64px)}
+header{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:24px;flex-wrap:wrap;gap:16px}
+.kicker{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.title{font-family:'Bricolage Grotesque',serif;font-weight:800;font-size:clamp(28px,4vw,48px);line-height:1.05;letter-spacing:-.02em;margin-top:8px}
+.lede{max-width:760px;color:var(--muted);font-size:clamp(15px,1.3vw,18px);line-height:1.55}
+
+.grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.card{
+  position:relative;display:flex;flex-direction:column;justify-content:space-between;
+  text-decoration:none;color:var(--ink);
+  border:1px solid var(--line);border-radius:20px;overflow:hidden;
+  background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0));
+  padding:0;min-height:380px;
+  transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s;
+}
+.card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.22)}
+
+.card-art{height:170px;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.card-body{padding:22px 24px 24px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card-foot{padding:0 24px 22px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
+.tag{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.card h2{font-family:'Bricolage Grotesque',serif;font-weight:800;font-size:26px;line-height:1.1;letter-spacing:-.02em}
+.card p{color:var(--muted);font-size:14.5px;line-height:1.55}
+.go{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;color:var(--ink)}
+.go svg{transition:transform .3s}
+.card:hover .go svg{transform:translateX(4px)}
+.spec{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted);text-align:right;line-height:1.5}
+.spec b{color:var(--ink);font-weight:600;display:block;margin-bottom:2px}
+
+/* Theme card art previews */
+.art-1{background:
+  radial-gradient(60% 60% at 20% 20%,rgba(52,229,255,.55),transparent 65%),
+  radial-gradient(50% 50% at 85% 30%,rgba(255,200,87,.55),transparent 65%),
+  radial-gradient(60% 60% at 50% 90%,rgba(179,107,255,.50),transparent 65%),
+  #06080F;
+  filter:blur(0)}
+.art-1::after{content:'REAL';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',serif;font-weight:800;font-size:60px;color:#FFC857;text-shadow:0 2px 24px rgba(255,200,87,.4);letter-spacing:-.03em}
+
+.art-2{background:#03050C;position:relative;overflow:hidden}
+.art-2::before{content:'';position:absolute;inset:-20%;background:
+  radial-gradient(ellipse 60% 40% at 30% 30%,rgba(91,215,168,.7),transparent 60%),
+  radial-gradient(ellipse 60% 40% at 70% 50%,rgba(52,229,255,.7),transparent 60%),
+  radial-gradient(ellipse 60% 40% at 40% 80%,rgba(179,107,255,.7),transparent 60%),
+  radial-gradient(ellipse 60% 40% at 80% 80%,rgba(255,107,197,.6),transparent 60%);
+  filter:blur(28px)}
+.art-2::after{content:'real';position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',serif;font-weight:400;font-style:italic;font-size:64px;color:#5BD7A8;letter-spacing:-.02em}
+
+.art-3{background:#F5F0E6;position:relative;
+  background-image:repeating-linear-gradient(0deg,transparent 0,transparent 19px,rgba(11,14,19,.06) 19px,rgba(11,14,19,.06) 20px),
+                   radial-gradient(120% 80% at 50% -10%,rgba(197,58,42,.08),transparent 60%);}
+.art-3::after{content:'real';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',serif;font-weight:400;font-style:italic;font-size:64px;color:#C53A2A;letter-spacing:-.02em}
+
+.art-4{background:#000;position:relative;overflow:hidden}
+.art-4::before{content:'';position:absolute;inset:-30%;background:conic-gradient(from 0deg at 50% 50%,rgba(255,43,214,.35) 0deg,rgba(0,240,255,.32) 90deg,rgba(200,255,0,.25) 180deg,rgba(255,43,214,.35) 360deg);filter:blur(36px)}
+.art-4::after{content:'REAL';position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:62px;color:#FF2BD6;text-shadow:0 0 28px rgba(255,43,214,.7);letter-spacing:-.04em}
+
+.art-5{background:#FAFAF7;position:relative;overflow:hidden}
+.art-5::before{content:'';position:absolute;inset:-20%;background:
+  radial-gradient(circle 200px at 25% 30%,rgba(92,138,110,.55),transparent 70%),
+  radial-gradient(circle 220px at 75% 40%,rgba(248,160,126,.55),transparent 70%),
+  radial-gradient(circle 200px at 50% 90%,rgba(245,215,122,.55),transparent 70%);
+  filter:blur(40px)}
+.art-5::after{content:'real';position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;font-family:Manrope,sans-serif;font-weight:800;font-size:64px;color:#5C8A6E;letter-spacing:-.035em}
+
+footer{border-top:1px solid var(--line);padding-top:22px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+footer a{color:var(--muted);text-decoration:none;border-bottom:1px solid transparent}
+footer a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <div class="kicker">DealMentor · Theme Prototypes</div>
+    <h1 class="title">Pick the look.</h1>
+  </div>
+  <div class="kicker" style="text-align:right">internal preview · 5 directions</div>
+</header>
+
+<section>
+  <p class="lede">Five whole-page directions for the redesign. Each prototype is the hero + the "Together" section, fully rendered — open it, scroll, see the real fonts, colors, and motion. The one that <em style="color:var(--ink);font-style:italic">feels right</em> becomes the spine for all nine pages.</p>
+</section>
+
+<div class="grid">
+
+  <a class="card" href="theme-1.html">
+    <div class="card-art art-1"></div>
+    <div class="card-body">
+      <span class="tag">Theme 01</span>
+      <h2>Obsidian Cyan</h2>
+      <p>Deep navy + cyan + gold. Ambient gradient blobs drift behind the hero. Premium SaaS dark mode — Linear / Vercel feel.</p>
+    </div>
+    <div class="card-foot">
+      <span class="go">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      <div class="spec"><b>Dark · Brand-native</b>Closest to today · refined</div>
+    </div>
+  </a>
+
+  <a class="card" href="theme-2.html">
+    <div class="card-art art-2"></div>
+    <div class="card-body">
+      <span class="tag">Theme 02</span>
+      <h2>Aurora Midnight</h2>
+      <p>Midnight base with slow sweeping aurora bands — green, cyan, magenta. Serif italic accent words. Dreamy, atmospheric.</p>
+    </div>
+    <div class="card-foot">
+      <span class="go">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      <div class="spec"><b>Dark · Atmospheric</b>Most ambient motion · serif</div>
+    </div>
+  </a>
+
+  <a class="card" href="theme-3.html">
+    <div class="card-art art-3"></div>
+    <div class="card-body">
+      <span class="tag">Theme 03</span>
+      <h2>Editorial Cream</h2>
+      <p>Warm paper. Heavy serif headlines, italic accents in editorial red. Ruler lines and masthead. Magazine gravitas — Stripe Press / NYT.</p>
+    </div>
+    <div class="card-foot">
+      <span class="go">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      <div class="spec"><b>Light · Editorial</b>Most opinionated · gravitas</div>
+    </div>
+  </a>
+
+  <a class="card" href="theme-4.html">
+    <div class="card-art art-4"></div>
+    <div class="card-body">
+      <span class="tag">Theme 04</span>
+      <h2>Neon Noir</h2>
+      <p>Pure black, hot pink + neon cyan + lime. Slow-rotating conic glow, film grain, scan-lines. Agency-bold — early Vercel / Framer.</p>
+    </div>
+    <div class="card-foot">
+      <span class="go">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      <div class="spec"><b>Dark · Bold</b>Loudest · most personality</div>
+    </div>
+  </a>
+
+  <a class="card" href="theme-5.html">
+    <div class="card-art art-5"></div>
+    <div class="card-body">
+      <span class="tag">Theme 05</span>
+      <h2>Soft Tech</h2>
+      <p>Warm white with sage + peach mesh. Manrope rounded sans, white cards with gentle shadow. Friendly, approachable — Notion / daytime Linear.</p>
+    </div>
+    <div class="card-foot">
+      <span class="go">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      <div class="spec"><b>Light · Friendly</b>Warmest · most accessible</div>
+    </div>
+  </a>
+
+</div>
+
+<footer>
+  <span>Phase 0.2 theme prototypes · branch: <code style="font-family:'JetBrains Mono',monospace">claude/trusting-darwin-7IX4z</code></span>
+  <span><a href="index.html">← back to current live landing</a></span>
+</footer>
+</body>
+</html>

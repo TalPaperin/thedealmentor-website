@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Theme 3 — Editorial Cream · DealMentor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#F5F0E6; --bg-tint:#EAE3D2;
+  --ink:#0B0E13; --muted:#5A5246; --faint:#8A8270;
+  --line:rgba(11,14,19,.10);
+  --accent:#C53A2A; /* deep editorial red */
+  --accent-2:#1F4D3A; /* forest green */
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.55}
+body{overflow-x:hidden;position:relative;
+  background-image:
+    repeating-linear-gradient(0deg,transparent 0,transparent 39px,rgba(11,14,19,.025) 39px,rgba(11,14,19,.025) 40px),
+    radial-gradient(120% 80% at 50% -10%,rgba(197,58,42,.05),transparent 60%);
+}
+
+/* Paper grain via SVG noise */
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.4;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .04 0 0 0 0 .03 0 0 0 0 .02 0 0 0 .35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply}
+
+nav{position:sticky;top:0;z-index:50;background:rgba(245,240,230,.88);backdrop-filter:blur(10px);border-bottom:2px solid var(--ink);padding:18px 32px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Playfair Display',serif;font-weight:900;font-size:26px;letter-spacing:-.01em}
+.logo em{font-style:italic;color:var(--accent);font-weight:400}
+.nav-links{display:flex;gap:32px}
+.nav-links a{color:var(--ink);text-decoration:none;font-size:14.5px;font-weight:600;letter-spacing:.02em;border-bottom:1.5px solid transparent;padding-bottom:2px}
+.nav-links a:hover{border-bottom-color:var(--accent)}
+
+.masthead{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:48px 32px 0;display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--ink);padding-bottom:18px}
+.masthead .date{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.masthead .issue{font-family:'Playfair Display',serif;font-style:italic;font-size:14px;color:var(--muted)}
+
+.hero{position:relative;z-index:2;padding:72px 32px 80px;text-align:center;max-width:1100px;margin:0 auto}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:36px}
+.h1{font-family:'Playfair Display',serif;font-size:clamp(48px,8vw,128px);font-weight:900;line-height:1.02;letter-spacing:-.025em;margin-bottom:32px}
+.h1 .line{display:block}
+.h1 em{font-style:italic;font-weight:400;color:var(--accent)}
+.sub{font-family:'Playfair Display',serif;font-style:italic;font-weight:400;font-size:clamp(17px,1.6vw,22px);color:var(--muted);max-width:54ch;margin:0 auto 36px;line-height:1.45}
+.cta{display:inline-block;padding:16px 38px;border-radius:0;background:var(--ink);color:var(--bg);font-weight:600;text-decoration:none;font-size:14px;letter-spacing:.08em;text-transform:uppercase;border:2px solid var(--ink);transition:background .2s,color .2s}
+.cta:hover{background:var(--accent);border-color:var(--accent)}
+
+.rule{max-width:1100px;margin:0 auto;height:1px;background:var(--ink);opacity:.4}
+
+.together{position:relative;z-index:2;padding:90px 32px;max-width:1280px;margin:0 auto}
+.h2{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(34px,5vw,60px);line-height:1.06;letter-spacing:-.02em;margin-bottom:14px;text-align:center}
+.h2 em{font-style:italic;font-weight:400;color:var(--accent)}
+.together-sub{color:var(--muted);max-width:60ch;margin:0 auto 54px;text-align:center;font-family:'Playfair Display',serif;font-style:italic;font-size:18px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.card{padding:36px 30px;border-right:1px solid var(--ink);border-opacity:.3}
+.card:last-child{border-right:none}
+.card-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+.card h3{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;line-height:1.15;margin-bottom:12px}
+.card h3 em{font-style:italic;font-weight:400;color:var(--accent)}
+.card p{color:var(--muted);font-size:15px;line-height:1.6}
+
+footer{position:relative;z-index:2;border-top:2px solid var(--ink);padding:32px;text-align:center;color:var(--muted);font-size:13px;font-family:'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase}
+footer a{color:var(--accent);text-decoration:none}
+@media (max-width:720px){.cards{grid-template-columns:1fr}.card{border-right:none;border-bottom:1px solid var(--ink)}.card:last-child{border-bottom:none}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">Deal<em>Mentor</em></div>
+  <div class="nav-links"><a href="#">Platform</a><a href="#">Pricing</a><a href="#">Why us</a></div>
+</nav>
+
+<div class="masthead">
+  <span class="date">Vol. I · No. 1 · 2026</span>
+  <span class="issue">— The Sales Issue —</span>
+  <span class="date">$0 · Free Forever</span>
+</div>
+
+<header class="hero">
+  <p class="eyebrow">Half human · Half AI · All sales</p>
+  <h1 class="h1">
+    <span class="line">One <em>real</em> CRO.</span>
+    <span class="line"><em>Ten</em> AI Sales Tools.</span>
+    <span class="line"><em>One</em> Platform.</span>
+  </h1>
+  <p class="sub">A live fractional CRO and ten must-have AI sales tools — scripts, playbooks, objection handlers, simulator, copilot, certification — under one login, on every plan.</p>
+  <a href="#" class="cta">Start Free</a>
+</header>
+
+<div class="rule"></div>
+
+<section class="together">
+  <h2 class="h2">AI drafts it. <em>A real CRO sharpens it.</em></h2>
+  <p class="together-sub">Together, on every plan — not stitched together from five vendors.</p>
+  <div class="cards">
+    <article class="card"><div class="card-tag">01 · Objections</div><h3>"Too <em>expensive</em>" — answered.</h3><p>AI surfaces the objection. The CRO rewrites the response in your voice.</p></article>
+    <article class="card"><div class="card-tag">02 · ICP Scripts</div><h3>Generic — <em>personalized</em>.</h3><p>Drop your ICP. Get scripts that sound like a senior closer, not a template.</p></article>
+    <article class="card"><div class="card-tag">03 · Battlecards</div><h3>Competitor — <em>countered</em>.</h3><p>Live battlecards that update when a competitor moves.</p></article>
+  </div>
+</section>
+
+<footer>Theme 3 · Editorial Cream · <a href="themes.html">← back to picker</a></footer>
+</body>
+</html>
