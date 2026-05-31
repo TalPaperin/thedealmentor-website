@@ -22,7 +22,7 @@
 <link rel="icon" href="https://www.thedealmentor.ai/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
 "@context": "https://schema.org",
@@ -59,6 +59,7 @@
 --brand-hi: #3b78ff;
 --brand-strong: #1E5BF0;
 --accent-cyan: #34E5FF;
+--gold: #FFC857;
 --grad: linear-gradient(100deg, #34E5FF 0%, #4F8BFF 50%, #B36BFF 100%);
 --radius: 16px;
 --maxw: 1140px;
@@ -87,8 +88,8 @@ border-radius: 6px;
 }
 
 /* SCROLL REVEAL (CSS-transition driven; only active when html.js is set, so content stays visible without JS or under reduced-motion) */
-html.js .hero-eyebrow, html.js .hero-h1, html.js .hero-promise, html.js .hero-sub,
-html.js .hero-tagline, html.js .toggle-group, html.js .hero-ctas, html.js .hero-badges,
+html.js .hero-eyebrow, html.js .hero-h1, html.js .hero-sub,
+html.js .hero-ctas, html.js .hero-telemetry,
 html.js .founder-card, html.js .eyebrow, html.js .section-h2, html.js .section-sub,
 html.js .pain-card, html.js .tool-card, html.js .step, html.js .cro-header,
 html.js .plan-card, html.js .logos-label, html.js .logo-box, html.js .testi-card,
@@ -98,7 +99,8 @@ opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform
 html.js .is-in { opacity: 1 !important; transform: none !important; }
 
 /* STAGE (Three.js canvas + fallback + overlay) */
-#galaxy { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -2; display: none; }
+#galaxy { display: none !important; }
+#net { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -2; display: block; pointer-events: none; }
 .stage-fallback {
 position: fixed; inset: 0; z-index: -2;
 background:
@@ -215,12 +217,20 @@ margin-bottom: 16px;
 
 /* HERO (tightened to fit above the fold on 1366x768 / 1440x900) */
 .hero { max-width: 940px; margin: 0 auto; padding: 38px 24px 44px; text-align: center; }
-.hero-eyebrow, .hero-h1, .hero-promise, .hero-sub, .hero-tagline { text-shadow: 0 2px 16px rgba(4,7,20,0.65); }
-.hero-eyebrow { font-size: clamp(16px, 2vw, 20px); color: var(--text); font-weight: 500; margin-bottom: 10px; }
-.hero-h1 { font-size: clamp(34px, 4.6vw, 58px); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; color: var(--heading); margin-bottom: 14px; }
-.hero-promise { font-size: clamp(20px, 2.6vw, 26px); font-weight: 700; color: var(--heading); line-height: 1.3; margin-bottom: 8px; }
-.hero-sub { font-size: 16px; color: var(--text); margin-bottom: 6px; }
-.hero-tagline { font-size: clamp(16px, 2vw, 20px); font-weight: 600; color: var(--text); margin: 6px auto 22px; }
+.hero-eyebrow, .hero-h1, .hero-sub { text-shadow: 0 2px 16px rgba(4,7,20,0.65); }
+.hero-eyebrow { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: clamp(12px, 1.2vw, 14px); letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-cyan); font-weight: 500; margin-bottom: 22px; display: inline-flex; align-items: center; gap: 12px; }
+.hero-eyebrow::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-cyan); box-shadow: 0 0 14px var(--accent-cyan); animation: heroDot 1.6s ease-in-out infinite; }
+@keyframes heroDot { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.35); opacity: 0.55; } }
+.hero-h1 { font-size: clamp(40px, 7.2vw, 108px); font-weight: 800; line-height: 0.96; letter-spacing: -0.035em; color: var(--heading); margin-bottom: 26px; }
+.hero-h1 .line { display: block; }
+.hero-h1 .real { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; font-style: italic; padding: 0 0.04em; }
+.hero-sub { font-size: clamp(15px, 1.4vw, 19px); color: var(--text); line-height: 1.55; max-width: 62ch; margin: 0 auto 28px; }
+.hero-telemetry { display: flex; justify-content: center; gap: clamp(20px, 4vw, 56px); flex-wrap: wrap; max-width: 920px; margin: 38px auto 0; padding-top: 28px; border-top: 1px solid var(--glass-bd); }
+.hero-telemetry .metric { display: flex; flex-direction: column; gap: 4px; min-width: 120px; align-items: center; }
+.hero-telemetry .metric .label { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-faint); }
+.hero-telemetry .metric .value { font-family: 'Bricolage Grotesque', serif; font-weight: 700; font-size: clamp(20px, 2.2vw, 28px); letter-spacing: -0.02em; color: var(--heading); }
+.hero-telemetry .metric .value .pulse { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-cyan); box-shadow: 0 0 12px var(--accent-cyan); margin-right: 8px; vertical-align: middle; animation: heroDot 1.6s ease-in-out infinite; }
+.hero-telemetry .metric .value.gold { color: var(--gold, #FFC857); }
 .toggle-group { display: inline-flex; padding: 5px; gap: 4px; border-radius: 14px; margin-bottom: 20px; }
 .toggle-btn {
 padding: 12px 24px; border-radius: 10px; font-size: 14px; font-weight: 600;
@@ -374,17 +384,18 @@ footer { padding: 36px 16px 28px; }
 }
 @media (max-width: 480px) {
 .hero { padding: 24px 16px 40px; }
-.toggle-group { width: 100%; }
-.toggle-btn { flex: 1; }
+.hero-h1 { font-size: clamp(36px, 11vw, 56px); }
 .hero-ctas .btn-primary, .hero-ctas .btn-ghost, .hero-ctas .btn-secondary { width: 100%; justify-content: center; }
+.hero-telemetry { gap: 20px; padding-top: 24px; margin-top: 30px; }
+.hero-telemetry .metric { min-width: 100px; }
 }
 
 /* REDUCED MOTION */
 @media (prefers-reduced-motion: reduce) {
 html { scroll-behavior: auto; }
-#galaxy { display: none !important; }
-html.js .hero-eyebrow, html.js .hero-h1, html.js .hero-promise, html.js .hero-sub,
-html.js .hero-tagline, html.js .toggle-group, html.js .hero-ctas, html.js .hero-badges,
+#galaxy, #net { display: none !important; }
+html.js .hero-eyebrow, html.js .hero-h1, html.js .hero-sub,
+html.js .hero-ctas, html.js .hero-telemetry,
 html.js .founder-card, html.js .eyebrow, html.js .section-h2, html.js .section-sub,
 html.js .pain-card, html.js .tool-card, html.js .step, html.js .cro-header,
 html.js .plan-card, html.js .logos-label, html.js .logo-box, html.js .testi-card,
@@ -407,7 +418,7 @@ document.documentElement.classList.add('js');
 <body>
 
 <!-- STAGE -->
-<canvas id="galaxy" aria-hidden="true"></canvas>
+<canvas id="net" aria-hidden="true"></canvas>
 <div class="stage-fallback" id="stageFallback" aria-hidden="true"></div>
 <div class="stage-overlay" aria-hidden="true"></div>
 
@@ -432,24 +443,22 @@ document.documentElement.classList.add('js');
 
 <!-- HERO -->
 <header class="hero">
-<p class="hero-eyebrow">You know your product is good.</p>
-<h1 class="hero-h1">But Deals Aren't <span class="grad-text">Closing.</span></h1>
-<p class="hero-promise">We'll help you close them.</p>
-<p class="hero-sub">10 must-have sales tools in 1 platform.</p>
-<p class="hero-tagline">Powered by AI, backed by a <span class="grad-text">LIVE CRO</span>, on every plan!</p>
-<div class="toggle-group glass" role="group" aria-label="Choose your mode">
-<button class="toggle-btn" id="tab-founder" type="button" aria-pressed="true" onclick="setMode('founder')">I'm a Founder <span class="sub">selling myself</span></button>
-<button class="toggle-btn" id="tab-team" type="button" aria-pressed="false" onclick="setMode('team')">I Have a Team <span class="sub">SDRs and AEs</span></button>
-</div>
+<p class="hero-eyebrow">Half human. Half AI. All sales.</p>
+<h1 class="hero-h1">
+<span class="line">One <em class="real">REAL</em> CRO.</span>
+<span class="line">Ten AI Sales Tools.</span>
+<span class="line">One Platform.</span>
+</h1>
+<p class="hero-sub">A live fractional CRO and ten must-have AI sales tools, scripts, playbooks, objection handlers, simulator, copilot, certification, under one login, on every plan. No stitching. No extra vendors.</p>
 <div class="hero-ctas">
-<a href="https://app.thedealmentor.ai/register" class="btn-primary btn-lg" id="hero-cta">Start Founder Mode, Free</a>
-<a href="/pricing" class="btn-secondary btn-lg">View Pricing</a>
+<a href="https://app.thedealmentor.ai/register" class="btn-primary btn-lg">Start Free</a>
+<a href="#meet-cro" class="btn-secondary btn-lg">Meet Your CRO</a>
 </div>
-<div class="hero-badges">
-<div class="hero-badge glass"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> 7-day free trial</div>
-<div class="hero-badge glass"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> No credit card needed</div>
-<div class="hero-badge glass"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Live in under 15 minutes</div>
-<div class="hero-badge glass"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> No integrations required</div>
+<div class="hero-telemetry" role="region" aria-label="Live platform telemetry">
+<div class="metric"><span class="label">Live CRO sessions</span><span class="value"><span class="pulse"></span><span id="m-sessions">14</span></span></div>
+<div class="metric"><span class="label">Pipeline this week</span><span class="value">$1.24M</span></div>
+<div class="metric"><span class="label">AI tools active</span><span class="value">10 / 10</span></div>
+<div class="metric"><span class="label">Close rate vs avg</span><span class="value gold">2&times;</span></div>
 </div>
 </header>
 
@@ -776,14 +785,6 @@ document.documentElement.classList.add('js');
 </footer>
 
 <script>
-function setMode(mode) {
-var isFounder = mode === 'founder';
-var f = document.getElementById('tab-founder');
-var t = document.getElementById('tab-team');
-f.setAttribute('aria-pressed', isFounder ? 'true' : 'false');
-t.setAttribute('aria-pressed', isFounder ? 'false' : 'true');
-document.getElementById('hero-cta').textContent = isFounder ? 'Start Founder Mode, Free' : 'Start Team Mode, Free';
-}
 function toggleFaq(btn) {
 var expanded = btn.getAttribute('aria-expanded') === 'true';
 btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
@@ -815,145 +816,276 @@ toggle.setAttribute('aria-expanded', 'false');
 })();
 </script>
 
-<!-- THREE.JS PARTICLE GALAXY -->
-<script type="importmap">
-{ "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
-</script>
-<script type="module">
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const isMobile = window.matchMedia('(max-width: 768px)').matches || window.matchMedia('(pointer: coarse)').matches;
+<!-- NETWORK ENGINE: 10 AI tool nodes + 1 REAL CRO node, with traveling pulses -->
+<script>
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var canvas = document.getElementById('net');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  if (!ctx) return;
 
-function hasWebGL() {
-try {
-const c = document.createElement('canvas');
-return !!(window.WebGLRenderingContext && (c.getContext('webgl') || c.getContext('experimental-webgl')));
-} catch (e) { return false; }
-}
+  var DPR = Math.min(window.devicePixelRatio || 1, 2);
+  var W = 0, H = 0;
 
-if (reduceMotion || !hasWebGL()) {
-// keep the static gradient fallback, do nothing
-} else {
-import('three').then((THREE) => {
-const canvas = document.getElementById('galaxy');
-const fallback = document.getElementById('stageFallback');
-const hero = document.querySelector('.hero');
+  var TOOL_NAMES = ['Playbook','Scripts','Competition','Objections','Copilot','Simulator','Certification','Outreach','Knowledge','Debugger'];
 
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
-camera.position.set(0, 2.4, 7);
+  var nodes = [];     // all nodes (CRO first, then tools)
+  var tools = [];     // refs into nodes, tool-only
+  var edges = [];     // {a,b} indices into nodes
+  var pulses = [];    // {from,to,t,speed,trail}
+  var CRO_IDX = 0;
+  var sessionsCount = 0;
 
-const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-renderer.setSize(window.innerWidth, window.innerHeight);
+  function layout(){
+    nodes = []; tools = []; edges = []; pulses = [];
+    var mobile = window.matchMedia('(max-width: 720px)').matches;
+    var portrait = H > W;
 
-// soft round sprite for particles + core
-function discTexture() {
-const s = 64, cv = document.createElement('canvas');
-cv.width = cv.height = s;
-const ctx = cv.getContext('2d');
-const g = ctx.createRadialGradient(s/2, s/2, 0, s/2, s/2, s/2);
-g.addColorStop(0, 'rgba(255,255,255,1)');
-g.addColorStop(0.25, 'rgba(255,255,255,0.9)');
-g.addColorStop(1, 'rgba(255,255,255,0)');
-ctx.fillStyle = g; ctx.fillRect(0, 0, s, s);
-return new THREE.CanvasTexture(cv);
-}
-const sprite = discTexture();
+    // CRO node placement
+    var cx, cy;
+    if (mobile || portrait){ cx = W * 0.5; cy = H * 0.78; }
+    else { cx = W * 0.78; cy = H * 0.56; }
 
-// galaxy
-const COUNT = isMobile ? 1200 : 3000;
-const RADIUS = 6, BRANCHES = 4, SPIN = 1, RANDOMNESS = 0.5, RPOW = 2.6;
-const cIn = new THREE.Color('#bfeaff'), cMid = new THREE.Color('#4f8bff'), cOut = new THREE.Color('#b36bff');
-const positions = new Float32Array(COUNT * 3);
-const colors = new Float32Array(COUNT * 3);
-const tmp = new THREE.Color();
-for (let i = 0; i < COUNT; i++) {
-const i3 = i * 3;
-const r = Math.random() * RADIUS;
-const branch = ((i % BRANCHES) / BRANCHES) * Math.PI * 2;
-const spin = r * SPIN;
-const rx = Math.pow(Math.random(), RPOW) * (Math.random() < 0.5 ? 1 : -1) * RANDOMNESS * r * 0.5;
-const ry = Math.pow(Math.random(), RPOW) * (Math.random() < 0.5 ? 1 : -1) * RANDOMNESS * r * 0.25;
-const rz = Math.pow(Math.random(), RPOW) * (Math.random() < 0.5 ? 1 : -1) * RANDOMNESS * r * 0.5;
-positions[i3]     = Math.cos(branch + spin) * r + rx;
-positions[i3 + 1] = ry;
-positions[i3 + 2] = Math.sin(branch + spin) * r + rz;
-const t = r / RADIUS;
-if (t < 0.5) tmp.copy(cIn).lerp(cMid, t / 0.5);
-else tmp.copy(cMid).lerp(cOut, (t - 0.5) / 0.5);
-colors[i3] = tmp.r; colors[i3 + 1] = tmp.g; colors[i3 + 2] = tmp.b;
-}
-const geo = new THREE.BufferGeometry();
-geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-const mat = new THREE.PointsMaterial({
-size: 0.09, sizeAttenuation: true, depthWrite: false,
-blending: THREE.AdditiveBlending, vertexColors: true, transparent: true,
-map: sprite, alphaTest: 0.001
-});
-const points = new THREE.Points(geo, mat);
+    var cro = { x: cx, y: cy, glow: 1, name: 'REAL CRO', isCro: true, labelAlpha: 1 };
+    CRO_IDX = nodes.length;
+    nodes.push(cro);
 
-// dimmer glowing core, kept off-centre so it does not sit behind the hero text
-const coreMat = new THREE.SpriteMaterial({ map: discTexture(), color: new THREE.Color('#9fd6ff'), blending: THREE.AdditiveBlending, depthWrite: false, transparent: true, opacity: 0.6 });
-const core = new THREE.Sprite(coreMat);
-core.scale.set(2.6, 2.6, 1);
+    // 10 AI nodes around CRO
+    var ringR = Math.min(W, H) * (mobile ? 0.30 : 0.36);
+    var n = TOOL_NAMES.length;
+    for (var i = 0; i < n; i++){
+      var angle;
+      if (mobile || portrait){
+        angle = (i / n) * Math.PI * 2 - Math.PI / 2;
+      } else {
+        // Arc that fans across the right and slightly wraps; avoids covering the left-of-center hero text
+        var startDeg = -135, endDeg = 135;
+        var t = i / (n - 1);
+        angle = (startDeg + t * (endDeg - startDeg)) * Math.PI / 180;
+      }
+      var jitter = 0.86 + Math.random() * 0.28;
+      var x = cx + Math.cos(angle) * ringR * jitter;
+      var y = cy + Math.sin(angle) * ringR * jitter * 0.88;
+      var node = {
+        x: x, y: y,
+        vx: (Math.random() - 0.5) * 0.05,
+        vy: (Math.random() - 0.5) * 0.05,
+        glow: 0, labelAlpha: 0, name: TOOL_NAMES[i],
+        anchor: angle
+      };
+      tools.push(node);
+      nodes.push(node);
+    }
 
-// offset the whole galaxy toward the lower-right so the bright centre clears the centred hero text
-const galaxy = new THREE.Group();
-galaxy.add(points);
-galaxy.add(core);
-galaxy.position.set(1.7, -1.9, 0);
-scene.add(galaxy);
+    // Edges: each AI <-> CRO (the routing claim)
+    for (var i = 0; i < tools.length; i++){
+      edges.push({ a: CRO_IDX, b: nodes.indexOf(tools[i]) });
+    }
+    // Sibling links (adjacent in the arc)
+    for (var i = 0; i < tools.length - 1; i++){
+      edges.push({ a: nodes.indexOf(tools[i]), b: nodes.indexOf(tools[i + 1]) });
+    }
+    // A few sparse cross-links
+    for (var k = 0; k < 3; k++){
+      var a = Math.floor(Math.random() * tools.length);
+      var b = Math.floor(Math.random() * tools.length);
+      if (a !== b) edges.push({ a: nodes.indexOf(tools[a]), b: nodes.indexOf(tools[b]) });
+    }
 
-// reveal canvas, hide fallback
-canvas.style.display = 'block';
-if (fallback) fallback.style.display = 'none';
+    for (var p = 0; p < 3; p++) spawnPulse();
+  }
 
-// mouse parallax (desktop only)
-let targetX = 0, targetY = 0;
-if (!isMobile) {
-window.addEventListener('mousemove', (e) => {
-targetX = (e.clientX / window.innerWidth - 0.5) * 2;
-targetY = (e.clientY / window.innerHeight - 0.5) * 2;
-}, { passive: true });
-}
+  function spawnPulse(){
+    // 75%: AI -> CRO (CRO routes it back on arrival). 25%: AI <-> AI sibling.
+    if (Math.random() < 0.75){
+      var i = Math.floor(Math.random() * tools.length);
+      pulses.push({ from: nodes.indexOf(tools[i]), to: CRO_IDX, t: 0,
+        speed: 0.0055 + Math.random() * 0.004, trail: [] });
+    } else {
+      var a = Math.floor(Math.random() * tools.length);
+      var b = Math.floor(Math.random() * tools.length);
+      while (b === a) b = Math.floor(Math.random() * tools.length);
+      pulses.push({ from: nodes.indexOf(tools[a]), to: nodes.indexOf(tools[b]), t: 0,
+        speed: 0.0050 + Math.random() * 0.003, trail: [] });
+    }
+  }
 
-let rafId = null, running = false;
-function render() {
-const t = performance.now() * 0.001;
-points.rotation.y = t * 0.06;
-camera.position.x += (targetX * 0.8 - camera.position.x) * 0.03;
-camera.position.y += (2.4 - targetY * 0.5 - camera.position.y) * 0.03;
-camera.lookAt(0, 0, 0);
-renderer.render(scene, camera);
-rafId = requestAnimationFrame(render);
-}
-function start() { if (!running) { running = true; rafId = requestAnimationFrame(render); } }
-function stop() { if (running) { running = false; cancelAnimationFrame(rafId); } }
+  var mouse = { tx: 0, ty: 0, x: 0, y: 0 };
+  window.addEventListener('pointermove', function(e){
+    var cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+    mouse.tx = (e.clientX - cx) / cx;
+    mouse.ty = (e.clientY - cy) / cy;
+  }, { passive: true });
 
-// pause when hero is offscreen
-let heroVisible = true;
-if (hero && 'IntersectionObserver' in window) {
-new IntersectionObserver((entries) => {
-heroVisible = entries[0].isIntersecting;
-if (heroVisible && !document.hidden) start(); else stop();
-}, { threshold: 0 }).observe(hero);
-}
-// pause when tab hidden
-document.addEventListener('visibilitychange', () => {
-if (document.hidden) stop(); else if (heroVisible) start();
-});
+  function resize(){
+    var r = canvas.getBoundingClientRect();
+    W = r.width; H = r.height;
+    canvas.width = W * DPR; canvas.height = H * DPR;
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    layout();
+    ctx.clearRect(0, 0, W, H);
+  }
 
-window.addEventListener('resize', () => {
-camera.aspect = window.innerWidth / window.innerHeight;
-camera.updateProjectionMatrix();
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-renderer.setSize(window.innerWidth, window.innerHeight);
-}, { passive: true });
+  var visible = true, heroVisible = true;
+  document.addEventListener('visibilitychange', function(){ visible = !document.hidden; });
+  var heroEl = document.querySelector('.hero');
+  if (heroEl && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){
+      heroVisible = entries[0].isIntersecting;
+    }, { threshold: 0 }).observe(heroEl);
+  }
 
-start();
-}).catch(() => { /* CDN failed: keep static gradient fallback */ });
-}
+  function draw(){
+    if (!visible || !heroVisible){ requestAnimationFrame(draw); return; }
+    var time = performance.now() * 0.001;
+
+    // mouse parallax
+    mouse.x += (mouse.tx - mouse.x) * 0.05;
+    mouse.y += (mouse.ty - mouse.y) * 0.05;
+    var ox = -mouse.x * 12, oy = -mouse.y * 12;
+
+    // Trail fade
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.fillStyle = 'rgba(4,7,20,0.22)';
+    ctx.fillRect(0, 0, W, H);
+
+    // Edges (additive)
+    ctx.globalCompositeOperation = 'lighter';
+    for (var e = 0; e < edges.length; e++){
+      var ed = edges[e];
+      var a = nodes[ed.a], b = nodes[ed.b];
+      var isCroEdge = (ed.a === CRO_IDX || ed.b === CRO_IDX);
+      ctx.strokeStyle = isCroEdge ? 'rgba(255,200,87,0.13)' : 'rgba(80,170,255,0.11)';
+      ctx.lineWidth = 0.9;
+      ctx.beginPath();
+      ctx.moveTo(a.x + ox, a.y + oy);
+      ctx.lineTo(b.x + ox, b.y + oy);
+      ctx.stroke();
+    }
+
+    // Drift tools, decay glow
+    for (var i = 0; i < tools.length; i++){
+      var nd = tools[i];
+      nd.x += nd.vx; nd.y += nd.vy;
+      if (nd.glow > 0.02) nd.glow *= 0.93;
+      if (nd.labelAlpha > 0.01) nd.labelAlpha *= 0.96;
+    }
+
+    // Pulses
+    for (var p = pulses.length - 1; p >= 0; p--){
+      var pu = pulses[p];
+      pu.t += pu.speed;
+      var aN = nodes[pu.from], bN = nodes[pu.to];
+      var px = aN.x + (bN.x - aN.x) * pu.t + ox;
+      var py = aN.y + (bN.y - aN.y) * pu.t + oy;
+      pu.trail.push({ x: px, y: py });
+      if (pu.trail.length > 22) pu.trail.shift();
+
+      var croPulse = (pu.from === CRO_IDX || pu.to === CRO_IDX);
+      var trailC = croPulse ? '255,200,87' : '120,235,255';
+      var headC = croPulse ? '255,228,158' : '170,240,255';
+
+      for (var k = 0; k < pu.trail.length; k++){
+        var tp = pu.trail[k];
+        var aa = k / pu.trail.length;
+        ctx.fillStyle = 'rgba(' + trailC + ',' + (0.09 + aa * 0.50).toFixed(3) + ')';
+        ctx.beginPath();
+        ctx.arc(tp.x, tp.y, 1 + aa * 2.2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      var hg = ctx.createRadialGradient(px, py, 0, px, py, 18);
+      hg.addColorStop(0, 'rgba(' + headC + ',0.92)');
+      hg.addColorStop(0.3, 'rgba(' + trailC + ',0.55)');
+      hg.addColorStop(1, 'rgba(' + trailC + ',0)');
+      ctx.fillStyle = hg;
+      ctx.beginPath(); ctx.arc(px, py, 18, 0, Math.PI * 2); ctx.fill();
+
+      if (pu.t >= 1){
+        nodes[pu.to].glow = 1;
+        if (nodes[pu.to].labelAlpha !== undefined) nodes[pu.to].labelAlpha = 1;
+        if (pu.to === CRO_IDX){
+          // CRO routes a return pulse to a different AI tool
+          var dest = Math.floor(Math.random() * tools.length);
+          pulses.push({ from: CRO_IDX, to: nodes.indexOf(tools[dest]), t: 0,
+            speed: 0.0070 + Math.random() * 0.003, trail: [] });
+          sessionsCount++;
+        }
+        pulses.splice(p, 1);
+        spawnPulse();
+      }
+    }
+
+    // CRO node: persistent halo + bright core
+    var cx = nodes[CRO_IDX].x + ox, cy = nodes[CRO_IDX].y + oy;
+    var haloR = 38 + Math.sin(time * 1.5) * 3;
+    var cg = ctx.createRadialGradient(cx, cy, 0, cx, cy, haloR);
+    cg.addColorStop(0, 'rgba(255,228,158,0.55)');
+    cg.addColorStop(0.4, 'rgba(255,200,87,0.28)');
+    cg.addColorStop(1, 'rgba(255,200,87,0)');
+    ctx.fillStyle = cg;
+    ctx.beginPath(); ctx.arc(cx, cy, haloR, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = 'rgba(255,238,190,0.96)';
+    ctx.beginPath(); ctx.arc(cx, cy, 5, 0, Math.PI * 2); ctx.fill();
+
+    // AI tool nodes
+    for (var i = 0; i < tools.length; i++){
+      var nd = tools[i];
+      var x = nd.x + ox, y = nd.y + oy;
+      ctx.fillStyle = 'rgba(160,200,255,0.55)';
+      ctx.beginPath(); ctx.arc(x, y, 1.6, 0, Math.PI * 2); ctx.fill();
+      if (nd.glow > 0.05){
+        var ng = ctx.createRadialGradient(x, y, 0, x, y, 24);
+        ng.addColorStop(0, 'rgba(255,255,255,' + (0.75 * nd.glow).toFixed(3) + ')');
+        ng.addColorStop(0.3, 'rgba(120,235,255,' + (0.55 * nd.glow).toFixed(3) + ')');
+        ng.addColorStop(1, 'rgba(120,235,255,0)');
+        ctx.fillStyle = ng;
+        ctx.beginPath(); ctx.arc(x, y, 24, 0, Math.PI * 2); ctx.fill();
+      }
+    }
+
+    // Labels: drawn last in normal compositing for clean text
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.font = "600 11px 'JetBrains Mono', ui-monospace, monospace";
+    ctx.textBaseline = 'middle';
+    for (var i = 0; i < tools.length; i++){
+      var nd = tools[i];
+      var x = nd.x + ox, y = nd.y + oy;
+      // Position label outward from CRO so labels don't overlap the network center
+      var ang = Math.atan2(nd.y - nodes[CRO_IDX].y, nd.x - nodes[CRO_IDX].x);
+      var lx = x + Math.cos(ang) * 12;
+      var ly = y + Math.sin(ang) * 12;
+      ctx.textAlign = Math.cos(ang) > 0.2 ? 'left' : (Math.cos(ang) < -0.2 ? 'right' : 'center');
+      var baseA = 0.20;
+      var alpha = baseA + nd.labelAlpha * 0.70;
+      ctx.fillStyle = 'rgba(190,215,255,' + alpha.toFixed(3) + ')';
+      ctx.fillText(nd.name, lx, ly);
+    }
+    // CRO label, always visible, gold
+    ctx.font = "700 13px 'JetBrains Mono', ui-monospace, monospace";
+    ctx.textAlign = 'center';
+    ctx.fillStyle = 'rgba(255,228,158,0.92)';
+    ctx.fillText('REAL CRO', cx, cy + 28);
+
+    requestAnimationFrame(draw);
+  }
+
+  // Tick the live-sessions number (base 14, ticks up to +8 as pulses route)
+  var sessionsEl = document.getElementById('m-sessions');
+  setInterval(function(){
+    if (sessionsEl && sessionsCount > 0){
+      sessionsEl.textContent = String(14 + Math.min(sessionsCount, 8));
+    }
+  }, 700);
+
+  window.addEventListener('resize', resize);
+  resize();
+
+  var fb = document.getElementById('stageFallback');
+  if (fb) fb.style.display = 'none';
+
+  requestAnimationFrame(draw);
+})();
 </script>
 
 <!-- SCROLL REVEAL + NAV SHRINK (no external libraries; cannot leave elements stuck) -->
@@ -969,12 +1101,12 @@ onScroll();
 }
 // Reveals only run when html.js is set (added in <head>, skipped under reduced motion / no JS).
 if (!docEl.classList.contains('js')) return;
-var SEL = '.hero-eyebrow,.hero-h1,.hero-promise,.hero-sub,.hero-tagline,.toggle-group,.hero-ctas,.hero-badges,.founder-card,.eyebrow,.section-h2,.section-sub,.pain-card,.tool-card,.step,.cro-header,.plan-card,.logos-label,.logo-box,.testi-card,.faq-list,.final-cta h2,.final-cta p,.final-cta .btn-primary';
+var SEL = '.hero-eyebrow,.hero-h1,.hero-sub,.hero-ctas,.hero-telemetry,.founder-card,.eyebrow,.section-h2,.section-sub,.pain-card,.tool-card,.step,.cro-header,.plan-card,.logos-label,.logo-box,.testi-card,.faq-list,.final-cta h2,.final-cta p,.final-cta .btn-primary';
 var els = Array.prototype.slice.call(document.querySelectorAll(SEL));
 function stagger(sel){ var g = document.querySelectorAll(sel); Array.prototype.forEach.call(g, function(e,i){ e.style.transitionDelay = (i * 0.07) + 's'; }); }
 stagger('.pain-grid .pain-card'); stagger('.tools-grid .tool-card'); stagger('.plans-grid .plan-card');
 stagger('.testimonials-grid .testi-card'); stagger('.logos-row .logo-box'); stagger('.steps .step');
-stagger('.hero .hero-eyebrow, .hero .hero-h1, .hero .hero-promise, .hero .hero-sub, .hero .hero-tagline, .hero .toggle-group, .hero .hero-ctas, .hero .hero-badges');
+stagger('.hero .hero-eyebrow, .hero .hero-h1, .hero .hero-sub, .hero .hero-ctas, .hero .hero-telemetry');
 function reveal(e){ e.classList.add('is-in'); }
 if (!('IntersectionObserver' in window)) { els.forEach(reveal); return; }
 var io = new IntersectionObserver(function(entries){
