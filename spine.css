@@ -84,8 +84,14 @@ html.js .tile-flip.is-in{animation:tileFlip 2.6s cubic-bezier(.22,.65,.25,1) for
 nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--line);padding:14px clamp(20px,3vw,32px);display:flex;justify-content:space-between;align-items:center;gap:16px;transition:padding .25s ease,background .25s ease}
 nav.shrink{padding:10px clamp(20px,3vw,32px);background:color-mix(in srgb,var(--bg) 92%,transparent)}
 .nav-logo{display:flex;align-items:center}
-.wordmark{font-family:'Geist',sans-serif;font-weight:600;font-size:20px;letter-spacing:-.025em;color:var(--ink);text-decoration:none}
+.wordmark{font-family:'Geist',sans-serif;font-weight:600;font-size:20px;letter-spacing:-.025em;color:var(--ink);text-decoration:none;display:inline-flex;align-items:center}
 .wordmark b{background:linear-gradient(110deg,var(--chr-1),var(--chr-2),var(--chr-3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;font-weight:600}
+/* Logo image swap — white on dark, blue on light. Drop /DealMentor horizontal logo blue.jpg into the repo to activate light mode. */
+.wordmark img{height:30px;width:auto;display:block}
+nav.shrink .wordmark img{height:26px}
+.wordmark .logo-light{display:none}
+[data-theme="light"] .wordmark .logo-dark{display:none}
+[data-theme="light"] .wordmark .logo-light{display:block}
 .nav-links{display:flex;align-items:center;gap:28px}
 .nav-links a{color:var(--muted);font-family:'Geist',sans-serif;font-size:14.5px;font-weight:500;padding:6px 4px;position:relative;transition:color .15s}
 .nav-links a::after{content:'';position:absolute;left:4px;right:4px;bottom:-2px;height:1.5px;background:var(--accent);transform:scaleX(0);transform-origin:center;transition:transform .25s ease}
@@ -248,8 +254,12 @@ nav.shrink{padding:10px clamp(20px,3vw,32px);background:color-mix(in srgb,var(--
 /* ===== FOOTER ===== */
 footer{background:var(--bg-2);border-top:1px solid var(--line);padding:50px 24px 36px;position:relative;z-index:2}
 .footer-inner{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:36px;align-items:start}
-.footer-wordmark{font-family:'Geist',sans-serif;font-weight:600;font-size:22px;color:var(--ink);letter-spacing:-.025em;text-decoration:none;display:inline-block;margin-bottom:10px}
+.footer-wordmark{font-family:'Geist',sans-serif;font-weight:600;font-size:22px;color:var(--ink);letter-spacing:-.025em;text-decoration:none;display:inline-flex;align-items:center;margin-bottom:10px}
 .footer-wordmark b{color:var(--accent);font-weight:600}
+.footer-wordmark img{height:34px;width:auto;display:block}
+.footer-wordmark .logo-light{display:none}
+[data-theme="light"] .footer-wordmark .logo-dark{display:none}
+[data-theme="light"] .footer-wordmark .logo-light{display:block}
 .footer-copy{font-family:'Geist',sans-serif;color:var(--muted);font-size:13px;line-height:1.55;max-width:46ch}
 .footer-links{display:flex;flex-direction:column;gap:10px}
 .footer-links a{font-family:'Geist',sans-serif;color:var(--muted);font-size:14px;font-weight:500;transition:color .15s}
