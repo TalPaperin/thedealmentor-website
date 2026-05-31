@@ -236,6 +236,64 @@ html.js .is-in { opacity: 1 !important; transform: none !important; }
 }
 .section-sub { font-size: clamp(15px, 1.4vw, 18px); line-height: 1.55; color: var(--text); opacity: 0.85; }
 
+/* PAIN gallery: horizontal scroll with snap + edge fades + arrow buttons */
+.pain-gallery {
+  position: relative;
+  margin: 0 calc(-1 * clamp(20px, 4vw, 40px));
+}
+.pain-gallery .pain-grid {
+  display: flex !important;
+  flex-direction: row !important;
+  grid-template-columns: none !important;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: clamp(20px, 4vw, 40px);
+  padding: 8px clamp(20px, 4vw, 40px);
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+.pain-gallery .pain-grid::-webkit-scrollbar { display: none; }
+.pain-gallery .pain-card {
+  flex: 0 0 clamp(280px, 32vw, 360px);
+  scroll-snap-align: start;
+  margin: 0;
+}
+.pain-gallery::before,
+.pain-gallery::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 60px;
+  pointer-events: none; z-index: 1;
+}
+.pain-gallery::before { left: 0; background: linear-gradient(to right, var(--bg) 15%, transparent); }
+.pain-gallery::after  { right: 0; background: linear-gradient(to left, var(--bg) 15%, transparent); }
+section.solid .pain-gallery::before { background: linear-gradient(to right, var(--bg) 15%, transparent); }
+section.solid .pain-gallery::after  { background: linear-gradient(to left, var(--bg) 15%, transparent); }
+section.solid-2 .pain-gallery::before { background: linear-gradient(to right, var(--bg-2) 15%, transparent); }
+section.solid-2 .pain-gallery::after  { background: linear-gradient(to left, var(--bg-2) 15%, transparent); }
+.pain-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: rgba(7,11,24,0.7);
+  border: 1px solid var(--glass-bd-hi);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  color: var(--text);
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: transform .25s cubic-bezier(.2,.7,.2,1), border-color .25s, background .25s, opacity .25s;
+}
+.pain-arrow svg { width: 18px; height: 18px; }
+.pain-arrow:hover { border-color: var(--accent-cyan); background: rgba(52,229,255,0.10); }
+.pain-arrow.prev { left: clamp(8px, 2vw, 18px); }
+.pain-arrow.next { right: clamp(8px, 2vw, 18px); }
+.pain-arrow:disabled { opacity: 0; pointer-events: none; }
+@media (max-width: 720px) {
+  .pain-arrow { display: none; } /* mobile uses swipe */
+  .pain-gallery::before, .pain-gallery::after { width: 28px; }
+}
+
 /* PAIN cards: premium glass + gradient hairline + hover lift */
 .pain-card {
   position: relative;
@@ -523,17 +581,34 @@ color: transparent;
 
 /* BUTTONS (one primary style sitewide) */
 .btn-primary {
-background: var(--brand); color: #fff;
-padding: 13px 26px; border-radius: 11px;
-font-size: 15px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px;
-transition: background .2s ease, box-shadow .2s ease, transform .2s ease;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  background: linear-gradient(110deg, #2D6BFF 0%, #4F5FE0 50%, #8845DD 100%);
+  color: #fff;
+  padding: 17px 36px;
+  border-radius: 999px;
+  font-family: inherit; font-size: 16px; font-weight: 600;
+  letter-spacing: -0.005em;
+  border: 1px solid rgba(255,255,255,0.22);
+  box-shadow:
+    0 12px 36px rgba(45,107,255,0.42),
+    0 0 0 1px rgba(52,229,255,0.18),
+    inset 0 1px 0 rgba(255,255,255,0.22);
+  transition: transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .3s, background .3s;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
 }
 .btn-primary:hover {
-background: var(--brand-hi);
-box-shadow: 0 0 0 1px rgba(45,107,255,.55), 0 10px 34px rgba(45,107,255,.45);
-transform: translateY(-1px);
+  transform: translateY(-2px);
+  background: linear-gradient(110deg, #3E7BFF 0%, #6070EE 50%, #9855E5 100%);
+  box-shadow:
+    0 18px 50px rgba(52,229,255,0.50),
+    0 0 0 1px rgba(255,255,255,0.32),
+    inset 0 1px 0 rgba(255,255,255,0.28);
 }
-.btn-primary:active { transform: translateY(0); background: var(--brand-strong); }
+.btn-primary:active { transform: translateY(0); }
+.btn-lg { padding: 20px 42px; font-size: 17px; }
+nav .btn-primary { padding: 10px 22px; font-size: 13.5px; box-shadow: 0 6px 20px rgba(45,107,255,0.35), inset 0 1px 0 rgba(255,255,255,0.20); }
 .btn-ghost {
 background: transparent; border: 1px solid var(--glass-bd);
 color: var(--text); padding: 12px 24px; border-radius: 11px;
@@ -566,6 +641,9 @@ transition: padding .25s ease, background .25s ease;
 nav.shrink { padding-top: 8px; padding-bottom: 8px; background: rgba(7,11,24,0.9); }
 .wordmark { font-weight: 800; font-size: 22px; letter-spacing: -0.02em; color: #fff; line-height: 1; display: inline-block; transition: font-size .25s ease; }
 nav.shrink .wordmark { font-size: 19px; }
+.nav-logo a { display: inline-flex; align-items: center; }
+.nav-logo img { height: 32px; width: auto; display: block; transition: height .25s ease; }
+nav.shrink .nav-logo img { height: 26px; }
 .nav-links { display: flex; align-items: center; gap: 32px; }
 .nav-links a { color: var(--text-muted); font-size: 15px; font-weight: 500; transition: color .15s; }
 .nav-links a:hover { color: #fff; }
@@ -820,7 +898,7 @@ document.documentElement.classList.add('js');
 
 <!-- NAV -->
 <nav>
-<div class="nav-logo"><a href="/" class="wordmark">DealMentor</a></div>
+<div class="nav-logo"><a href="/" aria-label="DealMentor home"><img src="/DealMentor%20horizontal%20logo%20white.jpg" alt="DealMentor" width="160" height="32"></a></div>
 <div class="nav-links" id="navLinks">
 <a href="https://app.thedealmentor.ai/login" class="nav-login-m">Log In</a>
 <a href="/pricing">Pricing</a>
@@ -848,32 +926,14 @@ document.documentElement.classList.add('js');
 <p class="hero-sub">A live fractional CRO and ten must-have AI sales tools, scripts, playbooks, objection handlers, simulator, copilot, certification, under one login, on every plan. No stitching. No extra vendors.</p>
 <div class="hero-ctas">
 <a href="https://app.thedealmentor.ai/register" class="btn-primary btn-lg">Start Free</a>
-<a href="#meet-cro" class="btn-secondary btn-lg">Meet Your CRO</a>
 </div>
-<div class="hero-telemetry" role="region" aria-label="Live platform telemetry">
-<div class="metric"><span class="label">Live CRO sessions</span><span class="value"><span class="pulse"></span><span id="m-sessions">14</span></span></div>
-<div class="metric"><span class="label">Pipeline this week</span><span class="value">$1.24M</span></div>
-<div class="metric"><span class="label">AI tools active</span><span class="value">10 / 10</span></div>
-<div class="metric"><span class="label">Close rate vs avg</span><span class="value gold">2&times;</span></div>
+<div class="hero-telemetry" role="region" aria-label="What you get">
+<div class="metric"><span class="label">Live CRO</span><span class="value"><span class="pulse"></span>On every plan</span></div>
+<div class="metric"><span class="label">AI tools</span><span class="value">10 / 10</span></div>
+<div class="metric"><span class="label">Methodologies</span><span class="value">50<span style="color:var(--text-faint);font-size:.55em;margin-left:4px">proven</span></span></div>
+<div class="metric"><span class="label">Setup</span><span class="value gold">15 min</span></div>
 </div>
 </header>
-
-<hr class="divider">
-
-<!-- FOUNDER QUOTE -->
-<div class="founder">
-<figure class="founder-card glass">
-<img src="/tal-photo.jpg" alt="Tal Paperin, Founder KSW Solutions" class="founder-photo" width="200" height="200" loading="lazy">
-<div class="founder-text">
-<div class="founder-label">From the Founder</div>
-<blockquote>"I charge up to $20,000 a month as a Fractional CRO. For my clients, I'm a whole sales department in one person: I build the playbooks, write the scripts, train the reps, and coach the AEs myself. For many, it's overkill. They don't need that much, not many can pay it, and not many should. So I built a platform to do it, with a real CRO on every plan for the strategy that can't be automated."</blockquote>
-<figcaption>
-<div class="founder-name">Tal Paperin</div>
-<div class="founder-role">Founder, <a href="https://ksw.solutions" target="_blank" rel="noopener">KSW Solutions</a></div>
-</figcaption>
-</div>
-</figure>
-</div>
 
 <hr class="divider">
 
@@ -919,13 +979,33 @@ document.documentElement.classList.add('js');
 
 <hr class="divider">
 
+<!-- FOUNDER QUOTE -->
+<div class="founder">
+<figure class="founder-card glass">
+<img src="/tal-photo.jpg" alt="Tal Paperin, Founder KSW Solutions" class="founder-photo" width="200" height="200" loading="lazy">
+<div class="founder-text">
+<div class="founder-label">From the Founder</div>
+<blockquote>"I charge up to $20,000 a month as a Fractional CRO. For my clients, I'm a whole sales department in one person: I build the playbooks, write the scripts, train the reps, and coach the AEs myself. For many, it's overkill. They don't need that much, not many can pay it, and not many should. So I built a platform to do it, with a real CRO on every plan for the strategy that can't be automated."</blockquote>
+<figcaption>
+<div class="founder-name">Tal Paperin</div>
+<div class="founder-role">Founder, <a href="https://ksw.solutions" target="_blank" rel="noopener">KSW Solutions</a></div>
+</figcaption>
+</div>
+</figure>
+</div>
+
+<hr class="divider">
+
 <!-- PAIN POINTS -->
 <section class="solid">
 <div class="section-inner">
 <p class="eyebrow">Sound familiar?</p>
 <h2 class="section-h2">Six problems no AI tool <em>alone</em> can solve.</h2>
 <p class="section-sub">Every day, for founders and sales teams. The reason AI-only platforms and once-a-month consultants both miss the close.</p>
-<div class="pain-grid">
+<div class="pain-gallery">
+<button class="pain-arrow prev" type="button" aria-label="Previous pain point" id="painPrev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+<button class="pain-arrow next" type="button" aria-label="Next pain point" id="painNext"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+<div class="pain-grid" id="painScroll">
 <article class="pain-card card glass">
 <span class="icon-chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></span>
 <div class="pain-quote">"I'm selling alone, no playbook, no scripts, no coach."</div>
@@ -976,6 +1056,7 @@ document.documentElement.classList.add('js');
 </article>
 </div>
 </div>
+</div>
 </section>
 
 <hr class="divider">
@@ -1003,38 +1084,6 @@ document.documentElement.classList.add('js');
 
 <hr class="divider">
 
-<!-- HOW IT WORKS -->
-<section class="solid-2">
-<div class="section-inner">
-<p class="eyebrow">How it works</p>
-<h2 class="section-h2">Built from your business. <em>Not a template.</em></h2>
-<p class="section-sub">Your ICP. Your competitors. Your sales motion. Live in under fifteen minutes.</p>
-<div class="steps">
-<div class="steps-line" aria-hidden="true"></div>
-<article class="step card glass">
-<div class="step-num">01</div>
-<h3 class="step-title">Describe your business</h3>
-<p class="step-desc">Tell us about your company, product, buyers, and competitive landscape. Takes 5 minutes.</p>
-</article>
-<article class="step card glass">
-<div class="step-num">02</div>
-<h3 class="step-title">Generate your program</h3>
-<p class="step-desc">One click. Your sales program is built from your context: playbook, scripts, objection handlers, and battle cards specific to YOUR buyers.</p>
-</article>
-<article class="step card glass">
-<div class="step-num">03</div>
-<h3 class="step-title">Show up prepared</h3>
-<p class="step-desc">Open DealMentor before every call, every email, every deal. Practice in Simulation. Certify your reps.</p>
-</article>
-</div>
-<div style="text-align:center; margin-top: 56px; clear: both;">
-<a href="https://app.thedealmentor.ai/register" class="btn-primary btn-lg">Start Free. No Credit Card.</a>
-</div>
-</div>
-</section>
-
-<hr class="divider">
-
 <!-- CRO ACCESS -->
 <section class="solid">
 <div class="section-inner">
@@ -1042,45 +1091,10 @@ document.documentElement.classList.add('js');
 <h2 class="section-h2">One <em>real CRO.</em> On every plan.</h2>
 <p class="section-sub">A fractional CRO starts at $6,000 a month, and at $20,000 for full engagement. Every DealMentor plan includes direct access to a live business consultant and fractional CRO. Live sessions and email support, built in.</p>
 <div class="cro-header glass">
-<p>Even the entry-level plan: <strong>one session covers the entire monthly cost.</strong> No tier without the human.</p>
+<p>A fractional CRO costs <strong>$15,000&ndash;$25,000 a month.</strong> DealMentor includes one on every plan, starting at <strong>$149.</strong> Live sessions and email support, built in. One session covers the entire monthly cost.</p>
 </div>
-<div class="plans-grid">
-<article class="plan-card card glass">
-<h3 class="plan-name tier-founder">Founder</h3>
-<div class="plan-price">$149<span>/mo</span></div>
-<div class="plan-feature"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2v4M16 2v4"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/></svg> 1 session/month</div>
-<div class="plan-feature sub-line">30 min per session</div>
-<div class="plan-feature"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> 2 emails/month</div>
-<div class="plan-feature sub-line">48hr response (business hours)</div>
-</article>
-<article class="plan-card card glass">
-<h3 class="plan-name tier-starter">Starter</h3>
-<div class="plan-price">$399<span>/mo</span></div>
-<div class="plan-feature"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2v4M16 2v4"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/></svg> 2 sessions/month</div>
-<div class="plan-feature sub-line">30 min each per session</div>
-<div class="plan-feature"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> 5 emails/month</div>
-<div class="plan-feature sub-line">24hr response (business hours)</div>
-</article>
-<article class="plan-card card glass">
-<h3 class="plan-name tier-growth">Growth</h3>
-<div class="plan-price">$999<span>/mo</span></div>
-<div class="plan-feature"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2v4M16 2v4"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/></svg> 1 session/week</div>
-<div class="plan-feature sub-line">30 min per session</div>
-<div class="plan-feature"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> 1 email/day</div>
-<div class="plan-feature sub-line">12hr response (business hours)</div>
-</article>
-<article class="plan-card card glass">
-<h3 class="plan-name tier-scale">Scale</h3>
-<div class="plan-price">$2,499<span>/mo</span></div>
-<div class="plan-feature"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2v4M16 2v4"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/></svg> 1 session/week</div>
-<div class="plan-feature sub-line">60 min per session</div>
-<div class="plan-feature"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> 5 emails/day</div>
-<div class="plan-feature sub-line">4hr response (business hours)</div>
-</article>
-</div>
-<p class="plan-note">All sessions booked directly through the platform &middot; Business hours &middot; No extra charge</p>
-<div style="text-align:center;margin-top:32px">
-<a href="/pricing" class="btn-primary btn-lg">See Full Pricing and Start Free <svg class="ico btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+<div style="text-align:center;margin-top:36px">
+<a href="/pricing" class="btn-primary btn-lg">See Pricing <svg class="ico btn-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
 </div>
 </div>
 </section>
@@ -1281,6 +1295,27 @@ if (marqueeStack && heroForMarquee && 'IntersectionObserver' in window) {
     marqueeStack.classList.toggle('is-hidden', !entries[0].isIntersecting);
   }, { threshold: 0 }).observe(heroForMarquee);
 }
+// Pain gallery: arrow scroll with disabled state at extremes
+(function(){
+  var track = document.getElementById('painScroll');
+  var prev = document.getElementById('painPrev');
+  var next = document.getElementById('painNext');
+  if (!track || !prev || !next) return;
+  function cardStep(){
+    var card = track.querySelector('.pain-card');
+    return card ? card.offsetWidth + 18 : 320;
+  }
+  function refresh(){
+    var max = track.scrollWidth - track.clientWidth - 2;
+    prev.disabled = track.scrollLeft <= 2;
+    next.disabled = track.scrollLeft >= max;
+  }
+  prev.addEventListener('click', function(){ track.scrollBy({ left: -cardStep(), behavior: 'smooth' }); });
+  next.addEventListener('click', function(){ track.scrollBy({ left:  cardStep(), behavior: 'smooth' }); });
+  track.addEventListener('scroll', refresh, { passive: true });
+  window.addEventListener('resize', refresh);
+  refresh();
+})();
 // Reveals only run when html.js is set (added in <head>, skipped under reduced motion / no JS).
 if (!docEl.classList.contains('js')) return;
 var SEL = '.hero-eyebrow,.hero-h1,.hero-sub,.hero-ctas,.hero-telemetry,.founder-card,.eyebrow,.section-h2,.section-sub,.morph-card,.pain-card,.tool-card,.step,.cro-header,.plan-card,.logos-label,.logo-box,.testi-card,.faq-list,.final-cta h2,.final-cta p,.final-cta .btn-primary';
