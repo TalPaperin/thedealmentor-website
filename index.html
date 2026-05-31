@@ -141,6 +141,45 @@ html.js .is-in { opacity: 1 !important; transform: none !important; }
 /* STAGE (Three.js canvas + fallback + overlay) */
 #galaxy, #net { display: none !important; }
 
+/* CRO LIVE — availability widget at the top of the hero */
+.cro-live {
+  display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(91,215,168,0.07);
+  border: 1px solid rgba(91,215,168,0.28);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  margin: 0 auto 22px;
+}
+.cro-live-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 14px var(--green);
+  animation: livePulse 1.7s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes livePulse {
+  0%, 100% { transform: scale(1);    opacity: 1;   box-shadow: 0 0 10px var(--green); }
+  50%      { transform: scale(1.45); opacity: 0.65; box-shadow: 0 0 22px var(--green); }
+}
+.cro-live-label {
+  color: var(--green); font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.16em; font-size: 11px;
+}
+.cro-live-sep { color: var(--text-faint); opacity: 0.5; }
+.cro-live-meta { color: var(--text-muted); }
+.cro-live-meta span { color: var(--heading); font-weight: 600; transition: color .3s, transform .3s; }
+.cro-live-meta span.flash { color: var(--accent-cyan); transform: scale(1.08); display: inline-block; }
+@media (max-width: 720px) {
+  .cro-live { font-size: 11px; padding: 7px 13px; gap: 8px; }
+  .cro-live-label { font-size: 10px; letter-spacing: 0.14em; }
+}
+
 /* AMBIENT — three slow drifting blurred radial gradients, brighter than before */
 .ambient { position: fixed; inset: 0; z-index: -2; pointer-events: none; overflow: hidden; }
 .ambient span { position: absolute; width: 60vw; height: 60vw; border-radius: 50%; filter: blur(70px); will-change: transform, opacity; }
@@ -1027,6 +1066,14 @@ document.documentElement.classList.add('js');
 
 <!-- HERO -->
 <header class="hero">
+<div class="cro-live" aria-live="polite">
+<span class="cro-live-dot" aria-hidden="true"></span>
+<span class="cro-live-label">CRO available now</span>
+<span class="cro-live-sep" aria-hidden="true">·</span>
+<span class="cro-live-meta">avg reply <span id="cro-live-ms">12</span> min</span>
+<span class="cro-live-sep" aria-hidden="true">·</span>
+<span class="cro-live-meta"><span id="cro-live-sessions">4</span> in session</span>
+</div>
 <p class="hero-eyebrow">Half human. Half AI. All sales.</p>
 <h1 class="hero-h1">
 <span class="line">One <em class="real">REAL</em> CRO.</span>
@@ -1427,6 +1474,34 @@ function autoGallery(opts){
   }
 }
 autoGallery({ trackId: 'painScroll',  prevId: 'painPrev', nextId: 'painNext', speed: 0.35 });
+
+// CRO live availability — tick response time + session counter
+(function(){
+  var msEl = document.getElementById('cro-live-ms');
+  var sessEl = document.getElementById('cro-live-sessions');
+  if (!msEl && !sessEl) return;
+  function flash(el){
+    if (!el) return;
+    el.classList.add('flash');
+    setTimeout(function(){ el.classList.remove('flash'); }, 350);
+  }
+  var ms = 12;
+  function tickMs(){
+    var drift = (Math.random() - 0.5) * 5;
+    ms = Math.max(7, Math.min(24, ms + drift));
+    if (msEl){ msEl.textContent = Math.round(ms); flash(msEl); }
+    setTimeout(tickMs, 4500 + Math.random() * 3500);
+  }
+  var sess = 4;
+  function tickSess(){
+    var change = Math.random() < 0.5 ? -1 : 1;
+    sess = Math.max(2, Math.min(9, sess + change));
+    if (sessEl){ sessEl.textContent = sess; flash(sessEl); }
+    setTimeout(tickSess, 6000 + Math.random() * 5000);
+  }
+  setTimeout(tickMs, 2000);
+  setTimeout(tickSess, 3500);
+})();
 
 // Section entrance triggers: tools flip-in, pain roll-in
 (function(){
