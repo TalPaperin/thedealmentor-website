@@ -84,13 +84,19 @@ html.js .hero-eyebrow,html.js .hero-h1,html.js .hero-sub,html.js .hero-ctas{
 html.js .is-in{opacity:1!important;transform:none!important}
 
 /* Tile flip-in — initial hidden state applied immediately via html.js (set in <head> before body parses). Animation triggered by .is-in class. */
-html.js .tile-flip{opacity:0;transform:perspective(900px) rotateY(-26deg) translateY(20px);transform-origin:left center}
-html.js .tile-flip.is-in{animation:tileFlip .75s cubic-bezier(.2,.7,.2,1) forwards}
+html.js .tile-flip{opacity:0;transform:perspective(1200px) rotateY(-55deg) translateY(40px) scale(.88);transform-origin:left center;will-change:transform,opacity}
+html.js .tile-flip.is-in{animation:tileFlip 1.2s cubic-bezier(.22,.65,.25,1) forwards}
 @keyframes tileFlip{
-  from{opacity:0;transform:perspective(900px) rotateY(-26deg) translateY(20px)}
-  to  {opacity:1;transform:perspective(900px) rotateY(0deg) translateY(0)}
+  0%  {opacity:0;transform:perspective(1200px) rotateY(-55deg) translateY(40px) scale(.88)}
+  55% {opacity:1}
+  100%{opacity:1;transform:perspective(1200px) rotateY(0deg) translateY(0) scale(1)}
 }
-@media (prefers-reduced-motion: reduce){html.js .tile-flip{opacity:1;transform:none}}
+/* Reduced-motion: still animate, but just a soft fade — no 3D rotation. */
+@media (prefers-reduced-motion: reduce){
+  html.js .tile-flip{opacity:0;transform:none}
+  html.js .tile-flip.is-in{animation:tileFlipReduced .5s ease-out forwards}
+  @keyframes tileFlipReduced{from{opacity:0}to{opacity:1}}
+}
 
 /* ===== BACKGROUND: flow field — dialled down, atmospheric ===== */
 #field{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.85;transition:opacity .4s}
@@ -563,21 +569,27 @@ function toggleFaq(btn){var expanded=btn.getAttribute('aria-expanded')==='true';
   var strips=document.querySelectorAll('.morph-grid,.tools-grid,.testimonials-grid');
   strips.forEach(function(strip){
     var cards=strip.querySelectorAll('.tile-flip');
-    cards.forEach(function(c,i){c.style.animationDelay=(i*0.09)+'s'});
+    cards.forEach(function(c,i){c.style.animationDelay=(i*0.15)+'s'});
     if('IntersectionObserver' in window){
       var io=new IntersectionObserver(function(entries){
         if(entries[0].isIntersecting){
           cards.forEach(function(c){c.classList.add('is-in')});
           io.disconnect();
         }
-      },{threshold:0,rootMargin:'0px 0px -50px 0px'});
+      },{threshold:0,rootMargin:'0px 0px -80px 0px'});
       io.observe(strip);
     }else{
       cards.forEach(function(c){c.classList.add('is-in')});
     }
   });
-  /* Safety net: force-reveal everything after 3s in case IO never fires */
-  setTimeout(function(){document.querySelectorAll('.tile-flip').forEach(function(c){c.classList.add('is-in')})},3000);
+  /* Safety: after 5s, only reveal cards currently within viewport (don't burn the animation on off-screen cards) */
+  setTimeout(function(){
+    document.querySelectorAll('.tile-flip').forEach(function(c){
+      if(c.classList.contains('is-in'))return;
+      var r=c.getBoundingClientRect();
+      if(r.top<window.innerHeight+200&&r.bottom>-200)c.classList.add('is-in');
+    });
+  },5000);
 })();
 </script>
 
