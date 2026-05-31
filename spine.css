@@ -182,11 +182,12 @@ nav.shrink{padding:10px clamp(20px,3vw,32px);background:color-mix(in srgb,var(--
 .founder-role a{color:var(--accent);font-weight:500;border-bottom:1px solid transparent;transition:border-color .15s}
 .founder-role a:hover{border-bottom-color:var(--accent)}
 
-/* ===== PAIN POINTS ===== */
-.pain-marquee{position:relative;margin-top:36px;overflow-x:auto;overflow-y:visible;padding:18px 4px 28px;scrollbar-width:none;scroll-snap-type:x mandatory;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 3%,#000 97%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 3%,#000 97%,transparent 100%)}
-.pain-marquee::-webkit-scrollbar{display:none}
-.pain-row{display:flex;gap:18px}
-.pain-card{flex:0 0 320px;scroll-snap-align:start;background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius-lg);padding:26px;box-shadow:var(--shadow);backdrop-filter:blur(10px);display:flex;flex-direction:column;gap:10px;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s}
+/* ===== PAIN POINTS — slow auto-rolling marquee, pauses on hover ===== */
+.pain-marquee{position:relative;margin-top:36px;overflow:hidden;padding:18px 0 28px;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%)}
+.pain-row{display:flex;gap:18px;width:max-content;animation:painRoll 70s linear infinite;will-change:transform}
+.pain-marquee:hover .pain-row{animation-play-state:paused}
+@keyframes painRoll{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 9px))}}
+.pain-card{flex:0 0 320px;background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius-lg);padding:26px;box-shadow:var(--shadow);backdrop-filter:blur(10px);display:flex;flex-direction:column;gap:10px;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s}
 .pain-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hi);border-color:var(--accent)}
 .icon-chip{width:42px;height:42px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:inline-flex;align-items:center;justify-content:center;margin-bottom:4px;border:1px solid var(--card-bd)}
 .icon-chip .ico{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
@@ -195,7 +196,7 @@ nav.shrink{padding:10px clamp(20px,3vw,32px);background:color-mix(in srgb,var(--
 .pain-title{font-family:'Geist',sans-serif;font-size:19px;font-weight:600;color:var(--ink);line-height:1.25;letter-spacing:-.015em}
 .pain-desc{font-family:'Geist',sans-serif;font-size:14.5px;color:var(--muted);line-height:1.55}
 .pain-cta{margin-top:auto;padding-top:12px;font-size:12.5px;font-weight:600;color:var(--accent);font-family:'Geist Mono',monospace;letter-spacing:.05em}
-@media (prefers-reduced-motion: reduce){.pain-row{flex-wrap:wrap;justify-content:center}}
+@media (prefers-reduced-motion: reduce){.pain-row{animation:none;flex-wrap:wrap;width:auto;justify-content:center}}
 
 /* ===== TOOLS GRID ===== */
 .tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:40px}

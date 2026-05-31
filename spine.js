@@ -106,6 +106,15 @@ function toggleFaq(btn){
   requestAnimationFrame(frame);
 })();
 
+/* ----- PAIN MARQUEE: duplicate the cards in .pain-row for a seamless loop ----- */
+(function(){
+  var row=document.querySelector('.pain-row');
+  if(!row)return;
+  var originals=Array.prototype.slice.call(row.children);
+  if(!originals.length)return;
+  originals.forEach(function(c){row.appendChild(c.cloneNode(true))});
+})();
+
 /* ----- TILE FLIP-IN (per-card IntersectionObserver) ----- */
 (function(){
   if(!document.documentElement.classList.contains('js'))return;
@@ -118,7 +127,7 @@ function toggleFaq(btn){
   if(!('IntersectionObserver' in window)){cards.forEach(function(c){c.classList.add('is-in')});return}
   var strips={};
   cards.forEach(function(c){
-    var parent=c.closest('.morph-grid,.tools-grid,.testimonials-grid,.pain-row,.plans-grid,.steps');
+    var parent=c.closest('.morph-grid,.tools-grid,.testimonials-grid,.plans-grid,.steps');
     if(!parent)return;
     var key=parent.dataset.flipKey;
     if(!key){key='s'+Math.random().toString(36).slice(2,8);parent.dataset.flipKey=key}
