@@ -84,17 +84,17 @@ html.js .hero-eyebrow,html.js .hero-h1,html.js .hero-sub,html.js .hero-ctas{
 html.js .is-in{opacity:1!important;transform:none!important}
 
 /* Tile flip-in — initial hidden state applied immediately via html.js (set in <head> before body parses). Animation triggered by .is-in class. */
-html.js .tile-flip{opacity:0;transform:perspective(1200px) rotateY(-55deg) translateY(40px) scale(.88);transform-origin:left center;will-change:transform,opacity}
-html.js .tile-flip.is-in{animation:tileFlip 2s cubic-bezier(.22,.65,.25,1) forwards}
+html.js .tile-flip{opacity:0;transform:perspective(1200px) rotateY(-60deg) translateY(50px) scale(.86);transform-origin:left center;will-change:transform,opacity}
+html.js .tile-flip.is-in{animation:tileFlip 2.6s cubic-bezier(.22,.65,.25,1) forwards}
 @keyframes tileFlip{
-  0%  {opacity:0;transform:perspective(1200px) rotateY(-55deg) translateY(40px) scale(.88)}
-  55% {opacity:1}
+  0%  {opacity:0;transform:perspective(1200px) rotateY(-60deg) translateY(50px) scale(.86)}
+  50% {opacity:1}
   100%{opacity:1;transform:perspective(1200px) rotateY(0deg) translateY(0) scale(1)}
 }
 /* Reduced-motion: still animate, but just a soft fade — no 3D rotation. */
 @media (prefers-reduced-motion: reduce){
   html.js .tile-flip{opacity:0;transform:none}
-  html.js .tile-flip.is-in{animation:tileFlipReduced .8s ease-out forwards}
+  html.js .tile-flip.is-in{animation:tileFlipReduced 1.2s ease-out forwards}
   @keyframes tileFlipReduced{from{opacity:0}to{opacity:1}}
 }
 
@@ -550,37 +550,53 @@ function toggleFaq(btn){var expanded=btn.getAttribute('aria-expanded')==='true';
 </script>
 
 <script>
-/* Tile flip-in — initial hidden state set by CSS via html.js. JS adds .is-in to trigger the @keyframes animation. */
+/* Tile flip-in — per-card IntersectionObserver. Each card waits for its own moment to enter the viewport, then animates. No giant pre-stagger — the wave naturally follows the user's scroll. */
 (function(){
   if(!document.documentElement.classList.contains('js'))return;
   if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
     document.querySelectorAll('.tile-flip').forEach(function(c){c.classList.add('is-in')});
     return;
   }
-  var strips=document.querySelectorAll('.morph-grid,.tools-grid,.testimonials-grid,.pain-row');
-  strips.forEach(function(strip){
-    var cards=strip.querySelectorAll('.tile-flip');
-    cards.forEach(function(c,i){c.style.animationDelay=(i*0.25)+'s'});
-    if('IntersectionObserver' in window){
-      var io=new IntersectionObserver(function(entries){
-        if(entries[0].isIntersecting){
-          cards.forEach(function(c){c.classList.add('is-in')});
-          io.disconnect();
-        }
-      },{threshold:0,rootMargin:'0px 0px -80px 0px'});
-      io.observe(strip);
-    }else{
-      cards.forEach(function(c){c.classList.add('is-in')});
-    }
+  var cards=document.querySelectorAll('.tile-flip');
+  if(!('IntersectionObserver' in window)){
+    cards.forEach(function(c){c.classList.add('is-in')});
+    return;
+  }
+  /* Within each strip, give cards a tiny per-position delay so neighbouring cards entering at the same moment cascade rather than fire in lockstep. */
+  var strips={};
+  cards.forEach(function(c){
+    var parent=c.closest('.morph-grid,.tools-grid,.testimonials-grid,.pain-row');
+    if(!parent)return;
+    var key=parent.dataset.flipKey;
+    if(!key){key='s'+Math.random().toString(36).slice(2,8);parent.dataset.flipKey=key}
+    strips[key]=strips[key]||0;
+    c.dataset.flipIndex=strips[key]++;
+    c.style.animationDelay=(c.dataset.flipIndex*0.18)+'s';
   });
-  /* Safety: after 5s, only reveal cards currently within viewport (don't burn the animation on off-screen cards) */
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('is-in');
+        io.unobserve(e.target);
+      }
+    });
+  },{
+    /* Trigger when card is meaningfully in view, not as it first peeks in. The negative bottom margin pushes the trigger line up from the viewport bottom, so animation starts as the card crosses ~25% from the top — matches where the user's eye is reading. */
+    threshold:0,
+    rootMargin:'0px 0px -25% 0px'
+  });
+  cards.forEach(function(c){io.observe(c)});
+  /* Safety: after 6s, reveal any tile-flip already in viewport that somehow missed IO */
   setTimeout(function(){
     document.querySelectorAll('.tile-flip').forEach(function(c){
       if(c.classList.contains('is-in'))return;
       var r=c.getBoundingClientRect();
-      if(r.top<window.innerHeight+200&&r.bottom>-200)c.classList.add('is-in');
+      if(r.top<window.innerHeight*0.85&&r.bottom>50){
+        c.classList.add('is-in');
+        io.unobserve(c);
+      }
     });
-  },5000);
+  },6000);
 })();
 </script>
 
