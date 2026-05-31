@@ -99,10 +99,32 @@ opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform
 html.js .is-in { opacity: 1 !important; transform: none !important; }
 
 /* STAGE (Three.js canvas + fallback + overlay) */
-#galaxy { display: none !important; }
-#net { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -2; display: block; pointer-events: none; }
+#galaxy, #net { display: none !important; }
+
+/* MARQUEE STACK — three tracks of running text behind the hero */
+.marquee-stack {
+  position: fixed; inset: 0; z-index: -2;
+  pointer-events: none; overflow: hidden;
+  display: flex; flex-direction: column;
+  justify-content: space-between;
+  padding: 12vh 0 16vh;
+  opacity: 1; transition: opacity .35s ease;
+}
+.marquee-stack.is-hidden { opacity: 0; }
+.marquee {
+  white-space: nowrap; display: flex;
+  font-family: 'Bricolage Grotesque', serif;
+  font-weight: 500; letter-spacing: -0.015em;
+  font-size: clamp(28px, 5.4vw, 78px);
+  line-height: 1; will-change: transform;
+}
+.marquee span { display: inline-block; padding-right: 56px; }
+.marquee.objections { color: rgba(255,108,108,0.16); font-weight: 700; animation: marqueeX 78s linear infinite; }
+.marquee.battlecards { color: rgba(120,235,255,0.16); font-style: italic; animation: marqueeX 96s linear infinite reverse; animation-delay: -14s; }
+.marquee.scripts { color: rgba(255,220,140,0.14); font-weight: 500; animation: marqueeX 116s linear infinite; animation-delay: -38s; }
+@keyframes marqueeX { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .stage-fallback {
-position: fixed; inset: 0; z-index: -2;
+position: fixed; inset: 0; z-index: -3;
 background:
 radial-gradient(45% 45% at 72% 72%, rgba(79,139,255,0.20), transparent 70%),
 radial-gradient(40% 40% at 80% 64%, rgba(179,107,255,0.16), transparent 70%),
@@ -418,8 +440,15 @@ document.documentElement.classList.add('js');
 <body>
 
 <!-- STAGE -->
-<canvas id="net" aria-hidden="true"></canvas>
 <div class="stage-fallback" id="stageFallback" aria-hidden="true"></div>
+
+<!-- MARQUEE STACK: 3 tracks of running text — objections, battlecards, scripts -->
+<div class="marquee-stack" id="marqueeStack" aria-hidden="true">
+<div class="marquee objections"><span>&ldquo;It costs too much.&rdquo;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&ldquo;We&rsquo;ll think about it.&rdquo;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&ldquo;Send us a deck.&rdquo;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&ldquo;Not this quarter.&rdquo;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&ldquo;We&rsquo;re going with someone else.&rdquo;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&ldquo;Email me the pricing.&rdquo;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&ldquo;We need to talk to legal.&rdquo;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&ldquo;It&rsquo;s not in budget.&rdquo;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&ldquo;Call me next month.&rdquo;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&ldquo;It costs too much.&rdquo;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&ldquo;We&rsquo;ll think about it.&rdquo;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&ldquo;Send us a deck.&rdquo;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&ldquo;Not this quarter.&rdquo;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&ldquo;We&rsquo;re going with someone else.&rdquo;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&ldquo;Email me the pricing.&rdquo;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&ldquo;We need to talk to legal.&rdquo;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&ldquo;It&rsquo;s not in budget.&rdquo;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&ldquo;Call me next month.&rdquo;&nbsp;&nbsp;&middot;&nbsp;&nbsp;</span></div>
+<div class="marquee battlecards"><span>vs Gong: we build the playbook.&nbsp;&nbsp;&middot;&nbsp;&nbsp;vs Salesloft: we close, not record.&nbsp;&nbsp;&middot;&nbsp;&nbsp;vs Apollo: we don&rsquo;t just dial.&nbsp;&nbsp;&middot;&nbsp;&nbsp;vs Outreach: we write the next line.&nbsp;&nbsp;&middot;&nbsp;&nbsp;vs HubSpot: we replace the CRO.&nbsp;&nbsp;&middot;&nbsp;&nbsp;vs Chorus: we score the moment.&nbsp;&nbsp;&middot;&nbsp;&nbsp;vs Chili Piper: we book and close.&nbsp;&nbsp;&middot;&nbsp;&nbsp;vs Clari: we change the deal.&nbsp;&nbsp;&middot;&nbsp;&nbsp;vs Gong: we build the playbook.&nbsp;&nbsp;&middot;&nbsp;&nbsp;vs Salesloft: we close, not record.&nbsp;&nbsp;&middot;&nbsp;&nbsp;vs Apollo: we don&rsquo;t just dial.&nbsp;&nbsp;&middot;&nbsp;&nbsp;vs Outreach: we write the next line.&nbsp;&nbsp;&middot;&nbsp;&nbsp;vs HubSpot: we replace the CRO.&nbsp;&nbsp;&middot;&nbsp;&nbsp;vs Chorus: we score the moment.&nbsp;&nbsp;&middot;&nbsp;&nbsp;vs Chili Piper: we book and close.&nbsp;&nbsp;&middot;&nbsp;&nbsp;vs Clari: we change the deal.&nbsp;&nbsp;&middot;&nbsp;&nbsp;</span></div>
+<div class="marquee scripts"><span>What problem are you actually trying to solve?&nbsp;&nbsp;&middot;&nbsp;&nbsp;Walk me through your last quarter.&nbsp;&nbsp;&middot;&nbsp;&nbsp;If we close today, what changes Monday morning?&nbsp;&nbsp;&middot;&nbsp;&nbsp;Who else needs to be in the room?&nbsp;&nbsp;&middot;&nbsp;&nbsp;What&rsquo;s the cost of doing nothing?&nbsp;&nbsp;&middot;&nbsp;&nbsp;When does this become urgent?&nbsp;&nbsp;&middot;&nbsp;&nbsp;What problem are you actually trying to solve?&nbsp;&nbsp;&middot;&nbsp;&nbsp;Walk me through your last quarter.&nbsp;&nbsp;&middot;&nbsp;&nbsp;If we close today, what changes Monday morning?&nbsp;&nbsp;&middot;&nbsp;&nbsp;Who else needs to be in the room?&nbsp;&nbsp;&middot;&nbsp;&nbsp;What&rsquo;s the cost of doing nothing?&nbsp;&nbsp;&middot;&nbsp;&nbsp;When does this become urgent?&nbsp;&nbsp;&middot;&nbsp;&nbsp;</span></div>
+</div>
+
 <div class="stage-overlay" aria-hidden="true"></div>
 
 <!-- NAV -->
@@ -816,277 +845,8 @@ toggle.setAttribute('aria-expanded', 'false');
 })();
 </script>
 
-<!-- NETWORK ENGINE: 10 AI tool nodes + 1 REAL CRO node, with traveling pulses -->
-<script>
-(function(){
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var canvas = document.getElementById('net');
-  if (!canvas) return;
-  var ctx = canvas.getContext('2d');
-  if (!ctx) return;
+<!-- HERO MARQUEE STACK IS PURE CSS — NO JS ENGINE NEEDED -->
 
-  var DPR = Math.min(window.devicePixelRatio || 1, 2);
-  var W = 0, H = 0;
-
-  var TOOL_NAMES = ['Playbook','Scripts','Competition','Objections','Copilot','Simulator','Certification','Outreach','Knowledge','Debugger'];
-
-  var nodes = [];     // all nodes (CRO first, then tools)
-  var tools = [];     // refs into nodes, tool-only
-  var edges = [];     // {a,b} indices into nodes
-  var pulses = [];    // {from,to,t,speed,trail}
-  var CRO_IDX = 0;
-  var sessionsCount = 0;
-
-  function layout(){
-    nodes = []; tools = []; edges = []; pulses = [];
-    var mobile = window.matchMedia('(max-width: 720px)').matches;
-    var portrait = H > W;
-
-    // CRO node placement
-    var cx, cy;
-    if (mobile || portrait){ cx = W * 0.5; cy = H * 0.78; }
-    else { cx = W * 0.78; cy = H * 0.56; }
-
-    var cro = { x: cx, y: cy, glow: 1, name: 'REAL CRO', isCro: true, labelAlpha: 1 };
-    CRO_IDX = nodes.length;
-    nodes.push(cro);
-
-    // 10 AI nodes around CRO
-    var ringR = Math.min(W, H) * (mobile ? 0.30 : 0.36);
-    var n = TOOL_NAMES.length;
-    for (var i = 0; i < n; i++){
-      var angle;
-      if (mobile || portrait){
-        angle = (i / n) * Math.PI * 2 - Math.PI / 2;
-      } else {
-        // Arc that fans across the right and slightly wraps; avoids covering the left-of-center hero text
-        var startDeg = -135, endDeg = 135;
-        var t = i / (n - 1);
-        angle = (startDeg + t * (endDeg - startDeg)) * Math.PI / 180;
-      }
-      var jitter = 0.86 + Math.random() * 0.28;
-      var x = cx + Math.cos(angle) * ringR * jitter;
-      var y = cy + Math.sin(angle) * ringR * jitter * 0.88;
-      var node = {
-        x: x, y: y,
-        vx: (Math.random() - 0.5) * 0.05,
-        vy: (Math.random() - 0.5) * 0.05,
-        glow: 0, labelAlpha: 0, name: TOOL_NAMES[i],
-        anchor: angle
-      };
-      tools.push(node);
-      nodes.push(node);
-    }
-
-    // Edges: each AI <-> CRO (the routing claim)
-    for (var i = 0; i < tools.length; i++){
-      edges.push({ a: CRO_IDX, b: nodes.indexOf(tools[i]) });
-    }
-    // Sibling links (adjacent in the arc)
-    for (var i = 0; i < tools.length - 1; i++){
-      edges.push({ a: nodes.indexOf(tools[i]), b: nodes.indexOf(tools[i + 1]) });
-    }
-    // A few sparse cross-links
-    for (var k = 0; k < 3; k++){
-      var a = Math.floor(Math.random() * tools.length);
-      var b = Math.floor(Math.random() * tools.length);
-      if (a !== b) edges.push({ a: nodes.indexOf(tools[a]), b: nodes.indexOf(tools[b]) });
-    }
-
-    for (var p = 0; p < 3; p++) spawnPulse();
-  }
-
-  function spawnPulse(){
-    // 75%: AI -> CRO (CRO routes it back on arrival). 25%: AI <-> AI sibling.
-    if (Math.random() < 0.75){
-      var i = Math.floor(Math.random() * tools.length);
-      pulses.push({ from: nodes.indexOf(tools[i]), to: CRO_IDX, t: 0,
-        speed: 0.0055 + Math.random() * 0.004, trail: [] });
-    } else {
-      var a = Math.floor(Math.random() * tools.length);
-      var b = Math.floor(Math.random() * tools.length);
-      while (b === a) b = Math.floor(Math.random() * tools.length);
-      pulses.push({ from: nodes.indexOf(tools[a]), to: nodes.indexOf(tools[b]), t: 0,
-        speed: 0.0050 + Math.random() * 0.003, trail: [] });
-    }
-  }
-
-  var mouse = { tx: 0, ty: 0, x: 0, y: 0 };
-  window.addEventListener('pointermove', function(e){
-    var cx = window.innerWidth / 2, cy = window.innerHeight / 2;
-    mouse.tx = (e.clientX - cx) / cx;
-    mouse.ty = (e.clientY - cy) / cy;
-  }, { passive: true });
-
-  function resize(){
-    var r = canvas.getBoundingClientRect();
-    W = r.width; H = r.height;
-    canvas.width = W * DPR; canvas.height = H * DPR;
-    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-    layout();
-    ctx.clearRect(0, 0, W, H);
-  }
-
-  var visible = true, heroVisible = true;
-  document.addEventListener('visibilitychange', function(){ visible = !document.hidden; });
-  var heroEl = document.querySelector('.hero');
-  if (heroEl && 'IntersectionObserver' in window){
-    new IntersectionObserver(function(entries){
-      heroVisible = entries[0].isIntersecting;
-    }, { threshold: 0 }).observe(heroEl);
-  }
-
-  function draw(){
-    if (!visible || !heroVisible){ requestAnimationFrame(draw); return; }
-    var time = performance.now() * 0.001;
-
-    // mouse parallax
-    mouse.x += (mouse.tx - mouse.x) * 0.05;
-    mouse.y += (mouse.ty - mouse.y) * 0.05;
-    var ox = -mouse.x * 12, oy = -mouse.y * 12;
-
-    // Trail fade
-    ctx.globalCompositeOperation = 'source-over';
-    ctx.fillStyle = 'rgba(4,7,20,0.22)';
-    ctx.fillRect(0, 0, W, H);
-
-    // Edges (additive)
-    ctx.globalCompositeOperation = 'lighter';
-    for (var e = 0; e < edges.length; e++){
-      var ed = edges[e];
-      var a = nodes[ed.a], b = nodes[ed.b];
-      var isCroEdge = (ed.a === CRO_IDX || ed.b === CRO_IDX);
-      ctx.strokeStyle = isCroEdge ? 'rgba(255,200,87,0.13)' : 'rgba(80,170,255,0.11)';
-      ctx.lineWidth = 0.9;
-      ctx.beginPath();
-      ctx.moveTo(a.x + ox, a.y + oy);
-      ctx.lineTo(b.x + ox, b.y + oy);
-      ctx.stroke();
-    }
-
-    // Drift tools, decay glow
-    for (var i = 0; i < tools.length; i++){
-      var nd = tools[i];
-      nd.x += nd.vx; nd.y += nd.vy;
-      if (nd.glow > 0.02) nd.glow *= 0.93;
-      if (nd.labelAlpha > 0.01) nd.labelAlpha *= 0.96;
-    }
-
-    // Pulses
-    for (var p = pulses.length - 1; p >= 0; p--){
-      var pu = pulses[p];
-      pu.t += pu.speed;
-      var aN = nodes[pu.from], bN = nodes[pu.to];
-      var px = aN.x + (bN.x - aN.x) * pu.t + ox;
-      var py = aN.y + (bN.y - aN.y) * pu.t + oy;
-      pu.trail.push({ x: px, y: py });
-      if (pu.trail.length > 22) pu.trail.shift();
-
-      var croPulse = (pu.from === CRO_IDX || pu.to === CRO_IDX);
-      var trailC = croPulse ? '255,200,87' : '120,235,255';
-      var headC = croPulse ? '255,228,158' : '170,240,255';
-
-      for (var k = 0; k < pu.trail.length; k++){
-        var tp = pu.trail[k];
-        var aa = k / pu.trail.length;
-        ctx.fillStyle = 'rgba(' + trailC + ',' + (0.09 + aa * 0.50).toFixed(3) + ')';
-        ctx.beginPath();
-        ctx.arc(tp.x, tp.y, 1 + aa * 2.2, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      var hg = ctx.createRadialGradient(px, py, 0, px, py, 18);
-      hg.addColorStop(0, 'rgba(' + headC + ',0.92)');
-      hg.addColorStop(0.3, 'rgba(' + trailC + ',0.55)');
-      hg.addColorStop(1, 'rgba(' + trailC + ',0)');
-      ctx.fillStyle = hg;
-      ctx.beginPath(); ctx.arc(px, py, 18, 0, Math.PI * 2); ctx.fill();
-
-      if (pu.t >= 1){
-        nodes[pu.to].glow = 1;
-        if (nodes[pu.to].labelAlpha !== undefined) nodes[pu.to].labelAlpha = 1;
-        if (pu.to === CRO_IDX){
-          // CRO routes a return pulse to a different AI tool
-          var dest = Math.floor(Math.random() * tools.length);
-          pulses.push({ from: CRO_IDX, to: nodes.indexOf(tools[dest]), t: 0,
-            speed: 0.0070 + Math.random() * 0.003, trail: [] });
-          sessionsCount++;
-        }
-        pulses.splice(p, 1);
-        spawnPulse();
-      }
-    }
-
-    // CRO node: persistent halo + bright core
-    var cx = nodes[CRO_IDX].x + ox, cy = nodes[CRO_IDX].y + oy;
-    var haloR = 38 + Math.sin(time * 1.5) * 3;
-    var cg = ctx.createRadialGradient(cx, cy, 0, cx, cy, haloR);
-    cg.addColorStop(0, 'rgba(255,228,158,0.55)');
-    cg.addColorStop(0.4, 'rgba(255,200,87,0.28)');
-    cg.addColorStop(1, 'rgba(255,200,87,0)');
-    ctx.fillStyle = cg;
-    ctx.beginPath(); ctx.arc(cx, cy, haloR, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = 'rgba(255,238,190,0.96)';
-    ctx.beginPath(); ctx.arc(cx, cy, 5, 0, Math.PI * 2); ctx.fill();
-
-    // AI tool nodes
-    for (var i = 0; i < tools.length; i++){
-      var nd = tools[i];
-      var x = nd.x + ox, y = nd.y + oy;
-      ctx.fillStyle = 'rgba(160,200,255,0.55)';
-      ctx.beginPath(); ctx.arc(x, y, 1.6, 0, Math.PI * 2); ctx.fill();
-      if (nd.glow > 0.05){
-        var ng = ctx.createRadialGradient(x, y, 0, x, y, 24);
-        ng.addColorStop(0, 'rgba(255,255,255,' + (0.75 * nd.glow).toFixed(3) + ')');
-        ng.addColorStop(0.3, 'rgba(120,235,255,' + (0.55 * nd.glow).toFixed(3) + ')');
-        ng.addColorStop(1, 'rgba(120,235,255,0)');
-        ctx.fillStyle = ng;
-        ctx.beginPath(); ctx.arc(x, y, 24, 0, Math.PI * 2); ctx.fill();
-      }
-    }
-
-    // Labels: drawn last in normal compositing for clean text
-    ctx.globalCompositeOperation = 'source-over';
-    ctx.font = "600 11px 'JetBrains Mono', ui-monospace, monospace";
-    ctx.textBaseline = 'middle';
-    for (var i = 0; i < tools.length; i++){
-      var nd = tools[i];
-      var x = nd.x + ox, y = nd.y + oy;
-      // Position label outward from CRO so labels don't overlap the network center
-      var ang = Math.atan2(nd.y - nodes[CRO_IDX].y, nd.x - nodes[CRO_IDX].x);
-      var lx = x + Math.cos(ang) * 12;
-      var ly = y + Math.sin(ang) * 12;
-      ctx.textAlign = Math.cos(ang) > 0.2 ? 'left' : (Math.cos(ang) < -0.2 ? 'right' : 'center');
-      var baseA = 0.20;
-      var alpha = baseA + nd.labelAlpha * 0.70;
-      ctx.fillStyle = 'rgba(190,215,255,' + alpha.toFixed(3) + ')';
-      ctx.fillText(nd.name, lx, ly);
-    }
-    // CRO label, always visible, gold
-    ctx.font = "700 13px 'JetBrains Mono', ui-monospace, monospace";
-    ctx.textAlign = 'center';
-    ctx.fillStyle = 'rgba(255,228,158,0.92)';
-    ctx.fillText('REAL CRO', cx, cy + 28);
-
-    requestAnimationFrame(draw);
-  }
-
-  // Tick the live-sessions number (base 14, ticks up to +8 as pulses route)
-  var sessionsEl = document.getElementById('m-sessions');
-  setInterval(function(){
-    if (sessionsEl && sessionsCount > 0){
-      sessionsEl.textContent = String(14 + Math.min(sessionsCount, 8));
-    }
-  }, 700);
-
-  window.addEventListener('resize', resize);
-  resize();
-
-  var fb = document.getElementById('stageFallback');
-  if (fb) fb.style.display = 'none';
-
-  requestAnimationFrame(draw);
-})();
-</script>
 
 <!-- SCROLL REVEAL + NAV SHRINK (no external libraries; cannot leave elements stuck) -->
 <script>
@@ -1098,6 +858,14 @@ if (nav) {
 var onScroll = function(){ nav.classList.toggle('shrink', window.scrollY > 200); };
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
+}
+// Fade the marquee stack out once the hero is scrolled past
+var marqueeStack = document.getElementById('marqueeStack');
+var heroForMarquee = document.querySelector('.hero');
+if (marqueeStack && heroForMarquee && 'IntersectionObserver' in window) {
+  new IntersectionObserver(function(entries){
+    marqueeStack.classList.toggle('is-hidden', !entries[0].isIntersecting);
+  }, { threshold: 0 }).observe(heroForMarquee);
 }
 // Reveals only run when html.js is set (added in <head>, skipped under reduced motion / no JS).
 if (!docEl.classList.contains('js')) return;
