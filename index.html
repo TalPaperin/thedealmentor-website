@@ -75,11 +75,16 @@ img{max-width:100%;display:block}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
 a:focus-visible,button:focus-visible,[role="button"]:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
 
-/* Scroll-reveal initial state — HERO ONLY. Everything below the hero renders normally (no blackout). */
+/* Scroll-reveal — hero fades in; tile strips flip in on scroll. Both fallback-safe (visible if JS/IO fails). */
 html.js .hero-eyebrow,html.js .hero-h1,html.js .hero-sub,html.js .hero-ctas{
   opacity:0;transform:translateY(16px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);
 }
 html.js .is-in{opacity:1!important;transform:none!important}
+
+/* Tile flip-in — only active when JS marks .tiles-ready on the parent strip */
+.tile-flip{transition:opacity .65s cubic-bezier(.2,.7,.2,1),transform .65s cubic-bezier(.2,.7,.2,1)}
+.tiles-ready .tile-flip{opacity:0;transform:perspective(900px) rotateY(-22deg) translateY(18px)}
+.tiles-ready .tile-flip.is-in{opacity:1;transform:perspective(900px) rotateY(0) translateY(0)}
 
 /* ===== BACKGROUND: flow field — dialled down, atmospheric ===== */
 #field{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.85;transition:opacity .4s}
@@ -146,8 +151,8 @@ nav.shrink{padding:10px clamp(20px,3vw,32px);background:color-mix(in srgb,var(--
 .divider{border:0;height:1px;background:var(--line);max-width:var(--maxw);margin:0 auto;opacity:.7}
 
 /* ===== SECTIONS ===== */
-.solid{position:relative;z-index:2;background:var(--bg);padding:clamp(70px,9vh,110px) 24px;border-top:1px solid var(--line);scroll-margin-top:80px}
-.solid-2{position:relative;z-index:2;background:var(--bg-2);padding:clamp(70px,9vh,110px) 24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);scroll-margin-top:80px}
+.solid{position:relative;z-index:2;background:transparent;padding:clamp(70px,9vh,110px) 24px;border-top:1px solid var(--line);scroll-margin-top:80px}
+.solid-2{position:relative;z-index:2;background:color-mix(in srgb,var(--bg-2) 65%,transparent);padding:clamp(70px,9vh,110px) 24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);scroll-margin-top:80px;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
 .section-inner{max-width:var(--maxw);margin:0 auto}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:16px}
 .eyebrow::before{content:'';width:18px;height:1px;background:var(--accent);display:inline-block}
@@ -164,8 +169,9 @@ nav.shrink{padding:10px clamp(20px,3vw,32px);background:color-mix(in srgb,var(--
 .morph-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:16px}
 .morph-card{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius-lg);padding:26px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:var(--shadow);position:relative;overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s}
 .morph-card:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:var(--shadow-hi)}
-.morph-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px;font-family:'Geist Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-.morph-tag{color:var(--accent);font-weight:500}
+.morph-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:18px;font-family:'Geist Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.morph-tag{color:var(--accent-2);font-weight:700;font-size:14px;letter-spacing:.10em}
+[data-theme="light"] .morph-tag{color:var(--accent)}
 .morph-state{display:flex;align-items:center;gap:10px;margin-bottom:14px;font-family:'Geist Mono',monospace;font-size:10.5px;letter-spacing:.20em;text-transform:uppercase}
 .morph-label{display:inline-flex;align-items:center;gap:7px;transition:color .35s,opacity .35s}
 .morph-label .dot{width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block}
@@ -181,7 +187,7 @@ nav.shrink{padding:10px clamp(20px,3vw,32px);background:color-mix(in srgb,var(--
 /* ===== FOUNDER QUOTE ===== */
 .founder{padding:clamp(70px,9vh,120px) 24px;max-width:var(--maxw);margin:0 auto;position:relative;z-index:2;border-top:1px solid var(--line);scroll-margin-top:80px}
 .founder-card{display:flex;gap:36px;align-items:center;background:var(--bg-card);border:1px solid var(--card-bd);border-radius:24px;padding:42px;box-shadow:var(--shadow);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);flex-wrap:wrap;position:relative;overflow:hidden}
-.founder-photo{width:140px;height:140px;border-radius:50%;object-fit:cover;flex-shrink:0;box-shadow:0 10px 28px rgba(0,0,0,.40)}
+.founder-photo{width:160px;height:160px;border-radius:50%;object-fit:cover;object-position:center 22%;flex-shrink:0;box-shadow:0 10px 28px rgba(0,0,0,.40)}
 [data-theme="light"] .founder-photo{box-shadow:0 10px 28px rgba(4,6,15,.14)}
 .founder-text{flex:1;min-width:260px}
 .founder-label{font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:12px}
@@ -334,7 +340,7 @@ footer{background:var(--bg-2);border-top:1px solid var(--line);padding:50px 24px
     <h2 class="section-h2" id="together-title">AI drafts it. <em>A real CRO sharpens it.</em></h2>
   </div>
   <div class="morph-grid">
-    <article class="morph-card" id="morph-card-1">
+    <article class="morph-card tile-flip" id="morph-card-1">
       <header class="morph-head"><span class="morph-tag">01 · Objection Handler</span><span>generated</span></header>
       <div class="morph-state is-a">
         <span class="morph-label a"><span class="dot"></span>Objection</span>
@@ -343,7 +349,7 @@ footer{background:var(--bg-2);border-top:1px solid var(--line);padding:50px 24px
       </div>
       <p class="morph-line"><span></span><span class="caret" aria-hidden="true"></span></p>
     </article>
-    <article class="morph-card" id="morph-card-2">
+    <article class="morph-card tile-flip" id="morph-card-2">
       <header class="morph-head"><span class="morph-tag">03 · Competition Analysis</span><span>battlecard</span></header>
       <div class="morph-state is-a">
         <span class="morph-label a"><span class="dot"></span>Competitor</span>
@@ -352,7 +358,7 @@ footer{background:var(--bg-2);border-top:1px solid var(--line);padding:50px 24px
       </div>
       <p class="morph-line"><span></span><span class="caret" aria-hidden="true"></span></p>
     </article>
-    <article class="morph-card" id="morph-card-3">
+    <article class="morph-card tile-flip" id="morph-card-3">
       <header class="morph-head"><span class="morph-tag">02 · ICP Scripts</span><span>personalized</span></header>
       <div class="morph-state is-a">
         <span class="morph-label a"><span class="dot"></span>Generic</span>
@@ -403,16 +409,16 @@ footer{background:var(--bg-2);border-top:1px solid var(--line);padding:50px 24px
     <h2 class="section-h2">Ten AI tools. <em>Every stage of the deal.</em></h2>
     <p class="section-sub">Numbered, named, built from your specific business. Each one calibrated by the CRO who built the methodology.</p>
     <div class="tools-grid">
-      <article class="tool-card" data-num="01"><h3 class="tool-name">Sales Playbook</h3><p class="tool-desc">Your complete sales program, built in 15 minutes.</p></article>
-      <article class="tool-card" data-num="02"><h3 class="tool-name">ICP Scripts</h3><p class="tool-desc">Cold call, voicemail, gatekeeper, objections, per buyer.</p></article>
-      <article class="tool-card" data-num="03"><h3 class="tool-name">Competition Analysis</h3><p class="tool-desc">Battlecards for every competitor, with the exact words to use.</p></article>
-      <article class="tool-card" data-num="04"><h3 class="tool-name">Objection Handler</h3><p class="tool-desc">Word-for-word responses to every objection your buyers raise.</p></article>
-      <article class="tool-card" data-num="05"><h3 class="tool-name">Sales Copilot</h3><p class="tool-desc">Pre-call brief and live talk track for every conversation.</p></article>
-      <article class="tool-card" data-num="06"><h3 class="tool-name">Call Simulation</h3><p class="tool-desc">Practice live calls against AI buyers. Get scored, get coached.</p></article>
-      <article class="tool-card" data-num="07"><h3 class="tool-name">Rep Certification</h3><p class="tool-desc">Dynamic quiz built from your program. Certify reps in days.</p></article>
-      <article class="tool-card" data-num="08"><h3 class="tool-name">Outreach Builder</h3><p class="tool-desc">Multi-touch email and LinkedIn sequences per ICP, fully written.</p></article>
-      <article class="tool-card" data-num="09"><h3 class="tool-name">Knowledge Base</h3><p class="tool-desc">Upload your pricing, case studies, collateral. Every output uses your materials.</p></article>
-      <article class="tool-card" data-num="10"><h3 class="tool-name">Deal Debugger</h3><p class="tool-desc">Diagnose a stalled deal. Get a specific recovery plan, not a checklist.</p></article>
+      <article class="tool-card tile-flip" data-num="01"><h3 class="tool-name">Sales Playbook</h3><p class="tool-desc">Your complete sales program, built in 15 minutes.</p></article>
+      <article class="tool-card tile-flip" data-num="02"><h3 class="tool-name">ICP Scripts</h3><p class="tool-desc">Cold call, voicemail, gatekeeper, objections, per buyer.</p></article>
+      <article class="tool-card tile-flip" data-num="03"><h3 class="tool-name">Competition Analysis</h3><p class="tool-desc">Battlecards for every competitor, with the exact words to use.</p></article>
+      <article class="tool-card tile-flip" data-num="04"><h3 class="tool-name">Objection Handler</h3><p class="tool-desc">Word-for-word responses to every objection your buyers raise.</p></article>
+      <article class="tool-card tile-flip" data-num="05"><h3 class="tool-name">Sales Copilot</h3><p class="tool-desc">Pre-call brief and live talk track for every conversation.</p></article>
+      <article class="tool-card tile-flip" data-num="06"><h3 class="tool-name">Call Simulation</h3><p class="tool-desc">Practice live calls against AI buyers. Get scored, get coached.</p></article>
+      <article class="tool-card tile-flip" data-num="07"><h3 class="tool-name">Rep Certification</h3><p class="tool-desc">Dynamic quiz built from your program. Certify reps in days.</p></article>
+      <article class="tool-card tile-flip" data-num="08"><h3 class="tool-name">Outreach Builder</h3><p class="tool-desc">Multi-touch email and LinkedIn sequences per ICP, fully written.</p></article>
+      <article class="tool-card tile-flip" data-num="09"><h3 class="tool-name">Knowledge Base</h3><p class="tool-desc">Upload your pricing, case studies, collateral. Every output uses your materials.</p></article>
+      <article class="tool-card tile-flip" data-num="10"><h3 class="tool-name">Deal Debugger</h3><p class="tool-desc">Diagnose a stalled deal. Get a specific recovery plan, not a checklist.</p></article>
     </div>
   </div>
 </section>
@@ -435,28 +441,28 @@ footer{background:var(--bg-2);border-top:1px solid var(--line);padding:50px 24px
     <p class="eyebrow">Proven in the field</p>
     <h2 class="section-h2">What founders and operators <em>actually say.</em></h2>
     <div class="testimonials-grid">
-      <figure class="testi-card testi-featured">
+      <figure class="testi-card tile-flip testi-featured">
         <span class="testi-badge">Featured</span>
         <blockquote class="testi-quote">"DealMentor brings real value by helping teams improve the way they prepare, communicate, and close deals. Better sales conversations, stronger strategy, more confidence throughout the process."</blockquote>
         <figcaption class="testi-author"><img src="/edward.jpg" alt="Edward Sussan" width="48" height="48" loading="lazy"><div><div class="testi-name">Edward Sussan</div><div class="testi-role">Founder &amp; CEO, MakhSuss</div></div></figcaption>
       </figure>
-      <figure class="testi-card">
+      <figure class="testi-card tile-flip">
         <blockquote class="testi-quote">"Tal provided me with wise advice. He listened and asked great questions that showed an advanced level of understanding. I was most impressed by his methodical way of thinking and experimenting in sales."</blockquote>
         <figcaption class="testi-author"><img src="https://ksw.solutions/wp-content/uploads/2023/03/1669820836546.jpeg" alt="Neriya Rosner" width="48" height="48" loading="lazy"><div><div class="testi-name">Neriya Rosner</div><div class="testi-role">Founder and CEO, SpecBite</div></div></figcaption>
       </figure>
-      <figure class="testi-card">
+      <figure class="testi-card tile-flip">
         <blockquote class="testi-quote">"In a short conversation, Tal was able to understand and analyze complex problems of understanding the market, customer analysis, and consumer mapping. He brought quick and good solutions that do the job."</blockquote>
         <figcaption class="testi-author"><img src="https://ksw.solutions/wp-content/uploads/2023/03/1557220927408.jpeg" alt="David Gallula" width="48" height="48" loading="lazy"><div><div class="testi-name">David Gallula, Ph.D.</div><div class="testi-role">Head at UED Research Institute, CEO at ProUX</div></div></figcaption>
       </figure>
-      <figure class="testi-card">
+      <figure class="testi-card tile-flip">
         <blockquote class="testi-quote">"We brought in Tal as our fractional VP of Sales from day one. He defined our ICP, built our outbound playbook, hired and trained SDRs, and launched our outbound motion twice. After we pivoted, Tal rebuilt everything from scratch with speed and precision."</blockquote>
         <figcaption class="testi-author"><img src="https://ksw.solutions/wp-content/uploads/2023/03/1679541341836.jpeg" alt="Sherman Barnes" width="48" height="48" loading="lazy"><div><div class="testi-name">Sherman Barnes II</div><div class="testi-role">Head of Sales and Marketing, Trio Trucking</div></div></figcaption>
       </figure>
-      <figure class="testi-card">
+      <figure class="testi-card tile-flip">
         <blockquote class="testi-quote">"Having Tal in your corner is priceless. He actively listens and extracts the essence of any business idea and distils it into action and a road map to your final goal. You leave refreshed, focused and ready to go."</blockquote>
         <figcaption class="testi-author"><img src="https://ksw.solutions/wp-content/uploads/2023/03/1645442066985.jpeg" alt="Daniel Zatman" width="48" height="48" loading="lazy"><div><div class="testi-name">Daniel Zatman</div><div class="testi-role">Co-Founder, Qii78</div></div></figcaption>
       </figure>
-      <figure class="testi-card">
+      <figure class="testi-card tile-flip">
         <blockquote class="testi-quote">"Tal approaches AI as a tool to support people, not replace them, helping businesses communicate better, understand opportunities more clearly, and improve their sales process with more focus and structure."</blockquote>
         <figcaption class="testi-author"><img src="/ibrahim.jpg" alt="Ibrahim Makhoul" width="48" height="48" loading="lazy"><div><div class="testi-name">Ibrahim Makhoul</div><div class="testi-role">Co-Founder, MakhSuss</div></div></figcaption>
       </figure>
@@ -542,6 +548,36 @@ function toggleFaq(btn){var expanded=btn.getAttribute('aria-expanded')==='true';
 </script>
 
 <script>
+/* Tile flip-in — for morph cards, tool cards, testimonials. IntersectionObserver gates the entrance per strip. Safety: forced reveal after 2s. */
+(function(){
+  if(!document.documentElement.classList.contains('js'))return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('.tile-flip').forEach(function(c){c.classList.add('is-in')});
+    return;
+  }
+  var strips=document.querySelectorAll('.morph-grid,.tools-grid,.testimonials-grid');
+  strips.forEach(function(strip){
+    strip.classList.add('tiles-ready');
+    var cards=strip.querySelectorAll('.tile-flip');
+    cards.forEach(function(c,i){c.style.transitionDelay=(i*0.07)+'s'});
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(entries){
+        if(entries[0].isIntersecting){
+          cards.forEach(function(c){c.classList.add('is-in')});
+          io.disconnect();
+        }
+      },{threshold:0.10,rootMargin:'0px 0px -8% 0px'});
+      io.observe(strip);
+    }else{
+      cards.forEach(function(c){c.classList.add('is-in')});
+    }
+  });
+  /* Safety: force-reveal everything after 2.5s in case IO never fires */
+  setTimeout(function(){document.querySelectorAll('.tile-flip').forEach(function(c){c.classList.add('is-in')})},2500);
+})();
+</script>
+
+<script>
 /* CONCEPT-C FLOW FIELD — dialled down: fewer particles, slower, smaller cursor force, cyan->blue hue (no magenta) */
 (function(){
   if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
@@ -553,7 +589,7 @@ function toggleFaq(btn){var expanded=btn.getAttribute('aria-expanded')==='true';
   var particles=[],COUNT=0;
   function targetCount(){var area=W*H,mobile=window.matchMedia('(max-width:720px)').matches;return Math.min(mobile?350:900,Math.max(220,Math.floor(area/1600)))}
   function makeP(p){if(!p)p={};p.x=Math.random()*W;p.y=Math.random()*H;p.life=80+Math.random()*220;p.age=0;p.seed=Math.random();return p}
-  function resize(){var r=c.getBoundingClientRect();W=r.width;H=r.height;c.width=W*DPR;c.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);var isL=document.documentElement.getAttribute('data-theme')==='light';ctx.fillStyle=isL?'#FFFFFF':'#04060F';ctx.fillRect(0,0,W,H);COUNT=targetCount();particles=[];for(var i=0;i<COUNT;i++)particles.push(makeP())}
+  function resize(){var r=c.getBoundingClientRect();W=r.width;H=r.height;c.width=W*DPR;c.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);ctx.clearRect(0,0,W,H);COUNT=targetCount();particles=[];for(var i=0;i<COUNT;i++)particles.push(makeP())}
   var mouse={x:0,y:0,px:0,py:0,vx:0,vy:0,active:false,last:0};
   window.addEventListener('pointermove',function(e){var x=e.clientX,y=e.clientY;mouse.vx=x-mouse.px;mouse.vy=y-mouse.py;mouse.px=mouse.x;mouse.py=mouse.y;mouse.x=x;mouse.y=y;mouse.active=true;mouse.last=performance.now();var inj=Math.min(4,Math.floor(Math.hypot(mouse.vx,mouse.vy)*.2));for(var k=0;k<inj;k++)particles.push({x:x+(Math.random()-.5)*14,y:y+(Math.random()-.5)*14,life:50+Math.random()*100,age:0,seed:Math.random(),injected:true,ivx:mouse.vx*(.3+Math.random()*.3),ivy:mouse.vy*(.3+Math.random()*.3)});if(particles.length>COUNT*1.4)particles.splice(0,particles.length-COUNT*1.4|0)},{passive:true});
   var t0=performance.now(),vis=true;
