@@ -141,17 +141,20 @@ html.js .is-in { opacity: 1 !important; transform: none !important; }
 /* STAGE (Three.js canvas + fallback + overlay) */
 #galaxy, #net { display: none !important; }
 
-/* AMBIENT — three slow drifting blurred radial gradients */
+/* AMBIENT — three slow drifting blurred radial gradients, brighter than before */
 .ambient { position: fixed; inset: 0; z-index: -2; pointer-events: none; overflow: hidden; }
-.ambient span { position: absolute; width: 55vw; height: 55vw; border-radius: 50%; filter: blur(90px); will-change: transform; }
-.ambient .b1 { top: -10%; left: -15%; background: radial-gradient(circle, rgba(52,229,255,0.22) 0%, transparent 70%); animation: blobA 42s ease-in-out infinite alternate; }
-.ambient .b2 { bottom: -15%; right: -12%; background: radial-gradient(circle, rgba(179,107,255,0.20) 0%, transparent 70%); animation: blobB 56s ease-in-out infinite alternate; }
-.ambient .b3 { top: 40%; left: 38%; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(255,200,87,0.12) 0%, transparent 70%); animation: blobC 70s ease-in-out infinite alternate; }
-@keyframes blobA { from { transform: translate(0,0); } to { transform: translate(30vw, 20vh); } }
-@keyframes blobB { from { transform: translate(0,0); } to { transform: translate(-25vw, -18vh); } }
-@keyframes blobC { from { transform: translate(0,0); } to { transform: translate(18vw, -22vh); } }
+.ambient span { position: absolute; width: 60vw; height: 60vw; border-radius: 50%; filter: blur(70px); will-change: transform, opacity; }
+.ambient .b1 { top: -12%; left: -18%; background: radial-gradient(circle, rgba(52,229,255,0.42) 0%, transparent 65%); animation: blobA 24s ease-in-out infinite alternate, blobPulseA 11s ease-in-out infinite; }
+.ambient .b2 { bottom: -18%; right: -15%; background: radial-gradient(circle, rgba(179,107,255,0.38) 0%, transparent 65%); animation: blobB 32s ease-in-out infinite alternate, blobPulseB 13s ease-in-out infinite; }
+.ambient .b3 { top: 38%; left: 32%; width: 45vw; height: 45vw; background: radial-gradient(circle, rgba(255,200,87,0.22) 0%, transparent 65%); animation: blobC 40s ease-in-out infinite alternate, blobPulseA 17s ease-in-out infinite; }
+@keyframes blobA { from { transform: translate(0,0); } to { transform: translate(40vw, 28vh); } }
+@keyframes blobB { from { transform: translate(0,0); } to { transform: translate(-35vw, -22vh); } }
+@keyframes blobC { from { transform: translate(0,0); } to { transform: translate(25vw, -30vh); } }
+@keyframes blobPulseA { 0%,100% { opacity: 0.6; } 50% { opacity: 1; } }
+@keyframes blobPulseB { 0%,100% { opacity: 0.5; } 50% { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) {
   .ambient .b1, .ambient .b2, .ambient .b3 { animation: none; }
+  .hero-h1 .real { animation: none; }
 }
 
 /* TOGETHER SECTION — three morph cards (live demos of platform output) */
@@ -754,7 +757,7 @@ nav.shrink .wordmark { font-size: 19px; }
 .nav-logo img { height: 32px; width: auto; display: block; transition: height .25s ease; }
 nav.shrink .nav-logo img { height: 26px; }
 .nav-links { display: flex; align-items: center; gap: 32px; }
-.nav-links a { color: var(--text-muted); font-size: 14.5px; font-weight: 500; padding: 8px 12px; border-radius: 8px; transition: color .15s, background .15s; }
+.nav-links a { color: var(--text-muted); font-size: 16px; font-weight: 500; padding: 9px 14px; border-radius: 8px; transition: color .15s, background .15s; }
 .nav-links a:hover { color: var(--heading); background: rgba(255,255,255,0.04); }
 .nav-links a:hover { color: #fff; }
 .nav-login-m { display: none; }
@@ -798,10 +801,20 @@ margin-bottom: 16px;
 .hero-eyebrow { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: clamp(12px, 1.2vw, 14px); letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-cyan); font-weight: 500; margin-bottom: 22px; display: inline-flex; align-items: center; gap: 12px; }
 .hero-eyebrow::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-cyan); box-shadow: 0 0 14px var(--accent-cyan); animation: heroDot 1.6s ease-in-out infinite; }
 @keyframes heroDot { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.35); opacity: 0.55; } }
-.hero-h1 { font-size: clamp(40px, 7.2vw, 108px); font-weight: 800; line-height: 1.02; letter-spacing: -0.035em; color: var(--heading); margin-bottom: 26px; }
+.hero-h1 { font-size: clamp(40px, 7.2vw, 108px); font-weight: 800; line-height: 1.16; letter-spacing: -0.035em; color: var(--heading); margin-bottom: 26px; }
 .hero-h1 .line { display: block; }
-/* Bricolage Grotesque has no italic on Google Fonts — faux italic clips. Gradient + weight for emphasis instead. */
-.hero-h1 .real { background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; font-weight: 800; padding: 0 0.04em; }
+.hero-h1 .real {
+  background: linear-gradient(110deg, #34E5FF 0%, #6F8BFF 25%, #B36BFF 50%, #6F8BFF 75%, #34E5FF 100%);
+  background-size: 220% 100%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-weight: 800;
+  animation: heroShimmer 6s ease-in-out infinite alternate;
+}
+@keyframes heroShimmer { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
 .hero-sub { font-size: clamp(15px, 1.4vw, 19px); color: var(--text); line-height: 1.55; max-width: 62ch; margin: 0 auto 28px; }
 .hero-telemetry { display: flex; justify-content: center; gap: clamp(20px, 4vw, 56px); flex-wrap: wrap; max-width: 920px; margin: 38px auto 0; padding-top: 28px; border-top: 1px solid var(--glass-bd); }
 .hero-telemetry .metric { display: flex; flex-direction: column; gap: 4px; min-width: 120px; align-items: center; }
@@ -885,8 +898,9 @@ box-shadow: inset 0 0 0 1px rgba(52,229,255,0.55), 0 0 18px rgba(52,229,255,0.12
 .logos { padding: 70px 32px; text-align: center; }
 .logos-label { font-size: 12px; letter-spacing: .2em; color: var(--text-muted); font-weight: 600; text-transform: uppercase; margin-bottom: 36px; }
 .logos-row { display: flex; align-items: center; justify-content: center; gap: 22px; flex-wrap: wrap; max-width: var(--maxw); margin: 0 auto; }
-.logo-box { background: #fff; border-radius: 12px; padding: 16px 26px; display: flex; align-items: center; justify-content: center; min-width: 140px; min-height: 72px; }
-.logo-box img { max-height: 44px; width: auto; object-fit: contain; }
+.logo-box { background: #fff; border-radius: 14px; padding: 22px 32px; display: flex; align-items: center; justify-content: center; min-width: 200px; min-height: 110px; }
+.logo-box img { max-height: 72px; width: auto; object-fit: contain; }
+.logos-row { gap: 28px; }
 
 /* TESTIMONIALS */
 .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -1220,8 +1234,7 @@ document.documentElement.classList.add('js');
 <div class="section-inner">
 <p class="eyebrow">Proven in the field</p>
 <h2 class="section-h2">What founders and operators <em>actually say.</em></h2>
-<div class="testi-gallery" id="testiGallery">
-<div class="testimonials-grid" id="testiScroll">
+<div class="testimonials-grid">
 <figure class="testi-card testi-featured card glass">
 <span class="testi-badge">Featured</span>
 <blockquote class="testi-quote">"DealMentor brings real value by helping teams improve the way they prepare, communicate, and close deals. Better sales conversations, stronger strategy, more confidence throughout the process."</blockquote>
@@ -1265,7 +1278,6 @@ document.documentElement.classList.add('js');
 <div><div class="testi-name">Ibrahim Makhoul</div><div class="testi-role">Co-Founder, MakhSuss</div></div>
 </figcaption>
 </figure>
-</div>
 </div>
 </div>
 </section>
@@ -1441,7 +1453,6 @@ function autoGallery(opts){
   }
 }
 autoGallery({ trackId: 'painScroll',  prevId: 'painPrev', nextId: 'painNext', speed: 0.35 });
-autoGallery({ trackId: 'testiScroll', speed: 0.30 });
 
 // Section entrance triggers: tools flip-in, pain roll-in
 (function(){
