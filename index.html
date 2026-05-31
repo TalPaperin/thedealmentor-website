@@ -131,7 +131,7 @@ border-radius: 6px;
 html.js .hero-eyebrow, html.js .hero-h1, html.js .hero-sub,
 html.js .hero-ctas, html.js .hero-telemetry, html.js .morph-card,
 html.js .founder-card, html.js .eyebrow, html.js .section-h2, html.js .section-sub,
-html.js .pain-card, html.js .tool-card, html.js .step, html.js .cro-header,
+html.js .step, html.js .cro-header,
 html.js .plan-card, html.js .logos-label, html.js .logo-box, html.js .testi-card,
 html.js .faq-list, html.js .final-cta h2, html.js .final-cta p, html.js .final-cta .btn-primary {
 opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease;
@@ -141,14 +141,18 @@ html.js .is-in { opacity: 1 !important; transform: none !important; }
 /* STAGE (Three.js canvas + fallback + overlay) */
 #galaxy, #net { display: none !important; }
 
-/* HERO FLOW FIELD: full-viewport canvas drifting behind the hero text */
-#heroField {
-  position: fixed; inset: 0; z-index: -2;
-  width: 100%; height: 100%;
-  pointer-events: none;
-  opacity: 1; transition: opacity .35s ease;
+/* AMBIENT — three slow drifting blurred radial gradients */
+.ambient { position: fixed; inset: 0; z-index: -2; pointer-events: none; overflow: hidden; }
+.ambient span { position: absolute; width: 55vw; height: 55vw; border-radius: 50%; filter: blur(90px); will-change: transform; }
+.ambient .b1 { top: -10%; left: -15%; background: radial-gradient(circle, rgba(52,229,255,0.22) 0%, transparent 70%); animation: blobA 42s ease-in-out infinite alternate; }
+.ambient .b2 { bottom: -15%; right: -12%; background: radial-gradient(circle, rgba(179,107,255,0.20) 0%, transparent 70%); animation: blobB 56s ease-in-out infinite alternate; }
+.ambient .b3 { top: 40%; left: 38%; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(255,200,87,0.12) 0%, transparent 70%); animation: blobC 70s ease-in-out infinite alternate; }
+@keyframes blobA { from { transform: translate(0,0); } to { transform: translate(30vw, 20vh); } }
+@keyframes blobB { from { transform: translate(0,0); } to { transform: translate(-25vw, -18vh); } }
+@keyframes blobC { from { transform: translate(0,0); } to { transform: translate(18vw, -22vh); } }
+@media (prefers-reduced-motion: reduce) {
+  .ambient .b1, .ambient .b2, .ambient .b3 { animation: none; }
 }
-#heroField.is-hidden { opacity: 0; }
 
 /* TOGETHER SECTION — three morph cards (live demos of platform output) */
 .together { position: relative; padding: 88px 24px 96px; max-width: 1200px; margin: 0 auto; }
@@ -434,15 +438,39 @@ section.solid-2 .pain-gallery::after  { background: linear-gradient(to left, var
   55%      { opacity: 0.9; transform: scaleX(1); }
 }
 
-/* TOOL TILES: number-pulse staggered reveal on scroll */
-.tool-card { opacity: 0.45; transform: translateY(12px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1); }
-.tool-card.is-in { opacity: 1; transform: translateY(0); }
-.tool-card.is-in::before { animation: numPulse 0.7s cubic-bezier(.2,.7,.2,1); }
-@keyframes numPulse {
-  0%   { transform: scale(0.6); opacity: 0; filter: blur(4px); }
-  60%  { transform: scale(1.15); opacity: 1; filter: blur(0); }
-  100% { transform: scale(1); opacity: 1; }
+/* TOOL TILES: flip-in (rotateY) as section enters viewport, staggered cascade */
+.tools-grid .tool-card {
+  opacity: 0;
+  transform: perspective(900px) rotateY(65deg);
+  transform-origin: left center;
+  transition: opacity .55s ease, transform .65s cubic-bezier(.2,.7,.2,1);
+  backface-visibility: hidden;
 }
+.tools-grid.flipped-in .tool-card { opacity: 1; transform: perspective(900px) rotateY(0); }
+.tools-grid.flipped-in .tool-card:nth-child(1)  { transition-delay: 0.00s; }
+.tools-grid.flipped-in .tool-card:nth-child(2)  { transition-delay: 0.07s; }
+.tools-grid.flipped-in .tool-card:nth-child(3)  { transition-delay: 0.14s; }
+.tools-grid.flipped-in .tool-card:nth-child(4)  { transition-delay: 0.21s; }
+.tools-grid.flipped-in .tool-card:nth-child(5)  { transition-delay: 0.28s; }
+.tools-grid.flipped-in .tool-card:nth-child(6)  { transition-delay: 0.35s; }
+.tools-grid.flipped-in .tool-card:nth-child(7)  { transition-delay: 0.42s; }
+.tools-grid.flipped-in .tool-card:nth-child(8)  { transition-delay: 0.49s; }
+.tools-grid.flipped-in .tool-card:nth-child(9)  { transition-delay: 0.56s; }
+.tools-grid.flipped-in .tool-card:nth-child(10) { transition-delay: 0.63s; }
+
+/* PAIN CARDS: roll-in from the right as section enters viewport, staggered */
+.pain-gallery .pain-card {
+  opacity: 0;
+  transform: translateX(60px) rotate(-1.5deg);
+  transition: opacity .55s ease, transform .65s cubic-bezier(.2,.7,.2,1);
+}
+.pain-gallery.rolled-in .pain-card { opacity: 1; transform: translateX(0) rotate(0); }
+.pain-gallery.rolled-in .pain-grid > .pain-card:nth-child(1) { transition-delay: 0.00s; }
+.pain-gallery.rolled-in .pain-grid > .pain-card:nth-child(2) { transition-delay: 0.10s; }
+.pain-gallery.rolled-in .pain-grid > .pain-card:nth-child(3) { transition-delay: 0.20s; }
+.pain-gallery.rolled-in .pain-grid > .pain-card:nth-child(4) { transition-delay: 0.30s; }
+.pain-gallery.rolled-in .pain-grid > .pain-card:nth-child(5) { transition-delay: 0.40s; }
+.pain-gallery.rolled-in .pain-grid > .pain-card:nth-child(6) { transition-delay: 0.50s; }
 
 /* TESTIMONIALS: horizontal carousel */
 .testi-gallery {
@@ -475,8 +503,8 @@ section.solid-2 .testi-gallery::after  { content: ''; position: absolute; right:
 
 @media (prefers-reduced-motion: reduce) {
   .cro-header::before { animation: none; }
-  .tool-card { opacity: 1; transform: none; }
-  .tool-card.is-in::before { animation: none; }
+  .tools-grid .tool-card { opacity: 1; transform: none; transition: none; }
+  .pain-gallery .pain-card { opacity: 1; transform: none; transition: none; }
 }
 .cro-header p { font-size: 16px; color: var(--text); }
 .cro-header strong { color: var(--gold); font-weight: 600; }
@@ -726,7 +754,8 @@ nav.shrink .wordmark { font-size: 19px; }
 .nav-logo img { height: 32px; width: auto; display: block; transition: height .25s ease; }
 nav.shrink .nav-logo img { height: 26px; }
 .nav-links { display: flex; align-items: center; gap: 32px; }
-.nav-links a { color: var(--text-muted); font-size: 15px; font-weight: 500; transition: color .15s; }
+.nav-links a { color: var(--text-muted); font-size: 14.5px; font-weight: 500; padding: 8px 12px; border-radius: 8px; transition: color .15s, background .15s; }
+.nav-links a:hover { color: var(--heading); background: rgba(255,255,255,0.04); }
 .nav-links a:hover { color: #fff; }
 .nav-login-m { display: none; }
 .nav-right { display: flex; align-items: center; gap: 12px; }
@@ -769,9 +798,10 @@ margin-bottom: 16px;
 .hero-eyebrow { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: clamp(12px, 1.2vw, 14px); letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-cyan); font-weight: 500; margin-bottom: 22px; display: inline-flex; align-items: center; gap: 12px; }
 .hero-eyebrow::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-cyan); box-shadow: 0 0 14px var(--accent-cyan); animation: heroDot 1.6s ease-in-out infinite; }
 @keyframes heroDot { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.35); opacity: 0.55; } }
-.hero-h1 { font-size: clamp(40px, 7.2vw, 108px); font-weight: 800; line-height: 1.12; letter-spacing: -0.035em; color: var(--heading); margin-bottom: 26px; }
+.hero-h1 { font-size: clamp(40px, 7.2vw, 108px); font-weight: 800; line-height: 1.02; letter-spacing: -0.035em; color: var(--heading); margin-bottom: 26px; }
 .hero-h1 .line { display: block; }
-.hero-h1 .real { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; font-style: italic; display: inline-block; padding: 0.12em 0.06em 0.18em; margin: -0.10em -0.04em -0.14em; line-height: 1; }
+/* Bricolage Grotesque has no italic on Google Fonts — faux italic clips. Gradient + weight for emphasis instead. */
+.hero-h1 .real { background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; font-weight: 800; padding: 0 0.04em; }
 .hero-sub { font-size: clamp(15px, 1.4vw, 19px); color: var(--text); line-height: 1.55; max-width: 62ch; margin: 0 auto 28px; }
 .hero-telemetry { display: flex; justify-content: center; gap: clamp(20px, 4vw, 56px); flex-wrap: wrap; max-width: 920px; margin: 38px auto 0; padding-top: 28px; border-top: 1px solid var(--glass-bd); }
 .hero-telemetry .metric { display: flex; flex-direction: column; gap: 4px; min-width: 120px; align-items: center; }
@@ -945,7 +975,7 @@ html { scroll-behavior: auto; }
 html.js .hero-eyebrow, html.js .hero-h1, html.js .hero-sub,
 html.js .hero-ctas, html.js .hero-telemetry, html.js .morph-card,
 html.js .founder-card, html.js .eyebrow, html.js .section-h2, html.js .section-sub,
-html.js .pain-card, html.js .tool-card, html.js .step, html.js .cro-header,
+html.js .step, html.js .cro-header,
 html.js .plan-card, html.js .logos-label, html.js .logo-box, html.js .testi-card,
 html.js .faq-list, html.js .final-cta h2, html.js .final-cta p, html.js .final-cta .btn-primary { opacity: 1 !important; transform: none !important; transition: none !important; }
 *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
@@ -968,8 +998,8 @@ document.documentElement.classList.add('js');
 <!-- STAGE -->
 <div class="stage-fallback" id="stageFallback" aria-hidden="true"></div>
 
-<!-- HERO FLOW FIELD: iridescent particle drift, cursor-reactive -->
-<canvas id="heroField" aria-hidden="true"></canvas>
+<!-- AMBIENT BLOB DRIFT: CSS-only atmospheric backdrop -->
+<div class="ambient" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
 
 <div class="stage-overlay" aria-hidden="true"></div>
 
@@ -1344,188 +1374,6 @@ toggle.setAttribute('aria-expanded', 'false');
 })();
 </script>
 
-<!-- HERO FLOW FIELD ENGINE: iridescent particle drift, cursor-reactive -->
-<script>
-(function(){
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var canvas = document.getElementById('heroField');
-  if (!canvas) return;
-  var ctx = canvas.getContext('2d', { alpha: true });
-  if (!ctx) return;
-
-  var DPR = Math.min(window.devicePixelRatio || 1, 2);
-  var W = 0, H = 0, particles = [], COUNT = 0;
-  var signals = [], lastSignalAt = 0, nextSignalDelay = 3500;
-
-  function hash(i){ var n = Math.sin(i) * 43758.5453; return n - Math.floor(n); }
-  function vn(x, y){
-    var ix = Math.floor(x), iy = Math.floor(y);
-    var fx = x - ix, fy = y - iy;
-    fx = fx*fx*(3-2*fx); fy = fy*fy*(3-2*fy);
-    var a = hash(ix*0.31415 + iy*1.61803);
-    var b = hash((ix+1)*0.31415 + iy*1.61803);
-    var c = hash(ix*0.31415 + (iy+1)*1.61803);
-    var d = hash((ix+1)*0.31415 + (iy+1)*1.61803);
-    return ((a*(1-fx) + b*fx) * (1-fy)) + ((c*(1-fx) + d*fx) * fy);
-  }
-  function flow(x, y, t){
-    var nx = vn(x*0.0024 + t*0.04, y*0.0024 - t*0.03);
-    var ny = vn(x*0.0024 + 91.1, y*0.0024 - 13.7);
-    var n  = vn(x*0.0018 + nx*1.2 + t*0.05, y*0.0018 + ny*1.2 - t*0.04);
-    return n * Math.PI * 4;
-  }
-  function targetCount(){
-    var mobile = window.matchMedia('(max-width:720px)').matches;
-    var max = mobile ? 500 : 1100;
-    return Math.min(max, Math.max(300, Math.floor(W*H / 1500)));
-  }
-  function makeParticle(p){
-    if (!p) p = {};
-    p.x = Math.random() * W;
-    p.y = Math.random() * H;
-    p.life = 80 + Math.random()*240;
-    p.age = 0;
-    p.hueSeed = Math.random();
-    return p;
-  }
-  function resize(){
-    var r = canvas.getBoundingClientRect();
-    W = r.width; H = r.height;
-    canvas.width = W * DPR; canvas.height = H * DPR;
-    ctx.setTransform(DPR,0,0,DPR,0,0);
-    ctx.fillStyle = 'rgba(4,7,20,1)'; ctx.fillRect(0,0,W,H);
-    COUNT = targetCount();
-    particles = [];
-    for (var i=0;i<COUNT;i++) particles.push(makeParticle());
-  }
-
-  var mouse = { x: 0, y: 0, px: 0, py: 0, vx: 0, vy: 0, active: false, last: 0 };
-  window.addEventListener('pointermove', function(e){
-    mouse.vx = e.clientX - mouse.px; mouse.vy = e.clientY - mouse.py;
-    mouse.px = mouse.x; mouse.py = mouse.y;
-    mouse.x = e.clientX; mouse.y = e.clientY;
-    mouse.active = true; mouse.last = performance.now();
-  }, { passive: true });
-
-  var t0 = performance.now();
-  var visible = true;
-  document.addEventListener('visibilitychange', function(){ visible = !document.hidden; });
-
-  function pickEdgePoint(side){
-    if (side === 0) return { x: Math.random()*W, y: -30 };
-    if (side === 1) return { x: W+30, y: Math.random()*H };
-    if (side === 2) return { x: Math.random()*W, y: H+30 };
-    return { x: -30, y: Math.random()*H };
-  }
-  function spawnSignal(now){
-    var isGold = Math.random() < 0.42; // 42% gold (CRO), 58% cyan (AI)
-    var sideIn  = Math.floor(Math.random() * 4);
-    var sideOut = (sideIn + 2 + Math.floor(Math.random()*2 - 0.5)) % 4; // mostly opposite
-    if (sideOut < 0) sideOut += 4;
-    var s = pickEdgePoint(sideIn);
-    var e = pickEdgePoint(sideOut);
-    var dx = e.x - s.x, dy = e.y - s.y;
-    var d = Math.sqrt(dx*dx + dy*dy) || 1;
-    var speed = 5.5 + Math.random() * 1.5;
-    signals.push({
-      x: s.x, y: s.y,
-      vx: dx/d * speed, vy: dy/d * speed,
-      isGold: isGold,
-      age: 0, life: d / speed,
-      trail: []
-    });
-    lastSignalAt = now;
-    nextSignalDelay = 3500 + Math.random() * 3500; // 3.5-7s gap
-  }
-
-  function frame(){
-    if (!visible){ requestAnimationFrame(frame); return; }
-    var now = performance.now();
-    var t = (now - t0) * 0.001;
-
-    ctx.globalCompositeOperation = 'source-over';
-    ctx.fillStyle = 'rgba(4,7,20,0.055)'; // slower fade => brighter, longer trails
-    ctx.fillRect(0,0,W,H);
-    ctx.globalCompositeOperation = 'lighter';
-
-    var mr = 150, mr2 = mr*mr;
-    var mx = mouse.x, my = mouse.y;
-    var mActive = mouse.active && (now - mouse.last) < 400;
-
-    for (var i=0;i<particles.length;i++){
-      var p = particles[i];
-      var a = flow(p.x, p.y, t);
-      var vx = Math.cos(a) * 1.0;
-      var vy = Math.sin(a) * 1.0;
-      if (mActive){
-        var dx = p.x - mx, dy = p.y - my;
-        var d2 = dx*dx + dy*dy;
-        if (d2 < mr2 && d2 > 1){
-          var d = Math.sqrt(d2);
-          var force = (1 - d/mr) * 2.0;
-          vx += (dx/d) * force;
-          vy += (dy/d) * force;
-        }
-      }
-      p.x += vx; p.y += vy; p.age++;
-      var lifeAlpha = (1 - p.age / p.life);
-      if (lifeAlpha <= 0 || p.x < -20 || p.x > W+20 || p.y < -20 || p.y > H+20){
-        makeParticle(p);
-        continue;
-      }
-      var hueBase = 195 + p.hueSeed * 85;
-      var alpha = 0.10 + 0.15 * lifeAlpha; // ~2x brighter than before
-      ctx.fillStyle = 'hsla(' + hueBase.toFixed(1) + ',92%,68%,' + alpha.toFixed(3) + ')';
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, 1.3, 0, Math.PI*2);
-      ctx.fill();
-    }
-
-    // SIGNALS: rare bright pulses traveling across the field
-    // Cyan = AI signal (a script generated, an objection handled)
-    // Gold = CRO signal (a session, a deal closed)
-    if (signals.length === 0 && (now - lastSignalAt) > nextSignalDelay){
-      spawnSignal(now);
-    }
-    for (var i = signals.length - 1; i >= 0; i--){
-      var sig = signals[i];
-      sig.x += sig.vx; sig.y += sig.vy; sig.age++;
-      sig.trail.push({ x: sig.x, y: sig.y });
-      if (sig.trail.length > 70) sig.trail.shift();
-      var color = sig.isGold ? '255,200,87' : '120,235,255';
-      var headC = sig.isGold ? '255,238,180' : '180,250,255';
-      // Trail
-      for (var k = 0; k < sig.trail.length; k++){
-        var tp = sig.trail[k];
-        var aa = k / sig.trail.length;
-        ctx.fillStyle = 'rgba(' + color + ',' + (0.06 + aa * 0.55).toFixed(3) + ')';
-        ctx.beginPath();
-        ctx.arc(tp.x, tp.y, 1 + aa * 2.8, 0, Math.PI*2);
-        ctx.fill();
-      }
-      // Bright head bloom
-      var hg = ctx.createRadialGradient(sig.x, sig.y, 0, sig.x, sig.y, 28);
-      hg.addColorStop(0, 'rgba(' + headC + ',0.95)');
-      hg.addColorStop(0.3, 'rgba(' + color + ',0.6)');
-      hg.addColorStop(1, 'rgba(' + color + ',0)');
-      ctx.fillStyle = hg;
-      ctx.beginPath(); ctx.arc(sig.x, sig.y, 28, 0, Math.PI*2); ctx.fill();
-      if (sig.age >= sig.life){
-        signals.splice(i, 1);
-      }
-    }
-
-    requestAnimationFrame(frame);
-  }
-
-  window.addEventListener('resize', resize);
-  resize();
-  mouse.x = W/2; mouse.y = H/2; mouse.active = true; mouse.last = performance.now();
-  setTimeout(function(){ mouse.active = false; }, 1500);
-  requestAnimationFrame(frame);
-})();
-</script>
-
 <!-- SCROLL REVEAL + NAV SHRINK (no external libraries; cannot leave elements stuck) -->
 <script>
 (function(){
@@ -1595,28 +1443,26 @@ function autoGallery(opts){
 autoGallery({ trackId: 'painScroll',  prevId: 'painPrev', nextId: 'painNext', speed: 0.35 });
 autoGallery({ trackId: 'testiScroll', speed: 0.30 });
 
-// Tools section: stagger reveal each tile with a number-pulse as section enters viewport
+// Section entrance triggers: tools flip-in, pain roll-in
 (function(){
-  var tiles = document.querySelectorAll('.tools-grid .tool-card');
-  if (!tiles.length || !('IntersectionObserver' in window)) {
-    tiles.forEach(function(t){ t.classList.add('is-in'); });
-    return;
+  function trigger(selector, className){
+    var el = document.querySelector(selector);
+    if (!el) return;
+    if (!('IntersectionObserver' in window)) { el.classList.add(className); return; }
+    var o = new IntersectionObserver(function(entries){
+      if (entries[0].isIntersecting){ el.classList.add(className); o.disconnect(); }
+    }, { threshold: 0.12 });
+    o.observe(el);
   }
-  var firstObserver = new IntersectionObserver(function(entries){
-    if (!entries[0].isIntersecting) return;
-    firstObserver.disconnect();
-    tiles.forEach(function(tile, i){
-      setTimeout(function(){ tile.classList.add('is-in'); }, i * 80);
-    });
-  }, { threshold: 0.15 });
-  firstObserver.observe(document.querySelector('.tools-grid'));
+  trigger('.tools-grid',   'flipped-in');
+  trigger('.pain-gallery', 'rolled-in');
 })();
 // Reveals only run when html.js is set (added in <head>, skipped under reduced motion / no JS).
 if (!docEl.classList.contains('js')) return;
-var SEL = '.hero-eyebrow,.hero-h1,.hero-sub,.hero-ctas,.hero-telemetry,.founder-card,.eyebrow,.section-h2,.section-sub,.morph-card,.pain-card,.tool-card,.step,.cro-header,.plan-card,.logos-label,.logo-box,.testi-card,.faq-list,.final-cta h2,.final-cta p,.final-cta .btn-primary';
+var SEL = '.hero-eyebrow,.hero-h1,.hero-sub,.hero-ctas,.hero-telemetry,.founder-card,.eyebrow,.section-h2,.section-sub,.morph-card,.step,.cro-header,.plan-card,.logos-label,.logo-box,.testi-card,.faq-list,.final-cta h2,.final-cta p,.final-cta .btn-primary';
 var els = Array.prototype.slice.call(document.querySelectorAll(SEL));
 function stagger(sel){ var g = document.querySelectorAll(sel); Array.prototype.forEach.call(g, function(e,i){ e.style.transitionDelay = (i * 0.07) + 's'; }); }
-stagger('.pain-grid .pain-card'); stagger('.tools-grid .tool-card'); stagger('.plans-grid .plan-card'); stagger('.morph-grid .morph-card');
+stagger('.plans-grid .plan-card'); stagger('.morph-grid .morph-card');
 stagger('.testimonials-grid .testi-card'); stagger('.logos-row .logo-box'); stagger('.steps .step');
 stagger('.hero .hero-eyebrow, .hero .hero-h1, .hero .hero-sub, .hero .hero-ctas, .hero .hero-telemetry');
 function reveal(e){ e.classList.add('is-in'); }
