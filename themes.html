@@ -7,93 +7,78 @@
 <title>DealMentor — Theme Picker</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Geist+Mono:wght@400;500&family=Geist:wght@400;500;600;700&display=swap">
 <style>
-:root{--bg:#06080F;--ink:#F4F7FF;--muted:#8895AE;--line:rgba(255,255,255,.08);--accent:#34E5FF}
+:root{--bg:#06080F;--ink:#F0F4FF;--muted:#7E8AA8;--line:rgba(255,255,255,.08);--accent:#34E5FF}
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;min-height:100%}
+html,body{background:var(--bg);color:var(--ink);font-family:'Geist','Inter Tight',Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;min-height:100%}
 body{padding:clamp(28px,4.5vw,56px);display:flex;flex-direction:column;gap:clamp(36px,5vw,56px)}
 header{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:26px;flex-wrap:wrap;gap:16px}
-.kicker{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
-.title{font-family:Fraunces,serif;font-weight:400;font-size:clamp(32px,4.4vw,56px);line-height:1.05;letter-spacing:-.025em;margin-top:8px}
-.title em{font-style:italic;color:var(--accent)}
-.lede{max-width:760px;color:var(--muted);font-size:clamp(15px,1.3vw,18px);line-height:1.55}
-.lede em{color:#F4F7FF;font-style:italic;font-family:Fraunces,serif}
+.kicker{font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.title{font-family:'Newsreader',serif;font-weight:400;font-size:clamp(36px,5vw,64px);line-height:1.02;letter-spacing:-.02em;margin-top:8px}
+.title em{font-style:italic;background:linear-gradient(110deg,#5BD7A8,#34E5FF,#FF6BC5);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{max-width:780px;color:var(--muted);font-size:clamp(15px,1.3vw,18px);line-height:1.6}
+.lede em{color:#F0F4FF;font-style:italic;font-family:'Newsreader',serif}
 
-.grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
 .card{position:relative;display:flex;flex-direction:column;text-decoration:none;color:var(--ink);
   border:1px solid var(--line);border-radius:20px;overflow:hidden;
   background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0));
-  min-height:440px;transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s}
-.card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.22)}
+  min-height:460px;transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s}
+.card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.24)}
 .card-art{height:220px;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
 .card-body{padding:24px 26px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
 .card-foot{padding:0 26px 24px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
-.tag{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
-.card h2{font-family:Fraunces,serif;font-weight:500;font-size:28px;line-height:1.08;letter-spacing:-.02em}
+.tag{font-family:'Geist Mono',monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.card h2{font-family:'Newsreader',serif;font-weight:500;font-size:30px;line-height:1.06;letter-spacing:-.02em}
 .card h2 em{font-style:italic;font-weight:400}
 .card p{color:var(--muted);font-size:14.5px;line-height:1.55}
-.go{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:13.5px;color:var(--ink);font-family:'IBM Plex Mono',monospace;letter-spacing:.04em;text-transform:uppercase}
+.go{display:inline-flex;align-items:center;gap:8px;font-weight:500;font-size:13px;color:var(--ink);font-family:'Geist Mono',monospace;letter-spacing:.06em;text-transform:uppercase}
 .go svg{transition:transform .3s}
 .card:hover .go svg{transform:translateX(4px)}
-.spec{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--muted);text-align:right;line-height:1.5}
+.spec{font-family:'Geist Mono',monospace;font-size:10.5px;color:var(--muted);text-align:right;line-height:1.5}
 .spec b{color:var(--ink);font-weight:500;display:block;margin-bottom:2px}
 
-/* === Theme thumbnails (animated CSS previews) === */
+/* === Animated thumbnails === */
 
-/* Theme 1: Obsidian — aurora mesh */
-.art-1{background:#06080F;position:relative;overflow:hidden}
-.art-1::before{content:'';position:absolute;inset:-30%;background:
-  radial-gradient(circle 180px at 25% 30%,rgba(52,229,255,.55),transparent 70%),
-  radial-gradient(circle 200px at 75% 40%,rgba(79,139,255,.50),transparent 70%),
-  radial-gradient(circle 220px at 50% 80%,rgba(179,107,255,.55),transparent 70%);
-  filter:blur(28px);animation:m1 12s ease-in-out infinite alternate}
-@keyframes m1{from{transform:translate(-12px,-8px) scale(1)}to{transform:translate(16px,12px) scale(1.10)}}
-.art-1 .word{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:Inter,sans-serif;font-weight:600;font-size:62px;color:#F4F7FF;letter-spacing:-.04em;z-index:3}
-.art-1 .word em{font-family:Fraunces,serif;font-style:italic;color:#34E5FF;font-weight:400}
-
-/* Theme 2: Velvet — slow gold spotlight on plum */
-.art-2{background:#13091B;position:relative;overflow:hidden}
-.art-2::before{content:'';position:absolute;width:260px;height:260px;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);
-  background:radial-gradient(circle,rgba(229,180,84,.28) 0%,rgba(200,75,62,.18) 35%,transparent 70%);
-  filter:blur(40px);animation:m2 8s ease-in-out infinite alternate}
-@keyframes m2{from{transform:translate(-50%,-50%)}to{transform:translate(-30%,-40%)}}
-.art-2::after{content:'';position:absolute;inset:0;opacity:.5;mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .9 0 0 0 0 .65 0 0 0 0 .35 0 0 0 .4 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-.art-2 .word{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:Fraunces,serif;font-style:italic;font-weight:400;font-size:68px;color:#E5B454;letter-spacing:-.02em;z-index:3}
-
-/* Theme 3: Terminal — scan-lines + green CRT */
+/* Theme 3 — Terminal: scan lines + glow + flickering blocks */
 .art-3{background:#000;position:relative;overflow:hidden}
-.art-3::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0,transparent 2px,rgba(255,255,255,.05) 2px,rgba(255,255,255,.05) 3px);opacity:.4}
-.art-3::after{content:'';position:absolute;width:280px;height:280px;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(0,255,102,.18) 0%,transparent 65%);filter:blur(30px);animation:m3 3s ease-in-out infinite}
-@keyframes m3{0%,100%{opacity:.6}50%{opacity:1}}
-.art-3 .word{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:50px;color:#00FF66;text-shadow:0 0 12px rgba(0,255,102,.6);letter-spacing:.02em;text-transform:uppercase;z-index:3;padding:0 .15em}
-.art-3 .word::after{content:'';display:inline-block;width:10px;height:38px;background:#00FF66;box-shadow:0 0 12px rgba(0,255,102,.6);margin-left:6px;animation:bl 1s steps(1) infinite;vertical-align:middle}
+.art-3::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0,transparent 2px,rgba(255,255,255,.06) 2px,rgba(255,255,255,.06) 3px);opacity:.55}
+.art-3::after{content:'';position:absolute;width:260px;height:260px;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(0,255,102,.20) 0%,transparent 65%);filter:blur(30px);animation:pulse3 3s ease-in-out infinite}
+@keyframes pulse3{0%,100%{opacity:.55}50%{opacity:1}}
+.art-3 .word{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Geist Mono',monospace;font-weight:600;font-size:46px;color:#00FF66;text-shadow:0 0 14px rgba(0,255,102,.6);letter-spacing:.02em;text-transform:uppercase;z-index:3;padding:0 .15em}
+.art-3 .word::after{content:'';display:inline-block;width:10px;height:36px;background:#00FF66;box-shadow:0 0 14px rgba(0,255,102,.6);margin-left:6px;animation:bl 1s steps(1) infinite;vertical-align:middle}
 @keyframes bl{50%{opacity:.2}}
 
-/* Theme 4: Stratos — chromatic gradient bands */
+/* Theme 4 — Stratos: chromatic flow particles drifting */
 .art-4{background:#04060F;position:relative;overflow:hidden}
-.art-4 .b{position:absolute;left:-40%;right:-40%;height:60px;filter:blur(28px);will-change:transform}
-.art-4 .b1{top:25%;background:linear-gradient(90deg,transparent,rgba(0,240,255,.55) 50%,transparent);transform:rotate(-10deg);animation:m4a 6s ease-in-out infinite alternate}
-.art-4 .b2{top:55%;background:linear-gradient(90deg,transparent,rgba(0,102,255,.55) 50%,transparent);transform:rotate(-12deg);animation:m4b 7s ease-in-out infinite alternate;animation-delay:-1s}
-.art-4 .b3{top:80%;background:linear-gradient(90deg,transparent,rgba(255,43,214,.55) 50%,transparent);transform:rotate(-8deg);animation:m4c 8s ease-in-out infinite alternate;animation-delay:-2s}
-@keyframes m4a{from{transform:translateY(0) rotate(-10deg)}to{transform:translateY(20px) rotate(-8deg)}}
-@keyframes m4b{from{transform:translateY(0) rotate(-12deg)}to{transform:translateY(-15px) rotate(-14deg)}}
-@keyframes m4c{from{transform:translateY(0) rotate(-8deg)}to{transform:translateY(10px) rotate(-10deg)}}
-.art-4 .word{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:Inter,sans-serif;font-weight:700;font-size:62px;background:linear-gradient(110deg,#00F0FF,#0066FF 50%,#FF2BD6);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-.04em;z-index:3;font-style:italic}
+.art-4 .p{position:absolute;width:3px;height:3px;border-radius:50%;animation:flowDrift 5s ease-in-out infinite}
+.art-4 .p.p1{left:15%;top:30%;background:#00F0FF;box-shadow:0 0 8px #00F0FF;animation-delay:0s}
+.art-4 .p.p2{left:35%;top:60%;background:#0066FF;box-shadow:0 0 8px #0066FF;animation-delay:-.7s}
+.art-4 .p.p3{left:55%;top:20%;background:#FF2BD6;box-shadow:0 0 8px #FF2BD6;animation-delay:-1.3s}
+.art-4 .p.p4{left:75%;top:75%;background:#00F0FF;box-shadow:0 0 8px #00F0FF;animation-delay:-2s}
+.art-4 .p.p5{left:25%;top:80%;background:#0066FF;box-shadow:0 0 8px #0066FF;animation-delay:-2.8s}
+.art-4 .p.p6{left:65%;top:45%;background:#FF2BD6;box-shadow:0 0 8px #FF2BD6;animation-delay:-3.4s}
+.art-4 .p.p7{left:85%;top:30%;background:#00F0FF;box-shadow:0 0 8px #00F0FF;animation-delay:-4.1s}
+.art-4 .p.p8{left:5%;top:55%;background:#FF2BD6;box-shadow:0 0 8px #FF2BD6;animation-delay:-.4s}
+@keyframes flowDrift{0%{transform:translate(0,0) scale(1);opacity:.85}50%{transform:translate(30px,-20px) scale(1.4);opacity:1}100%{transform:translate(60px,10px) scale(.8);opacity:0}}
+.art-4 .word{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Geist',sans-serif;font-weight:600;font-size:60px;font-style:italic;background:linear-gradient(110deg,#00F0FF,#0066FF 50%,#FF2BD6);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-.04em;z-index:3;animation:gradShift 5s ease-in-out infinite alternate}
+@keyframes gradShift{from{background-position:0% 50%}to{background-position:100% 50%}}
 
-/* Theme 5: Aurora Midnight — sweeping aurora bands */
+/* Theme 5 — Aurora Midnight: sweeping aurora + stars */
 .art-5{background:#03050C;position:relative;overflow:hidden}
 .art-5::before{content:'';position:absolute;inset:-30%;background:
-  radial-gradient(ellipse 80% 30% at 30% 25%,rgba(91,215,168,.55),transparent 60%),
-  radial-gradient(ellipse 80% 30% at 70% 50%,rgba(52,229,255,.55),transparent 60%),
-  radial-gradient(ellipse 80% 30% at 40% 75%,rgba(179,107,255,.55),transparent 60%);
-  filter:blur(40px);animation:m5 14s ease-in-out infinite alternate}
-@keyframes m5{from{transform:translate(0,0)}to{transform:translate(-30px,20px)}}
-.art-5::after{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.6) 0.5px,transparent 1px);background-size:38px 38px;opacity:.4}
-.art-5 .word{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:72px;background:linear-gradient(110deg,#5BD7A8,#34E5FF 50%,#FF6BC5);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-.01em;z-index:3}
+  radial-gradient(ellipse 70% 30% at 25% 25%,rgba(91,215,168,.55),transparent 60%),
+  radial-gradient(ellipse 70% 30% at 70% 50%,rgba(52,229,255,.55),transparent 60%),
+  radial-gradient(ellipse 70% 30% at 45% 80%,rgba(179,107,255,.50),transparent 60%),
+  radial-gradient(ellipse 70% 30% at 80% 80%,rgba(255,107,197,.45),transparent 60%);
+  filter:blur(40px);animation:aur 14s ease-in-out infinite alternate}
+@keyframes aur{from{transform:translate(0,0) scale(1)}to{transform:translate(-30px,20px) scale(1.06)}}
+.art-5::after{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.8) 0.5px,transparent 1px);background-size:38px 38px;opacity:.4;animation:starFlick 4s ease-in-out infinite alternate}
+@keyframes starFlick{from{opacity:.3}to{opacity:.55}}
+.art-5 .word{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Newsreader',serif;font-style:italic;font-weight:400;font-size:68px;background:linear-gradient(110deg,#5BD7A8,#34E5FF 50%,#FF6BC5);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-.01em;z-index:3}
 
-footer{border-top:1px solid var(--line);padding-top:22px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-family:'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase}
+footer{border-top:1px solid var(--line);padding-top:22px;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-family:'Geist Mono',monospace;letter-spacing:.06em;text-transform:uppercase}
 footer a{color:var(--muted);text-decoration:none;border-bottom:1px solid transparent}
 footer a:hover{color:var(--ink);border-bottom-color:var(--ink)}
 </style>
@@ -101,91 +86,66 @@ footer a:hover{color:var(--ink);border-bottom-color:var(--ink)}
 <body>
 <header>
   <div>
-    <div class="kicker">DealMentor · Theme Prototypes · v3</div>
-    <h1 class="title">Pick the <em>look.</em></h1>
+    <div class="kicker">DealMentor · Theme Prototypes · v4</div>
+    <h1 class="title">The final <em>three.</em></h1>
   </div>
-  <div class="kicker" style="text-align:right">5 directions · all dark<br>each with a <em style="color:#fff;font-style:italic">light toggle</em></div>
+  <div class="kicker" style="text-align:right">premium type · concept-class motion<br>dark default · <em style="color:#fff;font-style:italic">light toggle in each</em></div>
 </header>
 
 <section>
-  <p class="lede">Five whole-page directions. Each opens with the hero + the three live morph cards (AI drafts → CRO sharpens, scrambling between Generic and Personalized). Every prototype has a <em>dark/light toggle</em> in the top-right corner — click the moon/sun to flip and see how the same theme feels in the other mode. The one that earns its place becomes the spine for all nine pages.</p>
+  <p class="lede">Three survivors from the previous round — now with <em>Geist</em> and <em>Newsreader</em> (no more cartoonish display fonts) and concept-c-class full-viewport reactive animation. Each opens with the hero + three live morph cards. Each has a moon/sun toggle (top-right) that flips to that theme's light palette. Move your cursor on the dark variants — the field reacts.</p>
 </section>
 
 <div class="grid">
 
-  <a class="card" href="theme-1.html">
-    <div class="card-art art-1"><span class="word"><em>real</em></span></div>
-    <div class="card-body">
-      <span class="tag">Theme 01 · cursor parallax</span>
-      <h2>Obsidian</h2>
-      <p>Deep navy with a slow drifting aurora mesh that responds to your cursor. Inter sans + Fraunces italic for emphasis words. Cyan accent. Linear-territory, refined.</p>
-    </div>
-    <div class="card-foot">
-      <span class="go">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-      <div class="spec"><b>Mesh + parallax</b>Refined · brand-native</div>
-    </div>
-  </a>
-
-  <a class="card" href="theme-2.html">
-    <div class="card-art art-2"><span class="word">real</span></div>
-    <div class="card-body">
-      <span class="tag">Theme 02 · velvet noise</span>
-      <h2><em>Velvet Editorial</em></h2>
-      <p>Deep plum + champagne gold. Velvet noise texture overlay + warm spotlight that follows your cursor (drifts on its own if idle). Fraunces serif throughout. Luxury editorial.</p>
-    </div>
-    <div class="card-foot">
-      <span class="go">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-      <div class="spec"><b>Velvet + spotlight</b>Most luxury · serif-led</div>
-    </div>
-  </a>
-
   <a class="card" href="theme-3.html">
     <div class="card-art art-3"><span class="word">REAL</span></div>
     <div class="card-body">
-      <span class="tag">Theme 03 · CRT scan-lines</span>
+      <span class="tag">Theme 03 · particle field · log stream</span>
       <h2>Terminal</h2>
-      <p>Pure black + terminal green. CRT scan-lines, glowing cursor block, headline types itself in line by line. IBM Plex Mono everywhere. Brutalist power-tool — Bloomberg energy.</p>
+      <p>Pure black + terminal green. Concept-c-class flow field of green particles drifting downward — cursor pushes them outward radially with velocity injection. CRT scan-lines, glowing cursor block. Live "log stream" panel under the hero shows real platform telemetry being generated. <em>Geist Mono</em> throughout — premium technical, no IBM Plex.</p>
     </div>
     <div class="card-foot">
       <span class="go">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-      <div class="spec"><b>Scan + CRT + glow</b>Loudest · no-bullshit</div>
+      <div class="spec"><b>Flow field + CRT + log</b>Brutalist · no-bullshit</div>
     </div>
   </a>
 
   <a class="card" href="theme-4.html">
     <div class="card-art art-4">
-      <span class="b b1"></span><span class="b b2"></span><span class="b b3"></span>
+      <span class="p p1"></span><span class="p p2"></span><span class="p p3"></span><span class="p p4"></span>
+      <span class="p p5"></span><span class="p p6"></span><span class="p p7"></span><span class="p p8"></span>
       <span class="word">real</span>
     </div>
     <div class="card-body">
-      <span class="tag">Theme 04 · chromatic flow</span>
+      <span class="tag">Theme 04 · chromatic flow field</span>
       <h2>Stratos</h2>
-      <p>Black with chromatic gradient bands flowing diagonally across the background. Electric-blue + cyan + magenta accent gradient on emphasis words. Vercel / Stripe sci-fi tech.</p>
+      <p>Black + chromatic accents (cyan → electric blue → magenta). The full concept-c flow field — noise-driven vector field, cursor pushes particles outward, velocity injection on motion. Iridescent hue range. Floating control deck panel (pipeline / close rate / friction). <em>Geist</em> sans — Vercel-grade premium tech.</p>
     </div>
     <div class="card-foot">
       <span class="go">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-      <div class="spec"><b>Chromatic flow</b>Most "tech" · sharp</div>
+      <div class="spec"><b>Concept-C flow + deck</b>Sharp · sci-fi tech</div>
     </div>
   </a>
 
   <a class="card" href="theme-5.html">
     <div class="card-art art-5"><span class="word">real</span></div>
     <div class="card-body">
-      <span class="tag">Theme 05 · canvas aurora</span>
+      <span class="tag">Theme 05 · aurora flow + stars</span>
       <h2><em>Aurora Midnight</em></h2>
-      <p>Deep midnight + sweeping aurora bands (green / cyan / violet / magenta) drifting slowly behind the hero. Stars overlay. Instrument Serif italic emphasis. Dreamy, atmospheric, expensive.</p>
+      <p>Deep midnight + aurora palette (green / cyan / violet / magenta). Slow drifting aurora flow field — cursor causes a gentle <em>swirl</em> instead of radial push (the field rotates around you). Two depth layers of twinkling stars, occasional shooting stars cross the screen. <em>Newsreader</em> editorial serif for headlines, <em>Geist</em> body. Dreamy, atmospheric, expensive.</p>
     </div>
     <div class="card-foot">
       <span class="go">Open <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-      <div class="spec"><b>Aurora bands + stars</b>Most atmospheric · serif</div>
+      <div class="spec"><b>Aurora swirl + stars</b>Most premium · editorial</div>
     </div>
   </a>
 
 </div>
 
 <footer>
-  <span>Phase 0.4 · branch: <code style="font-family:'IBM Plex Mono',monospace">claude/trusting-darwin-7IX4z</code></span>
-  <span><a href="index.html">← current live landing (dark)</a></span>
+  <span>Phase 0.5 · branch: <code style="font-family:'Geist Mono',monospace">claude/trusting-darwin-7IX4z</code></span>
+  <span><a href="index.html">← live landing (dark)</a></span>
 </footer>
 </body>
 </html>
