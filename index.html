@@ -331,14 +331,18 @@ section.solid-2 .pain-gallery::after  { background: linear-gradient(to left, var
 }
 .tool-card::before {
   content: attr(data-num);
-  position: absolute;
-  top: 16px; right: 20px;
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 11px;
-  letter-spacing: 0.20em;
-  color: var(--accent-cyan);
-  opacity: 0.65;
-  font-weight: 600;
+  display: block;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 800;
+  font-style: italic;
+  font-size: clamp(34px, 3.4vw, 48px);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 14px;
 }
 .tool-card::after {
   content: '';
@@ -350,13 +354,12 @@ section.solid-2 .pain-gallery::after  { background: linear-gradient(to left, var
 }
 .tool-card:hover { transform: translateY(-3px); border-color: var(--glass-bd-hi); }
 .tool-card:hover::after { opacity: 1; }
-.tool-card .icon-chip { width: 36px; height: 36px; margin-bottom: 14px; background: var(--glass-bg); }
-.tool-card .icon-chip svg { width: 18px; height: 18px; color: var(--accent-cyan); }
 .tool-name {
   font-family: 'Bricolage Grotesque', sans-serif;
   font-weight: 700;
   font-size: 16px;
   letter-spacing: -0.01em;
+  margin-bottom: 6px;
 }
 
 /* STEPS: refined gradient bubble for step number */
@@ -920,18 +923,12 @@ document.documentElement.classList.add('js');
 <p class="hero-eyebrow">Half human. Half AI. All sales.</p>
 <h1 class="hero-h1">
 <span class="line">One <em class="real">REAL</em> CRO.</span>
-<span class="line">Ten AI Sales Tools.</span>
-<span class="line">One Platform.</span>
+<span class="line"><em class="real">Ten</em> AI Sales Tools.</span>
+<span class="line"><em class="real">One</em> Platform.</span>
 </h1>
 <p class="hero-sub">A live fractional CRO and ten must-have AI sales tools, scripts, playbooks, objection handlers, simulator, copilot, certification, under one login, on every plan. No stitching. No extra vendors.</p>
 <div class="hero-ctas">
 <a href="https://app.thedealmentor.ai/register" class="btn-primary btn-lg">Start Free</a>
-</div>
-<div class="hero-telemetry" role="region" aria-label="What you get">
-<div class="metric"><span class="label">Live CRO</span><span class="value"><span class="pulse"></span>On every plan</span></div>
-<div class="metric"><span class="label">AI tools</span><span class="value">10 / 10</span></div>
-<div class="metric"><span class="label">Methodologies</span><span class="value">50<span style="color:var(--text-faint);font-size:.55em;margin-left:4px">proven</span></span></div>
-<div class="metric"><span class="label">Setup</span><span class="value gold">15 min</span></div>
 </div>
 </header>
 
@@ -942,7 +939,6 @@ document.documentElement.classList.add('js');
 <div class="together-head">
 <p class="eyebrow">Together, on every plan</p>
 <h2 class="section-h2" id="together-title">AI drafts it. <em>A real CRO sharpens it.</em></h2>
-<p class="section-sub">Three of the ten AI tools, live. Each one calibrated by the CRO who built the methodology.</p>
 </div>
 <div class="morph-grid">
 <article class="morph-card objections" id="morph-card-1">
@@ -1068,16 +1064,16 @@ document.documentElement.classList.add('js');
 <h2 class="section-h2">Ten AI tools. <em>Every stage of the deal.</em></h2>
 <p class="section-sub">Numbered, named, built from your specific business. Each one calibrated by the CRO who built the methodology.</p>
 <div class="tools-grid">
-<article class="tool-card card glass" data-num="01"><span class="icon-chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 12h6"/><path d="M9 16h6"/></svg></span><h3 class="tool-name">Sales Playbook</h3><p class="tool-desc">Your complete sales program, built in 15 minutes.</p></article>
-<article class="tool-card card glass" data-num="02"><span class="icon-chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span><h3 class="tool-name">ICP Scripts</h3><p class="tool-desc">Cold call, voicemail, gatekeeper, objections, per buyer.</p></article>
-<article class="tool-card card glass" data-num="03"><span class="icon-chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 17.5 3 6V3h3l11.5 11.5"/><path d="m13 19 6-6"/><path d="m16 16 4 4"/><path d="m19 21 2-2"/><path d="M9.5 17.5 21 6V3h-3L6.5 14.5"/><path d="m11 19-6-6"/><path d="m8 16-4 4"/><path d="m5 21-2-2"/></svg></span><h3 class="tool-name">Competition Analysis</h3><p class="tool-desc">Battlecards for every competitor, with the exact words to use.</p></article>
-<article class="tool-card card glass" data-num="04"><span class="icon-chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></span><h3 class="tool-name">Objection Handler</h3><p class="tool-desc">Word-for-word responses to every objection your buyers raise.</p></article>
-<article class="tool-card card glass" data-num="05"><span class="icon-chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><h3 class="tool-name">Sales Copilot</h3><p class="tool-desc">Pre-call brief and live talk track for every conversation.</p></article>
-<article class="tool-card card glass" data-num="06"><span class="icon-chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg></span><h3 class="tool-name">Call Simulation</h3><p class="tool-desc">Practice live calls against AI buyers. Get scored, get coached.</p></article>
-<article class="tool-card card glass" data-num="07"><span class="icon-chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span><h3 class="tool-name">Rep Certification</h3><p class="tool-desc">Dynamic quiz built from your program. Certify reps in days.</p></article>
-<article class="tool-card card glass" data-num="08"><span class="icon-chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span><h3 class="tool-name">Outreach Builder</h3><p class="tool-desc">Multi-touch email and LinkedIn sequences per ICP, fully written.</p></article>
-<article class="tool-card card glass" data-num="09"><span class="icon-chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2z"/></svg></span><h3 class="tool-name">Knowledge Base</h3><p class="tool-desc">Upload your pricing, case studies, collateral. Every output uses your materials.</p></article>
-<article class="tool-card card glass" data-num="10"><span class="icon-chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span><h3 class="tool-name">Deal Debugger</h3><p class="tool-desc">Diagnose a stalled deal. Get a specific recovery plan, not a checklist.</p></article>
+<article class="tool-card card glass" data-num="01"><h3 class="tool-name">Sales Playbook</h3><p class="tool-desc">Your complete sales program, built in 15 minutes.</p></article>
+<article class="tool-card card glass" data-num="02"><h3 class="tool-name">ICP Scripts</h3><p class="tool-desc">Cold call, voicemail, gatekeeper, objections, per buyer.</p></article>
+<article class="tool-card card glass" data-num="03"><h3 class="tool-name">Competition Analysis</h3><p class="tool-desc">Battlecards for every competitor, with the exact words to use.</p></article>
+<article class="tool-card card glass" data-num="04"><h3 class="tool-name">Objection Handler</h3><p class="tool-desc">Word-for-word responses to every objection your buyers raise.</p></article>
+<article class="tool-card card glass" data-num="05"><h3 class="tool-name">Sales Copilot</h3><p class="tool-desc">Pre-call brief and live talk track for every conversation.</p></article>
+<article class="tool-card card glass" data-num="06"><h3 class="tool-name">Call Simulation</h3><p class="tool-desc">Practice live calls against AI buyers. Get scored, get coached.</p></article>
+<article class="tool-card card glass" data-num="07"><h3 class="tool-name">Rep Certification</h3><p class="tool-desc">Dynamic quiz built from your program. Certify reps in days.</p></article>
+<article class="tool-card card glass" data-num="08"><h3 class="tool-name">Outreach Builder</h3><p class="tool-desc">Multi-touch email and LinkedIn sequences per ICP, fully written.</p></article>
+<article class="tool-card card glass" data-num="09"><h3 class="tool-name">Knowledge Base</h3><p class="tool-desc">Upload your pricing, case studies, collateral. Every output uses your materials.</p></article>
+<article class="tool-card card glass" data-num="10"><h3 class="tool-name">Deal Debugger</h3><p class="tool-desc">Diagnose a stalled deal. Get a specific recovery plan, not a checklist.</p></article>
 </div>
 </div>
 </section>
@@ -1089,9 +1085,8 @@ document.documentElement.classList.add('js');
 <div class="section-inner">
 <p class="eyebrow">The other half</p>
 <h2 class="section-h2">One <em>real CRO.</em> On every plan.</h2>
-<p class="section-sub">A fractional CRO starts at $6,000 a month, and at $20,000 for full engagement. Every DealMentor plan includes direct access to a live business consultant and fractional CRO. Live sessions and email support, built in.</p>
 <div class="cro-header glass">
-<p>A fractional CRO costs <strong>$15,000&ndash;$25,000 a month.</strong> DealMentor includes one on every plan, starting at <strong>$149.</strong> Live sessions and email support, built in. One session covers the entire monthly cost.</p>
+<p>A fractional CRO costs <strong>$6,000 to $20,000 a month.</strong> DealMentor includes one on every plan, starting at <strong>$149.</strong> Live sessions and email support, built in. One session covers the entire monthly cost.</p>
 </div>
 <div style="text-align:center;margin-top:36px">
 <a href="/pricing" class="btn-primary btn-lg">See Pricing <svg class="ico btn-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
