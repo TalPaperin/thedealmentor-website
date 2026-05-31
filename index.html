@@ -85,7 +85,7 @@ html.js .is-in{opacity:1!important;transform:none!important}
 
 /* Tile flip-in — initial hidden state applied immediately via html.js (set in <head> before body parses). Animation triggered by .is-in class. */
 html.js .tile-flip{opacity:0;transform:perspective(1200px) rotateY(-55deg) translateY(40px) scale(.88);transform-origin:left center;will-change:transform,opacity}
-html.js .tile-flip.is-in{animation:tileFlip 1.2s cubic-bezier(.22,.65,.25,1) forwards}
+html.js .tile-flip.is-in{animation:tileFlip 2s cubic-bezier(.22,.65,.25,1) forwards}
 @keyframes tileFlip{
   0%  {opacity:0;transform:perspective(1200px) rotateY(-55deg) translateY(40px) scale(.88)}
   55% {opacity:1}
@@ -94,7 +94,7 @@ html.js .tile-flip.is-in{animation:tileFlip 1.2s cubic-bezier(.22,.65,.25,1) for
 /* Reduced-motion: still animate, but just a soft fade — no 3D rotation. */
 @media (prefers-reduced-motion: reduce){
   html.js .tile-flip{opacity:0;transform:none}
-  html.js .tile-flip.is-in{animation:tileFlipReduced .5s ease-out forwards}
+  html.js .tile-flip.is-in{animation:tileFlipReduced .8s ease-out forwards}
   @keyframes tileFlipReduced{from{opacity:0}to{opacity:1}}
 }
 
@@ -209,14 +209,13 @@ nav.shrink{padding:10px clamp(20px,3vw,32px);background:color-mix(in srgb,var(--
 .founder-role a{color:var(--accent);font-weight:500;border-bottom:1px solid transparent;transition:border-color .15s}
 .founder-role a:hover{border-bottom-color:var(--accent)}
 
-/* ===== PAIN POINTS — auto-rolling marquee, no arrows ===== */
-.pain-marquee{position:relative;margin-top:36px;overflow:hidden;
-  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 4%,#000 96%,transparent 100%);
-  mask-image:linear-gradient(90deg,transparent 0,#000 4%,#000 96%,transparent 100%)}
-.pain-row{display:flex;gap:18px;width:max-content;animation:painRoll 90s linear infinite;will-change:transform}
-.pain-marquee:hover .pain-row{animation-play-state:paused}
-@keyframes painRoll{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 9px))}}
-.pain-card{flex:0 0 320px;background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius-lg);padding:26px;box-shadow:var(--shadow);backdrop-filter:blur(10px);display:flex;flex-direction:column;gap:10px;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s}
+/* ===== PAIN POINTS — horizontal scroll, cards flip in ===== */
+.pain-marquee{position:relative;margin-top:36px;overflow-x:auto;overflow-y:visible;padding:18px 4px 28px;scrollbar-width:none;scroll-snap-type:x mandatory;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 3%,#000 97%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0,#000 3%,#000 97%,transparent 100%)}
+.pain-marquee::-webkit-scrollbar{display:none}
+.pain-row{display:flex;gap:18px}
+.pain-card{flex:0 0 320px;scroll-snap-align:start;background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius-lg);padding:26px;box-shadow:var(--shadow);backdrop-filter:blur(10px);display:flex;flex-direction:column;gap:10px;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s}
 .pain-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hi);border-color:var(--accent)}
 .icon-chip{width:42px;height:42px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:inline-flex;align-items:center;justify-content:center;margin-bottom:4px;border:1px solid var(--card-bd)}
 .icon-chip .ico{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
@@ -225,7 +224,7 @@ nav.shrink{padding:10px clamp(20px,3vw,32px);background:color-mix(in srgb,var(--
 .pain-title{font-family:'Geist',sans-serif;font-size:19px;font-weight:600;color:var(--ink);line-height:1.25;letter-spacing:-.015em}
 .pain-desc{font-family:'Geist',sans-serif;font-size:14.5px;color:var(--muted);line-height:1.55}
 .pain-cta{margin-top:auto;padding-top:12px;font-size:12.5px;font-weight:600;color:var(--accent);font-family:'Geist Mono',monospace;letter-spacing:.05em}
-@media (prefers-reduced-motion: reduce){.pain-row{animation:none;flex-wrap:wrap;width:auto;justify-content:center}}
+@media (prefers-reduced-motion: reduce){.pain-row{flex-wrap:wrap;justify-content:center}}
 
 /* ===== TOOLS (10 cards grid) ===== */
 .tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:40px}
@@ -403,12 +402,12 @@ footer{background:var(--bg-2);border-top:1px solid var(--line);padding:50px 24px
     <div class="pain-marquee" aria-label="Pain points">
       <div class="pain-row" id="painRow">
         <!-- 6 cards, duplicated by JS for seamless loop -->
-        <article class="pain-card"><span class="icon-chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></span><div class="pain-quote">"I'm selling alone, no playbook, no scripts, no coach."</div><div class="pain-tag">Founder Mode</div><h3 class="pain-title">Your entire sales program, built from your business</h3><p class="pain-desc">Playbook, pitch, scripts, objection handlers, all built for your buyers.</p><div class="pain-cta">Your full program. In 15 minutes.</div></article>
-        <article class="pain-card"><span class="icon-chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 17.5 3 6V3h3l11.5 11.5"/><path d="m13 19 6-6"/><path d="m16 16 4 4"/><path d="m19 21 2-2"/><path d="M9.5 17.5 21 6V3h-3L6.5 14.5"/><path d="m11 19-6-6"/><path d="m8 16-4 4"/><path d="m5 21-2-2"/></svg></span><div class="pain-quote">"My reps keep losing deals to competitors and I don't know why."</div><div class="pain-tag">Competition Analysis</div><h3 class="pain-title">Instant battle cards for any competitor</h3><p class="pain-desc">Exact words to use. The one question that exposes their weakness.</p><div class="pain-cta">Win every competitive conversation.</div></article>
-        <article class="pain-card"><span class="icon-chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></span><div class="pain-quote">"Every prospect handles objections differently and my reps don't know what to say."</div><div class="pain-tag">Objection Handler</div><h3 class="pain-title">Word-for-word responses built from your context</h3><p class="pain-desc">Built from your actual product and competitive context.</p><div class="pain-cta">Never be caught off guard again.</div></article>
-        <article class="pain-card"><span class="icon-chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7z"/><path d="M5 20h14"/></svg></span><div class="pain-quote">"I can't afford a $6K/month CRO but I need real strategic sales advice."</div><div class="pain-tag">Live CRO Access</div><h3 class="pain-title">Real expert access on every plan</h3><p class="pain-desc">Every plan includes direct access to a live business consultant and fractional CRO.</p><div class="pain-cta">Real expert. Every plan. Always.</div></article>
-        <article class="pain-card"><span class="icon-chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span><div class="pain-quote">"New reps take 3-6 months to ramp. I'm losing revenue every week."</div><div class="pain-tag">Certification Engine</div><h3 class="pain-title">Certify reps in days, not months</h3><p class="pain-desc">Dynamic quiz built from your program. Certify reps in days, not months.</p><div class="pain-cta">Reps certified in days, not months.</div></article>
-        <article class="pain-card"><span class="icon-chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span><div class="pain-quote">"I don't know why deals are dying in my pipeline."</div><div class="pain-tag">Deal Analysis</div><h3 class="pain-title">Brutally honest CRO diagnosis on every deal</h3><p class="pain-desc">Paste your deal notes. Get win probability, killer risk, and the one action to take this week.</p><div class="pain-cta">Know exactly why deals die.</div></article>
+        <article class="pain-card tile-flip"><span class="icon-chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></span><div class="pain-quote">"I'm selling alone, no playbook, no scripts, no coach."</div><div class="pain-tag">Founder Mode</div><h3 class="pain-title">Your entire sales program, built from your business</h3><p class="pain-desc">Playbook, pitch, scripts, objection handlers, all built for your buyers.</p><div class="pain-cta">Your full program. In 15 minutes.</div></article>
+        <article class="pain-card tile-flip"><span class="icon-chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 17.5 3 6V3h3l11.5 11.5"/><path d="m13 19 6-6"/><path d="m16 16 4 4"/><path d="m19 21 2-2"/><path d="M9.5 17.5 21 6V3h-3L6.5 14.5"/><path d="m11 19-6-6"/><path d="m8 16-4 4"/><path d="m5 21-2-2"/></svg></span><div class="pain-quote">"My reps keep losing deals to competitors and I don't know why."</div><div class="pain-tag">Competition Analysis</div><h3 class="pain-title">Instant battle cards for any competitor</h3><p class="pain-desc">Exact words to use. The one question that exposes their weakness.</p><div class="pain-cta">Win every competitive conversation.</div></article>
+        <article class="pain-card tile-flip"><span class="icon-chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></span><div class="pain-quote">"Every prospect handles objections differently and my reps don't know what to say."</div><div class="pain-tag">Objection Handler</div><h3 class="pain-title">Word-for-word responses built from your context</h3><p class="pain-desc">Built from your actual product and competitive context.</p><div class="pain-cta">Never be caught off guard again.</div></article>
+        <article class="pain-card tile-flip"><span class="icon-chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7z"/><path d="M5 20h14"/></svg></span><div class="pain-quote">"I can't afford a $6K/month CRO but I need real strategic sales advice."</div><div class="pain-tag">Live CRO Access</div><h3 class="pain-title">Real expert access on every plan</h3><p class="pain-desc">Every plan includes direct access to a live business consultant and fractional CRO.</p><div class="pain-cta">Real expert. Every plan. Always.</div></article>
+        <article class="pain-card tile-flip"><span class="icon-chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span><div class="pain-quote">"New reps take 3-6 months to ramp. I'm losing revenue every week."</div><div class="pain-tag">Certification Engine</div><h3 class="pain-title">Certify reps in days, not months</h3><p class="pain-desc">Dynamic quiz built from your program. Certify reps in days, not months.</p><div class="pain-cta">Reps certified in days, not months.</div></article>
+        <article class="pain-card tile-flip"><span class="icon-chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span><div class="pain-quote">"I don't know why deals are dying in my pipeline."</div><div class="pain-tag">Deal Analysis</div><h3 class="pain-title">Brutally honest CRO diagnosis on every deal</h3><p class="pain-desc">Paste your deal notes. Get win probability, killer risk, and the one action to take this week.</p><div class="pain-cta">Know exactly why deals die.</div></article>
       </div>
     </div>
   </div>
@@ -536,14 +535,6 @@ function toggleFaq(btn){var expanded=btn.getAttribute('aria-expanded')==='true';
 (function(){var toggle=document.getElementById('navToggle'),links=document.getElementById('navLinks');if(!toggle||!links)return;toggle.addEventListener('click',function(e){e.stopPropagation();var isOpen=links.classList.toggle('open');toggle.setAttribute('aria-expanded',isOpen?'true':'false')});links.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){links.classList.remove('open');toggle.setAttribute('aria-expanded','false')})});document.addEventListener('click',function(e){if(!links.contains(e.target)&&!toggle.contains(e.target)){links.classList.remove('open');toggle.setAttribute('aria-expanded','false')}})})();
 </script>
 
-<script>
-/* Pain marquee — duplicate cards for seamless loop */
-(function(){
-  var row=document.getElementById('painRow');if(!row)return;
-  var cards=Array.prototype.slice.call(row.children);
-  cards.forEach(function(c){row.appendChild(c.cloneNode(true))});
-})();
-</script>
 
 <script>
 /* Hero reveal — auto-reveal on load (no scroll needed) */
@@ -566,10 +557,10 @@ function toggleFaq(btn){var expanded=btn.getAttribute('aria-expanded')==='true';
     document.querySelectorAll('.tile-flip').forEach(function(c){c.classList.add('is-in')});
     return;
   }
-  var strips=document.querySelectorAll('.morph-grid,.tools-grid,.testimonials-grid');
+  var strips=document.querySelectorAll('.morph-grid,.tools-grid,.testimonials-grid,.pain-row');
   strips.forEach(function(strip){
     var cards=strip.querySelectorAll('.tile-flip');
-    cards.forEach(function(c,i){c.style.animationDelay=(i*0.15)+'s'});
+    cards.forEach(function(c,i){c.style.animationDelay=(i*0.25)+'s'});
     if('IntersectionObserver' in window){
       var io=new IntersectionObserver(function(entries){
         if(entries[0].isIntersecting){
