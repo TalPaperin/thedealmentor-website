@@ -83,10 +83,14 @@ html.js .hero-eyebrow,html.js .hero-h1,html.js .hero-sub,html.js .hero-ctas{
 }
 html.js .is-in{opacity:1!important;transform:none!important}
 
-/* Tile flip-in — only active when JS marks .tiles-ready on the parent strip */
-.tile-flip{transition:opacity .65s cubic-bezier(.2,.7,.2,1),transform .65s cubic-bezier(.2,.7,.2,1)}
-.tiles-ready .tile-flip{opacity:0;transform:perspective(900px) rotateY(-22deg) translateY(18px)}
-.tiles-ready .tile-flip.is-in{opacity:1;transform:perspective(900px) rotateY(0) translateY(0)}
+/* Tile flip-in — initial hidden state applied immediately via html.js (set in <head> before body parses). Animation triggered by .is-in class. */
+html.js .tile-flip{opacity:0;transform:perspective(900px) rotateY(-26deg) translateY(20px);transform-origin:left center}
+html.js .tile-flip.is-in{animation:tileFlip .75s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes tileFlip{
+  from{opacity:0;transform:perspective(900px) rotateY(-26deg) translateY(20px)}
+  to  {opacity:1;transform:perspective(900px) rotateY(0deg) translateY(0)}
+}
+@media (prefers-reduced-motion: reduce){html.js .tile-flip{opacity:1;transform:none}}
 
 /* ===== BACKGROUND: flow field — dialled down, atmospheric ===== */
 #field{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.85;transition:opacity .4s}
@@ -144,9 +148,9 @@ nav.shrink{padding:10px clamp(20px,3vw,32px);background:color-mix(in srgb,var(--
 .hero-eyebrow::before{content:'';width:9px;height:9px;border-radius:50%;background:#34E5FF;box-shadow:0 0 14px #34E5FF;animation:heroDot 1.8s ease-in-out infinite}
 [data-theme="light"] .hero-eyebrow::before{background:var(--accent);box-shadow:0 0 14px var(--accent)}
 @keyframes heroDot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.5}}
-.hero-h1{font-family:'Bricolage Grotesque','Geist',sans-serif;font-size:clamp(40px,7.4vw,116px);font-weight:800;line-height:1.06;letter-spacing:-.035em;color:var(--ink);margin-bottom:32px;padding:0 .04em}
-.hero-h1 .line{display:block}
-.hero-h1 .real{font-style:italic;font-weight:800;background:linear-gradient(110deg,#34E5FF 0%,#4F8BFF 50%,#B36BFF 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;padding-right:.04em}
+.hero-h1{font-family:'Bricolage Grotesque','Geist',sans-serif;font-size:clamp(40px,7.4vw,116px);font-weight:800;line-height:1.14;letter-spacing:-.035em;color:var(--ink);margin-bottom:32px;padding:.05em .06em .12em}
+.hero-h1 .line{display:block;padding:.02em 0}
+.hero-h1 .real{font-style:italic;font-weight:800;background:linear-gradient(110deg,#34E5FF 0%,#4F8BFF 50%,#B36BFF 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;padding:0 .12em 0 .08em;margin:0 -.04em}
 .hero-sub{font-family:'Geist',sans-serif;font-size:clamp(16px,1.4vw,20px);color:var(--text);max-width:62ch;margin:0 auto 40px;line-height:1.55}
 .hero-ctas{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
 
@@ -549,7 +553,7 @@ function toggleFaq(btn){var expanded=btn.getAttribute('aria-expanded')==='true';
 </script>
 
 <script>
-/* Tile flip-in — for morph cards, tool cards, testimonials. IntersectionObserver gates the entrance per strip. Safety: forced reveal after 2s. */
+/* Tile flip-in — initial hidden state set by CSS via html.js. JS adds .is-in to trigger the @keyframes animation. */
 (function(){
   if(!document.documentElement.classList.contains('js'))return;
   if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
@@ -558,29 +562,21 @@ function toggleFaq(btn){var expanded=btn.getAttribute('aria-expanded')==='true';
   }
   var strips=document.querySelectorAll('.morph-grid,.tools-grid,.testimonials-grid');
   strips.forEach(function(strip){
-    strip.classList.add('tiles-ready');
     var cards=strip.querySelectorAll('.tile-flip');
-    cards.forEach(function(c,i){c.style.transitionDelay=(i*0.08)+'s'});
+    cards.forEach(function(c,i){c.style.animationDelay=(i*0.09)+'s'});
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(entries){
+        if(entries[0].isIntersecting){
+          cards.forEach(function(c){c.classList.add('is-in')});
+          io.disconnect();
+        }
+      },{threshold:0,rootMargin:'0px 0px -50px 0px'});
+      io.observe(strip);
+    }else{
+      cards.forEach(function(c){c.classList.add('is-in')});
+    }
   });
-  /* Wait two animation frames so the browser actually paints the opacity:0 / transform:rotateY initial state before we observe.
-     Otherwise IO can fire synchronously on observe() for any strip already in view, and the cards skip the animation. */
-  requestAnimationFrame(function(){requestAnimationFrame(function(){
-    strips.forEach(function(strip){
-      var cards=strip.querySelectorAll('.tile-flip');
-      if('IntersectionObserver' in window){
-        var io=new IntersectionObserver(function(entries){
-          if(entries[0].isIntersecting){
-            cards.forEach(function(c){c.classList.add('is-in')});
-            io.disconnect();
-          }
-        },{threshold:0,rootMargin:'0px 0px -80px 0px'});
-        io.observe(strip);
-      }else{
-        cards.forEach(function(c){c.classList.add('is-in')});
-      }
-    });
-  })});
-  /* Safety: force-reveal everything after 3s in case IO never fires */
+  /* Safety net: force-reveal everything after 3s in case IO never fires */
   setTimeout(function(){document.querySelectorAll('.tile-flip').forEach(function(c){c.classList.add('is-in')})},3000);
 })();
 </script>
