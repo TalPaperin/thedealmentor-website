@@ -4,84 +4,102 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Theme 2 — Live Script · DealMentor</title>
+<title>Theme 2 — Velvet Editorial · DealMentor</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0..100;1,9..144,300..700,0..100&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 :root{
-  --bg:#050C22; --ink:#FFFFFF; --muted:#9AA6BE;
-  --line:rgba(255,255,255,.10); --glass:rgba(255,255,255,.04);
-  --accent:#FF4DA6;
+  --bg:#13091B; --bg-2:#1C0E26;
+  --ink:#F4EBDC; --text:#D9CFBF; --muted:#8C7E96; --faint:#5C5165;
+  --line:rgba(244,235,220,.08); --line-hi:rgba(244,235,220,.18);
+  --card:rgba(244,235,220,.03); --card-bd:rgba(244,235,220,.10);
+  --accent:#E5B454;       /* champagne gold */
+  --emphasis:#E5B454;
+  --warm:#C84B3E;
+  --accent-soft:rgba(229,180,84,.10);
+  --shadow:0 12px 36px rgba(0,0,0,.40);
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.55}
+[data-theme="light"]{
+  --bg:#F7F0E2; --bg-2:#EFE6D2;
+  --ink:#13091B; --text:#3B2842; --muted:#7A6A82; --faint:#A599AC;
+  --line:rgba(19,9,27,.10); --line-hi:rgba(19,9,27,.22);
+  --card:#FFFAF0; --card-bd:rgba(19,9,27,.10);
+  --accent:#8E5A0E;
+  --emphasis:#8E5A0E;
+  --warm:#A23023;
+  --accent-soft:rgba(142,90,14,.10);
+  --shadow:0 10px 30px rgba(19,9,27,.10);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.65;transition:background .4s ease,color .4s ease}
 body{overflow-x:hidden;position:relative;min-height:100vh}
+a{color:var(--accent);text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
 
-.marquee-stack{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:clamp(36px,6vh,72px)}
-.marquee{white-space:nowrap;display:flex;font-family:'Bricolage Grotesque',serif;font-weight:800;letter-spacing:-.02em;font-size:clamp(48px,8vw,128px);line-height:1;will-change:transform}
-.marquee span{display:inline-block;padding-right:48px}
-.marquee.r1{animation:scrollX 60s linear infinite;color:rgba(255,255,255,.045)}
-.marquee.r2{animation:scrollX 80s linear infinite reverse;transform:translateX(-20%);font-style:italic;color:rgba(255,77,166,.075);font-weight:500}
-.marquee.r3{animation:scrollX 95s linear infinite;transform:translateX(10%);font-weight:500;color:rgba(255,255,255,.035)}
-@keyframes scrollX{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* Velvet noise overlay + slow drifting warm spotlight */
+.velvet{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.7;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .9 0 0 0 0 .65 0 0 0 0 .35 0 0 0 .4 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.spot{position:fixed;width:900px;height:900px;border-radius:50%;z-index:0;pointer-events:none;
+  background:radial-gradient(circle,rgba(229,180,84,.18) 0%,rgba(200,75,62,.10) 35%,transparent 70%);
+  filter:blur(60px);transform:translate(-50%,-50%);left:50%;top:30%;
+  transition:left .12s ease,top .12s ease,opacity .4s}
+[data-theme="light"] .spot{background:radial-gradient(circle,rgba(229,180,84,.30) 0%,rgba(200,75,62,.18) 35%,transparent 70%);opacity:.6}
 
-.veil{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(70% 60% at 50% 38%,transparent 0%,rgba(5,12,34,.55) 70%,rgba(5,12,34,.90) 100%)}
+nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px) saturate(1.6);-webkit-backdrop-filter:blur(14px) saturate(1.6);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--line);padding:18px 36px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-family:Fraunces,serif;font-weight:400;font-style:italic;font-variation-settings:'opsz' 144,'SOFT' 40;font-size:26px;letter-spacing:-.01em;color:var(--ink)}
+.wordmark b{color:var(--accent);font-weight:500;font-style:italic}
+.nav-r{display:flex;gap:14px}
+.theme-toggle{width:38px;height:38px;border-radius:50%;border:1px solid var(--line-hi);color:var(--ink);display:flex;align-items:center;justify-content:center;transition:border-color .2s,background .2s}
+.theme-toggle:hover{border-color:var(--accent);background:var(--accent-soft)}
+.theme-toggle svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.theme-toggle .sun,[data-theme="light"] .theme-toggle .moon{display:none}
+[data-theme="light"] .theme-toggle .sun{display:block}
 
-nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(5,12,34,.7);border-bottom:1px solid var(--line);padding:14px 32px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-family:'Bricolage Grotesque',serif;font-weight:800;font-size:22px;letter-spacing:-.02em}
-.logo b{color:var(--accent)}
-.nav-links{display:flex;gap:28px}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:15px;font-weight:500}
-.nav-links a:hover{color:var(--ink)}
-
-.hero{position:relative;z-index:2;padding:120px 32px 100px;text-align:center;max-width:1100px;margin:0 auto}
-.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:24px}
-.eyebrow::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px var(--accent);animation:dot 1.6s ease-in-out infinite}
-@keyframes dot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.35);opacity:.55}}
-.h1{font-family:'Bricolage Grotesque',serif;font-size:clamp(40px,7.2vw,108px);font-weight:800;line-height:1.12;letter-spacing:-.035em;margin-bottom:28px;color:#fff}
+.hero{position:relative;z-index:2;padding:130px 24px 100px;text-align:center;max-width:1100px;margin:0 auto}
+.eyebrow{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:36px}
+.h1{font-family:Fraunces,serif;font-weight:300;font-variation-settings:'opsz' 144,'SOFT' 0,'wght' 320;font-size:clamp(48px,8.6vw,140px);line-height:1.02;letter-spacing:-.025em;color:var(--ink);margin-bottom:34px}
 .h1 .line{display:block}
-.h1 em{font-style:italic;font-weight:500;color:var(--accent);text-shadow:0 2px 32px rgba(255,77,166,.4)}
-.sub{font-size:clamp(15px,1.4vw,19px);color:#fff;opacity:.88;max-width:62ch;margin:0 auto 32px}
-.cta{display:inline-block;padding:16px 34px;border-radius:8px;background:var(--accent);color:#fff;font-weight:700;text-decoration:none;font-size:15px;box-shadow:0 14px 44px rgba(255,77,166,.35);transition:transform .2s}
-.cta:hover{transform:translateY(-2px)}
+.h1 em{font-style:italic;font-weight:400;font-variation-settings:'opsz' 144,'SOFT' 80,'wght' 400;color:var(--emphasis)}
+.sub{font-family:Fraunces,serif;font-style:italic;font-weight:400;font-size:clamp(17px,1.6vw,22px);color:var(--text);max-width:54ch;margin:0 auto 40px;line-height:1.45;font-variation-settings:'opsz' 144,'SOFT' 30}
+.cta{display:inline-block;padding:16px 36px;border-radius:0;background:transparent;color:var(--ink);font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:13px;letter-spacing:.18em;text-transform:uppercase;border:1.5px solid var(--ink);transition:background .25s,color .25s}
+.cta:hover{background:var(--ink);color:var(--bg)}
 
-.together{position:relative;z-index:2;padding:80px 32px 100px;max-width:1280px;margin:0 auto;text-align:center}
-.h2{font-family:'Bricolage Grotesque',serif;font-size:clamp(30px,4.4vw,54px);font-weight:800;line-height:1.08;letter-spacing:-.025em;margin-bottom:14px;color:#fff}
-.h2 em{font-style:italic;font-weight:500;color:var(--accent)}
-.together-sub{color:var(--muted);max-width:60ch;margin:0 auto 44px}
+.together{position:relative;z-index:2;padding:60px 24px 90px;max-width:1180px;margin:0 auto;text-align:center}
+.h2{font-family:Fraunces,serif;font-weight:300;font-variation-settings:'opsz' 144,'SOFT' 0;font-size:clamp(34px,5vw,64px);line-height:1.06;letter-spacing:-.02em;color:var(--ink);margin-bottom:14px}
+.h2 em{font-style:italic;font-weight:400;font-variation-settings:'opsz' 144,'SOFT' 70;color:var(--emphasis)}
+.t-sub{color:var(--muted);max-width:56ch;margin:0 auto 56px;font-family:Fraunces,serif;font-style:italic;font-size:17px;font-variation-settings:'opsz' 144,'SOFT' 30}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:left}
+.card{padding:32px 28px;border-right:1px solid var(--line);transition:background .3s}
+.card:last-child{border-right:none}
+.card:hover{background:var(--card)}
+.c-head{display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+.c-tag{color:var(--accent);font-weight:500}
+.c-state{display:flex;align-items:center;gap:10px;margin-bottom:18px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase}
+.c-lbl{display:inline-flex;align-items:center;gap:6px;color:var(--warm);transition:color .3s}
+.c-lbl::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor}
+.c-state.is-out .c-lbl{color:var(--accent)}
+.c-line{font-family:'IBM Plex Mono',monospace;font-size:14px;line-height:1.55;min-height:4em;color:var(--ink);word-break:break-word}
+.c-line .caret{display:inline-block;width:.45ch;height:1em;background:var(--accent);vertical-align:-.15em;margin-left:2px;animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+@media (max-width:880px){.cards{grid-template-columns:1fr}.card{border-right:none;border-bottom:1px solid var(--line)}.card:last-child{border-bottom:none}}
 
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;text-align:left}
-.card{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:14px;padding:24px;backdrop-filter:blur(10px);position:relative;overflow:hidden}
-.card-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-.card-tag{color:var(--accent)}
-.card-state{display:flex;align-items:center;gap:10px;margin-bottom:14px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
-.card-state .lbl{display:inline-flex;align-items:center;gap:6px;color:#FF6B6B;transition:color .3s}
-.card-state .lbl::before{content:'';width:7px;height:7px;border-radius:50%;background:currentColor;box-shadow:0 0 10px currentColor}
-.card-state.is-out .lbl{color:#5BD7A8}
-.card-state .arr{color:var(--muted)}
-.card-line{font-family:'JetBrains Mono',monospace;font-size:14.5px;line-height:1.5;min-height:3.6em;color:#fff}
-.card-line .caret{display:inline-block;width:.55ch;height:1em;background:var(--accent);vertical-align:-.15em;margin-left:2px;animation:blink 1s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-
-footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:30px;text-align:center;color:var(--muted);font-size:13px}
-footer a{color:var(--accent);text-decoration:none}
-
-@media (prefers-reduced-motion: reduce){.marquee{animation:none}}
+footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:28px;text-align:center;color:var(--muted);font-size:13px;font-family:'IBM Plex Mono',monospace;letter-spacing:.10em;text-transform:uppercase}
+footer a{color:var(--accent)}
 </style>
 </head>
 <body>
-
-<div class="marquee-stack" aria-hidden="true">
-  <div class="marquee r1"><span>"It costs too much." · "We'll think about it." · "Send us a deck." · "Not this quarter." · "We're going with someone else." · "It costs too much." · "We'll think about it." · "Send us a deck." · "Not this quarter." · "We're going with someone else." · </span></div>
-  <div class="marquee r2"><span>price · timing · authority · need · trust · price · timing · authority · need · trust · price · timing · authority · need · trust · price · timing · authority · need · trust · </span></div>
-  <div class="marquee r3"><span>show value before cost · build urgency around outcomes · earn the close · listen, then respond · show value before cost · build urgency around outcomes · earn the close · listen, then respond · </span></div>
-</div>
-<div class="veil" aria-hidden="true"></div>
+<div class="velvet" aria-hidden="true"></div>
+<div class="spot" id="spot" aria-hidden="true"></div>
 
 <nav>
-  <div class="logo">Deal<b>Mentor</b></div>
-  <div class="nav-links"><a href="#">Platform</a><a href="#">Pricing</a><a href="#">Why us</a></div>
+  <div class="wordmark">Deal<b>Mentor</b></div>
+  <div class="nav-r">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <svg class="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+  </div>
 </nav>
 
 <header class="hero">
@@ -91,82 +109,48 @@ footer a{color:var(--accent);text-decoration:none}
     <span class="line"><em>Ten</em> AI Sales Tools.</span>
     <span class="line"><em>One</em> Platform.</span>
   </h1>
-  <p class="sub">A live fractional CRO and ten must-have AI sales tools — scripts, playbooks, objection handlers, simulator, copilot, certification — under one login, on every plan.</p>
-  <a href="#" class="cta">Start Free →</a>
+  <p class="sub">A live fractional CRO and ten must-have AI sales tools — under one login, on every plan.</p>
+  <a href="#" class="cta">Start Free</a>
 </header>
 
 <section class="together">
   <h2 class="h2">AI drafts it. <em>A real CRO sharpens it.</em></h2>
-  <p class="together-sub">Together, on every plan — not stitched together from five vendors.</p>
+  <p class="t-sub">Together, on every plan — not stitched from five vendors.</p>
   <div class="cards">
-    <article class="card" data-card="objection">
-      <div class="card-head"><span class="card-tag">01 · Objection Handler</span><span>live</span></div>
-      <div class="card-state"><span class="lbl">Objection</span><span class="arr">→</span></div>
-      <div class="card-line"><span class="t"></span><span class="caret" aria-hidden="true"></span></div>
-    </article>
-    <article class="card" data-card="scripts">
-      <div class="card-head"><span class="card-tag">02 · ICP Scripts</span><span>live</span></div>
-      <div class="card-state"><span class="lbl">Generic</span><span class="arr">→</span></div>
-      <div class="card-line"><span class="t"></span><span class="caret" aria-hidden="true"></span></div>
-    </article>
-    <article class="card" data-card="battle">
-      <div class="card-head"><span class="card-tag">03 · Battlecard</span><span>live</span></div>
-      <div class="card-state"><span class="lbl">Competitor</span><span class="arr">→</span></div>
-      <div class="card-line"><span class="t"></span><span class="caret" aria-hidden="true"></span></div>
-    </article>
+    <article class="card" data-card="o"><div class="c-head"><span class="c-tag">01 · Objections</span><span>live</span></div><div class="c-state"><span class="c-lbl">Objection</span><span style="color:var(--faint)">→</span></div><div class="c-line"><span class="t"></span><span class="caret"></span></div></article>
+    <article class="card" data-card="s"><div class="c-head"><span class="c-tag">02 · ICP Scripts</span><span>live</span></div><div class="c-state"><span class="c-lbl">Generic</span><span style="color:var(--faint)">→</span></div><div class="c-line"><span class="t"></span><span class="caret"></span></div></article>
+    <article class="card" data-card="b"><div class="c-head"><span class="c-tag">03 · Battlecard</span><span>live</span></div><div class="c-state"><span class="c-lbl">Competitor</span><span style="color:var(--faint)">→</span></div><div class="c-line"><span class="t"></span><span class="caret"></span></div></article>
   </div>
 </section>
 
-<footer>Theme 2 · Live Script · <a href="themes.html">← back to picker</a></footer>
+<footer>Theme 2 · Velvet Editorial · <a href="themes.html">← back</a></footer>
 
 <script>
-/* Morph cards — scramble between before/after */
+(function(){var h=document.documentElement,b=document.getElementById('themeToggle'),s=localStorage.getItem('dm-theme-2');if(s==='light')h.setAttribute('data-theme','light');b.addEventListener('click',function(){var l=h.getAttribute('data-theme')==='light';if(l){h.removeAttribute('data-theme');localStorage.setItem('dm-theme-2','dark')}else{h.setAttribute('data-theme','light');localStorage.setItem('dm-theme-2','light')}});})();
+
+/* Warm spotlight follows cursor (or drifts slowly) */
 (function(){
-  var pairs={
-    objection:[
-      {a:'"It costs too much."',b:'Cost is friction. Show the outcome first.',la:'Objection',lb:'Response'},
-      {a:'"We’ll think about it."',b:'Decisions get smaller after the call ends.',la:'Objection',lb:'Response'},
-      {a:'"Send us a deck."',b:'Decks don’t close. Conversations do.',la:'Objection',lb:'Response'}
-    ],
-    scripts:[
-      {a:'Hi, we sell software.',b:'Hi Sarah — saw you scaled SDR to 12.',la:'Generic',lb:'Personalized'},
-      {a:'Our product helps companies grow.',b:'Series A SaaS founders close 23% more.',la:'Generic',lb:'Personalized'},
-      {a:'Are you the decision maker?',b:'Who else weighs in on the GTM stack?',la:'Generic',lb:'Personalized'}
-    ],
-    battle:[
-      {a:'"Apollo has more contacts."',b:'Apollo sells lists. We sell outcomes.',la:'Competitor',lb:'Counter'},
-      {a:'"Outreach is cheaper."',b:'Outreach without a CRO is automation alone.',la:'Competitor',lb:'Counter'},
-      {a:'"Gong has the data."',b:'Gong tells what happened. We help you close.',la:'Competitor',lb:'Counter'}
-    ]
-  };
-  var glyphs='!@#$%&*+=?<>{}/\\|~^abcdefghijklmnopqrstuvwxyz';
-  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function rand(){return glyphs[Math.floor(Math.random()*glyphs.length)]}
-  function morph(el,from,to){return new Promise(function(res){
-    if(reduced){el.textContent=to;return res()}
-    var L=Math.max(from.length,to.length),ops=[];
-    for(var i=0;i<L;i++)ops.push({f:from[i]||' ',t:to[i]||' ',s:Math.floor(Math.random()*16),e:0,c:' '});
-    for(var i=0;i<ops.length;i++)ops[i].e=ops[i].s+10+Math.floor(Math.random()*16);
-    var fr=0;
-    function tick(){var out='',done=true;for(var i=0;i<ops.length;i++){var o=ops[i];if(fr>=o.e)out+=o.t;else if(fr<o.s){out+=o.f;done=false}else{done=false;var p=(fr-o.s)/(o.e-o.s);o.c=Math.random()<p*.4?o.t:rand();out+=o.c}}el.textContent=out;fr++;if(done)res();else requestAnimationFrame(tick)}
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var s=document.getElementById('spot'),tx=window.innerWidth*.5,ty=window.innerHeight*.3,cx=tx,cy=ty,drifting=true;
+  var driftT=0;
+  window.addEventListener('pointermove',function(e){tx=e.clientX;ty=e.clientY;drifting=false;clearTimeout(window._dt);window._dt=setTimeout(function(){drifting=true},3000)},{passive:true});
+  function tick(){
+    if(drifting){driftT+=.005;tx=window.innerWidth*(.5+Math.sin(driftT)*.30);ty=window.innerHeight*(.4+Math.cos(driftT*1.3)*.20)}
+    cx+=(tx-cx)*.05;cy+=(ty-cy)*.05;
+    s.style.left=cx+'px';s.style.top=cy+'px';
     requestAnimationFrame(tick);
-  })}
-  function wait(ms){return new Promise(function(r){setTimeout(r,ms)})}
-  document.querySelectorAll('.card[data-card]').forEach(function(card,idx){
-    var key=card.getAttribute('data-card'),list=pairs[key],t=card.querySelector('.t'),state=card.querySelector('.card-state'),lbl=card.querySelector('.lbl');
-    (async function(){
-      await wait(idx*700);
-      var cur='',i=0;
-      while(true){
-        var p=list[i%list.length];
-        state.classList.remove('is-out');lbl.textContent=p.la;
-        await morph(t,cur,p.a);cur=p.a;await wait(1400);
-        state.classList.add('is-out');lbl.textContent=p.lb;
-        await morph(t,cur,p.b);cur=p.b;await wait(1900);
-        i++;
-      }
-    })();
-  });
+  }
+  requestAnimationFrame(tick);
+})();
+
+/* Morph cards */
+(function(){
+  var pairs={o:[['"It costs too much."','Cost is friction. Show the outcome first.',['Objection','Response']],['"We’ll think about it."','Decisions get smaller after the call ends.',['Objection','Response']],['"Send us a deck."','Decks don’t close. Conversations do.',['Objection','Response']]],s:[['Hi, we sell software.','Hi Sarah — saw you scaled SDR to 12.',['Generic','Personalized']],['Our product helps companies grow.','Series A SaaS founders close 23% more.',['Generic','Personalized']],['Are you the decision maker?','Who else weighs in on the GTM stack?',['Generic','Personalized']]],b:[['"Apollo has more contacts."','Apollo sells lists. We sell outcomes.',['Competitor','Counter']],['"Outreach is cheaper."','Outreach without a CRO is automation alone.',['Competitor','Counter']],['"Gong has the data."','Gong tells what happened. We help you close.',['Competitor','Counter']]]};
+  var g='!@#$%&*+=?<>{}/\\|~^abcdefghijklmnopqrstuvwxyz',red=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function rd(){return g[Math.floor(Math.random()*g.length)]}
+  function m(el,f,t){return new Promise(function(res){if(red){el.textContent=t;return res()}var L=Math.max(f.length,t.length),o=[];for(var i=0;i<L;i++)o.push({f:f[i]||' ',t:t[i]||' ',s:Math.floor(Math.random()*14),e:0,c:' '});for(var i=0;i<o.length;i++)o[i].e=o[i].s+10+Math.floor(Math.random()*14);var fr=0;function tk(){var ou='',d=true;for(var i=0;i<o.length;i++){var p=o[i];if(fr>=p.e)ou+=p.t;else if(fr<p.s){ou+=p.f;d=false}else{d=false;var x=(fr-p.s)/(p.e-p.s);p.c=Math.random()<x*.4?p.t:rd();ou+=p.c}}el.textContent=ou;fr++;if(d)res();else requestAnimationFrame(tk)}requestAnimationFrame(tk)})}
+  function w(ms){return new Promise(function(r){setTimeout(r,ms)})}
+  document.querySelectorAll('.card[data-card]').forEach(function(card,idx){var k=card.getAttribute('data-card'),L=pairs[k],t=card.querySelector('.t'),st=card.querySelector('.c-state'),lb=card.querySelector('.c-lbl');(async function(){await w(idx*700);var cur='',i=0;while(true){var p=L[i%L.length];st.classList.remove('is-out');lb.textContent=p[2][0];await m(t,cur,p[0]);cur=p[0];await w(1500);st.classList.add('is-out');lb.textContent=p[2][1];await m(t,cur,p[1]);cur=p[1];await w(1900);i++}})()});
 })();
 </script>
 </body>
