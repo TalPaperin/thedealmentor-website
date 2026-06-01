@@ -138,7 +138,7 @@ nav.shrink .wordmark img{height:26px}
 @keyframes heroDot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.5}}
 .hero-h1{font-family:'Bricolage Grotesque','Geist',sans-serif;font-size:clamp(40px,7.4vw,116px);font-weight:800;line-height:1.14;letter-spacing:-.035em;color:var(--ink);margin-bottom:32px;padding:.05em .06em .12em}
 .hero-h1 .line{display:block;padding:.02em 0}
-.hero-h1 .real,.hero-h1 em{font-style:italic;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;padding:0 .12em 0 .08em;margin:0 -.04em}
+.hero-h1 .real,.hero-h1 em{font-style:italic;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;padding:.26em .18em .3em .14em;margin:0 -.06em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .hero-sub{font-family:'Geist',sans-serif;font-size:clamp(16px,1.4vw,20px);color:var(--text);max-width:62ch;margin:0 auto 40px;line-height:1.55}
 .hero-ctas{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
 
@@ -149,8 +149,8 @@ nav.shrink .wordmark img{height:26px}
 .section-inner{max-width:var(--maxw);margin:0 auto}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:16px}
 .eyebrow::before{content:'';width:18px;height:1px;background:var(--accent);display:inline-block}
-.section-h2{font-family:'Bricolage Grotesque','Geist',sans-serif;font-size:clamp(30px,4.4vw,60px);font-weight:800;line-height:1.22;letter-spacing:-.028em;color:var(--ink);margin-bottom:14px;padding:.1em .08em .22em}
-.section-h2 em{font-style:italic;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;padding:.06em .14em .18em .1em;margin:0 -.06em}
+.section-h2{font-family:'Bricolage Grotesque','Geist',sans-serif;font-size:clamp(30px,4.4vw,60px);font-weight:800;line-height:1.36;letter-spacing:-.028em;color:var(--ink);margin-bottom:14px;padding:.22em .1em .28em}
+.section-h2 em{font-style:italic;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;padding:.26em .18em .3em .14em;margin:0 -.06em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .section-sub{font-family:'Geist',sans-serif;font-size:clamp(16px,1.3vw,19px);color:var(--muted);max-width:62ch;margin-bottom:48px;line-height:1.6}
 
 /* ===== TOGETHER (morph cards on index) ===== */
@@ -247,8 +247,8 @@ nav.shrink .wordmark img{height:26px}
 /* ===== FINAL CTA ===== */
 .final-cta{text-align:center;padding:clamp(80px,11vh,130px) 24px;position:relative;z-index:2;scroll-margin-top:80px}
 .final-eyebrow{font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:20px}
-.final-cta h2{font-family:'Bricolage Grotesque','Geist',sans-serif;font-size:clamp(34px,5.4vw,68px);font-weight:800;line-height:1.22;letter-spacing:-.03em;color:var(--ink);margin-bottom:16px;padding:.1em .08em .22em}
-.final-cta h2 em{font-style:italic;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;padding:.06em .14em .18em .1em;margin:0 -.06em}
+.final-cta h2{font-family:'Bricolage Grotesque','Geist',sans-serif;font-size:clamp(34px,5.4vw,68px);font-weight:800;line-height:1.36;letter-spacing:-.03em;color:var(--ink);margin-bottom:16px;padding:.22em .1em .28em}
+.final-cta h2 em{font-style:italic;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;padding:.26em .18em .3em .14em;margin:0 -.06em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .final-cta p{font-family:'Geist',sans-serif;font-size:clamp(15px,1.3vw,18px);color:var(--muted);max-width:50ch;margin:0 auto 32px}
 .final-ctas{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
 
