@@ -7,7 +7,7 @@
 
 /* ===== TOKENS — DealMentor brand palette ===== */
 :root{
-  --bg:#04060F; --bg-2:#0A0E1F; --bg-card:rgba(255,255,255,.025);
+  --bg:#04060F; --bg-2:#0A0E1F; --bg-card:#0F1A30;
   --ink:#FFFFFF; --text:#CFD2DA; --muted:#8A8E98; --faint:#5C606A;
   --line:rgba(255,255,255,.08); --line-hi:rgba(255,255,255,.18);
   --card-bd:rgba(255,255,255,.10);
@@ -93,7 +93,7 @@ nav.shrink .wordmark img{height:26px}
 [data-theme="light"] .wordmark .logo-dark{display:none}
 [data-theme="light"] .wordmark .logo-light{display:block}
 .nav-links{display:flex;align-items:center;gap:28px}
-.nav-links a{color:var(--muted);font-family:'Geist',sans-serif;font-size:14.5px;font-weight:500;padding:6px 4px;position:relative;transition:color .15s}
+.nav-links a{color:var(--muted);font-family:'Geist',sans-serif;font-size:18px;font-weight:500;padding:6px 4px;position:relative;transition:color .15s}
 .nav-links a::after{content:'';position:absolute;left:4px;right:4px;bottom:-2px;height:1.5px;background:var(--accent);transform:scaleX(0);transform-origin:center;transition:transform .25s ease}
 .nav-links a:hover,.nav-links a.active{color:var(--ink)}
 .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
@@ -143,8 +143,8 @@ nav.shrink .wordmark img{height:26px}
 
 /* ===== DIVIDER + SECTIONS ===== */
 .divider{border:0;height:1px;background:var(--line);max-width:var(--maxw);margin:0 auto;opacity:.7}
-.solid{position:relative;z-index:2;background:transparent;padding:clamp(70px,9vh,110px) 24px;border-top:1px solid var(--line);scroll-margin-top:80px}
-.solid-2{position:relative;z-index:2;background:color-mix(in srgb,var(--bg-2) 65%,transparent);padding:clamp(70px,9vh,110px) 24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);scroll-margin-top:80px;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+.solid{position:relative;z-index:2;background:transparent;padding:clamp(70px,9vh,110px) 24px;border-top:1px solid var(--line);scroll-margin-top:80px;content-visibility:auto;contain-intrinsic-size:auto 700px}
+.solid-2{position:relative;z-index:2;background:color-mix(in srgb,var(--bg-2) 80%,transparent);padding:clamp(70px,9vh,110px) 24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);scroll-margin-top:80px;content-visibility:auto;contain-intrinsic-size:auto 700px}
 .section-inner{max-width:var(--maxw);margin:0 auto}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:16px}
 .eyebrow::before{content:'';width:18px;height:1px;background:var(--accent);display:inline-block}
@@ -158,7 +158,7 @@ nav.shrink .wordmark img{height:26px}
 .together-head .eyebrow{justify-content:center}
 .together-head .section-h2{margin-left:auto;margin-right:auto}
 .morph-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:16px}
-.morph-card{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius-lg);padding:26px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:var(--shadow);position:relative;overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s}
+.morph-card{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius-lg);padding:26px;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s}
 .morph-card:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:var(--shadow-hi)}
 .morph-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:18px;font-family:'Geist Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .morph-tag{color:var(--accent-2);font-weight:700;font-size:14px;letter-spacing:.10em}
@@ -177,7 +177,7 @@ nav.shrink .wordmark img{height:26px}
 
 /* ===== FOUNDER QUOTE ===== */
 .founder{padding:clamp(70px,9vh,120px) 24px;max-width:var(--maxw);margin:0 auto;position:relative;z-index:2;border-top:1px solid var(--line);scroll-margin-top:80px}
-.founder-card{display:flex;gap:36px;align-items:center;background:var(--bg-card);border:1px solid var(--card-bd);border-radius:24px;padding:42px;box-shadow:var(--shadow);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);flex-wrap:wrap;position:relative;overflow:hidden}
+.founder-card{display:flex;gap:36px;align-items:center;background:var(--bg-card);border:1px solid var(--card-bd);border-radius:24px;padding:42px;box-shadow:var(--shadow);flex-wrap:wrap;position:relative;overflow:hidden}
 .founder-photo{width:160px;height:160px;border-radius:50%;object-fit:cover;object-position:center 22%;flex-shrink:0;box-shadow:0 10px 28px rgba(0,0,0,.40)}
 [data-theme="light"] .founder-photo{box-shadow:0 10px 28px rgba(4,6,15,.14)}
 .founder-text{flex:1;min-width:260px}
@@ -193,7 +193,7 @@ nav.shrink .wordmark img{height:26px}
 .pain-row{display:flex;gap:18px;width:max-content;animation:painRoll 70s linear infinite;will-change:transform}
 .pain-marquee:hover .pain-row{animation-play-state:paused}
 @keyframes painRoll{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 9px))}}
-.pain-card{flex:0 0 320px;background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius-lg);padding:26px;box-shadow:var(--shadow);backdrop-filter:blur(10px);display:flex;flex-direction:column;gap:10px;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s}
+.pain-card{flex:0 0 320px;background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius-lg);padding:26px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s}
 .pain-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hi);border-color:var(--accent)}
 .icon-chip{width:42px;height:42px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:inline-flex;align-items:center;justify-content:center;margin-bottom:4px;border:1px solid var(--card-bd)}
 .icon-chip .ico{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
@@ -206,14 +206,14 @@ nav.shrink .wordmark img{height:26px}
 
 /* ===== TOOLS GRID ===== */
 .tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:40px}
-.tool-card{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);backdrop-filter:blur(10px);position:relative;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s}
+.tool-card{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);position:relative;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s}
 .tool-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hi);border-color:var(--accent)}
 .tool-card::before{content:attr(data-num);position:absolute;top:20px;right:22px;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.18em;color:var(--accent);font-weight:600}
 .tool-name{font-family:'Geist',sans-serif;font-size:18px;font-weight:600;color:var(--ink);margin-bottom:8px;letter-spacing:-.015em}
 .tool-desc{font-family:'Geist',sans-serif;font-size:14px;color:var(--muted);line-height:1.5}
 
 /* ===== CRO ACCESS BAND ===== */
-.cro-header{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:24px;padding:44px 36px;text-align:center;position:relative;overflow:hidden;box-shadow:var(--shadow);backdrop-filter:blur(10px)}
+.cro-header{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:24px;padding:44px 36px;text-align:center;position:relative;overflow:hidden;box-shadow:var(--shadow)}
 .cro-header::after{content:'';position:absolute;top:-30%;left:-15%;width:55%;height:160%;background:radial-gradient(ellipse,var(--accent-soft),transparent 60%);animation:croPulse 6s ease-in-out infinite alternate;pointer-events:none}
 @keyframes croPulse{from{transform:translate(0,0) scale(1)}to{transform:translate(40%,5%) scale(1.15)}}
 .cro-header p{position:relative;z-index:1;font-family:'Geist',sans-serif;font-size:clamp(16px,1.4vw,20px);font-weight:400;color:var(--ink);line-height:1.55;max-width:60ch;margin:0 auto;letter-spacing:-.01em}
@@ -222,7 +222,7 @@ nav.shrink .wordmark img{height:26px}
 
 /* ===== TESTIMONIALS ===== */
 .testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;margin-top:40px}
-.testi-card{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius-lg);padding:30px;box-shadow:var(--shadow);backdrop-filter:blur(10px);display:flex;flex-direction:column;gap:20px;position:relative;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s}
+.testi-card{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius-lg);padding:30px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:20px;position:relative;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s}
 .testi-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hi);border-color:var(--accent)}
 .testi-featured{border-left:3px solid var(--accent);background:linear-gradient(120deg,var(--accent-soft),var(--bg-card) 40%)}
 .testi-badge{position:absolute;top:20px;right:20px;font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:var(--accent);font-weight:600}
@@ -234,7 +234,7 @@ nav.shrink .wordmark img{height:26px}
 
 /* ===== FAQ ===== */
 .faq-list{display:flex;flex-direction:column;gap:10px;margin-top:40px}
-.faq-item{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius);backdrop-filter:blur(10px);overflow:hidden;transition:border-color .25s,box-shadow .25s}
+.faq-item{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius);overflow:hidden;transition:border-color .25s,box-shadow .25s}
 .faq-item.open{border-color:var(--accent);box-shadow:0 8px 22px rgba(37,99,235,.20)}
 .faq-h{margin:0}
 .faq-q{display:flex;justify-content:space-between;align-items:center;gap:18px;width:100%;text-align:left;padding:20px 26px;font-family:'Geist',sans-serif;font-size:clamp(15px,1.3vw,18px);font-weight:500;color:var(--ink);letter-spacing:-.015em;line-height:1.35;transition:color .15s}
@@ -286,7 +286,7 @@ footer{background:var(--bg-2);border-top:1px solid var(--line);padding:50px 24px
 
 /* ===== FORMS (contact, etc.) ===== */
 .form-shell{max-width:580px;margin:0 auto;padding:clamp(80px,11vh,130px) 24px;position:relative;z-index:2}
-.form-card{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius-lg);padding:36px;box-shadow:var(--shadow);backdrop-filter:blur(10px)}
+.form-card{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius-lg);padding:36px;box-shadow:var(--shadow)}
 .form-grid{display:grid;gap:18px}
 .form-field{display:flex;flex-direction:column;gap:6px}
 .form-field label{font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:500}
@@ -296,7 +296,7 @@ footer{background:var(--bg-2);border-top:1px solid var(--line);padding:50px 24px
 
 /* ===== PLANS (pricing tiers) ===== */
 .plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:48px;align-items:stretch}
-.plan-card{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius-lg);padding:32px 28px;box-shadow:var(--shadow);backdrop-filter:blur(10px);display:flex;flex-direction:column;position:relative;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s}
+.plan-card{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius-lg);padding:32px 28px;box-shadow:var(--shadow);display:flex;flex-direction:column;position:relative;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s}
 .plan-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hi);border-color:var(--accent)}
 .plan-card.featured{border:1px solid var(--accent);background:linear-gradient(160deg,var(--accent-soft),var(--bg-card) 45%)}
 .plan-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(110deg,var(--chr-1),var(--chr-2));color:#fff;font-family:'Geist Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;padding:5px 14px;border-radius:999px;font-weight:600;white-space:nowrap}
@@ -316,7 +316,7 @@ footer{background:var(--bg-2);border-top:1px solid var(--line);padding:50px 24px
 
 /* ===== STEPS (numbered process band) ===== */
 .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:40px}
-.step{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);backdrop-filter:blur(10px);position:relative}
+.step{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);position:relative}
 .step-num{font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.18em;color:var(--accent);font-weight:600;margin-bottom:10px}
 .step-name{font-family:'Bricolage Grotesque','Geist',sans-serif;font-size:19px;font-weight:700;color:var(--ink);margin-bottom:6px;letter-spacing:-.015em}
 .step-desc{font-family:'Geist',sans-serif;font-size:14px;color:var(--muted);line-height:1.55}

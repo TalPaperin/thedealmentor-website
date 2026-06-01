@@ -65,14 +65,18 @@ function toggleFaq(btn){
   function resize(){var r=c.getBoundingClientRect();W=r.width;H=r.height;c.width=W*DPR;c.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);ctx.clearRect(0,0,W,H);COUNT=targetCount();particles=[];for(var i=0;i<COUNT;i++)particles.push(makeP())}
   var mouse={x:0,y:0,px:0,py:0,vx:0,vy:0,active:false,last:0};
   window.addEventListener('pointermove',function(e){var x=e.clientX,y=e.clientY;mouse.vx=x-mouse.px;mouse.vy=y-mouse.py;mouse.px=mouse.x;mouse.py=mouse.y;mouse.x=x;mouse.y=y;mouse.active=true;mouse.last=performance.now();var inj=Math.min(4,Math.floor(Math.hypot(mouse.vx,mouse.vy)*.2));for(var k=0;k<inj;k++)particles.push({x:x+(Math.random()-.5)*14,y:y+(Math.random()-.5)*14,life:50+Math.random()*100,age:0,seed:Math.random(),injected:true,ivx:mouse.vx*(.3+Math.random()*.3),ivy:mouse.vy*(.3+Math.random()*.3)});if(particles.length>COUNT*1.4)particles.splice(0,particles.length-COUNT*1.4|0)},{passive:true});
-  var t0=performance.now(),vis=true;
+  var t0=performance.now(),vis=true,lastDraw=0;
   document.addEventListener('visibilitychange',function(){vis=!document.hidden});
   var html=document.documentElement;
   new MutationObserver(function(){var isL=html.getAttribute('data-theme')==='light';ctx.globalCompositeOperation='source-over';ctx.fillStyle=isL?'#FFFFFF':'#04060F';ctx.fillRect(0,0,W,H)}).observe(html,{attributes:true,attributeFilter:['data-theme']});
   var isLight=function(){return html.getAttribute('data-theme')==='light'};
   function frame(){
     if(!vis){requestAnimationFrame(frame);return}
-    var now=performance.now(),t=(now-t0)*.001;
+    var now=performance.now();
+    /* Throttle to ~30fps to free up the main thread for scroll */
+    if(now-lastDraw<32){requestAnimationFrame(frame);return}
+    lastDraw=now;
+    var t=(now-t0)*.001;
     ctx.globalCompositeOperation='source-over';
     ctx.fillStyle=isLight()?'rgba(255,255,255,0.06)':'rgba(4,6,15,0.06)';
     ctx.fillRect(0,0,W,H);
@@ -104,15 +108,6 @@ function toggleFaq(btn){
   window.addEventListener('resize',resize);resize();
   mouse.x=W/2;mouse.y=H/2;mouse.active=true;mouse.last=performance.now();setTimeout(function(){mouse.active=false},1500);
   requestAnimationFrame(frame);
-})();
-
-/* ----- PAIN MARQUEE: duplicate the cards in .pain-row for a seamless loop ----- */
-(function(){
-  var row=document.querySelector('.pain-row');
-  if(!row)return;
-  var originals=Array.prototype.slice.call(row.children);
-  if(!originals.length)return;
-  originals.forEach(function(c){row.appendChild(c.cloneNode(true))});
 })();
 
 /* ----- TILE FLIP-IN (per-card IntersectionObserver) ----- */
