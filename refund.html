@@ -3,131 +3,102 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Refund Policy , TheDealMentor.AI</title>
-<meta name="description" content="How refunds work at TheDealMentor.AI. Free trial first, cancel anytime, fair refund review for billing errors.">
+<title>Refund Policy - TheDealMentor.AI</title>
+<meta name="description" content="DealMentor refund policy. Try before you buy. Plain English.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.thedealmentor.ai/refund">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.thedealmentor.ai/refund">
-<meta property="og:title" content="Refund Policy , TheDealMentor.AI">
-<meta property="og:description" content="How refunds work at TheDealMentor.AI.">
-<meta property="og:image" content="https://www.thedealmentor.ai/og-image.svg">
-<meta name="twitter:card" content="summary_large_image">
+<meta property="og:title" content="Refund Policy - TheDealMentor.AI">
 <link rel="icon" href="https://www.thedealmentor.ai/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/spine.css">
+<script>document.documentElement.classList.add('js');var __dmTheme=localStorage.getItem('dm-theme');if(__dmTheme==='light')document.documentElement.setAttribute('data-theme','light');</script>
 </head>
 <body>
-<style>
-.legal-page{padding:60px 32px 80px;max-width:820px;margin:0 auto}
-.legal-page .label{font-size:11px;letter-spacing:2px;color:var(--blue);font-weight:700;text-transform:uppercase;margin-bottom:14px}
-.legal-page h1{font-size:clamp(28px,4.5vw,42px);font-weight:900;color:var(--heading);margin-bottom:8px;line-height:1.15;letter-spacing:-0.5px}
-.legal-page .updated{font-size:13px;color:var(--text3);margin-bottom:48px}
-.legal-section{margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border)}
-.legal-section:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0}
-.legal-section h2{font-size:18px;font-weight:800;color:var(--blue);margin-bottom:14px;line-height:1.4}
-.legal-section p{font-size:15px;color:var(--text2);line-height:1.85;margin-bottom:12px}
-.legal-section p:last-child{margin-bottom:0}
-.legal-section ul{margin:8px 0 0 0;padding-left:22px}
-.legal-section ul li{font-size:15px;color:var(--text2);line-height:1.85;margin-bottom:6px}
-.legal-back{text-align:center;margin-top:56px}
-.legal-back a{display:inline-block;font-size:13px;color:var(--text2);padding:11px 24px;border:1px solid var(--border);border-radius:9px;transition:border-color 0.2s,color 0.2s;font-weight:600}
-.legal-back a:hover{border-color:var(--blue);color:var(--blue)}
-@media(max-width:600px){.legal-page{padding:40px 20px 60px}}
-</style>
+
+<canvas id="field" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
+
 <nav>
-<div class="nav-logo"><a href="/"><img src="https://www.thedealmentor.ai/DealMentor%20horizontal%20logo%20white.jpg" alt="TheDealMentor.AI"></a></div>
-<div class="nav-links">
-<a href="/pricing">Pricing</a>
-<a href="/whyus">Why Us</a>
-<a href="/about">About KSW</a>
-<a href="/contact">Contact</a>
-<a href="/platform">Platform</a>
-<a href="https://blog.thedealmentor.ai">Blog</a>
-</div>
-<div class="nav-right"><a href="https://app.thedealmentor.ai/login" class="btn-ghost">Log In</a><a href="https://app.thedealmentor.ai/register" class="btn-primary">Start Free</a></div>
+  <div class="nav-logo"><a href="/" class="wordmark" aria-label="DealMentor home"><img src="/DealMentor%20horizontal%20logo%20white.jpg" alt="DealMentor" class="logo-dark" width="180" height="30"><img src="/DealMentor%20horizontal%20logo%20blue.jpg" alt="DealMentor" class="logo-light" width="180" height="30"></a></div>
+  <div class="nav-links" id="navLinks">
+    <a href="https://app.thedealmentor.ai/login" class="nav-login-m">Log In</a>
+    <a href="/pricing">Pricing</a><a href="/whyus">Why Us</a><a href="/about">About KSW</a><a href="/contact">Contact</a><a href="/platform">Platform</a><a href="https://blog.thedealmentor.ai">Blog</a>
+  </div>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark / light mode">
+      <svg class="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+    <a href="https://app.thedealmentor.ai/login" class="btn-ghost">Log In</a>
+    <a href="https://app.thedealmentor.ai/register" class="btn-primary">Start Free</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+  </div>
 </nav>
 
-<main class="legal-page">
-<div class="label">Refunds</div>
-<h1>Refund Policy</h1>
-<p class="updated">Last updated: May 13, 2026</p>
+<div class="prose-wrap">
+  <h1>Refund Policy</h1>
+  <p class="prose-meta">Last updated: May 13, 2026</p>
+  <div class="prose">
+    <h2>1. Try before you buy</h2>
+    <p>Every plan starts with a free trial: 7 days on the Founder plan, 14 days on Starter, Growth, and Scale. No credit card is required to start. You will not be charged during your trial. Use the trial to confirm the product is right for you before committing.</p>
 
-<div class="legal-section">
-<h2>1. Try before you buy</h2>
-<p>Every plan starts with a free trial: 7 days on the Founder plan, 14 days on Starter, Growth, and Scale. No credit card is required to start. You will not be charged during your trial. Use the trial to confirm the product is right for you before committing.</p>
-</div>
+    <h2>2. Cancellation</h2>
+    <p>You may cancel any time from your account settings. Cancellation takes effect at the end of your current billing period. You keep full access until that date and retain access to outputs you have already generated.</p>
 
-<div class="legal-section">
-<h2>2. Cancellation</h2>
-<p>You may cancel any time from your account settings. Cancellation takes effect at the end of your current billing period. You keep full access until that date and you retain access to outputs you have already generated.</p>
-</div>
+    <h2>3. When we issue refunds</h2>
+    <p>If you were charged and believe it was in error, email <a href="mailto:support@thedealmentor.ai">support@thedealmentor.ai</a> within 7 days of the charge. We review every request on its merits. Refunds are generally issued for:</p>
+    <ul>
+      <li>Accidental double charges or duplicate billing.</li>
+      <li>Technical issues that prevented you from accessing the service for an extended period.</li>
+      <li>Charges processed after you submitted a cancellation request.</li>
+    </ul>
 
-<div class="legal-section">
-<h2>3. When we issue refunds</h2>
-<p>If you were charged and believe it was in error, email support@thedealmentor.ai within 7 days of the charge. We review every request on its merits. Refunds are generally issued for:</p>
-<ul>
-<li>Accidental double charges or duplicate billing.</li>
-<li>Technical issues that prevented you from accessing the service for an extended period.</li>
-<li>Charges processed after you submitted a cancellation request.</li>
-</ul>
-</div>
+    <h2>4. When we do not issue refunds</h2>
+    <ul>
+      <li>Partial months of service after cancellation, including the portion of a billing period remaining when you cancel.</li>
+      <li>Accounts terminated for violation of our Terms of Service.</li>
+      <li>Dissatisfaction with generated outputs. Output quality depends substantially on the information you provide during intake. We are happy to coach you to better outputs in chat support before any cancellation.</li>
+    </ul>
 
-<div class="legal-section">
-<h2>4. When we do not issue refunds</h2>
-<ul>
-<li>Partial months of service after cancellation, including the portion of a billing period remaining when you cancel.</li>
-<li>Accounts terminated for violation of our <a href="/terms">Terms of Service</a>.</li>
-<li>Dissatisfaction with AI-generated outputs. Output quality depends substantially on the information you provide during intake. We are happy to coach you to better outputs in chat support before any cancellation.</li>
-</ul>
-</div>
+    <h2>5. Annual plans</h2>
+    <p>Annual subscribers may request a prorated refund for unused full months within 30 days of their annual renewal date. After 30 days, the annual commitment runs to its end. Contact <a href="mailto:support@thedealmentor.ai">support@thedealmentor.ai</a> to start the request.</p>
 
-<div class="legal-section">
-<h2>5. Annual plans</h2>
-<p>Annual subscribers may request a prorated refund for unused full months within 30 days of their annual renewal date. After 30 days, the annual commitment runs to its end. Contact support@thedealmentor.ai to start the request.</p>
-</div>
+    <h2>6. How to request a refund</h2>
+    <p>Email <a href="mailto:support@thedealmentor.ai">support@thedealmentor.ai</a> with:</p>
+    <ul>
+      <li>The email address on your account.</li>
+      <li>The date and amount of the charge.</li>
+      <li>A short note on why you are requesting the refund.</li>
+    </ul>
+    <p>We respond within 2 business days. Approved refunds are processed by Paddle.com (our merchant of record) and typically reach your card within 5 to 10 business days.</p>
 
-<div class="legal-section">
-<h2>6. How to request a refund</h2>
-<p>Email support@thedealmentor.ai with:</p>
-<ul>
-<li>The email address on your account.</li>
-<li>The date and amount of the charge.</li>
-<li>A short note on why you are requesting the refund.</li>
-</ul>
-<p>We respond within 2 business days. Approved refunds are processed by Paddle.com (our merchant of record) and typically reach your card within 5 to 10 business days.</p>
-</div>
+    <h2>7. Contact</h2>
+    <p>Refund questions: <a href="mailto:support@thedealmentor.ai">support@thedealmentor.ai</a>. We are KSW Solutions.</p>
 
-<div class="legal-section">
-<h2>7. Contact</h2>
-<p>Refund questions: support@thedealmentor.ai. We are KSW Solutions.</p>
+    <hr>
+    <p style="text-align:center"><a href="/">← Back to home</a></p>
+  </div>
 </div>
-
-<div class="legal-back">
-<a href="/">← Back to home</a>
-</div>
-</main>
 
 <footer>
-<div class="footer-inner">
-<div class="footer-logo">
-<a href="/"><img src="https://www.thedealmentor.ai/DealMentor%20horizontal%20logo%20white.jpg" alt="TheDealMentor.AI"></a>
-<div class="footer-copy">by KSW Solutions &middot; Virtual CRO Platform<br>&copy; 2026 KSW Solutions. TheDealMentor.AI&trade; is a trademark of Tal Paperin.</div>
-</div>
-<div class="footer-links">
-<a href="/privacy">Privacy</a>
-<a href="/terms">Terms</a>
-<a href="/refund">Refund Policy</a>
-<a href="/contact">Contact</a>
-</div>
-<div class="footer-social">
-<a href="https://www.linkedin.com/company/thedealmentor" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
-<a href="https://www.facebook.com/thedealmentor" target="_blank" rel="noopener" aria-label="Facebook">f</a>
-<a href="https://www.youtube.com/@thedealmentoryt" target="_blank" rel="noopener" aria-label="YouTube">&#9654;</a>
-</div>
-</div>
+  <div class="footer-inner">
+    <div>
+      <a href="/" class="footer-wordmark" aria-label="DealMentor home"><img src="/DealMentor%20horizontal%20logo%20white.jpg" alt="DealMentor" class="logo-dark" width="200" height="34"><img src="/DealMentor%20horizontal%20logo%20blue.jpg" alt="DealMentor" class="logo-light" width="200" height="34"></a>
+      <div class="footer-copy">by KSW Solutions · Virtual CRO Platform<br>&copy; 2026 KSW Solutions. TheDealMentor.AI&trade; is a trademark of Tal Paperin.</div>
+    </div>
+    <div class="footer-links">
+      <a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/refund">Refund Policy</a><a href="/contact">Contact</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/company/thedealmentor" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ico" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+      <a href="https://www.facebook.com/thedealmentor" target="_blank" rel="noopener" aria-label="Facebook"><svg class="ico" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a href="https://www.youtube.com/@thedealmentoryt" target="_blank" rel="noopener" aria-label="YouTube"><svg class="ico" viewBox="0 0 24 24"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
+    </div>
+  </div>
 </footer>
+
+<script src="/spine.js"></script>
 </body>
 </html>

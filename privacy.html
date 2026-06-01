@@ -3,141 +3,111 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy , TheDealMentor.AI</title>
-<meta name="description" content="How TheDealMentor.AI collects, uses, and protects your data. We do not sell your information. We do not train AI on your data.">
+<title>Privacy Policy - TheDealMentor.AI</title>
+<meta name="description" content="How DealMentor handles your data: what we collect, how we use it, your rights. Plain English. No dark patterns.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.thedealmentor.ai/privacy">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.thedealmentor.ai/privacy">
-<meta property="og:title" content="Privacy Policy , TheDealMentor.AI">
-<meta property="og:description" content="How TheDealMentor.AI collects, uses, and protects your data.">
-<meta property="og:image" content="https://www.thedealmentor.ai/og-image.svg">
-<meta name="twitter:card" content="summary_large_image">
+<meta property="og:title" content="Privacy Policy - TheDealMentor.AI">
+<meta property="og:description" content="How DealMentor handles your data: plain English.">
 <link rel="icon" href="https://www.thedealmentor.ai/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/spine.css">
+<script>document.documentElement.classList.add('js');var __dmTheme=localStorage.getItem('dm-theme');if(__dmTheme==='light')document.documentElement.setAttribute('data-theme','light');</script>
 </head>
 <body>
-<style>
-.legal-page{padding:60px 32px 80px;max-width:820px;margin:0 auto}
-.legal-page .label{font-size:11px;letter-spacing:2px;color:var(--blue);font-weight:700;text-transform:uppercase;margin-bottom:14px}
-.legal-page h1{font-size:clamp(28px,4.5vw,42px);font-weight:900;color:var(--heading);margin-bottom:8px;line-height:1.15;letter-spacing:-0.5px}
-.legal-page .updated{font-size:13px;color:var(--text3);margin-bottom:48px}
-.legal-section{margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border)}
-.legal-section:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0}
-.legal-section h2{font-size:18px;font-weight:800;color:var(--blue);margin-bottom:14px;line-height:1.4}
-.legal-section p{font-size:15px;color:var(--text2);line-height:1.85;margin-bottom:12px}
-.legal-section p:last-child{margin-bottom:0}
-.legal-section ul{margin:8px 0 0 0;padding-left:22px}
-.legal-section ul li{font-size:15px;color:var(--text2);line-height:1.85;margin-bottom:6px}
-.legal-back{text-align:center;margin-top:56px}
-.legal-back a{display:inline-block;font-size:13px;color:var(--text2);padding:11px 24px;border:1px solid var(--border);border-radius:9px;transition:border-color 0.2s,color 0.2s;font-weight:600}
-.legal-back a:hover{border-color:var(--blue);color:var(--blue)}
-@media(max-width:600px){.legal-page{padding:40px 20px 60px}}
-</style>
+
+<canvas id="field" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
+
 <nav>
-<div class="nav-logo"><a href="/"><img src="https://www.thedealmentor.ai/DealMentor%20horizontal%20logo%20white.jpg" alt="TheDealMentor.AI"></a></div>
-<div class="nav-links">
-<a href="/pricing">Pricing</a>
-<a href="/whyus">Why Us</a>
-<a href="/about">About KSW</a>
-<a href="/contact">Contact</a>
-<a href="/platform">Platform</a>
-<a href="https://blog.thedealmentor.ai">Blog</a>
-</div>
-<div class="nav-right"><a href="https://app.thedealmentor.ai/login" class="btn-ghost">Log In</a><a href="https://app.thedealmentor.ai/register" class="btn-primary">Start Free</a></div>
+  <div class="nav-logo"><a href="/" class="wordmark" aria-label="DealMentor home"><img src="/DealMentor%20horizontal%20logo%20white.jpg" alt="DealMentor" class="logo-dark" width="180" height="30"><img src="/DealMentor%20horizontal%20logo%20blue.jpg" alt="DealMentor" class="logo-light" width="180" height="30"></a></div>
+  <div class="nav-links" id="navLinks">
+    <a href="https://app.thedealmentor.ai/login" class="nav-login-m">Log In</a>
+    <a href="/pricing">Pricing</a><a href="/whyus">Why Us</a><a href="/about">About KSW</a><a href="/contact">Contact</a><a href="/platform">Platform</a><a href="https://blog.thedealmentor.ai">Blog</a>
+  </div>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark / light mode">
+      <svg class="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+    <a href="https://app.thedealmentor.ai/login" class="btn-ghost">Log In</a>
+    <a href="https://app.thedealmentor.ai/register" class="btn-primary">Start Free</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+  </div>
 </nav>
 
-<main class="legal-page">
-<div class="label">Privacy</div>
-<h1>Privacy Policy</h1>
-<p class="updated">Last updated: May 13, 2026</p>
+<div class="prose-wrap">
+  <h1>Privacy Policy</h1>
+  <p class="prose-meta">Last updated: May 13, 2026</p>
+  <div class="prose">
+    <h2>1. What we collect</h2>
+    <p>We only collect what you give us, and only what we need to run the product.</p>
+    <ul>
+      <li><strong>Account information</strong> - your name, email, company, phone, and role, captured when you register.</li>
+      <li><strong>Sales context</strong> - your buyers, product details, pain points, deal sizes, and methodology preferences, captured during intake to generate your personalised program.</li>
+      <li><strong>Usage data</strong> - which features you use, when, and how often, used to improve the platform.</li>
+    </ul>
+    <p>We do not buy data about you from third parties. We do not enrich your profile from external sources without telling you.</p>
 
-<div class="legal-section">
-<h2>1. What we collect</h2>
-<p>We only collect what you give us, and only what we need to run the product.</p>
-<ul>
-<li><strong>Account information:</strong> your name, email, company, phone, and role, captured when you register.</li>
-<li><strong>Sales context:</strong> your buyers, product details, pain points, deal sizes, and methodology preferences, captured during intake to generate your personalized program.</li>
-<li><strong>Usage data:</strong> which features you use, when, and how often, used to improve the platform.</li>
-</ul>
-<p>We do not buy data about you from third parties. We do not enrich your profile from external sources without telling you.</p>
-</div>
+    <h2>2. How we use it</h2>
+    <ul>
+      <li>To run your account and deliver the platform.</li>
+      <li>To generate your personalised sales program from your intake.</li>
+      <li>To send you account notifications, trial status updates, and product changes that affect you.</li>
+      <li>To respond to your support requests.</li>
+    </ul>
+    <p>We do not sell your personal information. We do not share it with advertisers. Period.</p>
 
-<div class="legal-section">
-<h2>2. How we use it</h2>
-<ul>
-<li>To run your account and deliver the platform.</li>
-<li>To generate your personalized sales program from your intake.</li>
-<li>To send you account notifications, trial status updates, and product changes that affect you.</li>
-<li>To respond to your support requests.</li>
-</ul>
-<p>We do not sell your personal information. We do not share it with advertisers. Period.</p>
-</div>
+    <h2>3. Data storage and security</h2>
+    <p>Your account data and generated outputs are stored in Supabase, a SOC 2 Type II compliant database provider. Data is encrypted in transit (TLS) and at rest. Access inside your workspace is restricted to you and any team members you explicitly invite.</p>
 
-<div class="legal-section">
-<h2>3. Data storage and security</h2>
-<p>Your account data and generated outputs are stored in Supabase, a SOC 2 Type II compliant database provider. Data is encrypted in transit (TLS) and at rest. Access inside your workspace is restricted to you and any team members you explicitly invite.</p>
-</div>
+    <h2>4. AI processing</h2>
+    <p>The content you enter during intake is sent to Anthropic's Claude API to generate your outputs. Anthropic processes the data under their commercial API terms, which prohibit training on customer inputs. We do not use your data to train any model, ours or theirs.</p>
 
-<div class="legal-section">
-<h2>4. AI processing</h2>
-<p>The content you enter during intake is sent to Anthropic's Claude API to generate your outputs. Anthropic processes the data under their commercial API terms, which prohibit training on customer inputs. We do not use your data to train any AI model, ours or theirs.</p>
-</div>
+    <h2>5. Your rights</h2>
+    <p>You have the right to:</p>
+    <ul>
+      <li>Access a copy of the personal data we hold about you.</li>
+      <li>Correct inaccurate information in your account.</li>
+      <li>Delete your account and all associated data.</li>
+      <li>Export your generated outputs at any time using the built-in Word export.</li>
+    </ul>
+    <p>To exercise any of these, email <a href="mailto:support@thedealmentor.ai">support@thedealmentor.ai</a>. We respond within 30 days, usually faster.</p>
 
-<div class="legal-section">
-<h2>5. Your rights</h2>
-<p>You have the right to:</p>
-<ul>
-<li><strong>Access</strong> a copy of the personal data we hold about you.</li>
-<li><strong>Correct</strong> inaccurate information in your account.</li>
-<li><strong>Delete</strong> your account and all associated data.</li>
-<li><strong>Export</strong> your generated outputs at any time using the built-in Word export.</li>
-</ul>
-<p>To exercise any of these, email support@thedealmentor.ai. We respond within 30 days, usually faster.</p>
-</div>
+    <h2>6. Cookies and analytics</h2>
+    <p>We use essential cookies for authentication and session management. No advertising cookies. No third-party tracking pixels.</p>
+    <p>We use PostHog for product analytics, which records anonymised events about feature usage tied to your account ID. This is used internally only to understand which parts of the product help and which need work.</p>
 
-<div class="legal-section">
-<h2>6. Cookies and analytics</h2>
-<p>We use essential cookies for authentication and session management. No advertising cookies. No third-party tracking pixels.</p>
-<p>We use PostHog for product analytics, which records anonymized events about feature usage tied to your account ID. This is used internally only to understand which parts of the product help and which need work.</p>
-</div>
+    <h2>7. Updates to this policy</h2>
+    <p>We may update this policy as the product evolves and laws change. Material changes will be communicated to your account email before they take effect. The "Last updated" date above always reflects the most recent version.</p>
 
-<div class="legal-section">
-<h2>7. Updates to this policy</h2>
-<p>We may update this policy as the product evolves and laws change. Material changes will be communicated to your account email before they take effect. The "Last updated" date at the top of this page always reflects the most recent version.</p>
-</div>
+    <h2>8. Contact</h2>
+    <p>For any privacy question or data request, email <a href="mailto:support@thedealmentor.ai">support@thedealmentor.ai</a>. We are KSW Solutions, the operator of TheDealMentor.AI.</p>
 
-<div class="legal-section">
-<h2>8. Contact</h2>
-<p>For any privacy question or data request, email support@thedealmentor.ai. We are KSW Solutions, the operator of TheDealMentor.AI.</p>
+    <hr>
+    <p style="text-align:center"><a href="/">← Back to home</a></p>
+  </div>
 </div>
-
-<div class="legal-back">
-<a href="/">← Back to home</a>
-</div>
-</main>
 
 <footer>
-<div class="footer-inner">
-<div class="footer-logo">
-<a href="/"><img src="https://www.thedealmentor.ai/DealMentor%20horizontal%20logo%20white.jpg" alt="TheDealMentor.AI"></a>
-<div class="footer-copy">by KSW Solutions &middot; Virtual CRO Platform<br>&copy; 2026 KSW Solutions. TheDealMentor.AI&trade; is a trademark of Tal Paperin.</div>
-</div>
-<div class="footer-links">
-<a href="/privacy">Privacy</a>
-<a href="/terms">Terms</a>
-<a href="/refund">Refund Policy</a>
-<a href="/contact">Contact</a>
-</div>
-<div class="footer-social">
-<a href="https://www.linkedin.com/company/thedealmentor" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
-<a href="https://www.facebook.com/thedealmentor" target="_blank" rel="noopener" aria-label="Facebook">f</a>
-<a href="https://www.youtube.com/@thedealmentoryt" target="_blank" rel="noopener" aria-label="YouTube">&#9654;</a>
-</div>
-</div>
+  <div class="footer-inner">
+    <div>
+      <a href="/" class="footer-wordmark" aria-label="DealMentor home"><img src="/DealMentor%20horizontal%20logo%20white.jpg" alt="DealMentor" class="logo-dark" width="200" height="34"><img src="/DealMentor%20horizontal%20logo%20blue.jpg" alt="DealMentor" class="logo-light" width="200" height="34"></a>
+      <div class="footer-copy">by KSW Solutions · Virtual CRO Platform<br>&copy; 2026 KSW Solutions. TheDealMentor.AI&trade; is a trademark of Tal Paperin.</div>
+    </div>
+    <div class="footer-links">
+      <a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/refund">Refund Policy</a><a href="/contact">Contact</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/company/thedealmentor" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ico" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+      <a href="https://www.facebook.com/thedealmentor" target="_blank" rel="noopener" aria-label="Facebook"><svg class="ico" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a href="https://www.youtube.com/@thedealmentoryt" target="_blank" rel="noopener" aria-label="YouTube"><svg class="ico" viewBox="0 0 24 24"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
+    </div>
+  </div>
 </footer>
+
+<script src="/spine.js"></script>
 </body>
 </html>

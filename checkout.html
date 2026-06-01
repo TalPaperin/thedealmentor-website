@@ -3,140 +3,80 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Secure Checkout — TheDealMentor.AI</title>
-<meta name="robots" content="noindex">
+<title>Checkout - TheDealMentor.AI</title>
+<meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="https://www.thedealmentor.ai/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/spine.css">
+<script>document.documentElement.classList.add('js');var __dmTheme=localStorage.getItem('dm-theme');if(__dmTheme==='light')document.documentElement.setAttribute('data-theme','light');</script>
 <style>
-:root {
-  --bg: #060d1a;
-  --card: #111c2e;
-  --border: #1e2d45;
-  --blue: #005BDC;
-  --heading: #f0f6ff;
-  --text2: #9ca3b0;
-  --text3: #4a6080;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  background: var(--bg);
-  color: var(--heading);
-  font-family: 'Manrope', sans-serif;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  -webkit-font-smoothing: antialiased;
-}
-.box {
-  text-align: center;
-  max-width: 420px;
-  width: 100%;
-}
-.logo { height: 38px; margin-bottom: 32px; object-fit: contain; }
-.spinner {
-  width: 44px; height: 44px;
-  border: 3px solid var(--border);
-  border-top-color: var(--blue);
-  border-radius: 50%;
-  margin: 0 auto 24px;
-  animation: spin 0.8s linear infinite;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-h1 { font-size: 20px; font-weight: 800; margin-bottom: 10px; }
-p { font-size: 14px; color: var(--text2); line-height: 1.6; margin-bottom: 8px; }
-.err { display: none; }
-.err h1 { color: var(--heading); }
-.btn {
-  display: inline-block;
-  background: var(--blue);
-  color: #fff;
-  padding: 13px 28px;
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 700;
-  text-decoration: none;
-  margin-top: 20px;
-}
-.btn:hover { background: #0047b0; }
-.tiny { font-size: 12px; color: var(--text3); margin-top: 24px; }
+.checkout-shell{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;position:relative;z-index:2}
+.checkout-card{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius-lg);padding:48px 40px;box-shadow:var(--shadow);backdrop-filter:blur(10px);max-width:460px;text-align:center}
+.checkout-logo{font-family:'Bricolage Grotesque','Geist',sans-serif;font-weight:800;font-size:32px;color:var(--ink);letter-spacing:-.025em;margin-bottom:32px}
+.checkout-logo b{background:linear-gradient(110deg,var(--chr-1),var(--chr-2),var(--chr-3));-webkit-background-clip:text;background-clip:text;color:transparent}
+.spinner{width:42px;height:42px;border:3px solid var(--card-bd);border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 24px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.checkout-card h1{font-family:'Bricolage Grotesque','Geist',sans-serif;font-size:24px;font-weight:800;color:var(--ink);letter-spacing:-.02em;margin-bottom:12px}
+.checkout-card p{font-family:'Geist',sans-serif;font-size:14.5px;color:var(--muted);line-height:1.6;margin-bottom:8px}
+.checkout-tiny{font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-top:32px}
+#error{display:none}
+#error a.btn-primary{margin-top:20px}
 </style>
 </head>
 <body>
-<div class="box">
-  <img class="logo" src="https://www.thedealmentor.ai/DealMentor%20horizontal%20logo%20white.jpg" alt="TheDealMentor.AI">
 
-  <div id="loading">
-    <div class="spinner"></div>
-    <h1>Opening secure checkout…</h1>
-    <p>Powered by Paddle. If the checkout doesn't appear, check that pop-ups are allowed.</p>
+<canvas id="field" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
+
+<div class="checkout-shell">
+  <div class="checkout-card">
+    <div class="checkout-logo">Deal<b>Mentor</b></div>
+
+    <div id="loading">
+      <div class="spinner" aria-hidden="true"></div>
+      <h1>Opening secure checkout…</h1>
+      <p>Powered by Paddle. If the checkout does not appear, check that pop-ups are allowed.</p>
+    </div>
+
+    <div id="error">
+      <h1>No plan selected</h1>
+      <p>We could not find a plan to check out. Head back to pricing and choose your plan.</p>
+      <a class="btn-primary btn-lg" href="https://www.thedealmentor.ai/pricing">View Pricing</a>
+    </div>
+
+    <div class="checkout-tiny">TheDealMentor.AI · by KSW Solutions · Secure payment by Paddle</div>
   </div>
-
-  <div id="error" class="err">
-    <h1>No plan selected</h1>
-    <p>We couldn't find a plan to check out. Head back to pricing and choose your plan.</p>
-    <a class="btn" href="https://www.thedealmentor.ai/pricing">View Pricing</a>
-  </div>
-
-  <div class="tiny">TheDealMentor.AI™ · by KSW Solutions · Secure payment by Paddle</div>
 </div>
 
 <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
 <script>
 (function () {
-  // ── CONFIG ───────────────────────────────────────────────
   var PADDLE_TOKEN = "live_4b4932cc52e772d6e6c4e2c637c";
   var SUCCESS_URL  = "https://app.thedealmentor.ai/dashboard?upgraded=true";
-  // ─────────────────────────────────────────────────────────
-
   var params  = new URLSearchParams(window.location.search);
-  var priceId = params.get("price");        // e.g. pri_01h...  (passed by the app)
-  var ptxn    = params.get("_ptxn");        // present for manual payment links (A1)
-  var email   = params.get("email");        // optional, prefills the email field
-
-  function showError() {
-    document.getElementById("loading").style.display = "none";
-    document.getElementById("error").style.display = "block";
-  }
-
+  var priceId = params.get("price");
+  var ptxn    = params.get("_ptxn");
+  var email   = params.get("email");
+  function showError(){document.getElementById("loading").style.display="none";document.getElementById("error").style.display="block"}
   try {
     Paddle.Environment.set("production");
     Paddle.Initialize({
       token: PADDLE_TOKEN,
       eventCallback: function (data) {
-        // When the overlay is closed without completing, send the user back to pricing
         if (data && data.name === "checkout.closed") {
           window.location.href = "https://www.thedealmentor.ai/pricing";
         }
       }
     });
-
-    // If a _ptxn link was used (manual payment link from the dashboard / API),
-    // Paddle.js auto-detects it on Initialize and opens that checkout. Don't double-open.
-    if (ptxn) {
-      // Paddle handles it automatically — nothing more to do.
-    } else if (priceId) {
-      var checkout = {
-        items: [{ priceId: priceId, quantity: 1 }],
-        settings: {
-          displayMode: "overlay",
-          theme: "dark",
-          successUrl: SUCCESS_URL
-        }
-      };
-      if (email) { checkout.customer = { email: email }; }
-      Paddle.Checkout.open(checkout);
-    } else {
-      // No price and no transaction — nothing to check out.
-      showError();
-    }
-  } catch (e) {
-    console.error("Checkout error:", e);
-    showError();
-  }
+    if (ptxn) { /* Paddle handles auto-open */ }
+    else if (priceId) {
+      var co = { items:[{priceId:priceId,quantity:1}], settings:{displayMode:"overlay",theme:"dark",successUrl:SUCCESS_URL} };
+      if (email) { co.customer = { email: email }; }
+      Paddle.Checkout.open(co);
+    } else { showError(); }
+  } catch (e) { console.error("Checkout error:", e); showError(); }
 })();
 </script>
 </body>
