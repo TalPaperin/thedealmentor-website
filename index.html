@@ -79,36 +79,38 @@
 
 <section class="together" id="meet-cro" aria-labelledby="together-title">
   <div class="together-head">
-    <h2 class="section-h2" id="together-title">AI drafts it. <em>A real CRO sharpens it.</em></h2>
+    <p class="eyebrow" style="justify-content:center">Inside the product</p>
+    <h2 class="section-h2" id="together-title">The actual app. <em>Not a mockup.</em></h2>
+    <p class="section-sub" style="margin-left:auto;margin-right:auto;text-align:center">Five screens from the live product, on loop. Every plan ships with all of it.</p>
   </div>
-  <div class="morph-grid">
-    <article class="morph-card tile-flip" id="morph-card-1">
-      <header class="morph-head"><span class="morph-tag">01 · Objection Handler</span></header>
-      <div class="morph-state is-a">
-        <span class="morph-label a"><span class="dot"></span>Objection</span>
-        <span class="morph-arrow">→</span>
-        <span class="morph-label b"><span class="dot"></span>Response</span>
+  <div class="gallery" id="product-gallery" aria-roledescription="product screenshot gallery">
+    <div class="gallery-frame">
+      <picture class="gallery-image is-on" data-label="Daily dashboard">
+        <img src="/product-dashboard.jpg" alt="ClinicMind dashboard with Sales Copilot, Outreach Builder, and My Deals" width="1620" height="780" loading="lazy">
+      </picture>
+      <picture class="gallery-image" data-label="My Deals">
+        <img src="/product-deal.jpg" alt="My Deals - deal detail with CRO's read and activity log" width="1013" height="780" loading="lazy">
+      </picture>
+      <picture class="gallery-image" data-label="Outreach Builder">
+        <img src="/product-outreach.jpg" alt="Outreach Builder - six channels per ICP" width="1620" height="620" loading="lazy">
+      </picture>
+      <picture class="gallery-image" data-label="Sales Copilot">
+        <img src="/product-copilot.jpg" alt="Sales Copilot - eight real-time deal tools" width="1608" height="670" loading="lazy">
+      </picture>
+      <picture class="gallery-image" data-label="Ask the CRO">
+        <img src="/product-ask-cro.jpg" alt="Ask the CRO - 24/7 AI advisor in-app" width="855" height="836" loading="lazy">
+      </picture>
+    </div>
+    <div class="gallery-caption">
+      <span class="gallery-label">Daily dashboard</span>
+      <div class="gallery-dots" role="tablist" aria-label="Choose screen">
+        <button class="gallery-dot is-on" type="button" aria-label="Daily dashboard"></button>
+        <button class="gallery-dot" type="button" aria-label="My Deals"></button>
+        <button class="gallery-dot" type="button" aria-label="Outreach Builder"></button>
+        <button class="gallery-dot" type="button" aria-label="Sales Copilot"></button>
+        <button class="gallery-dot" type="button" aria-label="Ask the CRO"></button>
       </div>
-      <p class="morph-line"><span></span><span class="caret" aria-hidden="true"></span></p>
-    </article>
-    <article class="morph-card tile-flip" id="morph-card-2">
-      <header class="morph-head"><span class="morph-tag">03 · My Deals</span></header>
-      <div class="morph-state is-a">
-        <span class="morph-label a"><span class="dot"></span>Pipeline</span>
-        <span class="morph-arrow">→</span>
-        <span class="morph-label b"><span class="dot"></span>Today's priorities</span>
-      </div>
-      <p class="morph-line"><span></span><span class="caret" aria-hidden="true"></span></p>
-    </article>
-    <article class="morph-card tile-flip" id="morph-card-3">
-      <header class="morph-head"><span class="morph-tag">02 · ICP Scripts</span></header>
-      <div class="morph-state is-a">
-        <span class="morph-label a"><span class="dot"></span>Generic</span>
-        <span class="morph-arrow">→</span>
-        <span class="morph-label b"><span class="dot"></span>Personalized</span>
-      </div>
-      <p class="morph-line"><span></span><span class="caret" aria-hidden="true"></span></p>
-    </article>
+    </div>
   </div>
 </section>
 
@@ -247,29 +249,36 @@
 
 
 <script>
-/* Morph engine - 3 Together cards */
+/* Product gallery - auto-flipping screenshot carousel in #meet-cro */
 (function(){
-  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var glyphs='!@#$%&*+=?<>{}/\\|~^abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  function rand(){return glyphs.charAt(Math.floor(Math.random()*glyphs.length))}
-  function wait(ms){return new Promise(function(r){setTimeout(r,ms)})}
-  function makeMorph(opts){
-    var line=opts.cardEl.querySelector('.morph-line span'),state=opts.cardEl.querySelector('.morph-state');
-    if(!line||!state)return;
-    var current='',idx=0,pauseA=opts.pauseA||1500,pauseB=opts.pauseB||1800;
-    function morph(from,to){return new Promise(function(resolve){if(reduced){line.textContent=to;return resolve()}var len=Math.max(from.length,to.length),ops=[];for(var i=0;i<len;i++){var start=Math.floor(Math.random()*14),end=start+12+Math.floor(Math.random()*16);ops.push({from:from[i]||' ',to:to[i]||' ',start:start,end:end,ch:' '})}var frame=0;function tick(){var out='',done=true;for(var i=0;i<ops.length;i++){var op=ops[i];if(frame>=op.end)out+=op.to;else if(frame<op.start)out+=op.from;else{done=false;var p=(frame-op.start)/(op.end-op.start);op.ch=(Math.random()<p*.4)?op.to:rand();out+=op.ch}}line.textContent=out;frame++;if(done)resolve();else requestAnimationFrame(tick)}requestAnimationFrame(tick)})}
-    function setState(w){state.classList.toggle('is-a',w==='a');state.classList.toggle('is-b',w==='b')}
-    async function run(){while(true){var p=opts.pairs[idx%opts.pairs.length];setState('a');await morph(current,p[0]);current=p[0];await wait(pauseA);setState('b');await morph(current,p[1]);current=p[1];await wait(pauseB);idx++}}
-    setState('a');setTimeout(run,opts.startDelay||0);
+  var gallery=document.getElementById('product-gallery');if(!gallery)return;
+  var images=gallery.querySelectorAll('.gallery-image');
+  var dots=gallery.querySelectorAll('.gallery-dot');
+  var labelEl=gallery.querySelector('.gallery-label');
+  if(!images.length)return;
+  var current=0,timer=null,reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function show(idx){
+    if(idx===current||idx<0||idx>=images.length)return;
+    images[current].classList.remove('is-on');
+    images[current].classList.add('is-out');
+    setTimeout(function(){images[current%images.length] && images[current%images.length].classList.remove('is-out')},700);
+    dots[current].classList.remove('is-on');
+    current=idx;
+    images[current].classList.add('is-on');
+    dots[current].classList.add('is-on');
+    if(labelEl)labelEl.textContent=images[current].dataset.label||'';
   }
-  var section=document.getElementById('meet-cro');if(!section)return;
-  function start(){
-    var c1=document.getElementById('morph-card-1'),c2=document.getElementById('morph-card-2'),c3=document.getElementById('morph-card-3');
-    if(c1)makeMorph({cardEl:c1,startDelay:100,pairs:[['"It costs too much."','Cost is friction. Show the outcome first.'],['"We’ll think about it."','Decisions get smaller after the call ends.'],['"Send us a deck."','Decks don’t close. Conversations do.'],['"Not this quarter."','Then let’s plan next quarter - today.'],['"Email me the pricing."','Pricing without context is the wrong number.']]});
-    if(c2)makeMorph({cardEl:c2,startDelay:700,pairs:[['12 open deals across 3 stages.','Today: push Acme to procurement before Friday.'],['Pipeline value: $487K this quarter.','Today: rebuild the Velocity proposal before noon.'],['3 deals stalled past 14 days.','Today: send Mira the price-justification one-pager.'],['TechCorp went silent 9 days ago.','Today: re-engage TechCorp through Sarah in procurement.'],['BetaSoft asked for "a better number."','Today: anchor with annual TCO, not the monthly price.']]});
-    if(c3)makeMorph({cardEl:c3,startDelay:1300,pairs:[['Hi {Name}, just checking in.','Maria - you mentioned the Q4 board review.'],['Following up on our last email.','David - the integration question your CTO raised has an answer.'],['Wanted to share a case study.','Sarah - the Pepsi rollout mirrors your situation.'],['Just touching base.','Alex - after your team’s pricing concern, a 1-page exec summary.']]});
-  }
-  if('IntersectionObserver' in window){var started=false;new IntersectionObserver(function(entries){if(entries[0].isIntersecting&&!started){started=true;start()}},{threshold:.15}).observe(section)}else{start()}
+  function next(){show((current+1)%images.length)}
+  function start(){if(reduced)return;if(timer)return;timer=setInterval(next,4500)}
+  function stop(){if(timer){clearInterval(timer);timer=null}}
+  dots.forEach(function(d,i){d.addEventListener('click',function(){stop();show(i);start()})});
+  gallery.addEventListener('mouseenter',stop);
+  gallery.addEventListener('mouseleave',start);
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting)start();else stop()})
+    },{threshold:.2}).observe(gallery);
+  }else{start()}
 })();
 </script>
 
