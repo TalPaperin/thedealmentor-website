@@ -149,6 +149,10 @@ nav.shrink .wordmark img{height:26px}
 .section-inner{max-width:var(--maxw);margin:0 auto}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:16px}
 .eyebrow::before{content:'';width:18px;height:1px;background:var(--accent);display:inline-block}
+.section-head-center{text-align:center;margin-bottom:8px}
+.section-head-center .eyebrow{justify-content:center}
+.section-head-center .section-h2{margin-left:auto;margin-right:auto}
+.section-head-center .section-sub{margin-left:auto;margin-right:auto}
 .section-h2{font-family:'Bricolage Grotesque','Geist',sans-serif;font-size:clamp(30px,4.4vw,60px);font-weight:800;line-height:1.36;letter-spacing:-.028em;color:var(--ink);margin-bottom:14px;padding:.22em .1em .28em}
 .section-h2 em{font-style:italic;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;padding:.26em .18em .3em .14em;margin:0 -.06em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .section-sub{font-family:'Geist',sans-serif;font-size:clamp(16px,1.3vw,19px);color:var(--muted);max-width:62ch;margin-bottom:48px;line-height:1.6}
