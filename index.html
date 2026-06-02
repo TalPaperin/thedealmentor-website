@@ -248,7 +248,7 @@
 
 
 <script>
-/* Product gallery - fast auto-flip + manual prev/next in #meet-cro */
+/* Product gallery - manual prev/next only in #meet-cro */
 (function(){
   var gallery=document.getElementById('product-gallery');if(!gallery)return;
   var images=gallery.querySelectorAll('.gallery-image');
@@ -256,8 +256,7 @@
   var prevBtn=document.getElementById('galleryPrev');
   var nextBtn=document.getElementById('galleryNext');
   if(!images.length)return;
-  var current=0,timer=null,reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var INTERVAL=1500;
+  var current=0;
   function go(dir){
     var prev=current,nextIdx=(current+dir+images.length)%images.length;
     images[prev].classList.remove('is-on');
@@ -267,17 +266,8 @@
     images[current].classList.add('is-on');
     if(labelEl)labelEl.textContent=images[current].dataset.label||'';
   }
-  function next(){go(1)}
-  function start(){if(reduced)return;if(timer)return;timer=setInterval(next,INTERVAL)}
-  function stop(){if(timer){clearInterval(timer);timer=null}}
-  function restart(){stop();start()}
-  if(prevBtn)prevBtn.addEventListener('click',function(){go(-1);restart()});
-  if(nextBtn)nextBtn.addEventListener('click',function(){go(1);restart()});
-  if('IntersectionObserver' in window){
-    new IntersectionObserver(function(entries){
-      entries.forEach(function(e){if(e.isIntersecting)start();else stop()})
-    },{threshold:.2}).observe(gallery);
-  }else{start()}
+  if(prevBtn)prevBtn.addEventListener('click',function(){go(-1)});
+  if(nextBtn)nextBtn.addEventListener('click',function(){go(1)});
 })();
 </script>
 
