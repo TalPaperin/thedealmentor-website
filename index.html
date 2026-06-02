@@ -102,7 +102,13 @@
       </picture>
     </div>
     <div class="gallery-caption">
+      <button class="gallery-arrow" id="galleryPrev" type="button" aria-label="Previous screen">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
       <span class="gallery-label">Daily dashboard</span>
+      <button class="gallery-arrow" id="galleryNext" type="button" aria-label="Next screen">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
     </div>
   </div>
 </section>
@@ -242,15 +248,18 @@
 
 
 <script>
-/* Product gallery - pure auto-flipping screenshot carousel in #meet-cro */
+/* Product gallery - fast auto-flip + manual prev/next in #meet-cro */
 (function(){
   var gallery=document.getElementById('product-gallery');if(!gallery)return;
   var images=gallery.querySelectorAll('.gallery-image');
   var labelEl=gallery.querySelector('.gallery-label');
+  var prevBtn=document.getElementById('galleryPrev');
+  var nextBtn=document.getElementById('galleryNext');
   if(!images.length)return;
   var current=0,timer=null,reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function next(){
-    var prev=current,nextIdx=(current+1)%images.length;
+  var INTERVAL=1500;
+  function go(dir){
+    var prev=current,nextIdx=(current+dir+images.length)%images.length;
     images[prev].classList.remove('is-on');
     images[prev].classList.add('is-out');
     setTimeout(function(){images[prev] && images[prev].classList.remove('is-out')},700);
@@ -258,8 +267,12 @@
     images[current].classList.add('is-on');
     if(labelEl)labelEl.textContent=images[current].dataset.label||'';
   }
-  function start(){if(reduced)return;if(timer)return;timer=setInterval(next,4500)}
+  function next(){go(1)}
+  function start(){if(reduced)return;if(timer)return;timer=setInterval(next,INTERVAL)}
   function stop(){if(timer){clearInterval(timer);timer=null}}
+  function restart(){stop();start()}
+  if(prevBtn)prevBtn.addEventListener('click',function(){go(-1);restart()});
+  if(nextBtn)nextBtn.addEventListener('click',function(){go(1);restart()});
   if('IntersectionObserver' in window){
     new IntersectionObserver(function(entries){
       entries.forEach(function(e){if(e.isIntersecting)start();else stop()})
