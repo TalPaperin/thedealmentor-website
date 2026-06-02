@@ -86,30 +86,23 @@
   <div class="gallery" id="product-gallery" aria-roledescription="product screenshot gallery">
     <div class="gallery-frame">
       <picture class="gallery-image is-on" data-label="Daily dashboard">
-        <img src="/product-dashboard.jpg" alt="ClinicMind dashboard with Sales Copilot, Outreach Builder, and My Deals" width="1620" height="780" loading="lazy">
+        <img src="/Dashboard.jpg" alt="ClinicMind dashboard with Sales Copilot, Outreach Builder, and My Deals" width="1620" height="780" loading="lazy">
       </picture>
       <picture class="gallery-image" data-label="My Deals">
-        <img src="/product-deal.jpg" alt="My Deals - deal detail with CRO's read and activity log" width="1013" height="780" loading="lazy">
+        <img src="/New%20Deal.jpg" alt="My Deals - deal detail with CRO's read and activity log" width="1013" height="780" loading="lazy">
       </picture>
       <picture class="gallery-image" data-label="Outreach Builder">
-        <img src="/product-outreach.jpg" alt="Outreach Builder - six channels per ICP" width="1620" height="620" loading="lazy">
+        <img src="/Outreach%20Builder.jpg" alt="Outreach Builder - six channels per ICP" width="1620" height="620" loading="lazy">
       </picture>
       <picture class="gallery-image" data-label="Sales Copilot">
-        <img src="/product-copilot.jpg" alt="Sales Copilot - eight real-time deal tools" width="1608" height="670" loading="lazy">
+        <img src="/Sales%20Copilot.jpg" alt="Sales Copilot - eight real-time deal tools" width="1608" height="670" loading="lazy">
       </picture>
       <picture class="gallery-image" data-label="Ask the CRO">
-        <img src="/product-ask-cro.jpg" alt="Ask the CRO - 24/7 AI advisor in-app" width="855" height="836" loading="lazy">
+        <img src="/Virtual%20CRO.png" alt="Ask the CRO - 24/7 AI advisor in-app" width="855" height="836" loading="lazy">
       </picture>
     </div>
     <div class="gallery-caption">
       <span class="gallery-label">Daily dashboard</span>
-      <div class="gallery-dots" role="tablist" aria-label="Choose screen">
-        <button class="gallery-dot is-on" type="button" aria-label="Daily dashboard"></button>
-        <button class="gallery-dot" type="button" aria-label="My Deals"></button>
-        <button class="gallery-dot" type="button" aria-label="Outreach Builder"></button>
-        <button class="gallery-dot" type="button" aria-label="Sales Copilot"></button>
-        <button class="gallery-dot" type="button" aria-label="Ask the CRO"></button>
-      </div>
     </div>
   </div>
 </section>
@@ -249,31 +242,24 @@
 
 
 <script>
-/* Product gallery - auto-flipping screenshot carousel in #meet-cro */
+/* Product gallery - pure auto-flipping screenshot carousel in #meet-cro */
 (function(){
   var gallery=document.getElementById('product-gallery');if(!gallery)return;
   var images=gallery.querySelectorAll('.gallery-image');
-  var dots=gallery.querySelectorAll('.gallery-dot');
   var labelEl=gallery.querySelector('.gallery-label');
   if(!images.length)return;
   var current=0,timer=null,reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function show(idx){
-    if(idx===current||idx<0||idx>=images.length)return;
-    images[current].classList.remove('is-on');
-    images[current].classList.add('is-out');
-    setTimeout(function(){images[current%images.length] && images[current%images.length].classList.remove('is-out')},700);
-    dots[current].classList.remove('is-on');
-    current=idx;
+  function next(){
+    var prev=current,nextIdx=(current+1)%images.length;
+    images[prev].classList.remove('is-on');
+    images[prev].classList.add('is-out');
+    setTimeout(function(){images[prev] && images[prev].classList.remove('is-out')},700);
+    current=nextIdx;
     images[current].classList.add('is-on');
-    dots[current].classList.add('is-on');
     if(labelEl)labelEl.textContent=images[current].dataset.label||'';
   }
-  function next(){show((current+1)%images.length)}
   function start(){if(reduced)return;if(timer)return;timer=setInterval(next,4500)}
   function stop(){if(timer){clearInterval(timer);timer=null}}
-  dots.forEach(function(d,i){d.addEventListener('click',function(){stop();show(i);start()})});
-  gallery.addEventListener('mouseenter',stop);
-  gallery.addEventListener('mouseleave',start);
   if('IntersectionObserver' in window){
     new IntersectionObserver(function(entries){
       entries.forEach(function(e){if(e.isIntersecting)start();else stop()})
