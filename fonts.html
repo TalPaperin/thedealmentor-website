@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Font Preview · DealMentor</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;700;800&family=Mona+Sans:wght@400;500;700;800&family=Space+Grotesque:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&family=Geist:wght@400;500;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#04060F; --bg-2:#0A0E1F; --bg-card:#0F1A30;
+  --ink:#FFFFFF; --text:#CFD2DA; --muted:#9CA0AA;
+  --accent:#2563EB; --accent-2:#00B9C7; --primary:#1229B2;
+  --grad:linear-gradient(110deg,#00B9C7 0%,#2563EB 50%,#1229B2 100%);
+  --line:rgba(255,255,255,.08); --line-hi:rgba(255,255,255,.18);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Geist',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;padding:40px 20px 80px;min-height:100vh}
+.wrap{max-width:1100px;margin:0 auto}
+.page-h1{font-family:'Geist',sans-serif;font-weight:700;font-size:32px;letter-spacing:-.025em;color:var(--ink);margin-bottom:8px}
+.page-sub{color:var(--muted);font-size:14px;margin-bottom:40px;font-family:'Geist Mono',monospace;letter-spacing:.06em}
+.font-card{background:var(--bg-card);border:1px solid var(--line);border-radius:18px;padding:48px 40px;margin-bottom:24px;transition:border-color .3s}
+.font-card:hover{border-color:var(--accent)}
+.font-label{display:inline-flex;align-items:center;gap:10px;font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-2);font-weight:600;margin-bottom:8px}
+.font-label::before{content:'';width:18px;height:1px;background:var(--accent)}
+.font-name{font-family:'Geist',sans-serif;font-weight:600;font-size:14px;color:var(--muted);margin-bottom:32px;font-style:italic}
+.demo-eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-2);font-weight:500;margin-bottom:28px}
+.demo-eyebrow::before{content:'';width:9px;height:9px;border-radius:50%;background:var(--accent-2)}
+.demo-h1{font-size:clamp(32px,5.4vw,72px);font-weight:700;line-height:1.08;letter-spacing:-.035em;color:var(--ink);margin-bottom:28px}
+.demo-h1 .line{display:block}
+.demo-h1 .em-color{color:#3D7BFF}
+.demo-h1 .em-grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.demo-sub{font-family:'Geist',sans-serif;font-size:17px;color:var(--text);max-width:62ch;line-height:1.55;margin-bottom:14px}
+.demo-sub strong{color:var(--accent-2);font-weight:700}
+.demo-sub-2{font-family:'Geist',sans-serif;font-size:17px;color:var(--text);max-width:62ch;line-height:1.55;margin-bottom:24px}
+.demo-sub-2 strong{color:var(--ink);font-weight:600}
+.demo-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.demo-cta{padding:14px 26px;border-radius:10px;font-family:'Geist',sans-serif;font-weight:600;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.demo-cta.primary{background:var(--accent);color:#fff}
+.demo-cta.secondary{border:1.5px solid var(--line-hi);color:var(--ink)}
+
+/* Font A: Funnel Display */
+.font-a .demo-h1, .font-a .demo-label{font-family:'Funnel Display','Geist',sans-serif}
+.font-a .demo-h1{font-weight:700;letter-spacing:-.04em}
+
+/* Font B: Mona Sans */
+.font-b .demo-h1, .font-b .demo-label{font-family:'Mona Sans','Geist',sans-serif}
+.font-b .demo-h1{font-weight:700;letter-spacing:-.03em}
+
+/* Font C: Space Grotesk */
+.font-c .demo-h1, .font-c .demo-label{font-family:'Space Grotesk','Geist',sans-serif}
+.font-c .demo-h1{font-weight:700;letter-spacing:-.025em}
+
+/* Font D: current Geist for comparison */
+.font-d .demo-h1{font-family:'Geist',sans-serif;font-weight:700;letter-spacing:-.035em}
+
+.emphasis-variant{margin-top:18px;padding-top:18px;border-top:1px dashed var(--line)}
+.variant-label{font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:block}
+
+.toolbar{position:sticky;top:0;background:rgba(4,6,15,.94);padding:16px 0;margin:-40px -20px 32px;padding:16px 20px;border-bottom:1px solid var(--line);z-index:5;backdrop-filter:blur(10px)}
+.toolbar .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.toolbar a{color:var(--accent-2);text-decoration:none;font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.1em}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <div>
+      <div class="page-h1" style="font-size:18px;margin:0">Font preview · DealMentor</div>
+    </div>
+    <a href="/">&larr; back to home</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <p class="page-sub">Same hero rendered in four fonts. Pick the one that feels right.</p>
+
+  <!-- Font A -->
+  <div class="font-card font-a">
+    <div class="font-label">Option A</div>
+    <div class="font-name">Funnel Display — sharp modernist, elongated forms, designer's-pick</div>
+    <p class="demo-eyebrow">Half human · Half AI · All sales</p>
+    <h1 class="demo-h1">
+      <span class="line">One <span class="em-color">REAL</span> CRO.</span>
+      <span class="line"><span class="em-color">Twenty</span> AI Sales Tools.</span>
+      <span class="line"><span class="em-color">One</span> Platform.</span>
+    </h1>
+    <p class="demo-sub">Selling is <strong>hard</strong>. You don't know <strong>who</strong> to sell to. You don't know <strong>how</strong> to sell. You don't know <strong>what</strong> to say.</p>
+    <p class="demo-sub-2">We fix that - with a live CRO and twenty AI sales tools, on every plan, from <strong>$119/month.</strong></p>
+    <div class="demo-ctas">
+      <a class="demo-cta primary" href="#">Start Free</a>
+      <a class="demo-cta secondary" href="#">See the platform</a>
+    </div>
+    <div class="emphasis-variant">
+      <span class="variant-label">Emphasis variant — with brand gradient text fill (instead of solid blue above)</span>
+      <h1 class="demo-h1">
+        <span class="line">One <span class="em-grad">REAL</span> CRO.</span>
+        <span class="line"><span class="em-grad">Twenty</span> AI Sales Tools.</span>
+        <span class="line"><span class="em-grad">One</span> Platform.</span>
+      </h1>
+    </div>
+  </div>
+
+  <!-- Font B -->
+  <div class="font-card font-b">
+    <div class="font-label">Option B</div>
+    <div class="font-name">Mona Sans — GitHub's variable font, geometric with personality, premium</div>
+    <p class="demo-eyebrow">Half human · Half AI · All sales</p>
+    <h1 class="demo-h1">
+      <span class="line">One <span class="em-color">REAL</span> CRO.</span>
+      <span class="line"><span class="em-color">Twenty</span> AI Sales Tools.</span>
+      <span class="line"><span class="em-color">One</span> Platform.</span>
+    </h1>
+    <p class="demo-sub">Selling is <strong>hard</strong>. You don't know <strong>who</strong> to sell to. You don't know <strong>how</strong> to sell. You don't know <strong>what</strong> to say.</p>
+    <p class="demo-sub-2">We fix that - with a live CRO and twenty AI sales tools, on every plan, from <strong>$119/month.</strong></p>
+    <div class="demo-ctas">
+      <a class="demo-cta primary" href="#">Start Free</a>
+      <a class="demo-cta secondary" href="#">See the platform</a>
+    </div>
+    <div class="emphasis-variant">
+      <span class="variant-label">Emphasis variant — with brand gradient text fill</span>
+      <h1 class="demo-h1">
+        <span class="line">One <span class="em-grad">REAL</span> CRO.</span>
+        <span class="line"><span class="em-grad">Twenty</span> AI Sales Tools.</span>
+        <span class="line"><span class="em-grad">One</span> Platform.</span>
+      </h1>
+    </div>
+  </div>
+
+  <!-- Font C -->
+  <div class="font-card font-c">
+    <div class="font-label">Option C</div>
+    <div class="font-name">Space Grotesk — geometric with quirky corners, used by AI brands, distinctive</div>
+    <p class="demo-eyebrow">Half human · Half AI · All sales</p>
+    <h1 class="demo-h1">
+      <span class="line">One <span class="em-color">REAL</span> CRO.</span>
+      <span class="line"><span class="em-color">Twenty</span> AI Sales Tools.</span>
+      <span class="line"><span class="em-color">One</span> Platform.</span>
+    </h1>
+    <p class="demo-sub">Selling is <strong>hard</strong>. You don't know <strong>who</strong> to sell to. You don't know <strong>how</strong> to sell. You don't know <strong>what</strong> to say.</p>
+    <p class="demo-sub-2">We fix that - with a live CRO and twenty AI sales tools, on every plan, from <strong>$119/month.</strong></p>
+    <div class="demo-ctas">
+      <a class="demo-cta primary" href="#">Start Free</a>
+      <a class="demo-cta secondary" href="#">See the platform</a>
+    </div>
+    <div class="emphasis-variant">
+      <span class="variant-label">Emphasis variant — with brand gradient text fill</span>
+      <h1 class="demo-h1">
+        <span class="line">One <span class="em-grad">REAL</span> CRO.</span>
+        <span class="line"><span class="em-grad">Twenty</span> AI Sales Tools.</span>
+        <span class="line"><span class="em-grad">One</span> Platform.</span>
+      </h1>
+    </div>
+  </div>
+
+  <!-- Font D (current Geist baseline) -->
+  <div class="font-card font-d">
+    <div class="font-label">Currently live · D</div>
+    <div class="font-name">Geist — what's deployed right now, for comparison</div>
+    <p class="demo-eyebrow">Half human · Half AI · All sales</p>
+    <h1 class="demo-h1">
+      <span class="line">One <span class="em-color">REAL</span> CRO.</span>
+      <span class="line"><span class="em-color">Twenty</span> AI Sales Tools.</span>
+      <span class="line"><span class="em-color">One</span> Platform.</span>
+    </h1>
+    <p class="demo-sub">Selling is <strong>hard</strong>. You don't know <strong>who</strong> to sell to. You don't know <strong>how</strong> to sell. You don't know <strong>what</strong> to say.</p>
+    <p class="demo-sub-2">We fix that - with a live CRO and twenty AI sales tools, on every plan, from <strong>$119/month.</strong></p>
+    <div class="demo-ctas">
+      <a class="demo-cta primary" href="#">Start Free</a>
+      <a class="demo-cta secondary" href="#">See the platform</a>
+    </div>
+  </div>
+
+  <p class="page-sub" style="margin-top:48px">Each card shows TWO emphasis variants: solid brand blue at top, and the chromatic gradient text-fill below. Tell me: A / B / C / D plus "blue" or "gradient" for the emphasis, and it ships.</p>
+</div>
+
+</body>
+</html>

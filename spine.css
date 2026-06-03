@@ -8,7 +8,7 @@
 /* ===== TOKENS — DealMentor brand palette ===== */
 :root{
   --bg:#04060F; --bg-2:#0A0E1F; --bg-card:#0F1A30;
-  --ink:#FFFFFF; --text:#CFD2DA; --muted:#8A8E98; --faint:#5C606A;
+  --ink:#FFFFFF; --text:#CFD2DA; --muted:#9CA0AA; --faint:#5C606A;
   --line:rgba(255,255,255,.08); --line-hi:rgba(255,255,255,.18);
   --card-bd:rgba(255,255,255,.10);
   /* Brand palette */
@@ -29,7 +29,7 @@
 }
 [data-theme="light"]{
   --bg:#FFFFFF; --bg-2:#F0F1F4; --bg-card:#FFFFFF;
-  --ink:#121212; --text:#2A2E36; --muted:#5C606A; --faint:#9A9DA5;
+  --ink:#121212; --text:#2A2E36; --muted:#4F535B; --faint:#7A7E86;
   --line:rgba(18,18,18,.08); --line-hi:rgba(18,18,18,.18);
   --card-bd:rgba(18,18,18,.10);
   --primary:#1229B2;
@@ -124,7 +124,7 @@ nav.shrink .wordmark img{height:26px}
 .btn-primary:hover{transform:translateY(-1px);box-shadow:0 12px 30px rgba(37,99,235,.55)}
 .btn-primary.btn-lg{padding:15px 32px;font-size:15.5px;border-radius:12px}
 [data-theme="light"] .btn-primary{background:linear-gradient(110deg,var(--accent),var(--chr-2));color:#fff}
-.btn-secondary{display:inline-flex;align-items:center;gap:10px;color:var(--ink);font-family:'Geist',sans-serif;font-weight:600;font-size:14px;padding:14px 30px;border:1.5px solid var(--line-hi);border-radius:10px;transition:background .2s,border-color .2s,transform .2s}
+.btn-secondary{display:inline-flex;align-items:center;gap:10px;color:var(--ink);font-family:'Geist',sans-serif;font-weight:600;font-size:14px;padding:14px 30px;border:1.5px solid color-mix(in srgb,var(--accent) 55%,transparent);border-radius:10px;background:color-mix(in srgb,var(--accent) 8%,transparent);transition:background .2s,border-color .2s,transform .2s}
 .btn-secondary:hover{border-color:var(--accent);background:var(--accent-soft);transform:translateY(-1px)}
 .btn-secondary.btn-lg{padding:14px 30px;font-size:15px}
 .btn-icon{width:18px;height:18px;flex-shrink:0}
@@ -172,14 +172,14 @@ nav.shrink .wordmark img{height:26px}
 .together-head .section-h2{margin-left:auto;margin-right:auto}
 .together-head .section-sub{max-width:60ch}
 
-/* Product screenshot gallery - fixed 16:10 frame, object-fit cover */
+/* Product screenshot gallery - fixed 16:10 frame, object-fit contain, per-slide bg */
 .gallery{max-width:680px;margin:0 auto;padding:0;perspective:2000px}
-.gallery-frame{position:relative;aspect-ratio:16/10;border-radius:18px;overflow:hidden;border:1px solid var(--card-bd);box-shadow:0 30px 80px -20px rgba(0,0,0,.55),0 0 0 1px color-mix(in srgb,var(--accent) 18%,transparent);transform-style:preserve-3d;background:#0F1A30}
+.gallery-frame{position:relative;aspect-ratio:16/10;border-radius:18px;overflow:hidden;border:1px solid var(--card-bd);box-shadow:0 30px 80px -20px rgba(0,0,0,.55),0 0 0 1px color-mix(in srgb,var(--accent) 18%,transparent);transform-style:preserve-3d;background:#0F1A30;transition:background-color .5s ease}
 [data-theme="light"] .gallery-frame{box-shadow:0 30px 80px -20px rgba(18,41,178,.18),0 0 0 1px color-mix(in srgb,var(--accent) 22%,transparent);background:#F1F5FF}
 .gallery-image{position:absolute;inset:0;display:block;opacity:0;transform:rotateY(-90deg);transform-origin:center center;transition:opacity .5s ease,transform .7s cubic-bezier(.4,0,.2,1);backface-visibility:hidden;pointer-events:none}
 .gallery-image.is-on{opacity:1;transform:rotateY(0);pointer-events:auto;z-index:2}
 .gallery-image.is-out{transform:rotateY(90deg);opacity:0;z-index:1}
-.gallery-image img{display:block;width:100%;height:100%;object-fit:cover;object-position:top center}
+.gallery-image img{display:block;width:100%;height:100%;object-fit:contain;object-position:center}
 .gallery-stage{position:relative;display:block}
 .gallery-caption{display:flex;justify-content:center;align-items:center;margin-top:18px;padding:0 6px}
 .gallery-label{font-family:'Geist Mono',monospace;font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-2);font-weight:600;text-align:center;transition:opacity .3s}
