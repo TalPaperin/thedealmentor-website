@@ -140,10 +140,8 @@ nav.shrink .wordmark img{height:26px}
 .hero-h1 .line{display:block}
 .hero-h1 .real,.hero-h1 em{font-style:normal;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;padding:0;margin:0}
 .hero-h1 .real::after{display:none}
-.hero-sub-problem{margin-bottom:6px}
-.hero-sub-problem strong{color:var(--accent-2);font-weight:700}
-[data-theme="light"] .hero-sub-problem strong{color:var(--accent)}
-.hero-sub-fix{margin-bottom:40px;font-weight:800;color:var(--ink);font-size:clamp(20px,2vw,28px);letter-spacing:-.015em;line-height:1.3}
+.hero-sub-problem{margin-bottom:24px}
+.hero-sub-fix{margin:0 0 40px;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;font-size:clamp(32px,4.5vw,56px);letter-spacing:.005em;line-height:1.1;text-transform:uppercase}
 .hero-sub{font-family:'Inter',sans-serif;font-size:clamp(16px,1.4vw,20px);color:var(--text);max-width:62ch;margin:0 auto 40px;line-height:1.55}
 .hero-ctas{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
 
