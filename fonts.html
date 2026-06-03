@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Font Preview · DealMentor</title>
+<title>Hero Variants · DealMentor (20 options)</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;700;800&family=Mona+Sans:wght@400;500;700;800&family=Space+Grotesque:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&family=Geist:wght@400;500;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;700;800&family=Mona+Sans:wght@400;500;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Instrument+Serif:ital,wght@0,400;1,400&family=Space+Grotesk:wght@400;500;700&family=Sora:wght@400;700;800&family=Outfit:wght@400;500;700;800;900&family=DM+Serif+Display:ital,wght@0,400;1,400&family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Bricolage+Grotesque:wght@400;500;700;800&family=Manrope:wght@400;500;700;800&family=Crimson+Pro:ital,wght@0,400..900;1,400..900&family=Anton&family=Bebas+Neue&family=Big+Shoulders+Display:wght@400;700;900&family=Archivo+Black&family=Inter:wght@400;500;700;800;900&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#04060F; --bg-2:#0A0E1F; --bg-card:#0F1A30;
@@ -18,164 +18,174 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Geist',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;padding:40px 20px 80px;min-height:100vh}
-.wrap{max-width:1100px;margin:0 auto}
-.page-h1{font-family:'Inter',sans-serif;font-weight:700;font-size:32px;letter-spacing:-.025em;color:var(--ink);margin-bottom:8px}
-.page-sub{color:var(--muted);font-size:14px;margin-bottom:40px;font-family:'Geist Mono',monospace;letter-spacing:.06em}
-.font-card{background:var(--bg-card);border:1px solid var(--line);border-radius:18px;padding:48px 40px;margin-bottom:24px;transition:border-color .3s}
-.font-card:hover{border-color:var(--accent)}
-.font-label{display:inline-flex;align-items:center;gap:10px;font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-2);font-weight:600;margin-bottom:8px}
-.font-label::before{content:'';width:18px;height:1px;background:var(--accent)}
-.font-name{font-family:'Inter',sans-serif;font-weight:600;font-size:14px;color:var(--muted);margin-bottom:32px;font-style:italic}
-.demo-eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-2);font-weight:500;margin-bottom:28px}
-.demo-eyebrow::before{content:'';width:9px;height:9px;border-radius:50%;background:var(--accent-2)}
-.demo-h1{font-size:clamp(32px,5.4vw,72px);font-weight:700;line-height:1.08;letter-spacing:-.035em;color:var(--ink);margin-bottom:28px}
-.demo-h1 .line{display:block}
-.demo-h1 .em-color{color:#3D7BFF}
-.demo-h1 .em-grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.demo-sub{font-family:'Inter',sans-serif;font-size:17px;color:var(--text);max-width:62ch;line-height:1.55;margin-bottom:14px}
-.demo-sub strong{color:var(--accent-2);font-weight:700}
-.demo-sub-2{font-family:'Inter',sans-serif;font-size:17px;color:var(--text);max-width:62ch;line-height:1.55;margin-bottom:24px}
-.demo-sub-2 strong{color:var(--ink);font-weight:600}
-.demo-ctas{display:flex;gap:14px;flex-wrap:wrap}
-.demo-cta{padding:14px 26px;border-radius:10px;font-family:'Inter',sans-serif;font-weight:600;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
-.demo-cta.primary{background:var(--accent);color:#fff}
-.demo-cta.secondary{border:1.5px solid var(--line-hi);color:var(--ink)}
+body{background:var(--bg);color:var(--text);font-family:'Inter','Geist',system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;padding:0 0 80px;min-height:100vh}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+.toolbar{position:sticky;top:0;background:rgba(4,6,15,.94);padding:16px 20px;border-bottom:1px solid var(--line);z-index:50;backdrop-filter:blur(10px)}
+.toolbar .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;padding:0}
+.tool-h{font-family:'Inter',sans-serif;font-weight:700;font-size:18px;color:var(--ink)}
+.tool-h span{color:var(--accent-2);font-weight:600}
+.tool-a{color:var(--accent-2);font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.1em;text-decoration:none}
+.intro{padding:40px 20px 20px;text-align:center}
+.intro h1{font-family:'Inter',sans-serif;font-weight:800;font-size:36px;letter-spacing:-.025em;color:var(--ink);margin-bottom:8px}
+.intro p{color:var(--muted);font-size:14px;font-family:'Geist Mono',monospace;letter-spacing:.06em;max-width:60ch;margin:0 auto}
 
-/* Font A: Funnel Display */
-.font-a .demo-h1, .font-a .demo-label{font-family:'Funnel Display','Inter',sans-serif}
-.font-a .demo-h1{font-weight:700;letter-spacing:-.04em}
+.opt{background:var(--bg-card);border:1px solid var(--line);border-radius:18px;padding:56px 40px 48px;margin:24px auto;max-width:1100px;position:relative;overflow:hidden}
+.opt:hover{border-color:var(--accent)}
+.opt-meta{display:flex;align-items:baseline;gap:14px;margin-bottom:34px;flex-wrap:wrap}
+.opt-num{font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.22em;color:var(--accent-2);font-weight:600;padding:4px 10px;border:1px solid color-mix(in srgb,var(--accent-2) 40%,transparent);border-radius:99px}
+.opt-font{font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.04em;color:var(--muted);font-weight:500}
+.opt-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-2);font-weight:500;margin-bottom:22px}
+.opt-eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent-2)}
+.h{font-size:clamp(34px,5.4vw,76px);line-height:1.07;letter-spacing:-.03em;color:var(--ink);font-weight:700}
+.h .line{display:block}
 
-/* Font B: Mona Sans */
-.font-b .demo-h1, .font-b .demo-label{font-family:'Mona Sans','Inter',sans-serif}
-.font-b .demo-h1{font-weight:700;letter-spacing:-.03em}
+/* ====== 01. FUNNEL DISPLAY + hot magenta paint streak ====== */
+.o1 .h{font-family:'Funnel Display','Inter',sans-serif;font-weight:800;letter-spacing:-.04em}
+.o1 em{font-style:normal;position:relative;display:inline-block;color:#FFFFFF;z-index:0}
+.o1 em::after{content:'';position:absolute;left:-.04em;right:-.04em;bottom:.16em;height:.32em;background:linear-gradient(95deg,#FF00E5 0%,#FF2D55 100%);z-index:-1;border-radius:120px 18px 60px 22px;transform:skewX(-6deg) rotate(-1deg);opacity:.85;filter:blur(.5px)}
 
-/* Font C: Space Grotesk */
-.font-c .demo-h1, .font-c .demo-label{font-family:'Space Grotesk','Inter',sans-serif}
-.font-c .demo-h1{font-weight:700;letter-spacing:-.025em}
+/* ====== 02. MONA SANS BLACK + outlined letters chromatic stroke ====== */
+.o2 .h{font-family:'Mona Sans','Inter',sans-serif;font-weight:900;letter-spacing:-.04em}
+.o2 em{font-style:normal;color:transparent;-webkit-text-stroke:2px #00B9C7;background:linear-gradient(110deg,#00B9C7,#2563EB,#7C3AED);-webkit-background-clip:text;background-clip:text}
 
-/* Font D: current Geist for comparison */
-.font-d .demo-h1{font-family:'Inter',sans-serif;font-weight:700;letter-spacing:-.035em}
+/* ====== 03. FRAUNCES (serif) ITALIC + burnt orange + wavy underline ====== */
+.o3 .h{font-family:'Fraunces','Inter',serif;font-weight:800;letter-spacing:-.025em}
+.o3 em{font-style:italic;font-weight:800;color:#FF6B35;text-decoration:underline wavy #FF6B35 .12em;text-underline-offset:.16em}
 
-.emphasis-variant{margin-top:18px;padding-top:18px;border-top:1px dashed var(--line)}
-.variant-label{font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:block}
+/* ====== 04. INSTRUMENT SERIF + royal blue + double underline ====== */
+.o4 .h{font-family:'Instrument Serif','Inter',serif;font-weight:400;letter-spacing:-.01em}
+.o4 em{font-style:italic;color:#1229B2;text-decoration:underline double #1229B2 .1em;text-underline-offset:.18em}
+.o4 .h{font-size:clamp(38px,6vw,84px)}
 
-.toolbar{position:sticky;top:0;background:rgba(4,6,15,.94);padding:16px 0;margin:-40px -20px 32px;padding:16px 20px;border-bottom:1px solid var(--line);z-index:5;backdrop-filter:blur(10px)}
-.toolbar .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
-.toolbar a{color:var(--accent-2);text-decoration:none;font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.1em}
+/* ====== 05. SPACE GROTESK + electric cyan highlight box behind ====== */
+.o5 .h{font-family:'Space Grotesk','Inter',sans-serif;font-weight:700;letter-spacing:-.025em}
+.o5 em{font-style:normal;font-weight:700;color:#0A1120;background:#00E0FF;padding:0 .14em;border-radius:8px;margin:0 .02em}
+
+/* ====== 06. SORA + 3D layered shadow (teal + magenta) ====== */
+.o6 .h{font-family:'Sora','Inter',sans-serif;font-weight:800;letter-spacing:-.03em}
+.o6 em{font-style:normal;color:#FFFFFF;text-shadow:3px 3px 0 #00B9C7, 6px 6px 0 #FF00E5}
+
+/* ====== 07. BIG SHOULDERS DISPLAY + rainbow gradient ====== */
+.o7 .h{font-family:'Big Shoulders Display','Inter',sans-serif;font-weight:900;letter-spacing:.005em}
+.o7 em{font-style:normal;background:linear-gradient(95deg,#FF2D55 0%,#FFB627 40%,#5BD7A8 80%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+/* ====== 08. OUTFIT BLACK + sunset gradient (orange to pink) ====== */
+.o8 .h{font-family:'Outfit','Inter',sans-serif;font-weight:900;letter-spacing:-.03em}
+.o8 em{font-style:normal;background:linear-gradient(110deg,#FF6B35,#FF2D55,#FF00E5);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+/* ====== 09. DM SERIF DISPLAY + chromatic gradient strike-through ====== */
+.o9 .h{font-family:'DM Serif Display','Inter',serif;font-weight:400;letter-spacing:-.015em}
+.o9 em{font-style:italic;color:#FFFFFF;position:relative;display:inline-block}
+.o9 em::after{content:'';position:absolute;left:-.05em;right:-.05em;top:55%;height:.12em;background:linear-gradient(95deg,#00B9C7,#2563EB,#FF00E5);transform:rotate(-2deg)}
+.o9 .h{font-size:clamp(40px,6.5vw,88px)}
+
+/* ====== 10. PLUS JAKARTA SANS + neon lime green ====== */
+.o10 .h{font-family:'Plus Jakarta Sans','Inter',sans-serif;font-weight:800;letter-spacing:-.03em}
+.o10 em{font-style:normal;color:#00FF66;text-shadow:0 0 18px rgba(0,255,102,.4)}
+
+/* ====== 11. SORA + metallic gold gradient + glow ====== */
+.o11 .h{font-family:'Sora','Inter',sans-serif;font-weight:700;letter-spacing:-.025em}
+.o11 em{font-style:normal;background:linear-gradient(110deg,#FFB627 0%,#D4AF37 50%,#FFE082 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 14px rgba(255,182,39,.4))}
+
+/* ====== 12. BRICOLAGE GROTESQUE + confetti dots scattered ====== */
+.o12 .h{font-family:'Bricolage Grotesque','Inter',sans-serif;font-weight:800;letter-spacing:-.035em}
+.o12 em{font-style:normal;color:#FFFFFF;position:relative;display:inline-block}
+.o12 em::before{content:'•';position:absolute;left:-.18em;top:-.1em;color:#FF6B35;font-size:.5em}
+.o12 em::after{content:'•';position:absolute;right:-.12em;bottom:-.05em;color:#00B9C7;font-size:.5em}
+
+/* ====== 13. MANROPE + deep violet + dotted underline ====== */
+.o13 .h{font-family:'Manrope','Inter',sans-serif;font-weight:800;letter-spacing:-.03em}
+.o13 em{font-style:normal;color:#7C3AED;text-decoration:underline dotted #7C3AED .12em;text-underline-offset:.18em;text-decoration-thickness:3px}
+
+/* ====== 14. ARCHIVO BLACK + offset 3D shadow (mint + accent) ====== */
+.o14 .h{font-family:'Archivo Black','Inter',sans-serif;font-weight:400;letter-spacing:-.02em}
+.o14 em{font-style:normal;color:#FFFFFF;text-shadow:4px 4px 0 #2563EB}
+
+/* ====== 15. CRIMSON PRO ITALIC (serif) + burnt orange + underline ====== */
+.o15 .h{font-family:'Crimson Pro','Inter',serif;font-weight:700;letter-spacing:-.015em}
+.o15 em{font-style:italic;font-weight:700;color:#FF6B35;text-decoration:underline #FF6B35 .12em;text-underline-offset:.1em;text-decoration-thickness:4px}
+.o15 .h{font-size:clamp(38px,6vw,86px)}
+
+/* ====== 16. ANTON (condensed display) + electric lime stroked ====== */
+.o16 .h{font-family:'Anton','Inter',sans-serif;font-weight:400;letter-spacing:.01em;text-transform:uppercase}
+.o16 em{font-style:normal;color:transparent;-webkit-text-stroke:2px #00FF66}
+.o16 .h{font-size:clamp(44px,7vw,98px)}
+
+/* ====== 17. BEBAS NEUE + brand chromatic gradient text-fill ====== */
+.o17 .h{font-family:'Bebas Neue','Inter',sans-serif;font-weight:400;letter-spacing:.012em;text-transform:uppercase}
+.o17 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.o17 .h{font-size:clamp(44px,7vw,98px)}
+
+/* ====== 18. INTER + italic-skew brand gradient ====== */
+.o18 .h{font-family:'Inter','Inter',sans-serif;font-weight:800;letter-spacing:-.035em}
+.o18 em{font-style:italic;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;transform:skewX(-4deg);display:inline-block}
+
+/* ====== 19. INTER + brand teal + thick lime underline ====== */
+.o19 .h{font-family:'Inter','Inter',sans-serif;font-weight:800;letter-spacing:-.035em}
+.o19 em{font-style:normal;color:#00B9C7;text-decoration:underline #00FF66 .16em;text-underline-offset:.18em}
+
+/* ====== 20. INTER + weight-contrast only (no color) ====== */
+.o20 .h{font-family:'Inter','Inter',sans-serif;font-weight:300;letter-spacing:-.035em}
+.o20 em{font-style:normal;font-weight:900;color:#FFFFFF}
 </style>
 </head>
 <body>
 
 <div class="toolbar">
   <div class="wrap">
-    <div>
-      <div class="page-h1" style="font-size:18px;margin:0">Font preview · DealMentor</div>
-    </div>
-    <a href="/">&larr; back to home</a>
+    <div class="tool-h">Hero variants · <span>20 options</span></div>
+    <a class="tool-a" href="/">&larr; back to home</a>
   </div>
 </div>
 
+<div class="intro">
+  <h1>Twenty hero treatments. Pick one.</h1>
+  <p>Each card shows the same hero rendered with a different font + color + emphasis treatment. Tell me "option N" and I'll roll it out.</p>
+</div>
+
 <div class="wrap">
-  <p class="page-sub">Same hero rendered in four fonts. Pick the one that feels right.</p>
 
-  <!-- Font A -->
-  <div class="font-card font-a">
-    <div class="font-label">Option A</div>
-    <div class="font-name">Funnel Display — sharp modernist, elongated forms, designer's-pick</div>
-    <p class="demo-eyebrow">Half human · Half AI · All sales</p>
-    <h1 class="demo-h1">
-      <span class="line">One <span class="em-color">REAL</span> CRO.</span>
-      <span class="line"><span class="em-color">Twenty</span> AI Sales Tools.</span>
-      <span class="line"><span class="em-color">One</span> Platform.</span>
-    </h1>
-    <p class="demo-sub">Selling is <strong>hard</strong>. You don't know <strong>who</strong> to sell to. You don't know <strong>how</strong> to sell. You don't know <strong>what</strong> to say.</p>
-    <p class="demo-sub-2">We fix that - with a live CRO and twenty AI sales tools, on every plan, from <strong>$119/month.</strong></p>
-    <div class="demo-ctas">
-      <a class="demo-cta primary" href="#">Start Free</a>
-      <a class="demo-cta secondary" href="#">See the platform</a>
-    </div>
-    <div class="emphasis-variant">
-      <span class="variant-label">Emphasis variant — with brand gradient text fill (instead of solid blue above)</span>
-      <h1 class="demo-h1">
-        <span class="line">One <span class="em-grad">REAL</span> CRO.</span>
-        <span class="line"><span class="em-grad">Twenty</span> AI Sales Tools.</span>
-        <span class="line"><span class="em-grad">One</span> Platform.</span>
-      </h1>
-    </div>
-  </div>
+  <div class="opt o1"><div class="opt-meta"><span class="opt-num">01</span><span class="opt-font">Funnel Display 800 · hot magenta paint streak behind</span></div><p class="opt-eyebrow">Half human · Half AI · All sales</p><h1 class="h"><span class="line">One <em>REAL</em> CRO.</span><span class="line"><em>Twenty</em> AI Sales Tools.</span><span class="line"><em>One</em> Platform.</span></h1></div>
 
-  <!-- Font B -->
-  <div class="font-card font-b">
-    <div class="font-label">Option B</div>
-    <div class="font-name">Mona Sans — GitHub's variable font, geometric with personality, premium</div>
-    <p class="demo-eyebrow">Half human · Half AI · All sales</p>
-    <h1 class="demo-h1">
-      <span class="line">One <span class="em-color">REAL</span> CRO.</span>
-      <span class="line"><span class="em-color">Twenty</span> AI Sales Tools.</span>
-      <span class="line"><span class="em-color">One</span> Platform.</span>
-    </h1>
-    <p class="demo-sub">Selling is <strong>hard</strong>. You don't know <strong>who</strong> to sell to. You don't know <strong>how</strong> to sell. You don't know <strong>what</strong> to say.</p>
-    <p class="demo-sub-2">We fix that - with a live CRO and twenty AI sales tools, on every plan, from <strong>$119/month.</strong></p>
-    <div class="demo-ctas">
-      <a class="demo-cta primary" href="#">Start Free</a>
-      <a class="demo-cta secondary" href="#">See the platform</a>
-    </div>
-    <div class="emphasis-variant">
-      <span class="variant-label">Emphasis variant — with brand gradient text fill</span>
-      <h1 class="demo-h1">
-        <span class="line">One <span class="em-grad">REAL</span> CRO.</span>
-        <span class="line"><span class="em-grad">Twenty</span> AI Sales Tools.</span>
-        <span class="line"><span class="em-grad">One</span> Platform.</span>
-      </h1>
-    </div>
-  </div>
+  <div class="opt o2"><div class="opt-meta"><span class="opt-num">02</span><span class="opt-font">Mona Sans Black · outlined letters with chromatic stroke</span></div><p class="opt-eyebrow">Half human · Half AI · All sales</p><h1 class="h"><span class="line">One <em>REAL</em> CRO.</span><span class="line"><em>Twenty</em> AI Sales Tools.</span><span class="line"><em>One</em> Platform.</span></h1></div>
 
-  <!-- Font C -->
-  <div class="font-card font-c">
-    <div class="font-label">Option C</div>
-    <div class="font-name">Space Grotesk — geometric with quirky corners, used by AI brands, distinctive</div>
-    <p class="demo-eyebrow">Half human · Half AI · All sales</p>
-    <h1 class="demo-h1">
-      <span class="line">One <span class="em-color">REAL</span> CRO.</span>
-      <span class="line"><span class="em-color">Twenty</span> AI Sales Tools.</span>
-      <span class="line"><span class="em-color">One</span> Platform.</span>
-    </h1>
-    <p class="demo-sub">Selling is <strong>hard</strong>. You don't know <strong>who</strong> to sell to. You don't know <strong>how</strong> to sell. You don't know <strong>what</strong> to say.</p>
-    <p class="demo-sub-2">We fix that - with a live CRO and twenty AI sales tools, on every plan, from <strong>$119/month.</strong></p>
-    <div class="demo-ctas">
-      <a class="demo-cta primary" href="#">Start Free</a>
-      <a class="demo-cta secondary" href="#">See the platform</a>
-    </div>
-    <div class="emphasis-variant">
-      <span class="variant-label">Emphasis variant — with brand gradient text fill</span>
-      <h1 class="demo-h1">
-        <span class="line">One <span class="em-grad">REAL</span> CRO.</span>
-        <span class="line"><span class="em-grad">Twenty</span> AI Sales Tools.</span>
-        <span class="line"><span class="em-grad">One</span> Platform.</span>
-      </h1>
-    </div>
-  </div>
+  <div class="opt o3"><div class="opt-meta"><span class="opt-num">03</span><span class="opt-font">Fraunces 800 italic (serif) · burnt orange · wavy underline</span></div><p class="opt-eyebrow">Half human · Half AI · All sales</p><h1 class="h"><span class="line">One <em>REAL</em> CRO.</span><span class="line"><em>Twenty</em> AI Sales Tools.</span><span class="line"><em>One</em> Platform.</span></h1></div>
 
-  <!-- Font D (current Geist baseline) -->
-  <div class="font-card font-d">
-    <div class="font-label">Currently live · D</div>
-    <div class="font-name">Geist — what's deployed right now, for comparison</div>
-    <p class="demo-eyebrow">Half human · Half AI · All sales</p>
-    <h1 class="demo-h1">
-      <span class="line">One <span class="em-color">REAL</span> CRO.</span>
-      <span class="line"><span class="em-color">Twenty</span> AI Sales Tools.</span>
-      <span class="line"><span class="em-color">One</span> Platform.</span>
-    </h1>
-    <p class="demo-sub">Selling is <strong>hard</strong>. You don't know <strong>who</strong> to sell to. You don't know <strong>how</strong> to sell. You don't know <strong>what</strong> to say.</p>
-    <p class="demo-sub-2">We fix that - with a live CRO and twenty AI sales tools, on every plan, from <strong>$119/month.</strong></p>
-    <div class="demo-ctas">
-      <a class="demo-cta primary" href="#">Start Free</a>
-      <a class="demo-cta secondary" href="#">See the platform</a>
-    </div>
-  </div>
+  <div class="opt o4"><div class="opt-meta"><span class="opt-num">04</span><span class="opt-font">Instrument Serif · royal blue italic · double underline</span></div><p class="opt-eyebrow">Half human · Half AI · All sales</p><h1 class="h"><span class="line">One <em>REAL</em> CRO.</span><span class="line"><em>Twenty</em> AI Sales Tools.</span><span class="line"><em>One</em> Platform.</span></h1></div>
 
-  <p class="page-sub" style="margin-top:48px">Each card shows TWO emphasis variants: solid brand blue at top, and the chromatic gradient text-fill below. Tell me: A / B / C / D plus "blue" or "gradient" for the emphasis, and it ships.</p>
+  <div class="opt o5"><div class="opt-meta"><span class="opt-num">05</span><span class="opt-font">Space Grotesk 700 · electric cyan highlight box behind</span></div><p class="opt-eyebrow">Half human · Half AI · All sales</p><h1 class="h"><span class="line">One <em>REAL</em> CRO.</span><span class="line"><em>Twenty</em> AI Sales Tools.</span><span class="line"><em>One</em> Platform.</span></h1></div>
+
+  <div class="opt o6"><div class="opt-meta"><span class="opt-num">06</span><span class="opt-font">Sora 800 · 3D layered shadow (teal + magenta)</span></div><p class="opt-eyebrow">Half human · Half AI · All sales</p><h1 class="h"><span class="line">One <em>REAL</em> CRO.</span><span class="line"><em>Twenty</em> AI Sales Tools.</span><span class="line"><em>One</em> Platform.</span></h1></div>
+
+  <div class="opt o7"><div class="opt-meta"><span class="opt-num">07</span><span class="opt-font">Big Shoulders Display 900 · red-amber-mint rainbow gradient</span></div><p class="opt-eyebrow">Half human · Half AI · All sales</p><h1 class="h"><span class="line">One <em>REAL</em> CRO.</span><span class="line"><em>Twenty</em> AI Sales Tools.</span><span class="line"><em>One</em> Platform.</span></h1></div>
+
+  <div class="opt o8"><div class="opt-meta"><span class="opt-num">08</span><span class="opt-font">Outfit Black · sunset gradient (orange to pink)</span></div><p class="opt-eyebrow">Half human · Half AI · All sales</p><h1 class="h"><span class="line">One <em>REAL</em> CRO.</span><span class="line"><em>Twenty</em> AI Sales Tools.</span><span class="line"><em>One</em> Platform.</span></h1></div>
+
+  <div class="opt o9"><div class="opt-meta"><span class="opt-num">09</span><span class="opt-font">DM Serif Display · chromatic strikethrough on white italic</span></div><p class="opt-eyebrow">Half human · Half AI · All sales</p><h1 class="h"><span class="line">One <em>REAL</em> CRO.</span><span class="line"><em>Twenty</em> AI Sales Tools.</span><span class="line"><em>One</em> Platform.</span></h1></div>
+
+  <div class="opt o10"><div class="opt-meta"><span class="opt-num">10</span><span class="opt-font">Plus Jakarta Sans 800 · neon lime green with glow</span></div><p class="opt-eyebrow">Half human · Half AI · All sales</p><h1 class="h"><span class="line">One <em>REAL</em> CRO.</span><span class="line"><em>Twenty</em> AI Sales Tools.</span><span class="line"><em>One</em> Platform.</span></h1></div>
+
+  <div class="opt o11"><div class="opt-meta"><span class="opt-num">11</span><span class="opt-font">Sora 700 · metallic gold gradient with glow</span></div><p class="opt-eyebrow">Half human · Half AI · All sales</p><h1 class="h"><span class="line">One <em>REAL</em> CRO.</span><span class="line"><em>Twenty</em> AI Sales Tools.</span><span class="line"><em>One</em> Platform.</span></h1></div>
+
+  <div class="opt o12"><div class="opt-meta"><span class="opt-num">12</span><span class="opt-font">Bricolage Grotesque 800 · confetti dots scattered around the word</span></div><p class="opt-eyebrow">Half human · Half AI · All sales</p><h1 class="h"><span class="line">One <em>REAL</em> CRO.</span><span class="line"><em>Twenty</em> AI Sales Tools.</span><span class="line"><em>One</em> Platform.</span></h1></div>
+
+  <div class="opt o13"><div class="opt-meta"><span class="opt-num">13</span><span class="opt-font">Manrope 800 · deep violet · thick dotted underline</span></div><p class="opt-eyebrow">Half human · Half AI · All sales</p><h1 class="h"><span class="line">One <em>REAL</em> CRO.</span><span class="line"><em>Twenty</em> AI Sales Tools.</span><span class="line"><em>One</em> Platform.</span></h1></div>
+
+  <div class="opt o14"><div class="opt-meta"><span class="opt-num">14</span><span class="opt-font">Archivo Black · offset solid-blue dropshadow (3D look)</span></div><p class="opt-eyebrow">Half human · Half AI · All sales</p><h1 class="h"><span class="line">One <em>REAL</em> CRO.</span><span class="line"><em>Twenty</em> AI Sales Tools.</span><span class="line"><em>One</em> Platform.</span></h1></div>
+
+  <div class="opt o15"><div class="opt-meta"><span class="opt-num">15</span><span class="opt-font">Crimson Pro 700 italic (serif) · burnt orange · thick underline</span></div><p class="opt-eyebrow">Half human · Half AI · All sales</p><h1 class="h"><span class="line">One <em>REAL</em> CRO.</span><span class="line"><em>Twenty</em> AI Sales Tools.</span><span class="line"><em>One</em> Platform.</span></h1></div>
+
+  <div class="opt o16"><div class="opt-meta"><span class="opt-num">16</span><span class="opt-font">Anton (condensed) all caps · neon lime outlined letters</span></div><p class="opt-eyebrow">Half human · Half AI · All sales</p><h1 class="h"><span class="line">One <em>REAL</em> CRO.</span><span class="line"><em>Twenty</em> AI Sales Tools.</span><span class="line"><em>One</em> Platform.</span></h1></div>
+
+  <div class="opt o17"><div class="opt-meta"><span class="opt-num">17</span><span class="opt-font">Bebas Neue all caps · brand chromatic gradient text-fill</span></div><p class="opt-eyebrow">Half human · Half AI · All sales</p><h1 class="h"><span class="line">One <em>REAL</em> CRO.</span><span class="line"><em>Twenty</em> AI Sales Tools.</span><span class="line"><em>One</em> Platform.</span></h1></div>
+
+  <div class="opt o18"><div class="opt-meta"><span class="opt-num">18</span><span class="opt-font">Inter 800/900 · italic-skew with brand chromatic gradient</span></div><p class="opt-eyebrow">Half human · Half AI · All sales</p><h1 class="h"><span class="line">One <em>REAL</em> CRO.</span><span class="line"><em>Twenty</em> AI Sales Tools.</span><span class="line"><em>One</em> Platform.</span></h1></div>
+
+  <div class="opt o19"><div class="opt-meta"><span class="opt-num">19</span><span class="opt-font">Inter 800 · brand teal text + thick neon lime underline</span></div><p class="opt-eyebrow">Half human · Half AI · All sales</p><h1 class="h"><span class="line">One <em>REAL</em> CRO.</span><span class="line"><em>Twenty</em> AI Sales Tools.</span><span class="line"><em>One</em> Platform.</span></h1></div>
+
+  <div class="opt o20"><div class="opt-meta"><span class="opt-num">20</span><span class="opt-font">Inter 300 base + 900 emphasis · weight contrast only (no color)</span></div><p class="opt-eyebrow">Half human · Half AI · All sales</p><h1 class="h"><span class="line">One <em>REAL</em> CRO.</span><span class="line"><em>Twenty</em> AI Sales Tools.</span><span class="line"><em>One</em> Platform.</span></h1></div>
+
+  <p style="text-align:center;color:var(--muted);font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.06em;margin:48px 0 0">Pick one and tell me "option N" — I'll roll it out across every hero on the site.</p>
 </div>
 
 </body>
