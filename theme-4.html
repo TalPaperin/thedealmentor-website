@@ -36,7 +36,7 @@
   --shadow:0 8px 28px rgba(4,6,15,.08);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html,body{background:var(--bg);color:var(--text);font-family:'Geist','Inter Tight','Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.6;transition:background .4s,color .4s}
+html,body{background:var(--bg);color:var(--text);font-family:'Inter','Geist',system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.6;transition:background .4s,color .4s}
 body{overflow-x:hidden;position:relative;min-height:100vh}
 a{color:var(--accent);text-decoration:none}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
@@ -45,7 +45,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .veil{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(70% 55% at 50% 45%,transparent 0%,color-mix(in srgb,var(--bg) 65%,transparent) 70%,var(--bg) 100%);transition:background .4s}
 
 nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);background:color-mix(in srgb,var(--bg) 75%,transparent);border-bottom:1px solid var(--line);padding:16px 32px;display:flex;justify-content:space-between;align-items:center}
-.wordmark{font-family:'Geist',sans-serif;font-weight:600;font-size:19px;letter-spacing:-.025em;color:var(--ink)}
+.wordmark{font-family:'Inter',sans-serif;font-weight:600;font-size:19px;letter-spacing:-.025em;color:var(--ink)}
 .wordmark b{background:linear-gradient(110deg,var(--chr-1),var(--chr-2),var(--chr-3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;font-weight:600}
 .nav-r{display:flex;gap:14px;align-items:center}
 .theme-toggle{width:38px;height:38px;border-radius:50%;border:1px solid var(--line-hi);color:var(--ink);display:flex;align-items:center;justify-content:center;transition:border-color .2s,background .2s}
@@ -58,7 +58,7 @@ nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px) saturate(1.4);-w
 .eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:'Geist Mono',ui-monospace,monospace;font-size:11.5px;letter-spacing:.20em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:30px}
 .eyebrow::before{content:'';width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--chr-1),var(--chr-2));box-shadow:0 0 14px var(--accent);animation:dot 1.8s ease-in-out infinite}
 @keyframes dot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.5}}
-.h1{font-family:'Geist',sans-serif;font-size:clamp(44px,8vw,128px);font-weight:600;line-height:1.02;letter-spacing:-.04em;color:var(--ink);margin-bottom:30px}
+.h1{font-family:'Inter',sans-serif;font-size:clamp(44px,8vw,128px);font-weight:600;line-height:1.02;letter-spacing:-.04em;color:var(--ink);margin-bottom:30px}
 .h1 .line{display:block}
 .h1 em{font-style:italic;font-weight:600;background:linear-gradient(110deg,var(--chr-1) 0%,var(--chr-2) 50%,var(--chr-3) 100%);background-size:240% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shim 7s ease-in-out infinite alternate;padding:0 .02em}
 @keyframes shim{from{background-position:0% 50%}to{background-position:100% 50%}}
@@ -71,7 +71,7 @@ nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px) saturate(1.4);-w
 .deck{margin:42px auto 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:740px}
 .panel{position:relative;border:1px solid var(--card-bd);border-radius:14px;background:var(--card);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:14px 16px 16px;overflow:hidden;text-align:left}
 .panel .lbl{font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
-.panel .val{font-family:'Geist',sans-serif;font-weight:600;font-size:clamp(20px,2.2vw,28px);letter-spacing:-.02em;color:var(--ink)}
+.panel .val{font-family:'Inter',sans-serif;font-weight:600;font-size:clamp(20px,2.2vw,28px);letter-spacing:-.02em;color:var(--ink)}
 .panel .meta{font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px}
 .bar{margin-top:10px;height:3px;border-radius:2px;background:rgba(255,255,255,.08);overflow:hidden;position:relative}
 [data-theme="light"] .bar{background:rgba(4,6,15,.08)}
@@ -79,9 +79,9 @@ nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px) saturate(1.4);-w
 @keyframes barShim{from{filter:hue-rotate(0deg)}to{filter:hue-rotate(20deg)}}
 
 .together{position:relative;z-index:2;padding:80px 24px 90px;max-width:1180px;margin:0 auto;text-align:center}
-.h2{font-family:'Geist',sans-serif;font-size:clamp(30px,4.4vw,54px);font-weight:600;line-height:1.04;letter-spacing:-.028em;color:var(--ink);margin-bottom:14px}
+.h2{font-family:'Inter',sans-serif;font-size:clamp(30px,4.4vw,54px);font-weight:600;line-height:1.04;letter-spacing:-.028em;color:var(--ink);margin-bottom:14px}
 .h2 em{font-style:italic;background:linear-gradient(110deg,var(--chr-1),var(--chr-2),var(--chr-3));background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shim 6s ease-in-out infinite alternate;font-weight:600}
-.t-sub{color:var(--muted);max-width:56ch;margin:0 auto 48px;font-family:'Geist',sans-serif}
+.t-sub{color:var(--muted);max-width:56ch;margin:0 auto 48px;font-family:'Inter',sans-serif}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;text-align:left}
 .card{background:var(--card);border:1px solid var(--card-bd);border-radius:14px;padding:26px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:var(--shadow);position:relative;overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s}
 .card:hover{transform:translateY(-4px);border-color:var(--accent)}
