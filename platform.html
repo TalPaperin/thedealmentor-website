@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/spine.css?v=20260603p">
+<link rel="stylesheet" href="/spine.css?v=20260603q">
 <script>document.documentElement.classList.add('js');var __dmTheme=localStorage.getItem('dm-theme');if(__dmTheme==='light')document.documentElement.setAttribute('data-theme','light');</script>
 <style>
 /* Platform-specific extensions */
@@ -88,6 +88,47 @@
     <a href="#tools" class="btn-secondary btn-lg">See all twenty tools</a>
   </div>
 </header>
+
+<section class="together" aria-labelledby="platform-gallery-title">
+  <div class="together-head">
+    <h2 class="section-h2" id="platform-gallery-title">Inside the <em>product.</em></h2>
+  </div>
+  <div class="gallery" id="product-gallery" aria-roledescription="product screenshot gallery">
+    <div class="gallery-stage">
+      <button class="gallery-arrow gallery-arrow-left" id="galleryPrev" type="button" aria-label="Previous screen">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <div class="gallery-frame">
+        <picture class="gallery-image is-on" data-label="Daily dashboard" data-bg="#F4F5F8">
+          <source srcset="/Dashboard.webp" type="image/webp">
+          <img src="/Dashboard.jpg" alt="ClinicMind dashboard with Sales Copilot, Outreach Builder, and My Deals" width="1620" height="780" loading="lazy">
+        </picture>
+        <picture class="gallery-image" data-label="My Deals" data-bg="#0B1325">
+          <source srcset="/New%20Deal.webp" type="image/webp">
+          <img src="/New%20Deal.jpg" alt="My Deals - deal detail with CRO's read and activity log" width="1013" height="780" loading="lazy">
+        </picture>
+        <picture class="gallery-image" data-label="Outreach Builder" data-bg="#F2F4F8">
+          <source srcset="/Outreach%20Builder.webp" type="image/webp">
+          <img src="/Outreach%20Builder.jpg" alt="Outreach Builder - six channels per ICP" width="1620" height="620" loading="lazy">
+        </picture>
+        <picture class="gallery-image" data-label="Sales Copilot" data-bg="#0A1120">
+          <source srcset="/Sales%20Copilot.webp" type="image/webp">
+          <img src="/Sales%20Copilot.jpg" alt="Sales Copilot - eight real-time deal tools" width="1608" height="670" loading="lazy">
+        </picture>
+        <picture class="gallery-image" data-label="Ask the CRO" data-bg="#FFFFFF">
+          <source srcset="/Virtual%20CRO.webp" type="image/webp">
+          <img src="/Virtual%20CRO.png" alt="Ask the CRO - 24/7 AI advisor in-app" width="855" height="836" loading="lazy">
+        </picture>
+      </div>
+      <button class="gallery-arrow gallery-arrow-right" id="galleryNext" type="button" aria-label="Next screen">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+    </div>
+    <div class="gallery-caption">
+      <span class="gallery-label">Daily dashboard</span>
+    </div>
+  </div>
+</section>
 
 <section class="solid" id="what">
   <div class="section-inner">
@@ -248,6 +289,33 @@
   </div>
 </footer>
 
-<script src="/spine.js?v=20260603n"></script>
+<script src="/spine.js?v=20260603q"></script>
+<script>
+/* Product gallery - manual prev/next + per-slide frame bg matching */
+(function(){
+  var gallery=document.getElementById('product-gallery');if(!gallery)return;
+  var frame=gallery.querySelector('.gallery-frame');
+  var images=gallery.querySelectorAll('.gallery-image');
+  var labelEl=gallery.querySelector('.gallery-label');
+  var prevBtn=document.getElementById('galleryPrev');
+  var nextBtn=document.getElementById('galleryNext');
+  if(!images.length)return;
+  var current=0;
+  function applyBg(idx){if(frame && images[idx].dataset.bg)frame.style.backgroundColor=images[idx].dataset.bg;}
+  applyBg(0);
+  function go(dir){
+    var prev=current,nextIdx=(current+dir+images.length)%images.length;
+    images[prev].classList.remove('is-on');
+    images[prev].classList.add('is-out');
+    setTimeout(function(){images[prev] && images[prev].classList.remove('is-out')},700);
+    current=nextIdx;
+    images[current].classList.add('is-on');
+    applyBg(current);
+    if(labelEl)labelEl.textContent=images[current].dataset.label||'';
+  }
+  if(prevBtn)prevBtn.addEventListener('click',function(){go(-1)});
+  if(nextBtn)nextBtn.addEventListener('click',function(){go(1)});
+})();
+</script>
 </body>
 </html>
