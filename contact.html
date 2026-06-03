@@ -17,8 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/spine.css?v=20260603a">
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<link rel="stylesheet" href="/spine.css?v=20260603b">
 <script>document.documentElement.classList.add('js');var __dmTheme=localStorage.getItem('dm-theme');if(__dmTheme==='light')document.documentElement.setAttribute('data-theme','light');</script>
 <style>
 .contact-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;max-width:var(--maxw);margin:0 auto;padding:clamp(80px,11vh,120px) 24px 80px;position:relative;z-index:2}
@@ -97,7 +96,10 @@
         <label for="cf-message">Message</label>
         <textarea id="cf-message" name="message" required></textarea>
       </div>
-      <div class="g-recaptcha" data-sitekey="6Lc-NoMrAAAAANe3HKsBu6FT9TYRVZQqJ7sJTbVj"></div>
+      <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden">
+        <label>Leave this field empty <input type="text" id="cf-hp" name="website" tabindex="-1" autocomplete="off"></label>
+      </div>
+      <input type="hidden" id="cf-loaded" name="loaded_at" value="">
       <button type="submit" id="cf-btn" class="btn-primary" style="width:100%;justify-content:center">Send Message →</button>
       <div class="success-msg" id="cf-success">Got it. We will be back to you within one business day.</div>
       <div class="error-msg" id="cf-error">Something went wrong. Email <a href="mailto:support@thedealmentor.ai" style="color:var(--warm);text-decoration:underline">support@thedealmentor.ai</a> directly.</div>
@@ -163,17 +165,27 @@
 function openCalendar(){document.getElementById('cal-modal').classList.add('open');document.body.style.overflow='hidden'}
 function closeCalendar(){document.getElementById('cal-modal').classList.remove('open');document.body.style.overflow=''}
 document.getElementById('cal-modal').addEventListener('click',function(e){if(e.target===this)closeCalendar()});
+/* Stamp form load time for bot time-check */
+document.getElementById('cf-loaded').value=Date.now();
 function submitForm(){
   var n=document.getElementById('cf-name').value.trim();
   var e=document.getElementById('cf-email').value.trim();
   var m=document.getElementById('cf-message').value.trim();
   if(!n||!e||!m)return;
-  var r=typeof grecaptcha!=='undefined'?grecaptcha.getResponse():null;
-  if(!r){alert('Please complete the CAPTCHA.');return}
+  /* Honeypot - if filled, it's a bot. Silently pretend success. */
+  if(document.getElementById('cf-hp').value){document.getElementById('cf-success').style.display='block';document.getElementById('contact-form').reset();return}
+  /* Time-check - real humans take more than 3 seconds */
+  var loaded=parseInt(document.getElementById('cf-loaded').value,10)||0;
+  if(Date.now()-loaded<3000){
+    var err=document.getElementById('cf-error');
+    err.innerHTML='Please take a moment to review your message before sending.';
+    err.style.display='block';
+    return;
+  }
   var b=document.getElementById('cf-btn');b.textContent='Sending…';b.disabled=true;
   fetch('https://formspree.io/f/xykbgowb',{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify({name:n,email:e,message:m})})
     .then(function(res){
-      if(res.ok){document.getElementById('cf-success').style.display='block';document.getElementById('contact-form').reset();}
+      if(res.ok){document.getElementById('cf-success').style.display='block';document.getElementById('contact-form').reset();document.getElementById('cf-loaded').value=Date.now();}
       else{document.getElementById('cf-error').style.display='block'}
       b.textContent='Send Message →';b.disabled=false;
     })
