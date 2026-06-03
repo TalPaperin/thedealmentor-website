@@ -17,13 +17,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/spine.css?v=20260603b">
+<link rel="stylesheet" href="/spine.css?v=20260603e">
 <script>document.documentElement.classList.add('js');var __dmTheme=localStorage.getItem('dm-theme');if(__dmTheme==='light')document.documentElement.setAttribute('data-theme','light');</script>
 <style>
 .contact-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;max-width:var(--maxw);margin:0 auto;padding:clamp(80px,11vh,120px) 24px 80px;position:relative;z-index:2}
 @media(max-width:880px){.contact-grid{grid-template-columns:1fr;padding-top:60px}}
 .contact-card{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius-lg);padding:36px;box-shadow:var(--shadow);backdrop-filter:blur(10px)}
-.contact-card h2{font-family:'Bricolage Grotesque','Geist',sans-serif;font-size:24px;font-weight:800;color:var(--ink);letter-spacing:-.02em;margin-bottom:8px}
+.contact-card h2{font-family:'Geist','Inter',ui-sans-serif,sans-serif;font-size:24px;font-weight:700;color:var(--ink);letter-spacing:-.02em;margin-bottom:8px}
 .contact-card p.intro{font-family:'Geist',sans-serif;font-size:14.5px;color:var(--muted);line-height:1.65;margin-bottom:22px}
 .contact-channels{display:flex;flex-direction:column;gap:14px;margin-top:24px}
 .contact-channel{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--card-bd);border-radius:12px;color:var(--ink);transition:border-color .2s,background .2s}
@@ -38,7 +38,7 @@
 .cal-modal.open{display:flex}
 .cal-inner{background:var(--bg-2);border:1px solid var(--card-bd);border-radius:18px;width:100%;max-width:920px;height:80vh;display:flex;flex-direction:column;overflow:hidden}
 .cal-head{padding:16px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
-.cal-head h3{font-family:'Bricolage Grotesque','Geist',sans-serif;font-size:18px;font-weight:700;color:var(--ink);margin:0}
+.cal-head h3{font-family:'Geist','Inter',ui-sans-serif,sans-serif;font-size:18px;font-weight:700;color:var(--ink);margin:0}
 .cal-close{width:32px;height:32px;border-radius:8px;border:1px solid var(--line-hi);color:var(--ink);display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
 .cal-close:hover{background:var(--accent-soft);border-color:var(--accent)}
 .cal-frame{flex:1;border:none}
@@ -160,7 +160,7 @@
   </div>
 </footer>
 
-<script src="/spine.js?v=20260603a"></script>
+<script src="/spine.js?v=20260603e"></script>
 <script>
 function openCalendar(){document.getElementById('cal-modal').classList.add('open');document.body.style.overflow='hidden'}
 function closeCalendar(){document.getElementById('cal-modal').classList.remove('open');document.body.style.overflow=''}
