@@ -112,7 +112,8 @@ nav.shrink .wordmark img{height:26px}
   .nav-links.open{max-height:560px}
   .nav-links a{padding:14px 28px;font-size:16px}
   .nav-links a::after{display:none}
-  .nav-login-m{display:block;color:var(--accent);font-weight:600}
+  .nav-login-m{display:flex;align-items:center;justify-content:center;margin:10px 20px 8px;padding:12px 22px;background:var(--accent);color:#fff!important;font-weight:700;border-radius:10px;border:none;opacity:1!important}
+  .nav-login-m:hover{background:var(--primary);color:#fff!important}
   .nav-toggle{display:flex}
   .nav-right .btn-ghost{display:none}
 }
