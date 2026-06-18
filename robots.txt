@@ -1,4 +1,16 @@
 User-agent: *
 Allow: /
 
+Disallow: /concept-a.html
+Disallow: /concept-b.html
+Disallow: /concept-c.html
+Disallow: /concepts.html
+Disallow: /theme-1.html
+Disallow: /theme-2.html
+Disallow: /theme-3.html
+Disallow: /theme-4.html
+Disallow: /theme-5.html
+Disallow: /themes.html
+Disallow: /fonts.html
+
 Sitemap: https://www.thedealmentor.ai/sitemap.xml
