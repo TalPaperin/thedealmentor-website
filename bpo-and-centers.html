@@ -73,6 +73,14 @@
 .dialer-strip .dialer-label{font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:8px}
 .dialer-strip .dialer-list{font-family:'Inter',sans-serif;font-size:14.5px;color:var(--text);line-height:1.65}
 
+/* Practitioner credibility band */
+.practitioner-band{padding:40px 0 8px;position:relative;z-index:2}
+.pb-wrap{max-width:920px;margin:0 auto;padding:26px 32px;border-radius:var(--radius-lg);background:var(--bg-card);border:1px solid var(--card-bd);box-shadow:var(--shadow);backdrop-filter:blur(10px);text-align:center}
+.pb-label{font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:10px}
+.pb-body{font-family:'Inter',sans-serif;font-size:16px;color:var(--text);line-height:1.7;margin:0}
+.pb-body strong{color:var(--ink);font-weight:700}
+@media(max-width:640px){.pb-wrap{padding:22px 22px}.pb-body{font-size:15px}}
+
 /* Honest take callout */
 .honest-take{margin-top:32px;padding:28px 32px;border-radius:var(--radius-lg);background:color-mix(in srgb,var(--accent) 6%,transparent);border:1px solid color-mix(in srgb,var(--accent) 25%,transparent);max-width:820px;margin-left:auto;margin-right:auto}
 .honest-label{font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-2);font-weight:700;margin-bottom:10px}
@@ -129,6 +137,15 @@
     <a href="/platform" class="btn-secondary btn-lg">See the platform</a>
   </div>
 </header>
+
+<section class="practitioner-band">
+  <div class="section-inner">
+    <div class="pb-wrap">
+      <p class="pb-label">Built by a practitioner</p>
+      <p class="pb-body">Tal Paperin has personally trained agents on BPO floors in <strong>Mexico, the Philippines, and Eastern Europe</strong>, and worked with global brands like <strong>Mars</strong> and <strong>IDT</strong>. Specific engagements are under NDA. DealMentor productizes two decades of that experience into something a center can deploy per agent in days, not months.</p>
+    </div>
+  </div>
+</section>
 
 <section class="solid">
   <div class="section-inner">
@@ -332,7 +349,7 @@
       <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq2" type="button" aria-expanded="false" aria-controls="bpoa2" onclick="toggleFaq(this)">Do you integrate with our dialer - Five9, Genesys, NICE CXone, Talkdesk, RingCentral? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa2" role="region" aria-labelledby="bpoq2" hidden>DealMentor runs in the browser tab next to your dialer. Your agents pull up the script, copilot, and objection handlers in DealMentor while they take calls in your dialer. We do not currently push data back into the dialer for routing or analytics. If you need that depth, name your stack on the call - we will tell you exactly what is and isn't possible today.</div></div>
       <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq3" type="button" aria-expanded="false" aria-controls="bpoa3" onclick="toggleFaq(this)">How does this compare to Second Nature or Quantified for AI training? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa3" role="region" aria-labelledby="bpoq3" hidden>Pre-floor simulation against AI buyer personas is one piece of what DealMentor does. We also generate the campaign playbook, give every agent an in-call copilot, give team leads 24/7 CRO judgment, and ship a live human CRO with the subscription. Where Second Nature stops at training, DealMentor covers the entire arc from playbook to floor to coaching. One vendor, not three or four.</div></div>
       <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq4" type="button" aria-expanded="false" aria-controls="bpoa4" onclick="toggleFaq(this)">What does it cost for 500 agents? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa4" role="region" aria-labelledby="bpoq4" hidden>Per-agent monthly pricing that scales with your headcount. Substantially less than enterprise contracts at the Cogito, Observe, or Level.AI tier. The exact number depends on your campaign mix, language requirements, and rollout pace - we'll quote it on a 30-minute call.</div></div>
-      <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq5" type="button" aria-expanded="false" aria-controls="bpoa5" onclick="toggleFaq(this)">Do you have case studies from other BPOs? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa5" role="region" aria-labelledby="bpoq5" hidden>Honest answer: this is the first wave of BPO deployments. We are actively running pilots and shipping the first case studies. If a long BPO track record is a hard requirement, this is not the right fit yet. If you want to be one of the first centers to deploy - and shape the product - talk to us. That is exactly the conversation we are looking for, and the first cohort gets meaningful pricing and CRO time to match.</div></div>
+      <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq5" type="button" aria-expanded="false" aria-controls="bpoa5" onclick="toggleFaq(this)">Do you have case studies from other BPOs? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa5" role="region" aria-labelledby="bpoq5" hidden>DealMentor as a <em>software product</em> is early in BPO deployments. The <em>experience behind it</em> is not. Tal Paperin (KSW Solutions) has personally trained agents on BPO floors in Mexico, the Philippines, and Eastern Europe, and worked with global brands like Mars and IDT. Specific engagements are under NDA. What we are doing now is productizing two decades of practitioner experience into something a center can deploy per agent in days. The first cohort to deploy on the software gets meaningful pricing and direct CRO time - talk to us.</div></div>
       <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq6" type="button" aria-expanded="false" aria-controls="bpoa6" onclick="toggleFaq(this)">What languages do you support? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa6" role="region" aria-labelledby="bpoq6" hidden>Scripts and playbooks are generated in English, Spanish, Portuguese, French, German, Italian, Hindi, Tagalog, Arabic, and more. Tailored for the buyer's market and idiom, not machine-translated. For a new language or dialect, name it on the call.</div></div>
       <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq7" type="button" aria-expanded="false" aria-controls="bpoa7" onclick="toggleFaq(this)">How fast can we go live with a pilot campaign? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa7" role="region" aria-labelledby="bpoq7" hidden>Days, not months. We typically run a single-campaign pilot first - one client, one team, one playbook generated and deployed. Two weeks of training and live calling is usually enough to see the lift on ramp time, script consistency, and agent confidence. Then scale to the rest of the floor.</div></div>
     </div>
