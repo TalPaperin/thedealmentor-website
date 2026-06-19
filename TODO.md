@@ -78,7 +78,16 @@ Last refreshed: 2026-06-19, after the multi-ICP website rebuild.
 
 ## DONE this session (for the record)
 
-Pushed in commits `9f068be` · `86eb630` · `7116d19` · `8ac02d0` · `9d2238b` · `0372b10` · `ec71b29` · `2f45744`
+Pushed in commits `9f068be` · `86eb630` · `7116d19` · `8ac02d0` · `9d2238b` · `0372b10` · `ec71b29` · `2f45744` · `6379f67` · (latest)
+
+Including the multi-ICP rebalance of core pages:
+- `/pricing` now has a 4th plan card for **BPO / Centers · $149/active campaign/mo**
+- `/platform` modes-grid expanded to **3 modes** (Founder / Team / BPO)
+- `/whyus` reason #07 retuned: was "Founders included" → now "Solo, team, or contact-center floor — we ship for each"
+- `/about` "From the founder" rewritten to name all 3 audiences (founder + sales manager + BPO ops director)
+- `/index` "From the Founder" testimonial quote rewritten same way
+- Hero subheads on `/pricing`, `/platform`, `/whyus` now name all 3 audiences with prices
+- Final-CTA trial lines on every core page now include the BPO monthly-billing model
 
 - `/bpo-and-centers` full rewrite around the real product (Campaign Packs, audit-ready certs, coaching cards, Practice-a-Call, compliance must-says, privacy mode)
 - `/vs/cogito`, `/vs/balto`, `/vs/observe-ai`, `/vs/second-nature` + `/vs/` hub
