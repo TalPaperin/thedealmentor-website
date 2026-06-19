@@ -148,6 +148,12 @@ nav.shrink .wordmark img{height:26px}
 .hero-sub-problem{margin-bottom:24px}
 .hero-sub-fix{margin:0 0 56px;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;font-size:clamp(32px,4.5vw,56px);letter-spacing:.005em;line-height:1.1;text-transform:uppercase}
 .hero-sub{font-family:'Inter',sans-serif;font-size:clamp(16px,1.4vw,20px);color:var(--text);max-width:62ch;margin:0 auto 40px;line-height:1.55}
+.hero-bpo{font-family:'Inter',sans-serif;font-size:14px;color:var(--muted);margin:32px auto 0;line-height:1.6;letter-spacing:.01em}
+.hero-bpo span{color:var(--muted)}
+.hero-bpo a{color:var(--accent-2);font-weight:600;text-decoration:underline;text-underline-offset:4px;text-decoration-color:color-mix(in srgb,var(--accent-2) 50%,transparent);transition:text-decoration-color .2s,color .2s}
+.hero-bpo a:hover{text-decoration-color:var(--accent-2);color:var(--accent-2)}
+[data-theme="light"] .hero-bpo a{color:var(--accent);text-decoration-color:color-mix(in srgb,var(--accent) 50%,transparent)}
+[data-theme="light"] .hero-bpo a:hover{text-decoration-color:var(--accent);color:var(--accent)}
 .hero-ctas{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
 
 /* ===== DIVIDER + SECTIONS ===== */

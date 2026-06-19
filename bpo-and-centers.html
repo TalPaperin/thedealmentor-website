@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DealMentor for BPOs and Contact Centers - Coach every agent like your best one</title>
+<meta name="description" content="A fractional CRO and twenty AI sales tools, deployed across your contact center floor. Campaign playbooks in hours, pre-floor agent simulation, a copilot for every live call. Per-agent pricing, works alongside your dialer.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.thedealmentor.ai/bpo-and-centers">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.thedealmentor.ai/bpo-and-centers">
+<meta property="og:title" content="DealMentor for BPOs and Contact Centers - Coach every agent like your best one">
+<meta property="og:description" content="Campaign playbooks in hours, pre-floor agent simulation, a copilot for every live call. Per-agent pricing, works alongside your dialer.">
+<meta property="og:image" content="https://www.thedealmentor.ai/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="https://www.thedealmentor.ai/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/spine.css?v=20260603z">
+<script>document.documentElement.classList.add('js');var __dmTheme=localStorage.getItem('dm-theme');if(__dmTheme==='light')document.documentElement.setAttribute('data-theme','light');</script>
+<style>
+/* Pain cards */
+.pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:40px}
+.pain-card-c{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow);backdrop-filter:blur(10px)}
+.pain-card-c .pain-num{font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:.18em;color:var(--accent);font-weight:700;margin-bottom:10px;display:block;text-transform:uppercase}
+.pain-card-c h3{font-family:'Inter',ui-sans-serif,sans-serif;font-size:clamp(18px,1.8vw,22px);font-weight:700;color:var(--ink);letter-spacing:-.01em;line-height:1.3;margin-bottom:10px}
+.pain-card-c p{font-family:'Inter',sans-serif;font-size:15px;color:var(--text);line-height:1.65}
+@media(max-width:720px){.pain-grid{grid-template-columns:1fr}}
+
+/* Feature grid */
+.cf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.cf-card{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius-lg);padding:26px;box-shadow:var(--shadow);backdrop-filter:blur(10px);display:flex;flex-direction:column;gap:10px}
+.cf-ico{width:42px;height:42px;border-radius:10px;background:var(--accent-soft);color:var(--accent);display:inline-flex;align-items:center;justify-content:center}
+.cf-ico svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.cf-card h3{font-family:'Inter',ui-sans-serif,sans-serif;font-size:18px;font-weight:700;color:var(--ink);letter-spacing:-.01em;line-height:1.3;margin:6px 0 4px}
+.cf-card p{font-family:'Inter',sans-serif;font-size:14.5px;color:var(--text);line-height:1.6}
+@media(max-width:920px){.cf-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.cf-grid{grid-template-columns:1fr}}
+
+/* Comparison table (cloned from whyus) */
+.compare-table-wrap{margin-top:40px;overflow-x:auto;border-radius:var(--radius-lg);border:1px solid var(--card-bd);background:var(--bg-card);box-shadow:var(--shadow)}
+.compare-table{width:100%;border-collapse:collapse;font-family:'Inter',sans-serif;min-width:780px}
+.compare-table thead th{font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:18px 14px;text-align:left;vertical-align:bottom;border-bottom:1px solid var(--line);background:transparent}
+.compare-table thead th.compare-th-us{color:var(--accent-2);font-size:13px;letter-spacing:.1em}
+[data-theme="light"] .compare-table thead th.compare-th-us{color:var(--accent)}
+.compare-table thead th .compare-sub{display:block;font-size:10px;letter-spacing:.06em;text-transform:none;color:var(--muted);font-weight:500;margin-top:4px;line-height:1.4}
+.compare-table tbody tr{border-bottom:1px solid var(--line)}
+.compare-table tbody tr:last-child{border-bottom:none}
+.compare-table tbody th{font-family:'Inter',sans-serif;font-size:14.5px;font-weight:600;color:var(--ink);text-align:left;padding:16px 14px;width:32%;vertical-align:middle}
+.compare-table tbody td{font-family:'Inter',sans-serif;font-size:14px;color:var(--text);padding:16px 14px;vertical-align:middle;text-align:center}
+.compare-yes{color:var(--accent-2);font-weight:600;background:color-mix(in srgb,var(--accent-2) 6%,transparent)}
+[data-theme="light"] .compare-yes{color:var(--accent);background:color-mix(in srgb,var(--accent) 6%,transparent)}
+.compare-yes span{font-size:18px}
+.compare-no{color:var(--muted);font-weight:500}
+.compare-no span{color:#FF6B5C;font-size:16px;font-weight:700}
+.compare-partial{color:var(--text);font-weight:500;font-style:italic}
+.compare-na{color:var(--muted);font-weight:400;font-style:italic;opacity:.7}
+.compare-footnote{font-family:'Inter',sans-serif;font-size:14px;color:var(--muted);text-align:center;margin-top:18px;line-height:1.6}
+.compare-footnote a{color:var(--accent-2);text-decoration:underline;text-underline-offset:3px}
+[data-theme="light"] .compare-footnote a{color:var(--accent)}
+
+/* Deploy list */
+.deploy-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:36px;list-style:none;padding:0}
+.deploy-list li{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:14px;padding:20px 22px;display:flex;gap:14px;align-items:flex-start}
+.deploy-list svg{width:20px;height:20px;flex-shrink:0;color:var(--accent);margin-top:2px}
+.deploy-list strong{display:block;font-family:'Inter',sans-serif;font-weight:700;color:var(--ink);font-size:15.5px;margin-bottom:4px}
+.deploy-list span{font-family:'Inter',sans-serif;font-size:14px;color:var(--text);line-height:1.55}
+@media(max-width:720px){.deploy-list{grid-template-columns:1fr}}
+
+/* Dialer strip */
+.dialer-strip{margin-top:28px;padding:18px 22px;border:1px dashed var(--line-hi);border-radius:12px;background:transparent}
+.dialer-strip .dialer-label{font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:8px}
+.dialer-strip .dialer-list{font-family:'Inter',sans-serif;font-size:14.5px;color:var(--text);line-height:1.65}
+
+/* Modal (cloned from contact.html) */
+.cal-modal{display:none;position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.7);align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(8px)}
+.cal-modal.open{display:flex}
+.cal-inner{background:var(--bg-2);border:1px solid var(--card-bd);border-radius:18px;width:100%;max-width:920px;height:80vh;display:flex;flex-direction:column;overflow:hidden}
+.cal-head{padding:16px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.cal-head h3{font-family:'Inter',ui-sans-serif,sans-serif;font-size:18px;font-weight:700;color:var(--ink);margin:0}
+.cal-close{width:32px;height:32px;border-radius:8px;border:1px solid var(--line-hi);color:var(--ink);display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.cal-close:hover{background:var(--accent-soft);border-color:var(--accent)}
+.cal-frame{flex:1;border:none}
+</style>
+</head>
+<body>
+
+<canvas id="field" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
+
+<nav>
+  <div class="nav-logo"><a href="/" class="wordmark" aria-label="DealMentor home"><img src="/DealMentor%20horizontal%20logo%20white.jpg" alt="DealMentor" class="logo-dark" width="180" height="30"><img src="/DealMentor%20horizontal%20logo%20blue.png" alt="DealMentor" class="logo-light" width="180" height="30"></a></div>
+  <div class="nav-links" id="navLinks">
+    <a href="https://app.thedealmentor.ai/login" class="nav-login-m">Log In</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/whyus">Why Us</a>
+    <a href="/about">About KSW</a>
+    <a href="/contact">Contact</a>
+    <a href="/platform">Platform</a>
+    <a href="https://blog.thedealmentor.ai">Blog</a>
+  </div>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark / light mode">
+      <svg class="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+    <a href="https://app.thedealmentor.ai/login" class="btn-primary">Log In</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="hero">
+  <h1 class="hero-h1">
+    <span class="line hero-promise">Every agent. <em>Their best call.</em> Every time.</span>
+    <span class="line">DealMentor for BPOs and contact centers.</span>
+  </h1>
+  <p class="hero-sub">A fractional CRO and twenty AI sales tools, deployed across your floor. Campaign playbooks in hours, pre-floor agent simulation, and a copilot for every live call. Per-agent pricing, works alongside your dialer.</p>
+  <div class="hero-ctas">
+    <a href="#" onclick="event.preventDefault();openCalendar()" class="btn-primary btn-lg">Talk to us about your center</a>
+    <a href="/platform" class="btn-secondary btn-lg">See the platform</a>
+  </div>
+</header>
+
+<section class="solid">
+  <div class="section-inner">
+    <div class="section-head-center">
+      <p class="eyebrow">Where centers hit the ceiling</p>
+      <h2 class="section-h2">Your top agents close. <em>The rest never get there.</em></h2>
+      <p class="section-sub">Every BPO and contact center hits the same four walls. They are not headcount problems. They are tooling problems.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card-c">
+        <span class="pain-num">Problem 01</span>
+        <h3>Your coach-to-agent ratio is 1:30. Or worse.</h3>
+        <p>Your best 5% of agents drive 80% of the revenue. The other 95% never get there because there is no time to coach them. You cannot QA every call. You cannot whisper-coach every agent. The gap stays the gap.</p>
+      </div>
+      <div class="pain-card-c">
+        <span class="pain-num">Problem 02</span>
+        <h3>Ramp takes 60 to 90 days. Attrition hits first.</h3>
+        <p>Half your new hires never reach productive output before they leave. Every seat is paying training cost without delivering revenue. The training program scales linearly with headcount. You add seats, you add the same problem.</p>
+      </div>
+      <div class="pain-card-c">
+        <span class="pain-num">Problem 03</span>
+        <h3>Script drift kills consistency.</h3>
+        <p>Your top agent's instinct on a hard objection never makes it back into the playbook. Every agent improvises their own version. QA spots it after the fact. Customer experience varies by who picks up.</p>
+      </div>
+      <div class="pain-card-c">
+        <span class="pain-num">Problem 04</span>
+        <h3>New campaigns take weeks to launch.</h3>
+        <p>Every new client or product means building a new script, new objection handlers, new battle cards, new training docs, role-plays, and QA cycles. Weeks of slow time-to-revenue per new campaign. By the time you are ready, the client wants results.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="solid-2">
+  <div class="section-inner">
+    <div class="section-head-center">
+      <p class="eyebrow">What DealMentor brings to your floor</p>
+      <h2 class="section-h2">Twenty tools. One CRO. <em>Every agent.</em></h2>
+      <p class="section-sub">Deployed per agent. Built around the way contact centers actually run.</p>
+    </div>
+    <div class="cf-grid">
+      <div class="cf-card">
+        <div class="cf-ico"><svg viewBox="0 0 24 24"><path d="M4 19V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14H5a1 1 0 0 1-1-1z"/><path d="M8 9h8M8 13h6"/></svg></div>
+        <h3>Campaign Playbook in hours</h3>
+        <p>Generate a complete script, objection handlers, battle cards, and discovery flow for any new client or product in hours. Tailored to the buyer, not a template. Every agent reads the same source of truth.</p>
+      </div>
+      <div class="cf-card">
+        <div class="cf-ico"><svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.5 9.5 8 10 4.5-.5 8-5 8-10V6l-8-4z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3>Pre-floor agent simulation</h3>
+        <p>New hires practice against AI buyer personas before they ever touch a real lead. Cut ramp time, reduce wasted leads, build muscle memory on objections before they cost a deal.</p>
+      </div>
+      <div class="cf-card">
+        <div class="cf-ico"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h3>Sales Copilot for every agent</h3>
+        <p>In-call assist for every seat: discovery prep, real-time objection handling, follow-up emails, proposals. Your top agent's instincts, made available to all of them.</p>
+      </div>
+      <div class="cf-card">
+        <div class="cf-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <h3>Ask the CRO, 24/7</h3>
+        <p>Your team leads and trainers get round-the-clock access to a real CRO's judgment. Discount approval, hard objections, escalation strategy, account expansion. No more waiting for Monday standup.</p>
+      </div>
+      <div class="cf-card">
+        <div class="cf-ico"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Live CRO sessions</h3>
+        <p>Quarterly strategy sessions with a real revenue leader for your ops and training leads. Senior judgment for the structural calls: comp plans, campaign mix, expansion strategy, certification.</p>
+      </div>
+      <div class="cf-card">
+        <div class="cf-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <h3>Multi-language ready</h3>
+        <p>Scripts and playbooks generated in English, Spanish, Portuguese, French, and more. Tailored for the buyer's market, not just translated. Same quality on every campaign, every region.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="solid">
+  <div class="section-inner">
+    <div class="section-head-center">
+      <p class="eyebrow">Side by side</p>
+      <h2 class="section-h2">DealMentor vs <em>your other options.</em></h2>
+    </div>
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col" class="compare-th-us">DealMentor</th>
+            <th scope="col">More coaches<br><span class="compare-sub">Hire your way out</span></th>
+            <th scope="col">Real-time AI<br><span class="compare-sub">Balto / Cogito / Level.AI</span></th>
+            <th scope="col">DIY scripts<br><span class="compare-sub">Docs &amp; spreadsheets</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Build a campaign playbook in hours</th>
+            <td class="compare-yes"><span aria-label="yes">✓</span></td>
+            <td class="compare-no">Weeks of manual work</td>
+            <td class="compare-no">Not in scope</td>
+            <td class="compare-no">Weeks of manual work</td>
+          </tr>
+          <tr>
+            <th scope="row">Pre-floor training against AI buyers</th>
+            <td class="compare-yes"><span aria-label="yes">✓</span></td>
+            <td class="compare-partial">Limited by capacity</td>
+            <td class="compare-no">Live calls only</td>
+            <td class="compare-no">Role-play with peers</td>
+          </tr>
+          <tr>
+            <th scope="row">In-call copilot for every agent</th>
+            <td class="compare-yes"><span aria-label="yes">✓</span></td>
+            <td class="compare-no">Whisper coach only</td>
+            <td class="compare-yes">Deeper audio AI</td>
+            <td class="compare-no">—</td>
+          </tr>
+          <tr>
+            <th scope="row">Live human CRO + 24/7 AI advisor</th>
+            <td class="compare-yes"><span aria-label="yes">✓</span></td>
+            <td class="compare-partial">Internal only</td>
+            <td class="compare-no">—</td>
+            <td class="compare-no">—</td>
+          </tr>
+          <tr>
+            <th scope="row">Multi-language scripts</th>
+            <td class="compare-yes"><span aria-label="yes">✓</span></td>
+            <td class="compare-partial">Coach by coach</td>
+            <td class="compare-partial">English-first</td>
+            <td class="compare-partial">Translation only</td>
+          </tr>
+          <tr>
+            <th scope="row">Time to deploy</th>
+            <td class="compare-yes">Days</td>
+            <td class="compare-no">Months to hire</td>
+            <td class="compare-no">Months of integration</td>
+            <td class="compare-no">Indefinite</td>
+          </tr>
+          <tr>
+            <th scope="row">Pricing</th>
+            <td class="compare-yes"><strong>Per agent, talk to us</strong></td>
+            <td class="compare-no">$$$ per coach</td>
+            <td class="compare-no">Enterprise contracts</td>
+            <td class="compare-partial">Free + your time</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="compare-footnote">DealMentor is not a real-time audio AI. It does not listen to live calls. It does everything else - and it costs a fraction of one.</p>
+  </div>
+</section>
+
+<section class="solid-2">
+  <div class="section-inner">
+    <div class="section-head-center">
+      <p class="eyebrow">How it deploys</p>
+      <h2 class="section-h2">Built to drop into <em>your existing stack.</em></h2>
+      <p class="section-sub">DealMentor sits beside your dialer, your CRM, and your workforce management. It does not try to replace them.</p>
+    </div>
+    <ul class="deploy-list">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        <div><strong>Per-agent pricing</strong><span>Scales with your headcount. No surprise. Easy to model into a per-campaign or per-client P&amp;L.</span></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        <div><strong>Works alongside your dialer</strong><span>Five9, Genesys, NICE CXone, Talkdesk, RingCentral. DealMentor lives in the browser tab next to whatever your agents already use.</span></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        <div><strong>Supervisor &amp; team-lead dashboards</strong><span>See playbook adoption, copilot usage, simulation scores, and certification status per agent. Spot the gap before QA does.</span></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        <div><strong>Custom playbook per campaign</strong><span>Every client and every product gets its own setup. Not a generic template stretched to fit. Switching a team to a new campaign takes hours, not weeks.</span></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        <div><strong>Multi-language by design</strong><span>Generate scripts in the buyer's language and idiom, not a translation of the English version. Same playbook quality on every regional campaign.</span></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        <div><strong>Enterprise rollout support</strong><span>For centers above 200 agents, we run the deployment with your training and ops leads. Pilot a single campaign, prove the lift, then scale.</span></div>
+      </li>
+    </ul>
+    <div class="dialer-strip">
+      <div class="dialer-label">Plays nicely with</div>
+      <div class="dialer-list">Five9 · Genesys Cloud · NICE CXone · Talkdesk · RingCentral · Salesforce · HubSpot · Zoho · Aircall · 8x8</div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <p class="final-eyebrow">Pilot a single campaign first</p>
+  <h2>Tell us about your center. <em>We will show you a deployment plan.</em></h2>
+  <p>Thirty minutes with Tal. Walk through your team size, current setup, and where the bottleneck is. We will come back with a concrete pilot plan and per-agent pricing built for your headcount.</p>
+  <div class="final-ctas">
+    <a href="#" onclick="event.preventDefault();openCalendar()" class="btn-primary btn-lg">Book a call</a>
+    <a href="/platform" class="btn-secondary btn-lg">See the platform</a>
+  </div>
+</section>
+
+<div class="cal-modal" id="cal-modal">
+  <div class="cal-inner">
+    <div class="cal-head">
+      <h3>Book a thirty-minute strategy call</h3>
+      <button class="cal-close" onclick="closeCalendar()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+    <iframe class="cal-frame" src="https://meetings-eu1.hubspot.com/tpaperin/thedealmentor" title="Book a call with Tal"></iframe>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a href="/" class="footer-wordmark" aria-label="DealMentor home"><img src="/DealMentor%20horizontal%20logo%20white.jpg" alt="DealMentor" class="logo-dark" width="200" height="34"><img src="/DealMentor%20horizontal%20logo%20blue.png" alt="DealMentor" class="logo-light" width="200" height="34"></a>
+      <div class="footer-copy">by KSW Solutions · Virtual CRO Platform<br>&copy; 2026 KSW Solutions. TheDealMentor.AI&trade; is a trademark of Tal Paperin.</div>
+    </div>
+    <div class="footer-links">
+      <a href="/bpo-and-centers">For BPOs &amp; Centers</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/refund">Refund Policy</a>
+      <a href="/contact">Contact</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/company/thedealmentor" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ico" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+      <a href="https://www.facebook.com/thedealmentor" target="_blank" rel="noopener" aria-label="Facebook"><svg class="ico" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a href="https://www.youtube.com/@thedealmentoryt" target="_blank" rel="noopener" aria-label="YouTube"><svg class="ico" viewBox="0 0 24 24"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script src="/spine.js?v=20260603n"></script>
+<script>
+function openCalendar(){document.getElementById('cal-modal').classList.add('open');document.body.style.overflow='hidden'}
+function closeCalendar(){document.getElementById('cal-modal').classList.remove('open');document.body.style.overflow=''}
+document.getElementById('cal-modal').addEventListener('click',function(e){if(e.target===this)closeCalendar()});
+</script>
+</body>
+</html>
