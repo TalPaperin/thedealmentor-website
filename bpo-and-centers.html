@@ -73,6 +73,14 @@
 .dialer-strip .dialer-label{font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:8px}
 .dialer-strip .dialer-list{font-family:'Inter',sans-serif;font-size:14.5px;color:var(--text);line-height:1.65}
 
+/* Honest take callout */
+.honest-take{margin-top:32px;padding:28px 32px;border-radius:var(--radius-lg);background:color-mix(in srgb,var(--accent) 6%,transparent);border:1px solid color-mix(in srgb,var(--accent) 25%,transparent);max-width:820px;margin-left:auto;margin-right:auto}
+.honest-label{font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-2);font-weight:700;margin-bottom:10px}
+[data-theme="light"] .honest-label{color:var(--accent)}
+.honest-body{font-family:'Inter',sans-serif;font-size:16.5px;color:var(--ink);line-height:1.65;margin:0}
+.honest-body strong{color:var(--accent-2);font-weight:700}
+[data-theme="light"] .honest-body strong{color:var(--accent)}
+
 /* Modal (cloned from contact.html) */
 .cal-modal{display:none;position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.7);align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(8px)}
 .cal-modal.open{display:flex}
@@ -266,7 +274,10 @@
         </tbody>
       </table>
     </div>
-    <p class="compare-footnote">DealMentor is not a real-time audio AI. It does not listen to live calls. It does everything else - and it costs a fraction of one.</p>
+    <div class="honest-take">
+      <p class="honest-label">The honest sell</p>
+      <p class="honest-body">You don't need a six-figure enterprise contract to make your floor better. DealMentor covers the 80% that actually moves the metric - <strong>playbook, training, copilot, CRO access</strong> - at a fraction of the price of Cogito, Balto, or Observe.AI. We don't listen to live calls. We do everything around them. For most centers under 1,000 agents, that's the right trade.</p>
+    </div>
   </div>
 </section>
 
@@ -306,6 +317,24 @@
     <div class="dialer-strip">
       <div class="dialer-label">Plays nicely with</div>
       <div class="dialer-list">Five9 · Genesys Cloud · NICE CXone · Talkdesk · RingCentral · Salesforce · HubSpot · Zoho · Aircall · 8x8</div>
+    </div>
+  </div>
+</section>
+
+<section class="solid">
+  <div class="section-inner">
+    <div class="section-head-center">
+      <p class="eyebrow">What ops directors ask first</p>
+      <h2 class="section-h2">Straight answers <em>before the call.</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq1" type="button" aria-expanded="false" aria-controls="bpoa1" onclick="toggleFaq(this)">Do you listen to live calls in real time, like Cogito or Balto? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa1" role="region" aria-labelledby="bpoq1" hidden>No. DealMentor is not a real-time audio AI. It does not listen to live calls or inject prompts mid-conversation. Tools like Cogito, Balto, and Observe.AI do that - they cost $100K+ a year and require months of integration. DealMentor builds and deploys everything around the call: campaign playbook, scripts, objection handlers, pre-floor simulation, an in-tab copilot for agents, and 24/7 access to a real CRO for ops leads. For most sub-1,000-agent centers, that's the 80% that actually moves the metric.</div></div>
+      <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq2" type="button" aria-expanded="false" aria-controls="bpoa2" onclick="toggleFaq(this)">Do you integrate with our dialer - Five9, Genesys, NICE CXone, Talkdesk, RingCentral? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa2" role="region" aria-labelledby="bpoq2" hidden>DealMentor runs in the browser tab next to your dialer. Your agents pull up the script, copilot, and objection handlers in DealMentor while they take calls in your dialer. We do not currently push data back into the dialer for routing or analytics. If you need that depth, name your stack on the call - we will tell you exactly what is and isn't possible today.</div></div>
+      <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq3" type="button" aria-expanded="false" aria-controls="bpoa3" onclick="toggleFaq(this)">How does this compare to Second Nature or Quantified for AI training? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa3" role="region" aria-labelledby="bpoq3" hidden>Pre-floor simulation against AI buyer personas is one piece of what DealMentor does. We also generate the campaign playbook, give every agent an in-call copilot, give team leads 24/7 CRO judgment, and ship a live human CRO with the subscription. Where Second Nature stops at training, DealMentor covers the entire arc from playbook to floor to coaching. One vendor, not three or four.</div></div>
+      <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq4" type="button" aria-expanded="false" aria-controls="bpoa4" onclick="toggleFaq(this)">What does it cost for 500 agents? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa4" role="region" aria-labelledby="bpoq4" hidden>Per-agent monthly pricing that scales with your headcount. Substantially less than enterprise contracts at the Cogito, Observe, or Level.AI tier. The exact number depends on your campaign mix, language requirements, and rollout pace - we'll quote it on a 30-minute call.</div></div>
+      <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq5" type="button" aria-expanded="false" aria-controls="bpoa5" onclick="toggleFaq(this)">Do you have case studies from other BPOs? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa5" role="region" aria-labelledby="bpoq5" hidden>Honest answer: this is the first wave of BPO deployments. We are actively running pilots and shipping the first case studies. If a long BPO track record is a hard requirement, this is not the right fit yet. If you want to be one of the first centers to deploy - and shape the product - talk to us. That is exactly the conversation we are looking for, and the first cohort gets meaningful pricing and CRO time to match.</div></div>
+      <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq6" type="button" aria-expanded="false" aria-controls="bpoa6" onclick="toggleFaq(this)">What languages do you support? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa6" role="region" aria-labelledby="bpoq6" hidden>Scripts and playbooks are generated in English, Spanish, Portuguese, French, German, Italian, Hindi, Tagalog, Arabic, and more. Tailored for the buyer's market and idiom, not machine-translated. For a new language or dialect, name it on the call.</div></div>
+      <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq7" type="button" aria-expanded="false" aria-controls="bpoa7" onclick="toggleFaq(this)">How fast can we go live with a pilot campaign? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa7" role="region" aria-labelledby="bpoq7" hidden>Days, not months. We typically run a single-campaign pilot first - one client, one team, one playbook generated and deployed. Two weeks of training and live calling is usually enough to see the lift on ramp time, script consistency, and agent confidence. Then scale to the rest of the floor.</div></div>
     </div>
   </div>
 </section>
