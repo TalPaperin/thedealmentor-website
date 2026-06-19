@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/spine.css?v=20260603z">
+<link rel="stylesheet" href="/spine.css?v=20260619a">
 <script>document.documentElement.classList.add('js');var __dmTheme=localStorage.getItem('dm-theme');if(__dmTheme==='light')document.documentElement.setAttribute('data-theme','light');</script>
 <style>
 /* Pain cards */
@@ -180,6 +180,81 @@
 .wa-float:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.45)}
 .wa-float svg{width:30px;height:30px;fill:currentColor}
 @media(max-width:520px){.wa-float{bottom:18px;right:18px;width:52px;height:52px}.wa-float svg{width:26px;height:26px}}
+
+/* Interactive ROI calculator */
+.roi-calc-wrap{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:880px){.roi-calc-wrap{grid-template-columns:1fr}}
+.roi-inputs,.roi-output{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow)}
+.roi-input{margin-bottom:22px}
+.roi-input:last-of-type{margin-bottom:0}
+.roi-input label{display:block;font-family:'Inter',sans-serif;font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:10px}
+.roi-input label .roi-hint{font-weight:400;color:var(--muted);font-size:12px;margin-left:4px}
+.roi-slider-row{display:flex;align-items:center;gap:14px}
+.roi-slider-row input[type=range]{flex:1;height:6px;-webkit-appearance:none;appearance:none;background:var(--line);border-radius:3px;outline:none;cursor:pointer}
+.roi-slider-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;border-radius:50%;background:var(--accent);cursor:pointer;border:none;box-shadow:0 2px 8px rgba(0,0,0,.35);transition:transform .15s}
+.roi-slider-row input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.1)}
+.roi-slider-row input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--accent);cursor:pointer;border:none;box-shadow:0 2px 8px rgba(0,0,0,.35)}
+.roi-val{font-family:'Geist Mono',monospace;font-size:14px;color:var(--accent-2);font-weight:700;min-width:90px;text-align:right}
+[data-theme="light"] .roi-val{color:var(--accent)}
+.roi-tier{margin-top:22px;padding:14px 16px;background:color-mix(in srgb,var(--accent) 8%,transparent);border:1px solid color-mix(in srgb,var(--accent) 30%,transparent);border-radius:10px;display:flex;flex-direction:column;gap:4px}
+.roi-tier-label{font-family:'Geist Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.roi-tier-val{font-family:'Inter',sans-serif;font-size:14.5px;color:var(--ink);font-weight:600}
+.roi-output h3{font-family:'Inter',sans-serif;font-size:18px;font-weight:700;color:var(--ink);margin:0 0 16px}
+.roi-email-wrap{margin-top:22px;padding-top:22px;border-top:1px solid var(--line)}
+.roi-email-wrap h4{font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:var(--ink);margin:0 0 4px}
+.roi-email-wrap p{font-family:'Inter',sans-serif;font-size:13px;color:var(--muted);line-height:1.5;margin:0 0 12px}
+.roi-email-form{display:flex;gap:8px;flex-wrap:wrap}
+.roi-email-form input{flex:1;min-width:180px;padding:11px 14px;border:1px solid var(--card-bd);border-radius:10px;background:var(--bg-2);color:var(--ink);font-family:'Inter',sans-serif;font-size:14px;outline:none}
+.roi-email-form input:focus{border-color:var(--accent)}
+.roi-email-form button{flex-shrink:0;padding:11px 18px;font-size:13.5px}
+.roi-email-msg{display:none;margin-top:10px;font-family:'Inter',sans-serif;font-size:13px;line-height:1.5;padding:10px 12px;border-radius:8px}
+.roi-email-msg.ok{display:block;background:rgba(91,215,168,.10);border:1px solid rgba(91,215,168,.35);color:var(--good)}
+.roi-email-msg.err{display:block;background:rgba(255,107,122,.10);border:1px solid rgba(255,107,122,.35);color:var(--warm)}
+
+/* Share & scorecard modals (reusable shell) */
+.dm-modal{display:none;position:fixed;inset:0;z-index:85;background:rgba(0,0,0,.7);align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(8px)}
+.dm-modal.open{display:flex}
+.dm-modal-inner{background:var(--bg-2);border:1px solid var(--card-bd);border-radius:18px;width:100%;max-width:580px;max-height:88vh;overflow-y:auto}
+.dm-modal-head{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:var(--bg-2);z-index:2}
+.dm-modal-head h3{font-family:'Inter',sans-serif;font-size:18px;font-weight:700;color:var(--ink);margin:0}
+.dm-modal-close{width:32px;height:32px;border-radius:8px;border:1px solid var(--line-hi);color:var(--ink);background:transparent;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.dm-modal-close:hover{background:var(--accent-soft);border-color:var(--accent)}
+.dm-modal-body{padding:24px}
+.dm-modal-body p{font-family:'Inter',sans-serif;font-size:14.5px;color:var(--text);line-height:1.6;margin:0 0 16px}
+.dm-modal-body textarea{width:100%;min-height:200px;padding:14px;border:1px solid var(--card-bd);border-radius:10px;background:var(--bg-card);color:var(--ink);font-family:'Inter',sans-serif;font-size:14px;line-height:1.55;outline:none;resize:vertical}
+.dm-modal-body textarea:focus{border-color:var(--accent)}
+.dm-modal-body input[type=email],.dm-modal-body input[type=text]{width:100%;padding:11px 14px;border:1px solid var(--card-bd);border-radius:10px;background:var(--bg-card);color:var(--ink);font-family:'Inter',sans-serif;font-size:14px;outline:none;margin-bottom:14px}
+.dm-modal-body input[type=email]:focus,.dm-modal-body input[type=text]:focus{border-color:var(--accent)}
+.dm-modal-actions{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.dm-modal-actions button,.dm-modal-actions a{flex:1;min-width:140px;justify-content:center}
+
+/* Quick-fit scorecard */
+.scorecard-q{margin-bottom:18px;padding-bottom:18px;border-bottom:1px dashed var(--line)}
+.scorecard-q:last-of-type{border-bottom:none;margin-bottom:8px}
+.scorecard-q .sc-q{font-family:'Inter',sans-serif;font-size:15px;font-weight:600;color:var(--ink);margin:0 0 10px;line-height:1.4}
+.scorecard-q .sc-opts{display:flex;gap:8px;flex-wrap:wrap}
+.scorecard-q .sc-opts label{flex:1;min-width:80px;padding:9px 14px;border:1px solid var(--card-bd);border-radius:10px;font-family:'Inter',sans-serif;font-size:13.5px;color:var(--text);cursor:pointer;text-align:center;transition:all .15s;background:transparent}
+.scorecard-q .sc-opts label:hover{border-color:var(--accent);color:var(--ink)}
+.scorecard-q .sc-opts input[type=radio]{display:none}
+.scorecard-q .sc-opts input[type=radio]:checked + label{background:var(--accent);color:#fff;border-color:var(--accent)}
+.scorecard-result{display:none;padding:22px;border-radius:14px;margin-top:6px}
+.scorecard-result.show{display:block}
+.scorecard-result h4{font-family:'Inter',sans-serif;font-size:18px;font-weight:700;margin:0 0 8px}
+.scorecard-result p{font-family:'Inter',sans-serif;font-size:14px;line-height:1.6;margin:0 0 12px;color:var(--text)}
+.scorecard-result.strong{background:color-mix(in srgb,var(--accent) 10%,transparent);border:1px solid color-mix(in srgb,var(--accent) 40%,transparent)}
+.scorecard-result.strong h4{color:var(--accent-2)}
+[data-theme="light"] .scorecard-result.strong h4{color:var(--accent)}
+.scorecard-result.maybe{background:color-mix(in srgb,#F2B33A 10%,transparent);border:1px solid color-mix(in srgb,#F2B33A 40%,transparent)}
+.scorecard-result.maybe h4{color:#F2B33A}
+.scorecard-result.no{background:rgba(255,107,122,.08);border:1px solid rgba(255,107,122,.35)}
+.scorecard-result.no h4{color:var(--warm)}
+
+/* Hero secondary actions strip */
+.hero-actions-strip{margin:24px auto 0;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.hero-actions-strip button{background:transparent;border:none;color:var(--accent-2);font-family:'Inter',sans-serif;font-size:13.5px;font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:4px;padding:6px 10px;transition:color .15s}
+[data-theme="light"] .hero-actions-strip button{color:var(--accent)}
+.hero-actions-strip button:hover{color:var(--ink)}
+.hero-actions-strip span{color:var(--muted);font-family:'Inter',sans-serif;font-size:13.5px}
 </style>
 </head>
 <body>
@@ -218,13 +293,20 @@
     <a href="#" onclick="event.preventDefault();openCalendar()" class="btn-primary btn-lg">Talk to us about your center</a>
     <a href="/platform" class="btn-secondary btn-lg">See the platform</a>
   </div>
+  <div class="hero-actions-strip">
+    <button type="button" onclick="openScorecard()">30-second fit check</button>
+    <span>·</span>
+    <button type="button" onclick="document.getElementById('roi-agents').scrollIntoView({behavior:'smooth',block:'center'})">Run the ROI math</button>
+    <span>·</span>
+    <button type="button" onclick="openShare()">Email this to my team</button>
+  </div>
 </header>
 
 <section class="practitioner-band">
   <div class="section-inner">
     <div class="pb-wrap">
       <p class="pb-label">Built by a practitioner</p>
-      <p class="pb-body">Tal Paperin has personally trained agents on BPO floors in <strong>Mexico, the Philippines, and Eastern Europe</strong>, and worked with global brands like <strong>Mars</strong> and <strong>IDT</strong>. Specific engagements are under NDA. DealMentor productizes two decades of that experience into something a center can deploy per agent in days, not months.</p>
+      <p class="pb-body">Tal Paperin has personally trained agents on BPO floors in <strong>the Philippines, Eastern Europe, and Mexico</strong>, and worked with global brands like <strong>Mars</strong> and <strong>IDT</strong>. Specific engagements are under NDA. DealMentor productizes two decades of that experience into something a center can deploy per agent in days, not months.</p>
     </div>
   </div>
 </section>
@@ -242,7 +324,7 @@
         <ul>
           <li><strong>50 to 500 agents</strong> on the floor, with room to scale.</li>
           <li>Running <strong>outbound B2B sales</strong>, lead-gen, SDR-as-a-service, retention, or consumer upsell.</li>
-          <li>Based in <strong>nearshore LATAM, the Philippines, India, or Eastern Europe</strong> selling into US/UK/EU buyers.</li>
+          <li>Based in <strong>the Philippines, Eastern Europe, India, or nearshore LATAM</strong> selling into US, UK, or EU buyers.</li>
           <li>Serving SaaS, fintech, telecom, e-commerce, or consumer-services clients.</li>
           <li>Multiple <strong>concurrent campaigns</strong> per quarter, each needing its own playbook.</li>
           <li>Ops director or CEO can <strong>greenlight a $5K-$25K pilot</strong> without a 9-month procurement cycle.</li>
@@ -468,6 +550,7 @@
     <div class="honest-take">
       <p class="honest-label">The honest sell</p>
       <p class="honest-body">You don't need a six-figure enterprise contract to make your floor better. DealMentor covers the 80% that actually moves the metric - <strong>playbook, training, copilot, CRO access</strong> - at a fraction of the price of Cogito, Balto, or Observe.AI. We don't listen to live calls. We do everything around them. For most centers under 1,000 agents, that's the right trade.</p>
+      <p class="honest-body" style="margin-top:14px;font-size:14px;color:var(--muted)">Drill into each comparison: <a href="/vs/cogito" style="color:var(--accent-2);text-decoration:underline;text-underline-offset:3px">vs Cogito</a> · <a href="/vs/balto" style="color:var(--accent-2);text-decoration:underline;text-underline-offset:3px">vs Balto</a> · <a href="/vs/observe-ai" style="color:var(--accent-2);text-decoration:underline;text-underline-offset:3px">vs Observe.AI</a> · <a href="/vs/second-nature" style="color:var(--accent-2);text-decoration:underline;text-underline-offset:3px">vs Second Nature</a></p>
     </div>
   </div>
 </section>
@@ -547,30 +630,64 @@
 <section class="solid-2">
   <div class="section-inner">
     <div class="section-head-center">
-      <p class="eyebrow">What it costs vs what it saves</p>
-      <h2 class="section-h2">Less than <em>one extra coach.</em> Covers every agent.</h2>
-      <p class="section-sub">Indicative math for a 250-agent outbound sales floor. Your exact numbers depend on volume, language scope, and rollout pace - we quote on the call.</p>
+      <p class="eyebrow">Run the math for your floor</p>
+      <h2 class="section-h2">Move the sliders. <em>See your numbers.</em></h2>
+      <p class="section-sub">Per-agent pricing tiers update live. When you're ready, email the analysis to your finance team in one click.</p>
     </div>
-    <div class="roi-wrap">
-      <div class="roi-math">
-        <h3>The math, 250 agents</h3>
-        <div class="roi-row"><span>250 agents × DealMentor per-agent fee</span><span>~$5,000 / month</span></div>
-        <div class="roi-row"><span>Hiring one additional senior coach (US-equivalent loaded cost)</span><span>~$6,500 / month</span></div>
-        <div class="roi-row"><span>Coaches needed to keep current 1:30 ratio at scale</span><span>3-5 hires</span></div>
-        <div class="roi-row"><span>Average attrition cost per lost new hire</span><span>$3,500-$6,000</span></div>
-        <div class="roi-row total"><span>Break-even threshold</span><span>~14 retained hires/yr OR 5% conversion lift</span></div>
-        <p class="roi-note">Most pilot centers clear both inside 90 days. Your finance team will want to model their own assumptions - we'll send the spreadsheet.</p>
+    <div class="roi-calc-wrap">
+      <div class="roi-inputs">
+        <div class="roi-input">
+          <label for="roi-agents">Agents on your floor <span class="roi-hint">(50-1000)</span></label>
+          <div class="roi-slider-row">
+            <input type="range" id="roi-agents" min="50" max="1000" step="10" value="250">
+            <span class="roi-val" id="roi-agents-val">250</span>
+          </div>
+        </div>
+        <div class="roi-input">
+          <label for="roi-coach">Loaded annual cost per coach <span class="roi-hint">(USD)</span></label>
+          <div class="roi-slider-row">
+            <input type="range" id="roi-coach" min="20000" max="120000" step="2000" value="60000">
+            <span class="roi-val" id="roi-coach-val">$60,000</span>
+          </div>
+        </div>
+        <div class="roi-input">
+          <label for="roi-attrition">Cost per lost new hire <span class="roi-hint">(training + lost productivity)</span></label>
+          <div class="roi-slider-row">
+            <input type="range" id="roi-attrition" min="1000" max="10000" step="500" value="4000">
+            <span class="roi-val" id="roi-attrition-val">$4,000</span>
+          </div>
+        </div>
+        <div class="roi-input">
+          <label for="roi-hires">New hires per year <span class="roi-hint">(attrition + growth)</span></label>
+          <div class="roi-slider-row">
+            <input type="range" id="roi-hires" min="10" max="500" step="5" value="100">
+            <span class="roi-val" id="roi-hires-val">100</span>
+          </div>
+        </div>
+        <div class="roi-tier" id="roi-tier-display">
+          <span class="roi-tier-label">Your tier</span>
+          <span class="roi-tier-val" id="roi-tier-val">Mid (150-500 agents) · $20/agent/mo</span>
+        </div>
       </div>
-      <div class="price-anchor">
-        <p class="pa-label">Pricing anchor</p>
-        <p class="pa-big">$15 to $30 per agent / month</p>
-        <p class="pa-sub">Volume-tiered. Typically 5-10x cheaper than Cogito, Balto, or Observe.AI enterprise contracts. Final quote depends on agent count, language scope, and pilot terms.</p>
-        <ul class="pa-points">
-          <li>Monthly billing, no multi-year lock-in for the pilot</li>
-          <li>First-cohort centers get meaningful discount + direct CRO time</li>
-          <li>Per-agent fee includes all twenty AI tools, copilot, simulation, and Ask-the-CRO</li>
-          <li>Live CRO sessions priced separately, scaled to center size</li>
-        </ul>
+      <div class="roi-output">
+        <h3>Your numbers</h3>
+        <div class="roi-row"><span>DealMentor (per-agent tier applied)</span><span id="roi-dm-cost">$5,000/mo</span></div>
+        <div class="roi-row"><span>Annual DealMentor cost</span><span id="roi-dm-annual">$60,000/yr</span></div>
+        <div class="roi-row"><span>Adding one extra coach (your input)</span><span id="roi-coach-cost">$60,000/yr</span></div>
+        <div class="roi-row"><span>Attrition cost today</span><span id="roi-attr-current">$400,000/yr</span></div>
+        <div class="roi-row"><span>Attrition savings @ 25% reduction</span><span id="roi-attr-saved">$100,000/yr</span></div>
+        <div class="roi-row total"><span>Estimated annual saving</span><span id="roi-total">$100,000/yr</span></div>
+        <div class="roi-row total"><span>Payback time</span><span id="roi-payback">~7 months</span></div>
+        <p class="roi-note">Assumes 25% reduction in new-hire attrition via better pre-floor simulation and copilot support. Conversion-lift savings (typically 3-8%) are not modeled here. Your actuals get quoted on the call.</p>
+        <div class="roi-email-wrap">
+          <h4>Send this analysis to your team</h4>
+          <p>Get a clean summary with your inputs in your inbox. Forward straight to finance, ops, or your CEO.</p>
+          <form class="roi-email-form" onsubmit="event.preventDefault();sendRoiEmail()">
+            <input type="email" id="roi-email" placeholder="your.email@company.com" required>
+            <button type="submit" class="btn-primary" id="roi-email-btn">Email the analysis</button>
+          </form>
+          <div class="roi-email-msg" id="roi-email-msg"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -587,7 +704,7 @@
       <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq2" type="button" aria-expanded="false" aria-controls="bpoa2" onclick="toggleFaq(this)">Do you integrate with our dialer - Five9, Genesys, NICE CXone, Talkdesk, RingCentral? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa2" role="region" aria-labelledby="bpoq2" hidden>DealMentor runs in the browser tab next to your dialer. Your agents pull up the script, copilot, and objection handlers in DealMentor while they take calls in your dialer. We do not currently push data back into the dialer for routing or analytics. If you need that depth, name your stack on the call - we will tell you exactly what is and isn't possible today.</div></div>
       <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq3" type="button" aria-expanded="false" aria-controls="bpoa3" onclick="toggleFaq(this)">How does this compare to Second Nature or Quantified for AI training? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa3" role="region" aria-labelledby="bpoq3" hidden>Pre-floor simulation against AI buyer personas is one piece of what DealMentor does. We also generate the campaign playbook, give every agent an in-call copilot, give team leads 24/7 CRO judgment, and ship a live human CRO with the subscription. Where Second Nature stops at training, DealMentor covers the entire arc from playbook to floor to coaching. One vendor, not three or four.</div></div>
       <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq4" type="button" aria-expanded="false" aria-controls="bpoa4" onclick="toggleFaq(this)">What does it cost for 500 agents? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa4" role="region" aria-labelledby="bpoq4" hidden>Per-agent monthly pricing that scales with your headcount. Substantially less than enterprise contracts at the Cogito, Observe, or Level.AI tier. The exact number depends on your campaign mix, language requirements, and rollout pace - we'll quote it on a 30-minute call.</div></div>
-      <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq5" type="button" aria-expanded="false" aria-controls="bpoa5" onclick="toggleFaq(this)">Do you have case studies from other BPOs? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa5" role="region" aria-labelledby="bpoq5" hidden>DealMentor as a <em>software product</em> is early in BPO deployments. The <em>experience behind it</em> is not. Tal Paperin (KSW Solutions) has personally trained agents on BPO floors in Mexico, the Philippines, and Eastern Europe, and worked with global brands like Mars and IDT. Specific engagements are under NDA. What we are doing now is productizing two decades of practitioner experience into something a center can deploy per agent in days. The first cohort to deploy on the software gets meaningful pricing and direct CRO time - talk to us.</div></div>
+      <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq5" type="button" aria-expanded="false" aria-controls="bpoa5" onclick="toggleFaq(this)">Do you have case studies from other BPOs? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa5" role="region" aria-labelledby="bpoq5" hidden>DealMentor as a <em>software product</em> is early in BPO deployments. The <em>experience behind it</em> is not. Tal Paperin (KSW Solutions) has personally trained agents on BPO floors in the Philippines, Eastern Europe, and Mexico, and worked with global brands like Mars and IDT. Specific engagements are under NDA. What we are doing now is productizing two decades of practitioner experience into something a center can deploy per agent in days. The first cohort to deploy on the software gets meaningful pricing and direct CRO time - talk to us.</div></div>
       <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq6" type="button" aria-expanded="false" aria-controls="bpoa6" onclick="toggleFaq(this)">What languages do you support? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa6" role="region" aria-labelledby="bpoq6" hidden>Scripts and playbooks are generated in English, Spanish, Portuguese, French, German, Italian, Hindi, Tagalog, Arabic, and more. Tailored for the buyer's market and idiom, not machine-translated. For a new language or dialect, name it on the call.</div></div>
       <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq7" type="button" aria-expanded="false" aria-controls="bpoa7" onclick="toggleFaq(this)">How fast can we go live with a pilot campaign? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa7" role="region" aria-labelledby="bpoq7" hidden>Days, not months. We typically run a single-campaign pilot first - one client, one team, one playbook generated and deployed. Two weeks of training and live calling is usually enough to see the lift on ramp time, script consistency, and agent confidence. Then scale to the rest of the floor.</div></div>
       <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq8" type="button" aria-expanded="false" aria-controls="bpoa8" onclick="toggleFaq(this)">What about security, data residency, and compliance? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa8" role="region" aria-labelledby="bpoq8" hidden>Straight answer for the security lead reading this: DealMentor is GDPR-compliant, hosted in EU data centers, with role-based access control and encrypted data at rest and in transit. Agent call transcripts and live audio do not pass through DealMentor - we are not in the audio path. SOC 2 Type II is on the roadmap; we are happy to walk your security team through the current state, complete your vendor questionnaire, and sign a mutual NDA before deeper diligence. If you need HIPAA-grade or PCI Level 1 today, we are not the right fit yet - we will tell you so on the call.</div></div>
@@ -631,6 +748,56 @@
   </div>
 </div>
 
+<div class="dm-modal" id="share-modal">
+  <div class="dm-modal-inner">
+    <div class="dm-modal-head">
+      <h3>Email this page to your team</h3>
+      <button class="dm-modal-close" onclick="closeShare()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div class="dm-modal-body">
+      <p>Edit the message below, then either copy it to your clipboard or open your email client pre-filled.</p>
+      <textarea id="share-text" spellcheck="false">Subject: DealMentor — bundled AI sales tooling + a fractional CRO for BPOs and contact centers
+
+Hey team,
+
+Came across DealMentor — built by a CRO who has personally trained agents on BPO floors in the Philippines, Eastern Europe, and Mexico. It bundles a campaign-playbook generator, pre-floor AI simulation, an in-tab Sales Copilot, supervisor dashboards, and 24/7 Ask-the-CRO into one per-agent SaaS. $15-30 per agent / month, monthly billing.
+
+Honest framing: they don't do real-time call listening like Cogito or Balto. They do everything around the call, at a fraction of the price.
+
+Worth a 30-minute call.
+
+https://www.thedealmentor.ai/bpo-and-centers</textarea>
+      <div class="dm-modal-actions">
+        <button type="button" class="btn-secondary" onclick="copyShare()" id="share-copy-btn">Copy to clipboard</button>
+        <a href="#" class="btn-primary" id="share-mail-link" onclick="openMail(event)">Open in email</a>
+      </div>
+      <div class="roi-email-msg" id="share-msg"></div>
+    </div>
+  </div>
+</div>
+
+<div class="dm-modal" id="sc-modal">
+  <div class="dm-modal-inner">
+    <div class="dm-modal-head">
+      <h3>30-second fit check</h3>
+      <button class="dm-modal-close" onclick="closeScorecard()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div class="dm-modal-body">
+      <p>Six yes/no questions. We tell you straight whether DealMentor is the right tool for your center today.</p>
+      <form id="sc-form" onsubmit="event.preventDefault();scoreFit()">
+        <div class="scorecard-q"><p class="sc-q">1. Is your floor 50-500 agents (or scaling toward it)?</p><div class="sc-opts"><input type="radio" name="sc1" id="sc1y" value="1"><label for="sc1y">Yes</label><input type="radio" name="sc1" id="sc1n" value="0"><label for="sc1n">No</label></div></div>
+        <div class="scorecard-q"><p class="sc-q">2. Do your agents run outbound sales, lead-gen, retention, or upsell (vs. inbound CX only)?</p><div class="sc-opts"><input type="radio" name="sc2" id="sc2y" value="1"><label for="sc2y">Yes</label><input type="radio" name="sc2" id="sc2n" value="0"><label for="sc2n">No</label></div></div>
+        <div class="scorecard-q"><p class="sc-q">3. Do you run multiple concurrent campaigns / clients that each need their own playbook?</p><div class="sc-opts"><input type="radio" name="sc3" id="sc3y" value="1"><label for="sc3y">Yes</label><input type="radio" name="sc3" id="sc3n" value="0"><label for="sc3n">No</label></div></div>
+        <div class="scorecard-q"><p class="sc-q">4. Can ops or the CEO greenlight a $5K-$25K pilot without a 9-month procurement cycle?</p><div class="sc-opts"><input type="radio" name="sc4" id="sc4y" value="1"><label for="sc4y">Yes</label><input type="radio" name="sc4" id="sc4n" value="0"><label for="sc4n">No</label></div></div>
+        <div class="scorecard-q"><p class="sc-q">5. Do you need HIPAA, PCI Level 1, or SOC 2 Type II <em>today</em> (not "on roadmap")?</p><div class="sc-opts"><input type="radio" name="sc5" id="sc5y" value="0"><label for="sc5y">Yes</label><input type="radio" name="sc5" id="sc5n" value="1"><label for="sc5n">No</label></div></div>
+        <div class="scorecard-q"><p class="sc-q">6. Do you specifically need real-time AI listening to live calls (Cogito / Balto style)?</p><div class="sc-opts"><input type="radio" name="sc6" id="sc6y" value="0"><label for="sc6y">Yes</label><input type="radio" name="sc6" id="sc6n" value="1"><label for="sc6n">No</label></div></div>
+        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;margin-top:8px">See my fit score</button>
+      </form>
+      <div class="scorecard-result" id="sc-result"></div>
+    </div>
+  </div>
+</div>
+
 <footer>
   <div class="footer-inner">
     <div>
@@ -639,6 +806,8 @@
     </div>
     <div class="footer-links">
       <a href="/bpo-and-centers">For BPOs &amp; Centers</a>
+      <a href="/vs/">Comparisons</a>
+      <a href="/resources">Resources</a>
       <a href="/privacy">Privacy</a>
       <a href="/terms">Terms</a>
       <a href="/refund">Refund Policy</a>
@@ -661,6 +830,102 @@
 function openCalendar(){document.getElementById('cal-modal').classList.add('open');document.body.style.overflow='hidden'}
 function closeCalendar(){document.getElementById('cal-modal').classList.remove('open');document.body.style.overflow=''}
 document.getElementById('cal-modal').addEventListener('click',function(e){if(e.target===this)closeCalendar()});
+
+/* ROI calculator */
+function fmt(n){return '$'+Math.round(n).toLocaleString()}
+function calcRoi(){
+  var agents=parseInt(document.getElementById('roi-agents').value,10);
+  var coach=parseInt(document.getElementById('roi-coach').value,10);
+  var attrition=parseInt(document.getElementById('roi-attrition').value,10);
+  var hires=parseInt(document.getElementById('roi-hires').value,10);
+  var perAgent, tier;
+  if(agents>=500){perAgent=14;tier='Enterprise (500+ agents) · $14/agent/mo'}
+  else if(agents>=150){perAgent=20;tier='Mid (150-499 agents) · $20/agent/mo'}
+  else{perAgent=28;tier='Starter (50-149 agents) · $28/agent/mo'}
+  var dmMonthly=agents*perAgent;
+  var dmAnnual=dmMonthly*12;
+  var attrCurrent=hires*attrition;
+  var attrSaved=Math.round(attrCurrent*0.25);
+  var totalSaved=attrSaved;
+  var paybackMonths=attrSaved>0?Math.max(1,Math.round((dmAnnual/attrSaved)*12)):999;
+  document.getElementById('roi-agents-val').textContent=agents.toLocaleString();
+  document.getElementById('roi-coach-val').textContent=fmt(coach);
+  document.getElementById('roi-attrition-val').textContent=fmt(attrition);
+  document.getElementById('roi-hires-val').textContent=hires.toLocaleString();
+  document.getElementById('roi-tier-val').textContent=tier;
+  document.getElementById('roi-dm-cost').textContent=fmt(dmMonthly)+'/mo';
+  document.getElementById('roi-dm-annual').textContent=fmt(dmAnnual)+'/yr';
+  document.getElementById('roi-coach-cost').textContent=fmt(coach)+'/yr';
+  document.getElementById('roi-attr-current').textContent=fmt(attrCurrent)+'/yr';
+  document.getElementById('roi-attr-saved').textContent=fmt(attrSaved)+'/yr';
+  document.getElementById('roi-total').textContent=fmt(totalSaved)+'/yr';
+  document.getElementById('roi-payback').textContent=paybackMonths<=24?'~'+paybackMonths+' months':'>24 months';
+}
+function sendRoiEmail(){
+  var email=document.getElementById('roi-email').value.trim();
+  if(!email)return;
+  var payload={
+    _subject:'DealMentor BPO ROI request — '+email,
+    email:email,
+    agents:document.getElementById('roi-agents').value,
+    coach_loaded_cost_usd:document.getElementById('roi-coach').value,
+    attrition_cost_per_hire_usd:document.getElementById('roi-attrition').value,
+    new_hires_per_year:document.getElementById('roi-hires').value,
+    dm_tier:document.getElementById('roi-tier-val').textContent,
+    dm_monthly:document.getElementById('roi-dm-cost').textContent,
+    dm_annual:document.getElementById('roi-dm-annual').textContent,
+    annual_saving_estimate:document.getElementById('roi-total').textContent,
+    payback:document.getElementById('roi-payback').textContent,
+    source:'bpo-and-centers ROI calculator'
+  };
+  var btn=document.getElementById('roi-email-btn');var msg=document.getElementById('roi-email-msg');
+  btn.textContent='Sending…';btn.disabled=true;msg.className='roi-email-msg';msg.textContent='';
+  fetch('https://formspree.io/f/xykbgowb',{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify(payload)})
+    .then(function(res){
+      if(res.ok){msg.className='roi-email-msg ok';msg.textContent='Sent. Tal will get back to you with a tailored quote in one business day — check your inbox and spam.';document.getElementById('roi-email').value='';}
+      else{msg.className='roi-email-msg err';msg.textContent='Could not send. Try again or email tal@thedealmentor.ai directly.'}
+      btn.textContent='Email the analysis';btn.disabled=false;
+    })
+    .catch(function(){msg.className='roi-email-msg err';msg.textContent='Could not send. Try again or email tal@thedealmentor.ai directly.';btn.textContent='Email the analysis';btn.disabled=false});
+}
+['roi-agents','roi-coach','roi-attrition','roi-hires'].forEach(function(id){document.getElementById(id).addEventListener('input',calcRoi)});
+calcRoi();
+
+/* Share modal */
+function openShare(){document.getElementById('share-modal').classList.add('open');document.body.style.overflow='hidden'}
+function closeShare(){document.getElementById('share-modal').classList.remove('open');document.body.style.overflow='';document.getElementById('share-msg').className='roi-email-msg';document.getElementById('share-msg').textContent=''}
+function copyShare(){
+  var ta=document.getElementById('share-text');var msg=document.getElementById('share-msg');
+  ta.select();ta.setSelectionRange(0,99999);
+  try{
+    navigator.clipboard.writeText(ta.value).then(function(){msg.className='roi-email-msg ok';msg.textContent='Copied. Paste it into your email.'},function(){document.execCommand('copy');msg.className='roi-email-msg ok';msg.textContent='Copied.'});
+  }catch(e){document.execCommand('copy');msg.className='roi-email-msg ok';msg.textContent='Copied.'}
+}
+function openMail(e){
+  e.preventDefault();
+  var text=document.getElementById('share-text').value;
+  var lines=text.split('\n');var subject='';var body=text;
+  if(lines[0]&&lines[0].toLowerCase().indexOf('subject:')===0){subject=lines[0].substring(8).trim();body=lines.slice(1).join('\n').trim()}
+  window.location.href='mailto:?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+}
+document.getElementById('share-modal').addEventListener('click',function(e){if(e.target===this)closeShare()});
+
+/* Quick-fit scorecard */
+function openScorecard(){document.getElementById('sc-modal').classList.add('open');document.body.style.overflow='hidden'}
+function closeScorecard(){document.getElementById('sc-modal').classList.remove('open');document.body.style.overflow=''}
+function scoreFit(){
+  var total=0;var answered=0;
+  for(var i=1;i<=6;i++){
+    var radios=document.getElementsByName('sc'+i);
+    for(var j=0;j<radios.length;j++){if(radios[j].checked){total+=parseInt(radios[j].value,10);answered++;break}}
+  }
+  var res=document.getElementById('sc-result');
+  if(answered<6){res.className='scorecard-result show maybe';res.innerHTML='<h4>Answer all six questions</h4><p>We need all six answers to give you a real read.</p>';return}
+  if(total>=5){res.className='scorecard-result show strong';res.innerHTML='<h4>Strong fit. Book the call.</h4><p>Your center is squarely in our wedge. A 4-week pilot should pay back inside a quarter. Tal can walk you through deployment in 30 minutes.</p><a href="#" onclick="event.preventDefault();closeScorecard();openCalendar()" class="btn-primary" style="display:inline-flex;margin-top:8px">Book the call</a>'}
+  else if(total>=3){res.className='scorecard-result show maybe';res.innerHTML='<h4>Likely fit. Worth a conversation.</h4><p>You match most of the profile but there is at least one gap. Best move: a short call to figure out whether DealMentor is right for you today or in 6 months. No pressure either way.</p><a href="#" onclick="event.preventDefault();closeScorecard();openCalendar()" class="btn-primary" style="display:inline-flex;margin-top:8px">Talk it through</a>'}
+  else{res.className='scorecard-result show no';res.innerHTML='<h4>Probably not the right fit today.</h4><p>Your center is outside our current wedge — most likely because you need enterprise-grade compliance, real-time call AI, or you are not running an outbound sales motion. We would rather tell you straight than burn your time. Drop Tal a line if your situation changes, or check back as the product matures.</p><a href="mailto:tal@thedealmentor.ai" class="btn-secondary" style="display:inline-flex;margin-top:8px">Email Tal anyway</a>'}
+}
+document.getElementById('sc-modal').addEventListener('click',function(e){if(e.target===this)closeScorecard()});
 </script>
 </body>
 </html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DealMentor vs Balto - Real-time call prompts vs full sales toolkit</title>
+<meta name="description" content="Balto shows real-time prompts on agent screens during calls. DealMentor generates the playbook those prompts come from, trains agents pre-floor, and bundles a fractional CRO. Honest comparison.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.thedealmentor.ai/vs/balto">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.thedealmentor.ai/vs/balto">
+<meta property="og:title" content="DealMentor vs Balto - Honest comparison">
+<meta property="og:description" content="Balto prompts agents during calls. DealMentor generates the playbook + bundles a CRO.">
+<meta property="og:image" content="https://www.thedealmentor.ai/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="https://www.thedealmentor.ai/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/spine.css?v=20260619a">
+<script>document.documentElement.classList.add('js');var __dmTheme=localStorage.getItem('dm-theme');if(__dmTheme==='light')document.documentElement.setAttribute('data-theme','light');</script>
+<style>
+.fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:36px}
+.fit-card{padding:26px 28px;border-radius:var(--radius-lg);background:var(--bg-card);border:1px solid var(--card-bd);box-shadow:var(--shadow)}
+.fit-card.yes{border-color:color-mix(in srgb,var(--accent) 35%,transparent);background:color-mix(in srgb,var(--accent) 5%,var(--bg-card))}
+.fit-card h3{font-family:'Inter',sans-serif;font-size:18px;font-weight:700;color:var(--ink);margin:0 0 14px}
+.fit-card.yes h3{color:var(--accent-2)}
+[data-theme="light"] .fit-card.yes h3{color:var(--accent)}
+.fit-card ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.fit-card li{font-family:'Inter',sans-serif;font-size:14.5px;color:var(--text);line-height:1.55;padding-left:22px;position:relative}
+.fit-card.yes li:before{content:"✓";position:absolute;left:0;top:0;color:var(--accent-2);font-weight:700}
+[data-theme="light"] .fit-card.yes li:before{color:var(--accent)}
+.fit-card.no li:before{content:"·";position:absolute;left:6px;top:-3px;color:var(--muted);font-weight:700;font-size:18px}
+@media(max-width:720px){.fit-grid{grid-template-columns:1fr}}
+.compare-table-wrap{margin-top:40px;overflow-x:auto;border-radius:var(--radius-lg);border:1px solid var(--card-bd);background:var(--bg-card);box-shadow:var(--shadow)}
+.compare-table{width:100%;border-collapse:collapse;font-family:'Inter',sans-serif;min-width:680px}
+.compare-table thead th{font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:18px 14px;text-align:left;vertical-align:bottom;border-bottom:1px solid var(--line)}
+.compare-table thead th.compare-th-us{color:var(--accent-2);font-size:13px;letter-spacing:.1em}
+.compare-table thead th.compare-th-them{color:var(--ink);font-size:13px;letter-spacing:.1em}
+[data-theme="light"] .compare-table thead th.compare-th-us{color:var(--accent)}
+.compare-table tbody tr{border-bottom:1px solid var(--line)}
+.compare-table tbody tr:last-child{border-bottom:none}
+.compare-table tbody th{font-family:'Inter',sans-serif;font-size:14.5px;font-weight:600;color:var(--ink);text-align:left;padding:16px 14px;width:34%;vertical-align:middle}
+.compare-table tbody td{font-family:'Inter',sans-serif;font-size:14px;color:var(--text);padding:16px 14px;vertical-align:middle;text-align:center}
+.compare-yes{color:var(--accent-2);font-weight:600;background:color-mix(in srgb,var(--accent-2) 6%,transparent)}
+[data-theme="light"] .compare-yes{color:var(--accent);background:color-mix(in srgb,var(--accent) 6%,transparent)}
+.compare-yes span{font-size:18px}
+.compare-no{color:var(--muted);font-weight:500}
+.compare-no span{color:#FF6B5C;font-size:16px;font-weight:700}
+.compare-partial{color:var(--text);font-weight:500;font-style:italic}
+.honest-take{margin-top:32px;padding:28px 32px;border-radius:var(--radius-lg);background:color-mix(in srgb,var(--accent) 6%,transparent);border:1px solid color-mix(in srgb,var(--accent) 25%,transparent);max-width:820px;margin-left:auto;margin-right:auto}
+.honest-label{font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-2);font-weight:700;margin-bottom:10px}
+[data-theme="light"] .honest-label{color:var(--accent)}
+.honest-body{font-family:'Inter',sans-serif;font-size:16.5px;color:var(--ink);line-height:1.65;margin:0}
+.price-strip{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:36px}
+.price-cell{padding:28px 30px;border-radius:var(--radius-lg);background:var(--bg-card);border:1px solid var(--card-bd);box-shadow:var(--shadow)}
+.price-cell.us{background:color-mix(in srgb,var(--accent) 5%,var(--bg-card));border-color:color-mix(in srgb,var(--accent) 30%,transparent)}
+.price-cell .pc-label{font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:10px}
+.price-cell.us .pc-label{color:var(--accent)}
+.price-cell .pc-big{font-family:'Inter',sans-serif;font-size:clamp(22px,2.4vw,28px);font-weight:800;color:var(--ink);letter-spacing:-.02em;line-height:1.2;margin:0 0 8px}
+.price-cell .pc-sub{font-family:'Inter',sans-serif;font-size:14px;color:var(--text);line-height:1.55;margin:0}
+@media(max-width:720px){.price-strip{grid-template-columns:1fr}}
+.cal-modal{display:none;position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.7);align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(8px)}
+.cal-modal.open{display:flex}
+.cal-inner{background:var(--bg-2);border:1px solid var(--card-bd);border-radius:18px;width:100%;max-width:920px;height:80vh;display:flex;flex-direction:column;overflow:hidden}
+.cal-head{padding:16px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.cal-head h3{font-family:'Inter',sans-serif;font-size:18px;font-weight:700;color:var(--ink);margin:0}
+.cal-close{width:32px;height:32px;border-radius:8px;border:1px solid var(--line-hi);color:var(--ink);background:transparent;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.cal-frame{flex:1;border:none}
+.wa-float{position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.35);z-index:60;text-decoration:none}
+.wa-float svg{width:30px;height:30px;fill:currentColor}
+@media(max-width:520px){.wa-float{bottom:18px;right:18px;width:52px;height:52px}.wa-float svg{width:26px;height:26px}}
+</style>
+</head>
+<body>
+
+<canvas id="field" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
+
+<nav>
+  <div class="nav-logo"><a href="/" class="wordmark" aria-label="DealMentor home"><img src="/DealMentor%20horizontal%20logo%20white.jpg" alt="DealMentor" class="logo-dark" width="180" height="30"><img src="/DealMentor%20horizontal%20logo%20blue.png" alt="DealMentor" class="logo-light" width="180" height="30"></a></div>
+  <div class="nav-links" id="navLinks">
+    <a href="https://app.thedealmentor.ai/login" class="nav-login-m">Log In</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/whyus">Why Us</a>
+    <a href="/about">About KSW</a>
+    <a href="/contact">Contact</a>
+    <a href="/platform">Platform</a>
+    <a href="https://blog.thedealmentor.ai">Blog</a>
+  </div>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark / light mode">
+      <svg class="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+    <a href="https://app.thedealmentor.ai/login" class="btn-primary">Log In</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="hero">
+  <h1 class="hero-h1">
+    <span class="line hero-promise">DealMentor <em>vs</em> Balto.</span>
+    <span class="line">Real-time prompts. Versus the rest of the toolkit.</span>
+  </h1>
+  <p class="hero-sub">Balto shows real-time playbook prompts on agent screens during live calls. DealMentor generates the playbook those prompts come from, trains agents pre-floor against AI buyers, and bundles a fractional CRO. Honest read of both.</p>
+  <div class="hero-ctas">
+    <a href="/bpo-and-centers" class="btn-primary btn-lg">See DealMentor for centers</a>
+    <a href="#" onclick="event.preventDefault();openCalendar()" class="btn-secondary btn-lg">Book 30 minutes</a>
+  </div>
+</header>
+
+<section class="solid">
+  <div class="section-inner">
+    <div class="section-head-center">
+      <p class="eyebrow">The 30-second verdict</p>
+      <h2 class="section-h2">Balto enforces a playbook. <em>DealMentor builds it.</em></h2>
+      <p class="section-sub">Balto's strength is on-screen, real-time prompts that nudge agents to stay on script mid-call. But it assumes you already have a great playbook to enforce. DealMentor generates that playbook from your campaign intake in hours, trains agents on it pre-floor, and sits in the same browser tab as their dialer when they go live.</p>
+    </div>
+    <div class="honest-take">
+      <p class="honest-label">Bottom line up front</p>
+      <p class="honest-body">Balto runs <strong>enterprise contracts</strong> (commonly $50K+ a year, multi-year) and requires you to <strong>own the playbook</strong> they enforce. DealMentor runs at <strong>$15-30 per agent per month, monthly billing</strong>, and generates the playbook itself. If on-screen real-time prompts are your make-or-break feature, Balto is built for that. If you want the full upstream toolkit at a fraction of the cost, that is DealMentor.</p>
+    </div>
+  </div>
+</section>
+
+<section class="solid-2">
+  <div class="section-inner">
+    <div class="section-head-center">
+      <p class="eyebrow">Who each is for</p>
+      <h2 class="section-h2">The fit, <em>in plain English.</em></h2>
+    </div>
+    <div class="fit-grid">
+      <div class="fit-card no">
+        <h3>Pick Balto if…</h3>
+        <ul>
+          <li>You already have a <strong>battle-tested playbook</strong> your top agents follow.</li>
+          <li>Your bottleneck is <strong>script adherence on live calls</strong>, not playbook creation.</li>
+          <li>You have an <strong>enterprise budget</strong> ($50K+/year, multi-year contracts).</li>
+          <li>Your agents would benefit most from <strong>on-screen real-time prompts</strong> during the call itself.</li>
+          <li>You have <strong>IT capacity for CTI integration</strong> with Five9, Genesys, or your dialer.</li>
+        </ul>
+      </div>
+      <div class="fit-card yes">
+        <h3>Pick DealMentor if…</h3>
+        <ul>
+          <li>You need to <strong>generate playbooks per campaign in hours</strong>, not weeks.</li>
+          <li>Your bottleneck is <strong>ramp time + script consistency</strong>, not real-time enforcement.</li>
+          <li>You want <strong>per-agent monthly pricing</strong>, no multi-year lock-in.</li>
+          <li>You want <strong>pre-floor AI simulation</strong> so agents arrive trained, not learning live.</li>
+          <li>You want a <strong>fractional CRO</strong> bundled in for the structural calls.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="solid">
+  <div class="section-inner">
+    <div class="section-head-center">
+      <p class="eyebrow">Feature by feature</p>
+      <h2 class="section-h2">What each <em>actually does.</em></h2>
+    </div>
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="compare-th-us">DealMentor</th>
+            <th class="compare-th-them">Balto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th>Real-time on-screen prompts during live calls</th><td class="compare-no"><span>✗</span></td><td class="compare-yes"><span>✓</span></td></tr>
+          <tr><th>Live call audio AI / sentiment</th><td class="compare-no"><span>✗</span></td><td class="compare-yes"><span>✓</span></td></tr>
+          <tr><th>Generates campaign playbook from intake</th><td class="compare-yes"><span>✓</span></td><td class="compare-no">You bring your own</td></tr>
+          <tr><th>Pre-floor AI simulation</th><td class="compare-yes"><span>✓</span></td><td class="compare-no"><span>✗</span></td></tr>
+          <tr><th>In-tab Sales Copilot (objections, follow-ups, prep)</th><td class="compare-yes"><span>✓</span></td><td class="compare-partial">Real-time only</td></tr>
+          <tr><th>Live fractional CRO + 24/7 advisor</th><td class="compare-yes"><span>✓</span></td><td class="compare-no"><span>✗</span></td></tr>
+          <tr><th>Per-campaign / per-client playbook switching</th><td class="compare-yes">Days</td><td class="compare-partial">Per program</td></tr>
+          <tr><th>Time to deploy</th><td class="compare-yes">Days</td><td class="compare-no">Weeks-months</td></tr>
+          <tr><th>Required CTI integration</th><td class="compare-yes">None for pilot</td><td class="compare-no">Yes</td></tr>
+          <tr><th>Pricing model</th><td class="compare-yes">Per-agent, monthly</td><td class="compare-no">Enterprise annual</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="solid-2">
+  <div class="section-inner">
+    <div class="section-head-center">
+      <p class="eyebrow">Price + contract</p>
+      <h2 class="section-h2">The commercial reality.</h2>
+    </div>
+    <div class="price-strip">
+      <div class="price-cell">
+        <p class="pc-label">Balto</p>
+        <p class="pc-big">$50K+ per year, enterprise contract</p>
+        <p class="pc-sub">Typically annual or multi-year commitments. Public per-agent pricing is not disclosed; industry reporting puts it in the $50-100/agent/month range at enterprise scale. Requires CTI integration before go-live.</p>
+      </div>
+      <div class="price-cell us">
+        <p class="pc-label">DealMentor</p>
+        <p class="pc-big">$15-30 per agent / month, monthly billing</p>
+        <p class="pc-sub">Volume-tiered. No multi-year lock-in. First-month pilot on single-month commit. Includes all twenty AI tools, in-tab copilot, simulation, and Ask-the-CRO. No CTI integration needed for the pilot.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <p class="final-eyebrow">Honest recommendation</p>
+  <h2>Two ends of the call. <em>Two different products.</em></h2>
+  <p>If your top need is <strong>nudging agents on script in the moment</strong>, Balto is the right tool. If your top need is <strong>everything upstream of the call</strong> — generating the playbook, training the agents pre-floor, giving them a copilot for prep and follow-up, and getting senior judgment when things break — that is DealMentor. Tell us your floor size and what is actually broken. We will tell you straight.</p>
+  <div class="final-ctas">
+    <a href="/bpo-and-centers" class="btn-primary btn-lg">See DealMentor for centers</a>
+    <a href="#" onclick="event.preventDefault();openCalendar()" class="btn-secondary btn-lg">Book 30 minutes</a>
+  </div>
+</section>
+
+<div class="cal-modal" id="cal-modal">
+  <div class="cal-inner">
+    <div class="cal-head">
+      <h3>Book a thirty-minute strategy call</h3>
+      <button class="cal-close" onclick="closeCalendar()" aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+    <iframe class="cal-frame" src="https://meetings-eu1.hubspot.com/tpaperin/thedealmentor" title="Book a call with Tal"></iframe>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a href="/" class="footer-wordmark" aria-label="DealMentor home"><img src="/DealMentor%20horizontal%20logo%20white.jpg" alt="DealMentor" class="logo-dark" width="200" height="34"><img src="/DealMentor%20horizontal%20logo%20blue.png" alt="DealMentor" class="logo-light" width="200" height="34"></a>
+      <div class="footer-copy">by KSW Solutions · Virtual CRO Platform<br>&copy; 2026 KSW Solutions. TheDealMentor.AI&trade; is a trademark of Tal Paperin.</div>
+    </div>
+    <div class="footer-links">
+      <a href="/bpo-and-centers">For BPOs &amp; Centers</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/refund">Refund Policy</a>
+      <a href="/contact">Contact</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/company/thedealmentor" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ico" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+      <a href="https://www.facebook.com/thedealmentor" target="_blank" rel="noopener" aria-label="Facebook"><svg class="ico" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a href="https://www.youtube.com/@thedealmentoryt" target="_blank" rel="noopener" aria-label="YouTube"><svg class="ico" viewBox="0 0 24 24"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/972545308119?text=Hi%20Tal%2C%20I%20run%20a%20contact%20center%20and%20want%20to%20talk%20about%20DealMentor%20for%20our%20floor." target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp Tal directly">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 0C7.2 0 0 7.2 0 16c0 2.8.8 5.5 2.2 7.9L0 32l8.4-2.2c2.3 1.3 4.9 2 7.6 2 8.8 0 16-7.2 16-16S24.8 0 16 0zm0 29.3c-2.4 0-4.8-.6-6.8-1.9l-.5-.3-5 1.3 1.3-4.9-.3-.5C3.5 21 2.7 18.5 2.7 16 2.7 8.7 8.7 2.7 16 2.7S29.3 8.7 29.3 16 23.3 29.3 16 29.3zm7.3-9.9c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.6-.2.3-.5.3-.9.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.7.1-.3.1-.5 0-.7-.1-.2-.9-2.2-1.3-3-.3-.8-.7-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4s1.5 4 1.7 4.2c.2.3 2.9 4.5 7.1 6.3 1 .4 1.8.7 2.4.9.9.3 1.8.3 2.5.2.7-.1 2.4-1 2.7-1.9.3-1 .3-1.7.2-1.9-.1-.3-.4-.4-.8-.6z"/></svg>
+</a>
+
+<script src="/spine.js?v=20260603n"></script>
+<script>
+function openCalendar(){document.getElementById('cal-modal').classList.add('open');document.body.style.overflow='hidden'}
+function closeCalendar(){document.getElementById('cal-modal').classList.remove('open');document.body.style.overflow=''}
+document.getElementById('cal-modal').addEventListener('click',function(e){if(e.target===this)closeCalendar()});
+</script>
+</body>
+</html>

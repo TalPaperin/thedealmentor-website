@@ -447,3 +447,33 @@ footer{background:var(--bg-2);border-top:1px solid var(--line);padding:50px 24px
   #field{display:none}
   html.js .hero-eyebrow,html.js .hero-h1,html.js .hero-sub,html.js .hero-ctas{opacity:1;transform:none}
 }
+
+/* ===== PRINT ===== */
+@media print {
+  *,*::before,*::after{background:transparent!important;color:#000!important;box-shadow:none!important;text-shadow:none!important}
+  body{font-family:'Inter',sans-serif;font-size:11pt;line-height:1.45;background:#fff;color:#000}
+  #field,.veil,nav,.wa-float,.cal-modal,.dm-modal,.hero-actions-strip,.theme-toggle,.nav-toggle,.cf-ico,.role-card .role-sub,.tl-step .tl-week,.pa-label,.pb-label,.honest-label,.compare-th-us,.compare-th-them,.compare-yes,.compare-no,.compare-partial,.shot-img-wrap,.video-frame{}
+  #field,.veil,nav,.wa-float,.cal-modal,.dm-modal,.hero-ctas,.hero-actions-strip,.final-ctas,.theme-toggle,.nav-toggle,.shot-img-wrap,.video-frame,.roi-email-wrap,.roi-email-form{display:none!important}
+  .hero{padding:20pt 20pt 10pt!important;text-align:left}
+  .hero-h1{font-size:22pt!important;line-height:1.2!important;margin-bottom:8pt!important}
+  .hero-h1 em,h2 em,h3 em{font-style:normal;font-weight:700}
+  .hero-sub{font-size:11pt!important;color:#222!important;max-width:none!important}
+  section{padding:14pt 20pt!important;page-break-inside:auto;background:transparent!important}
+  .section-inner{padding:0!important;max-width:none!important}
+  .section-h2{font-size:16pt!important;color:#000!important;margin:0 0 8pt!important;line-height:1.25!important}
+  .section-sub,p{color:#222!important;font-size:11pt!important;line-height:1.45!important}
+  .eyebrow,.final-eyebrow{font-size:9pt!important;color:#444!important;letter-spacing:.1em;margin-bottom:4pt!important}
+  .reason,.pain-card-c,.cf-card,.role-card,.tl-step,.fit-card,.shot-frame,.deploy-list li,.honest-take,.pb-wrap,.roi-math,.price-anchor,.compare-table-wrap,.dialer-strip,.stat-strip,.faq-item{border:1pt solid #ccc!important;background:#fff!important;padding:10pt!important;margin:6pt 0!important;page-break-inside:avoid;box-shadow:none!important;border-radius:4pt!important}
+  .faq-a{display:block!important;height:auto!important;padding:6pt 0 0!important;color:#222!important}
+  .faq-a[hidden]{display:block!important}
+  .faq-q{font-weight:700;border-bottom:1px solid #ccc;padding-bottom:4pt}
+  .faq-q svg{display:none}
+  .roi-calc-wrap,.fit-grid,.role-grid,.pain-grid,.cf-grid,.shots-grid,.deploy-list,.timeline,.roi-wrap,.price-strip,.reasons{display:block!important;grid-template-columns:none!important}
+  table{font-size:9pt!important;page-break-inside:auto}
+  table th,table td{border:1px solid #ccc!important;padding:5pt!important}
+  a[href^="http"]:after,a[href^="/"]:after{content:" (" attr(href) ")";font-size:8pt;color:#666;word-wrap:break-word}
+  a[href^="mailto:"]:after,a[href^="#"]:after,a[href^="https://www.thedealmentor.ai"]:after{content:""}
+  footer{border-top:1pt solid #ccc;padding:10pt 20pt;font-size:9pt;color:#444}
+  footer .footer-social{display:none}
+  @page{margin:1.2cm}
+}
