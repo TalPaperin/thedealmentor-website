@@ -98,6 +98,88 @@
 .cal-close{width:32px;height:32px;border-radius:8px;border:1px solid var(--line-hi);color:var(--ink);display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
 .cal-close:hover{background:var(--accent-soft);border-color:var(--accent)}
 .cal-frame{flex:1;border:none}
+
+/* "Who this is for" qualifier */
+.fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:36px}
+.fit-card{padding:26px 28px;border-radius:var(--radius-lg);background:var(--bg-card);border:1px solid var(--card-bd);box-shadow:var(--shadow)}
+.fit-card.yes{border-color:color-mix(in srgb,var(--accent) 35%,transparent);background:color-mix(in srgb,var(--accent) 5%,var(--bg-card))}
+.fit-card h3{font-family:'Inter',sans-serif;font-size:18px;font-weight:700;color:var(--ink);margin:0 0 14px;display:flex;align-items:center;gap:10px}
+.fit-card.yes h3{color:var(--accent-2)}
+[data-theme="light"] .fit-card.yes h3{color:var(--accent)}
+.fit-card ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.fit-card li{font-family:'Inter',sans-serif;font-size:14.5px;color:var(--text);line-height:1.55;padding-left:22px;position:relative}
+.fit-card.yes li:before{content:"✓";position:absolute;left:0;top:0;color:var(--accent-2);font-weight:700}
+[data-theme="light"] .fit-card.yes li:before{color:var(--accent)}
+.fit-card.no li:before{content:"–";position:absolute;left:0;top:0;color:var(--muted);font-weight:700}
+@media(max-width:720px){.fit-grid{grid-template-columns:1fr}}
+
+/* Industry stat strip */
+.stat-strip{margin:28px auto 0;max-width:780px;padding:18px 22px;border-left:3px solid var(--accent);background:color-mix(in srgb,var(--accent) 5%,transparent);border-radius:0 10px 10px 0;font-family:'Inter',sans-serif;font-size:14.5px;color:var(--text);line-height:1.6}
+.stat-strip strong{color:var(--ink);font-weight:700}
+.stat-strip cite{display:block;margin-top:6px;font-size:12px;color:var(--muted);font-style:normal;letter-spacing:.04em}
+
+/* Screenshot placeholders */
+.shots-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:36px}
+.shot-frame{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.shot-img-wrap{aspect-ratio:16/10;background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 12%,var(--bg-2)),var(--bg-2));border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:center;position:relative}
+.shot-img-wrap.placeholder:after{content:"Screenshot · TODO";font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.shot-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+.shot-body{padding:18px 20px}
+.shot-body h4{font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:var(--ink);margin:0 0 6px}
+.shot-body p{font-family:'Inter',sans-serif;font-size:13.5px;color:var(--text);line-height:1.55;margin:0}
+@media(max-width:720px){.shots-grid{grid-template-columns:1fr}}
+
+/* Day in the life roles */
+.role-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+.role-card{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius-lg);padding:26px;box-shadow:var(--shadow)}
+.role-card .role-sub{font-family:'Geist Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:8px}
+.role-card h3{font-family:'Inter',sans-serif;font-size:17px;font-weight:700;color:var(--ink);margin:0 0 12px}
+.role-card p{font-family:'Inter',sans-serif;font-size:14px;color:var(--text);line-height:1.6;margin:0}
+@media(max-width:920px){.role-grid{grid-template-columns:1fr}}
+
+/* Pilot timeline */
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px}
+.tl-step{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:14px;padding:22px;position:relative}
+.tl-step .tl-week{font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:8px}
+.tl-step h4{font-family:'Inter',sans-serif;font-size:16px;font-weight:700;color:var(--ink);margin:0 0 8px;letter-spacing:-.01em}
+.tl-step p{font-family:'Inter',sans-serif;font-size:13.5px;color:var(--text);line-height:1.55;margin:0}
+@media(max-width:920px){.timeline{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.timeline{grid-template-columns:1fr}}
+
+/* ROI + pricing */
+.roi-wrap{margin-top:36px;display:grid;grid-template-columns:1.2fr 1fr;gap:20px}
+.roi-math{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow)}
+.roi-math h3{font-family:'Inter',sans-serif;font-size:18px;font-weight:700;color:var(--ink);margin:0 0 16px}
+.roi-row{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:11px 0;border-bottom:1px dashed var(--line);font-family:'Inter',sans-serif;font-size:14.5px}
+.roi-row:last-of-type{border-bottom:none}
+.roi-row span:first-child{color:var(--text)}
+.roi-row span:last-child{color:var(--ink);font-weight:600;white-space:nowrap}
+.roi-row.total{margin-top:6px;padding-top:14px;border-top:2px solid var(--accent);border-bottom:none}
+.roi-row.total span{color:var(--accent-2);font-weight:700;font-size:16px}
+[data-theme="light"] .roi-row.total span{color:var(--accent)}
+.roi-note{font-family:'Inter',sans-serif;font-size:12.5px;color:var(--muted);margin-top:14px;line-height:1.5;font-style:italic}
+.price-anchor{background:color-mix(in srgb,var(--accent) 6%,transparent);border:1px solid color-mix(in srgb,var(--accent) 30%,transparent);border-radius:var(--radius-lg);padding:28px;display:flex;flex-direction:column;justify-content:center}
+.price-anchor .pa-label{font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:10px}
+.price-anchor .pa-big{font-family:'Inter',sans-serif;font-size:clamp(22px,2.6vw,28px);font-weight:800;color:var(--ink);letter-spacing:-.02em;line-height:1.2;margin:0 0 8px}
+.price-anchor .pa-sub{font-family:'Inter',sans-serif;font-size:14.5px;color:var(--text);line-height:1.6;margin:0 0 16px}
+.price-anchor .pa-points{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.price-anchor .pa-points li{font-family:'Inter',sans-serif;font-size:13.5px;color:var(--text);padding-left:20px;position:relative;line-height:1.5}
+.price-anchor .pa-points li:before{content:"✓";position:absolute;left:0;color:var(--accent-2);font-weight:700}
+[data-theme="light"] .price-anchor .pa-points li:before{color:var(--accent)}
+@media(max-width:880px){.roi-wrap{grid-template-columns:1fr}}
+
+/* Founder video placeholder */
+.video-frame{margin:36px auto 0;max-width:760px;aspect-ratio:16/9;border-radius:var(--radius-lg);background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 18%,var(--bg-2)),var(--bg-2));border:1px solid var(--card-bd);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;position:relative;cursor:pointer;transition:transform .2s}
+.video-frame:hover{transform:translateY(-2px)}
+.video-frame .vf-play{width:74px;height:74px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.video-frame .vf-play svg{width:30px;height:30px;fill:currentColor}
+.video-frame .vf-label{font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600;text-align:center;padding:0 20px}
+
+/* Floating WhatsApp button */
+.wa-float{position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.35);z-index:60;transition:transform .2s,box-shadow .2s;text-decoration:none}
+.wa-float:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.45)}
+.wa-float svg{width:30px;height:30px;fill:currentColor}
+@media(max-width:520px){.wa-float{bottom:18px;right:18px;width:52px;height:52px}.wa-float svg{width:26px;height:26px}}
 </style>
 </head>
 <body>
@@ -147,12 +229,49 @@
   </div>
 </section>
 
+<section class="solid-2">
+  <div class="section-inner">
+    <div class="section-head-center">
+      <p class="eyebrow">Fit check, in 30 seconds</p>
+      <h2 class="section-h2">Who this is for. <em>Who it isn't.</em></h2>
+      <p class="section-sub">We'd rather lose your time upfront than waste it on a discovery call. If you don't see your center on the left, the honest answer is probably "not yet."</p>
+    </div>
+    <div class="fit-grid">
+      <div class="fit-card yes">
+        <h3>Built for you if…</h3>
+        <ul>
+          <li><strong>50 to 500 agents</strong> on the floor, with room to scale.</li>
+          <li>Running <strong>outbound B2B sales</strong>, lead-gen, SDR-as-a-service, retention, or consumer upsell.</li>
+          <li>Based in <strong>nearshore LATAM, the Philippines, India, or Eastern Europe</strong> selling into US/UK/EU buyers.</li>
+          <li>Serving SaaS, fintech, telecom, e-commerce, or consumer-services clients.</li>
+          <li>Multiple <strong>concurrent campaigns</strong> per quarter, each needing its own playbook.</li>
+          <li>Ops director or CEO can <strong>greenlight a $5K-$25K pilot</strong> without a 9-month procurement cycle.</li>
+        </ul>
+      </div>
+      <div class="fit-card no">
+        <h3>Not the right fit yet if…</h3>
+        <ul>
+          <li>You're a <strong>1,000+ agent enterprise BPO</strong> needing deep CTI, SOC 2 Type II, and a 12-month enterprise procurement track.</li>
+          <li>Your floor is <strong>inbound customer service only</strong> — DealMentor is built around the sales motion.</li>
+          <li>You need <strong>HIPAA-regulated</strong> healthcare workflows or PCI Level 1 — we'll get there, but not today.</li>
+          <li>You need <strong>real-time call listening with prompt injection</strong> (that's Cogito / Balto / Observe.AI territory).</li>
+          <li>You only want to <strong>swap your existing dialer</strong> — DealMentor sits beside it, not in place of it.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="solid">
   <div class="section-inner">
     <div class="section-head-center">
       <p class="eyebrow">Where centers hit the ceiling</p>
       <h2 class="section-h2">Your top agents close. <em>The rest never get there.</em></h2>
       <p class="section-sub">Every BPO and contact center hits the same four walls. They are not headcount problems. They are tooling problems.</p>
+    </div>
+    <div class="stat-strip">
+      <strong>Industry baseline:</strong> outbound contact-center agent attrition runs <strong>30-45% annually</strong>, ramp to productive output averages <strong>60-90 days</strong>, and the typical coach-to-agent ratio sits between <strong>1:15 and 1:30</strong>. Every center we have ever walked into is somewhere on that range.
+      <cite>— ContactBabel, ICMI, and CCNG industry benchmarks</cite>
     </div>
     <div class="pain-grid">
       <div class="pain-card-c">
@@ -180,6 +299,34 @@
 </section>
 
 <section class="solid-2">
+  <div class="section-inner">
+    <div class="section-head-center">
+      <p class="eyebrow">See it on the floor</p>
+      <h2 class="section-h2">Not a deck. <em>The actual product.</em></h2>
+      <p class="section-sub">What your team leads, agents, and trainers will see on day one.</p>
+    </div>
+    <div class="shots-grid">
+      <div class="shot-frame">
+        <div class="shot-img-wrap placeholder"></div>
+        <div class="shot-body"><h4>Campaign Playbook output</h4><p>The full generated playbook for a new client campaign: script, objection handlers, battle cards, discovery flow. Built from intake in hours.</p></div>
+      </div>
+      <div class="shot-frame">
+        <div class="shot-img-wrap placeholder"></div>
+        <div class="shot-body"><h4>Sales Copilot for the agent</h4><p>In-tab assist while the agent dials: real-time objection responses, account research, follow-up emails ready to send.</p></div>
+      </div>
+      <div class="shot-frame">
+        <div class="shot-img-wrap placeholder"></div>
+        <div class="shot-body"><h4>Pre-floor simulation</h4><p>Agent practices against an AI buyer persona. Scored on discovery, objection handling, close attempt. Repeat until ready.</p></div>
+      </div>
+      <div class="shot-frame">
+        <div class="shot-img-wrap placeholder"></div>
+        <div class="shot-body"><h4>Supervisor dashboard</h4><p>Playbook adoption, copilot usage, simulation scores, certification status per agent. Coach by exception, not by random sample.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="solid">
   <div class="section-inner">
     <div class="section-head-center">
       <p class="eyebrow">What DealMentor brings to your floor</p>
@@ -216,6 +363,33 @@
         <div class="cf-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
         <h3>Multi-language ready</h3>
         <p>Scripts and playbooks generated in English, Spanish, Portuguese, French, and more. Tailored for the buyer's market, not just translated. Same quality on every campaign, every region.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="solid-2">
+  <div class="section-inner">
+    <div class="section-head-center">
+      <p class="eyebrow">Day in the life</p>
+      <h2 class="section-h2">Three roles. <em>Three new habits.</em></h2>
+      <p class="section-sub">Every layer of the floor gets a daily reason to log in - and a different one.</p>
+    </div>
+    <div class="role-grid">
+      <div class="role-card">
+        <p class="role-sub">The agent</p>
+        <h3>One tab. Three answers. Every call.</h3>
+        <p>Logs in at shift start. Opens DealMentor next to the dialer. The current campaign playbook, the top 12 objections, and the Sales Copilot are one click away. When the prospect throws a curve - <em>"we already use [competitor]"</em>, <em>"send me an email"</em>, <em>"price is too high"</em> - the agent types it in, gets a coached response in three seconds, stays in flow. End of day: 40-50 calls handled with the same quality as the floor's top performer.</p>
+      </div>
+      <div class="role-card">
+        <p class="role-sub">The team lead</p>
+        <h3>Coach by exception, not by guess.</h3>
+        <p>Opens the supervisor dashboard at standup. Sees which agents are below playbook adoption, who failed yesterday's simulation, whose copilot usage dropped. Pulls the bottom three into a 15-minute coaching huddle with specific replays. The rest of the team is on plan - no time wasted on agents already doing fine. Quarterly reviews stop being narrative; they're data.</p>
+      </div>
+      <div class="role-card">
+        <p class="role-sub">The ops director</p>
+        <h3>New campaigns go live in hours.</h3>
+        <p>Client signs a new campaign on Monday. By Wednesday: complete playbook drafted, objections handled, certification cycle running, first cohort trained and certified. On the next Ask-the-CRO escalation - margin push, account loss, comp plan question - direct judgment from a real revenue leader, not a recycled deck. Quarterly live session with Tal for the structural calls.</p>
       </div>
     </div>
   </div>
@@ -341,6 +515,70 @@
 <section class="solid">
   <div class="section-inner">
     <div class="section-head-center">
+      <p class="eyebrow">Your 4-week pilot</p>
+      <h2 class="section-h2">Pilot one campaign. <em>Then scale.</em></h2>
+      <p class="section-sub">A single client campaign, one team, four weeks. By Week 5 you have data on ramp time, script adherence, and conversion lift - not vendor promises.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-step">
+        <div class="tl-week">Week 1</div>
+        <h4>Intake &amp; setup</h4>
+        <p>30-minute kickoff. Share the campaign brief, ICP, target list, and any existing scripts. We configure your tenant, brand the platform, and load your Knowledge Base. No IT involvement required.</p>
+      </div>
+      <div class="tl-step">
+        <div class="tl-week">Week 2</div>
+        <h4>Playbook &amp; training</h4>
+        <p>Generate the full campaign playbook: script, objections, battle cards, certification. Pilot cohort (10-20 agents) runs simulation against AI buyer personas until they certify out. Team leads onboarded to the dashboard.</p>
+      </div>
+      <div class="tl-step">
+        <div class="tl-week">Week 3-4</div>
+        <h4>Live calls</h4>
+        <p>Cohort hits the floor with Sales Copilot in-tab. Daily standup uses the supervisor dashboard. Ask-the-CRO available for live escalations. Adjust playbook in flight based on what's landing and what isn't.</p>
+      </div>
+      <div class="tl-step">
+        <div class="tl-week">Week 5</div>
+        <h4>Measure &amp; decide</h4>
+        <p>Read the data: time to first call, certification pass-rate, conversion vs control cohort, agent NPS, supervisor time saved. Walk through results with Tal. If it works, scale to the rest of the floor. If it doesn't, you walk away.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="solid-2">
+  <div class="section-inner">
+    <div class="section-head-center">
+      <p class="eyebrow">What it costs vs what it saves</p>
+      <h2 class="section-h2">Less than <em>one extra coach.</em> Covers every agent.</h2>
+      <p class="section-sub">Indicative math for a 250-agent outbound sales floor. Your exact numbers depend on volume, language scope, and rollout pace - we quote on the call.</p>
+    </div>
+    <div class="roi-wrap">
+      <div class="roi-math">
+        <h3>The math, 250 agents</h3>
+        <div class="roi-row"><span>250 agents × DealMentor per-agent fee</span><span>~$5,000 / month</span></div>
+        <div class="roi-row"><span>Hiring one additional senior coach (US-equivalent loaded cost)</span><span>~$6,500 / month</span></div>
+        <div class="roi-row"><span>Coaches needed to keep current 1:30 ratio at scale</span><span>3-5 hires</span></div>
+        <div class="roi-row"><span>Average attrition cost per lost new hire</span><span>$3,500-$6,000</span></div>
+        <div class="roi-row total"><span>Break-even threshold</span><span>~14 retained hires/yr OR 5% conversion lift</span></div>
+        <p class="roi-note">Most pilot centers clear both inside 90 days. Your finance team will want to model their own assumptions - we'll send the spreadsheet.</p>
+      </div>
+      <div class="price-anchor">
+        <p class="pa-label">Pricing anchor</p>
+        <p class="pa-big">$15 to $30 per agent / month</p>
+        <p class="pa-sub">Volume-tiered. Typically 5-10x cheaper than Cogito, Balto, or Observe.AI enterprise contracts. Final quote depends on agent count, language scope, and pilot terms.</p>
+        <ul class="pa-points">
+          <li>Monthly billing, no multi-year lock-in for the pilot</li>
+          <li>First-cohort centers get meaningful discount + direct CRO time</li>
+          <li>Per-agent fee includes all twenty AI tools, copilot, simulation, and Ask-the-CRO</li>
+          <li>Live CRO sessions priced separately, scaled to center size</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="solid">
+  <div class="section-inner">
+    <div class="section-head-center">
       <p class="eyebrow">What ops directors ask first</p>
       <h2 class="section-h2">Straight answers <em>before the call.</em></h2>
     </div>
@@ -352,7 +590,24 @@
       <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq5" type="button" aria-expanded="false" aria-controls="bpoa5" onclick="toggleFaq(this)">Do you have case studies from other BPOs? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa5" role="region" aria-labelledby="bpoq5" hidden>DealMentor as a <em>software product</em> is early in BPO deployments. The <em>experience behind it</em> is not. Tal Paperin (KSW Solutions) has personally trained agents on BPO floors in Mexico, the Philippines, and Eastern Europe, and worked with global brands like Mars and IDT. Specific engagements are under NDA. What we are doing now is productizing two decades of practitioner experience into something a center can deploy per agent in days. The first cohort to deploy on the software gets meaningful pricing and direct CRO time - talk to us.</div></div>
       <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq6" type="button" aria-expanded="false" aria-controls="bpoa6" onclick="toggleFaq(this)">What languages do you support? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa6" role="region" aria-labelledby="bpoq6" hidden>Scripts and playbooks are generated in English, Spanish, Portuguese, French, German, Italian, Hindi, Tagalog, Arabic, and more. Tailored for the buyer's market and idiom, not machine-translated. For a new language or dialect, name it on the call.</div></div>
       <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq7" type="button" aria-expanded="false" aria-controls="bpoa7" onclick="toggleFaq(this)">How fast can we go live with a pilot campaign? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa7" role="region" aria-labelledby="bpoq7" hidden>Days, not months. We typically run a single-campaign pilot first - one client, one team, one playbook generated and deployed. Two weeks of training and live calling is usually enough to see the lift on ramp time, script consistency, and agent confidence. Then scale to the rest of the floor.</div></div>
+      <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq8" type="button" aria-expanded="false" aria-controls="bpoa8" onclick="toggleFaq(this)">What about security, data residency, and compliance? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa8" role="region" aria-labelledby="bpoq8" hidden>Straight answer for the security lead reading this: DealMentor is GDPR-compliant, hosted in EU data centers, with role-based access control and encrypted data at rest and in transit. Agent call transcripts and live audio do not pass through DealMentor - we are not in the audio path. SOC 2 Type II is on the roadmap; we are happy to walk your security team through the current state, complete your vendor questionnaire, and sign a mutual NDA before deeper diligence. If you need HIPAA-grade or PCI Level 1 today, we are not the right fit yet - we will tell you so on the call.</div></div>
+      <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq9" type="button" aria-expanded="false" aria-controls="bpoa9" onclick="toggleFaq(this)">What are the contract terms? Can we cancel? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa9" role="region" aria-labelledby="bpoq9" hidden>The 4-week pilot runs on a single-month commitment - if it does not move the metric, you walk away with no further obligation. Scaled deployments default to monthly billing; we offer 12-month terms with a 10-15% discount for centers that want them. No multi-year lock-in. 30 days written notice to cancel after the pilot. Per-agent count can flex up or down monthly with 7 days notice.</div></div>
+      <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq10" type="button" aria-expanded="false" aria-controls="bpoa10" onclick="toggleFaq(this)">What does our IT team need to deploy this? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa10" role="region" aria-labelledby="bpoq10" hidden>Almost nothing. DealMentor is web-based - any modern browser (Chrome, Edge, Firefox, Safari). No client install, no agent-side software, no firewall rules beyond standard HTTPS. SSO via Google Workspace and Microsoft 365 is available; SAML 2.0 for enterprise IdPs is on request. We do not require CTI integration with your dialer for the pilot - DealMentor runs in a tab beside it. Deeper integrations (call-log import, CRM sync) are available case-by-case for scaled deployments. IT typically signs off in 1-2 sessions.</div></div>
     </div>
+  </div>
+</section>
+
+<section class="solid-2">
+  <div class="section-inner">
+    <div class="section-head-center">
+      <p class="eyebrow">90 seconds from Tal</p>
+      <h2 class="section-h2">Straight from the practitioner. <em>Not a deck.</em></h2>
+      <p class="section-sub">Short walkthrough of who DealMentor is for, what it does, and why we built it for centers like yours.</p>
+    </div>
+    <a href="#" onclick="event.preventDefault();openCalendar()" class="video-frame" aria-label="Watch the founder video (TODO: embed)">
+      <div class="vf-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="vf-label">Founder video · placeholder<br>Click to book a call directly with Tal</div>
+    </a>
   </div>
 </section>
 
@@ -396,6 +651,10 @@
     </div>
   </div>
 </footer>
+
+<a href="https://wa.me/972545308119?text=Hi%20Tal%2C%20I%20run%20a%20contact%20center%20and%20want%20to%20talk%20about%20DealMentor%20for%20our%20floor." target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp Tal directly">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 0C7.2 0 0 7.2 0 16c0 2.8.8 5.5 2.2 7.9L0 32l8.4-2.2c2.3 1.3 4.9 2 7.6 2 8.8 0 16-7.2 16-16S24.8 0 16 0zm0 29.3c-2.4 0-4.8-.6-6.8-1.9l-.5-.3-5 1.3 1.3-4.9-.3-.5C3.5 21 2.7 18.5 2.7 16 2.7 8.7 8.7 2.7 16 2.7S29.3 8.7 29.3 16 23.3 29.3 16 29.3zm7.3-9.9c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.6-.2.3-.5.3-.9.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.7.1-.3.1-.5 0-.7-.1-.2-.9-2.2-1.3-3-.3-.8-.7-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4s1.5 4 1.7 4.2c.2.3 2.9 4.5 7.1 6.3 1 .4 1.8.7 2.4.9.9.3 1.8.3 2.5.2.7-.1 2.4-1 2.7-1.9.3-1 .3-1.7.2-1.9-.1-.3-.4-.4-.8-.6z"/></svg>
+</a>
 
 <script src="/spine.js?v=20260603n"></script>
 <script>
