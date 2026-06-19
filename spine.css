@@ -477,3 +477,19 @@ footer{background:var(--bg-2);border-top:1px solid var(--line);padding:50px 24px
   footer .footer-social{display:none}
   @page{margin:1.2cm}
 }
+
+/* ===== SITE-WIDE WHATSAPP FLOAT ===== */
+.wa-float{position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.35);z-index:60;transition:transform .2s,box-shadow .2s;text-decoration:none}
+.wa-float:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.45)}
+.wa-float svg{width:30px;height:30px;fill:currentColor}
+@media(max-width:520px){.wa-float{bottom:18px;right:18px;width:52px;height:52px}.wa-float svg{width:26px;height:26px}}
+
+/* ===== AUDIENCE STRIP (home hero) ===== */
+.audience-strip{margin:36px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:920px;padding:0 24px}
+.aud-card{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:14px;padding:18px 20px;text-decoration:none;display:flex;flex-direction:column;gap:6px;transition:border-color .2s,transform .2s,background .2s;text-align:left}
+.aud-card:hover{border-color:var(--accent);transform:translateY(-2px);background:var(--accent-soft)}
+.aud-label{font-family:'Inter',sans-serif;font-size:14.5px;font-weight:700;color:var(--ink);letter-spacing:-.01em;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.aud-label .aud-arrow{color:var(--accent);transition:transform .2s;font-weight:700}
+.aud-card:hover .aud-arrow{transform:translateX(3px)}
+.aud-desc{font-family:'Inter',sans-serif;font-size:12.5px;color:var(--text);line-height:1.5;margin:0}
+@media(max-width:720px){.audience-strip{grid-template-columns:1fr;gap:10px}}
