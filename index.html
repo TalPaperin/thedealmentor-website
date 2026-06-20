@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/spine.css?v=20260619c">
+<link rel="stylesheet" href="/spine.css?v=20260619d">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"TheDealMentor.AI","legalName":"KSW Solutions","url":"https://www.thedealmentor.ai","logo":"https://www.thedealmentor.ai/DealMentor%20horizontal%20logo%20white.jpg","description":"A sales platform that pairs a live fractional CRO and a 24/7 Ask-the-CRO advisor with twenty AI sales tools, on every plan.","founder":{"@type":"Person","name":"Tal Paperin","url":"https://ksw.solutions"},"sameAs":["https://www.linkedin.com/company/thedealmentor","https://www.facebook.com/thedealmentor","https://www.youtube.com/@thedealmentoryt"]}
 </script>
@@ -64,27 +64,34 @@
 
 <header class="hero">
   <h1 class="hero-h1">
-    <span class="line hero-promise">Sales doesn't have to be <em class="real">hard</em>.</span>
-    <span class="line">One <em class="real">REAL</em> CRO.</span>
-    <span class="line"><em class="real">Twenty</em> AI Sales Tools.</span>
-    <span class="line"><em class="real">One</em> Platform.</span>
+    <span class="line hero-promise">The revenue leadership team</span>
+    <span class="line">you <em class="real">can't afford</em>.</span>
+    <span class="line"><em class="real">Bundled</em> in software.</span>
   </h1>
+  <p class="hero-sub">AI sales tools, certification, onboarding, coaching, and a live human CRO. In one platform. Cut ramp time. Standardize performance. Scale the floor.</p>
   <div class="hero-ctas">
     <a href="https://app.thedealmentor.ai/register" class="btn-primary btn-lg">Start Free</a>
     <a href="/platform" class="btn-secondary btn-lg">See the platform</a>
   </div>
+  <div class="hero-proof" aria-label="Credibility">
+    <span>20+ years of CRO work across four continents</span>
+    <span aria-hidden="true">·</span>
+    <span>20 AI sales tools + a live human CRO on every plan</span>
+    <span aria-hidden="true">·</span>
+    <span>Grounded in 50 sales methodologies (SPIN, MEDDIC, Challenger, Sandler, Gap Selling…)</span>
+  </div>
   <div class="audience-strip">
-    <a href="/for-founders" class="aud-card">
-      <span class="aud-label">For Solo Founders <span class="aud-arrow" aria-hidden="true">→</span></span>
-      <span class="aud-desc">4-doc program (GTM Plan, Playbook, Marketing, Daily Workflow), live CRO, 24/7 AI advisor. From $119/mo.</span>
+    <a href="/bpo-and-centers" class="aud-card">
+      <span class="aud-label">For BPOs &amp; Contact Centers <span class="aud-arrow" aria-hidden="true">→</span></span>
+      <span class="aud-desc">Campaign Packs in a minute, audit-ready certs, in-tab copilot. $149 per active campaign, unlimited agents.</span>
     </a>
     <a href="/for-teams" class="aud-card">
       <span class="aud-label">For Sales Teams <span class="aud-arrow" aria-hidden="true">→</span></span>
       <span class="aud-desc">Manager dashboards, SDR + AE certification, rep simulation. From $399/mo.</span>
     </a>
-    <a href="/bpo-and-centers" class="aud-card">
-      <span class="aud-label">For BPOs &amp; Contact Centers <span class="aud-arrow" aria-hidden="true">→</span></span>
-      <span class="aud-desc">Campaign Packs in a minute, audit-ready certs, in-tab copilot. $149 per active campaign, unlimited agents.</span>
+    <a href="/for-founders" class="aud-card">
+      <span class="aud-label">For Solo Founders <span class="aud-arrow" aria-hidden="true">→</span></span>
+      <span class="aud-desc">4-doc program (GTM Plan, Playbook, Marketing, Daily Workflow), live CRO, 24/7 AI advisor. From $119/mo.</span>
     </a>
   </div>
 </header>
@@ -457,7 +464,7 @@
   var raw=new URLSearchParams(window.location.search).get('icp');
   if(!raw)return;
   var key=raw.toLowerCase();
-  var map={founder:0,founders:0,solo:0,team:1,teams:1,sales:1,bpo:2,bpos:2,center:2,centers:2,contact:2};
+  var map={bpo:0,bpos:0,center:0,centers:0,contact:0,team:1,teams:1,sales:1,founder:2,founders:2,solo:2};
   var idx=map[key];
   if(idx===undefined)return;
   var cards=document.querySelectorAll('.audience-strip .aud-card');
