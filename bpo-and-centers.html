@@ -335,11 +335,11 @@
         <h3>Not the right fit yet if…</h3>
         <ul>
           <li>You're a <strong>1,000+ agent enterprise BPO</strong> needing deep CTI, SOC 2 Type II, and a 12-month enterprise procurement track.</li>
-          <li>Your floor is <strong>inbound customer service only</strong> — DealMentor is built around the outbound sales motion.</li>
-          <li>You need <strong>non-English script generation today</strong> — we're English-first (US/UK/AU/CA), other markets via the "Other" setting, controlled multilingual on the roadmap.</li>
-          <li>You need <strong>HIPAA-regulated</strong> healthcare workflows or PCI Level 1 — we'll get there, but not today.</li>
+          <li>Your floor is <strong>inbound customer service only</strong>. DealMentor is built around the outbound sales motion.</li>
+          <li>You need <strong>non-English script generation today</strong>. We're English-first (US/UK/AU/CA), other markets via the "Other" setting, controlled multilingual on the roadmap.</li>
+          <li>You need <strong>HIPAA-regulated</strong> healthcare workflows or PCI Level 1. We'll get there, but not today.</li>
           <li>You need <strong>real-time call listening with prompt injection</strong> (that's Cogito / Balto / Observe.AI territory).</li>
-          <li>You only want to <strong>swap your existing dialer</strong> — DealMentor sits beside it, not in place of it.</li>
+          <li>You only want to <strong>swap your existing dialer</strong>. DealMentor sits beside it, not in place of it.</li>
         </ul>
       </div>
     </div>
@@ -733,11 +733,11 @@
     </div>
     <div class="dm-modal-body">
       <p>Edit the message below, then either copy it to your clipboard or open your email client pre-filled.</p>
-      <textarea id="share-text" spellcheck="false">Subject: DealMentor — bundled AI sales tooling + a fractional CRO for BPOs and contact centers
+      <textarea id="share-text" spellcheck="false">Subject: DealMentor. Bundled AI sales tooling + a fractional CRO for BPOs and contact centers
 
 Hey team,
 
-Came across DealMentor — built by a CRO who has personally trained agents on BPO floors in the Philippines, Eastern Europe, and Mexico. Paste a client's brief, get a Campaign Pack (cheat-sheet + rebuttal library + certification) in about a minute. Audit-ready certificate records branded with your logo. Coaching cards from every failed cert. $149 per active campaign per month, unlimited agents, monthly billing.
+Came across DealMentor, built by a CRO who has personally trained agents on BPO floors in the Philippines, Eastern Europe, and Mexico. Paste a client's brief, get a Campaign Pack (cheat-sheet + rebuttal library + certification) in about a minute. Audit-ready certificate records branded with your logo. Coaching cards from every failed cert. $149 per active campaign per month, unlimited agents, monthly billing.
 
 Honest framing: they don't do real-time call listening like Cogito or Balto. They do everything around the call, at a fraction of the price.
 
@@ -839,7 +839,7 @@ function sendRoiEmail(){
   var email=document.getElementById('roi-email').value.trim();
   if(!email)return;
   var payload={
-    _subject:'DealMentor BPO ROI request — '+email,
+    _subject:'DealMentor BPO ROI request: '+email,
     email:email,
     active_campaigns:document.getElementById('roi-campaigns').value,
     total_agents:document.getElementById('roi-agents').value,
@@ -857,7 +857,7 @@ function sendRoiEmail(){
   btn.textContent='Sending…';btn.disabled=true;msg.className='roi-email-msg';msg.textContent='';
   fetch('https://formspree.io/f/xykbgowb',{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify(payload)})
     .then(function(res){
-      if(res.ok){msg.className='roi-email-msg ok';msg.textContent='Sent. Tal will get back to you with a tailored quote in one business day — check your inbox and spam.';document.getElementById('roi-email').value='';}
+      if(res.ok){msg.className='roi-email-msg ok';msg.textContent='Sent. Tal will get back to you with a tailored quote in one business day. Check your inbox and spam.';document.getElementById('roi-email').value='';}
       else{msg.className='roi-email-msg err';msg.textContent='Could not send. Try again or email tal@thedealmentor.ai directly.'}
       btn.textContent='Email the analysis';btn.disabled=false;
     })
@@ -898,7 +898,7 @@ function scoreFit(){
   if(answered<6){res.className='scorecard-result show maybe';res.innerHTML='<h4>Answer all six questions</h4><p>We need all six answers to give you a real read.</p>';return}
   if(total>=5){res.className='scorecard-result show strong';res.innerHTML='<h4>Strong fit. Book the call.</h4><p>Your center is squarely in our wedge. A 4-week pilot should pay back inside a quarter. Tal can walk you through deployment in 30 minutes.</p><a href="#" onclick="event.preventDefault();closeScorecard();openCalendar()" class="btn-primary" style="display:inline-flex;margin-top:8px">Book the call</a>'}
   else if(total>=3){res.className='scorecard-result show maybe';res.innerHTML='<h4>Likely fit. Worth a conversation.</h4><p>You match most of the profile but there is at least one gap. Best move: a short call to figure out whether DealMentor is right for you today or in 6 months. No pressure either way.</p><a href="#" onclick="event.preventDefault();closeScorecard();openCalendar()" class="btn-primary" style="display:inline-flex;margin-top:8px">Talk it through</a>'}
-  else{res.className='scorecard-result show no';res.innerHTML='<h4>Probably not the right fit today.</h4><p>Your center is outside our current wedge — most likely because you need enterprise-grade compliance, real-time call AI, or you are not running an outbound sales motion. We would rather tell you straight than burn your time. Drop Tal a line if your situation changes, or check back as the product matures.</p><a href="mailto:tal@thedealmentor.ai" class="btn-secondary" style="display:inline-flex;margin-top:8px">Email Tal anyway</a>'}
+  else{res.className='scorecard-result show no';res.innerHTML='<h4>Probably not the right fit today.</h4><p>Your center is outside our current wedge, most likely because you need enterprise-grade compliance, real-time call AI, or you are not running an outbound sales motion. We would rather tell you straight than burn your time. Drop Tal a line if your situation changes, or check back as the product matures.</p><a href="mailto:tal@thedealmentor.ai" class="btn-secondary" style="display:inline-flex;margin-top:8px">Email Tal anyway</a>'}
 }
 document.getElementById('sc-modal').addEventListener('click',function(e){if(e.target===this)closeScorecard()});
 </script>
