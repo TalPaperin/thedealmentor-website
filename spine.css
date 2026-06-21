@@ -716,3 +716,32 @@ html.js [data-reveal]{opacity:0;transform:translateY(22px);filter:none;transitio
 
 /* A little more travel on the section reveals so motion reads clearly */
 html.js [data-reveal]{transform:translateY(34px);transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .65s cubic-bezier(.22,.61,.36,1)}
+
+
+/* ============================================================
+   PLATFORM "TWENTY TOOLS" - three auto-scrolling gallery lanes
+   ============================================================ */
+.tools-marquee{display:flex;flex-direction:column;gap:16px;margin-top:38px}
+.tg-lane{display:grid;grid-template-columns:200px 1fr;gap:22px;align-items:center}
+.tg-lane-head .tools-group-eyebrow{margin:0 0 4px}
+.tg-lane-head .tools-group-h{margin:0;font-size:clamp(17px,1.5vw,21px)}
+.tg-viewport{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.tg-track{display:flex;width:max-content;animation:tgScroll 40s linear infinite}
+.tg-lane-r .tg-track{animation-direction:reverse}
+.tg-viewport:hover .tg-track{animation-play-state:paused}
+@keyframes tgScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.tg-card{flex:0 0 280px;margin-right:14px;background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:9px;transition:transform .3s cubic-bezier(.2,.7,.2,1),border-color .3s,box-shadow .3s}
+.tg-card:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:var(--shadow-hi)}
+.tg-card-top{display:flex;align-items:baseline;gap:10px}
+.tg-num{font-family:'Geist Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.18em;color:var(--brand-blue);font-weight:600;flex-shrink:0}
+.tg-name{font-family:var(--font-body),sans-serif;font-size:16px;font-weight:700;color:var(--ink);margin:0;letter-spacing:-.01em;line-height:1.2}
+.tg-demo{font-family:'Geist Mono',ui-monospace,monospace;font-size:12px;color:var(--brand-blue);margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tg-demo::after{content:'';display:inline-block;width:.5ch;height:1em;background:var(--brand-blue);vertical-align:-.12em;margin-left:2px;animation:tgblink 1s steps(1) infinite}
+@keyframes tgblink{50%{opacity:0}}
+@media(max-width:760px){.tg-lane{grid-template-columns:1fr;gap:10px}.tg-card{flex-basis:240px}}
+@media (prefers-reduced-motion: reduce){
+  .tg-track{animation:none;flex-wrap:wrap;width:auto}
+  .tg-viewport{overflow:visible;-webkit-mask-image:none;mask-image:none}
+  .tg-card [aria-hidden],.tg-card[aria-hidden]{display:none}
+  .tg-demo::after{animation:none}
+}
