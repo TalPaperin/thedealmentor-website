@@ -82,14 +82,12 @@ html.js .tile-flip.is-in{animation:tileFlip 2.6s cubic-bezier(.22,.65,.25,1) for
 
 /* ===== NAV ===== */
 nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line);padding:14px clamp(20px,3vw,32px);display:flex;justify-content:space-between;align-items:center;gap:16px;transition:padding .25s ease}
-[data-theme="light"] nav{border-bottom-color:transparent;box-shadow:0 6px 20px -16px rgba(18,18,18,.18)}
-nav.shrink{padding:10px clamp(20px,3vw,32px);background:color-mix(in srgb,var(--bg) 98%,transparent)}
+[data-theme="light"] nav{border-bottom-color:transparent}
 .nav-logo{display:flex;align-items:center}
 .wordmark{font-family:'Inter',sans-serif;font-weight:600;font-size:20px;letter-spacing:-.025em;color:var(--ink);text-decoration:none;display:inline-flex;align-items:center}
 .wordmark b{background:linear-gradient(110deg,var(--chr-1),var(--chr-2),var(--chr-3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;font-weight:600}
 /* Logo image swap — white on dark, blue on light. Drop /DealMentor horizontal logo blue.jpg into the repo to activate light mode. */
 .wordmark img{height:30px;width:auto;display:block}
-nav.shrink .wordmark img{height:26px}
 .wordmark .logo-light{display:none}
 [data-theme="light"] .wordmark .logo-dark{display:none}
 [data-theme="light"] .wordmark .logo-light{display:block}
