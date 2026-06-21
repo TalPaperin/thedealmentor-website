@@ -162,7 +162,7 @@ function toggleFaq(btn){
   /* Scroll-reveal: section heads + any card not already handled by tile-flip */
   var vh=window.innerHeight;
   var nodes=[].slice.call(document.querySelectorAll('.section-head-center,.section-head,section [class*="card"]'))
-    .filter(function(el){return !el.classList.contains('tile-flip')&&!el.classList.contains('aud-card')&&!el.closest('.hero')&&!el.closest('.pg-track');});
+    .filter(function(el){return !el.classList.contains('tile-flip')&&!el.classList.contains('aud-card')&&!el.classList.contains('gsap-wall')&&!el.closest('.hero')&&!el.closest('.pg-track');});
   var io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('rv-in');io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -7% 0px'}):null;
   var idx=new Map();
   nodes.forEach(function(el){
