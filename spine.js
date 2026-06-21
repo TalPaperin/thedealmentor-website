@@ -162,11 +162,12 @@ function toggleFaq(btn){
   /* Scroll-reveal: section heads + any card not already handled by tile-flip */
   var vh=window.innerHeight;
   var nodes=[].slice.call(document.querySelectorAll('.section-head-center,.section-head,section [class*="card"]'))
-    .filter(function(el){return !el.classList.contains('tile-flip')&&!el.classList.contains('aud-card')&&!el.classList.contains('gsap-wall')&&!el.classList.contains('tool-card')&&!el.closest('.hero')&&!el.closest('.pg-track')&&!el.closest('.tg-track')&&!el.closest('.testi-scroller');});
+    .filter(function(el){return !el.classList.contains('tile-flip')&&!el.classList.contains('aud-card')&&!el.classList.contains('gsap-wall')&&!el.classList.contains('tool-card')&&!el.closest('.hero')&&!el.closest('.pg-track')&&!el.closest('.tg-track')&&!el.closest('.testi-scroller')&&!el.closest('.wall-track');});
   var io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('rv-in');io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -7% 0px'}):null;
-  var idx=new Map();
+  var idx=new Map(),dir=0;
   nodes.forEach(function(el){
     el.setAttribute('data-reveal','');
+    el.classList.add((dir++%2)?'rv-right':'rv-left');
     var p=el.parentNode,i=idx.get(p)||0;idx.set(p,i+1);
     el.style.transitionDelay=(Math.min(i,6)*70)+'ms';
     var r=el.getBoundingClientRect();
@@ -175,7 +176,7 @@ function toggleFaq(btn){
 
   /* Spotlight glow follows the cursor across cards */
   [].forEach.call(document.querySelectorAll('section [class*="card"]'),function(c){
-    if(c.closest('.pg-track')||c.closest('.tg-track')||c.closest('.testi-scroller'))return;
+    if(c.closest('.pg-track')||c.closest('.tg-track')||c.closest('.testi-scroller')||c.closest('.wall-track'))return;
     c.classList.add('spotlight');
     c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');},{passive:true});
   });
