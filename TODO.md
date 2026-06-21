@@ -81,7 +81,7 @@ Last refreshed: 2026-06-19, after the multi-ICP website rebuild.
 Pushed in commits `9f068be` · `86eb630` · `7116d19` · `8ac02d0` · `9d2238b` · `0372b10` · `ec71b29` · `2f45744` · `6379f67` · (latest)
 
 Including the multi-ICP rebalance of core pages:
-- `/pricing` now has a 4th plan card for **BPO / Centers · $149/active campaign/mo**
+- `/pricing` BPO now pulled out of the self-serve plans grid (Paddle is wired to Founder/Team/Growth only) and shown as a horizontal **sales-led panel: "From $999/month, per-campaign pricing, 3-month minimum, unlimited agents"** with "Best for / Not for" disqualifier and "Book a call · scope it" CTA
 - `/platform` modes-grid expanded to **3 modes** (Founder / Team / BPO)
 - `/whyus` reason #07 retuned: was "Founders included" → now "Solo, team, or contact-center floor — we ship for each"
 - `/about` "From the founder" rewritten to name all 3 audiences (founder + sales manager + BPO ops director)
@@ -93,7 +93,7 @@ Including the multi-ICP rebalance of core pages:
 - `/vs/cogito`, `/vs/balto`, `/vs/observe-ai`, `/vs/second-nature` + `/vs/` hub
 - `/for-founders` + `/for-teams` dedicated landing pages
 - `/resources` content hub
-- Interactive ROI calculator (per-campaign $149) with formspree email capture
+- Interactive ROI calculator (starting-price $999/mo model, sales-led scoping) with formspree email capture
 - 30-second fit-check scorecard modal
 - "Email this page to my team" share modal (clipboard + mailto)
 - WhatsApp floating button on every page
