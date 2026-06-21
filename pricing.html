@@ -38,6 +38,12 @@
 .enterprise-inner{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:24px;padding:36px 32px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;box-shadow:var(--shadow);backdrop-filter:blur(10px)}
 .enterprise-inner h3{font-family:'Inter',ui-sans-serif,sans-serif;font-size:24px;font-weight:700;color:var(--ink);letter-spacing:-.02em;margin-bottom:6px}
 .enterprise-inner p{font-family:'Inter',sans-serif;color:var(--muted);font-size:15px;line-height:1.55;max-width:62ch}
+@media(max-width:640px){
+  .enterprise-card{padding:0 16px}
+  .enterprise-inner{flex-direction:column;align-items:stretch;padding:28px 22px;gap:20px}
+  .enterprise-inner>div:last-child{width:100%}
+  .enterprise-inner .btn-lg{width:100%;justify-content:center;padding-left:18px;padding-right:18px}
+}
 </style>
 </head>
 <body>
