@@ -180,12 +180,14 @@ function toggleFaq(btn){
     c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');},{passive:true});
   });
 
-  /* Magnetic CTAs */
-  [].forEach.call(document.querySelectorAll('.btn-primary,.btn-secondary'),function(btn){
-    btn.classList.add('magnetic');
-    btn.addEventListener('pointermove',function(e){var r=btn.getBoundingClientRect();var mx=e.clientX-(r.left+r.width/2),my=e.clientY-(r.top+r.height/2);btn.style.transform='translate('+(mx*0.28).toFixed(1)+'px,'+(my*0.4).toFixed(1)+'px)';});
-    btn.addEventListener('pointerleave',function(){btn.style.transform='';});
-  });
+  /* Magnetic CTAs - hover/fine-pointer devices only (no nudge on touch taps) */
+  if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+    [].forEach.call(document.querySelectorAll('.btn-primary,.btn-secondary'),function(btn){
+      btn.classList.add('magnetic');
+      btn.addEventListener('pointermove',function(e){var r=btn.getBoundingClientRect();var mx=e.clientX-(r.left+r.width/2),my=e.clientY-(r.top+r.height/2);btn.style.transform='translate('+(mx*0.28).toFixed(1)+'px,'+(my*0.4).toFixed(1)+'px)';});
+      btn.addEventListener('pointerleave',function(){btn.style.transform='';});
+    });
+  }
 })();
 
 
