@@ -142,3 +142,48 @@ function toggleFaq(btn){
     });
   },6000);
 })();
+
+
+/* ===== MOTION SYSTEM v2 (scroll-reveal · spotlight · magnetic · progress) ===== */
+(function(){
+  var root=document.documentElement;
+  if(!root.classList.contains('js'))return;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Scroll-progress bar */
+  if(!reduce){
+    var bar=document.createElement('div');bar.className='scroll-progress';document.body.appendChild(bar);
+    var ticking=false;
+    var upd=function(){var h=document.documentElement;var max=h.scrollHeight-h.clientHeight;var p=max>0?h.scrollTop/max:0;bar.style.transform='scaleX('+p.toFixed(4)+')';ticking=false;};
+    window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(upd);}},{passive:true});upd();
+  }
+  if(reduce)return;
+
+  /* Scroll-reveal: section heads + any card not already handled by tile-flip */
+  var vh=window.innerHeight;
+  var nodes=[].slice.call(document.querySelectorAll('.section-head-center,.section-head,section [class*="card"]'))
+    .filter(function(el){return !el.classList.contains('tile-flip')&&!el.classList.contains('aud-card')&&!el.closest('.hero')&&!el.closest('.pg-track');});
+  var io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('rv-in');io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -7% 0px'}):null;
+  var idx=new Map();
+  nodes.forEach(function(el){
+    el.setAttribute('data-reveal','');
+    var p=el.parentNode,i=idx.get(p)||0;idx.set(p,i+1);
+    el.style.transitionDelay=(Math.min(i,6)*70)+'ms';
+    var r=el.getBoundingClientRect();
+    if(!io||r.top<vh*0.92){el.classList.add('rv-in');}else{io.observe(el);}
+  });
+
+  /* Spotlight glow follows the cursor across cards */
+  [].forEach.call(document.querySelectorAll('section [class*="card"]'),function(c){
+    if(c.closest('.pg-track'))return;
+    c.classList.add('spotlight');
+    c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');},{passive:true});
+  });
+
+  /* Magnetic CTAs */
+  [].forEach.call(document.querySelectorAll('.btn-primary,.btn-secondary'),function(btn){
+    btn.classList.add('magnetic');
+    btn.addEventListener('pointermove',function(e){var r=btn.getBoundingClientRect();var mx=e.clientX-(r.left+r.width/2),my=e.clientY-(r.top+r.height/2);btn.style.transform='translate('+(mx*0.28).toFixed(1)+'px,'+(my*0.4).toFixed(1)+'px)';});
+    btn.addEventListener('pointerleave',function(){btn.style.transform='';});
+  });
+})();
