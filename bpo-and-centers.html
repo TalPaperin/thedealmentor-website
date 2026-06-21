@@ -418,20 +418,23 @@
       <p class="section-sub">Every plan includes all twenty AI tools and one live CRO - founder, team, or call-center floor. This is what you actually work in.</p>
     </div>
     <style>
-      .pg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
-      .pg-shot{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:13px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.4,0,.2,1),box-shadow .3s ease,border-color .3s ease}
+      .pg-marquee{position:relative;margin-top:36px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+      .pg-track{display:flex;width:max-content;animation:pgscroll 70s linear infinite}
+      .pg-marquee:hover .pg-track,.pg-marquee:focus-within .pg-track{animation-play-state:paused}
+      .pg-shot{flex:0 0 290px;margin-right:16px;background:var(--bg-card);border:1px solid var(--card-bd);border-radius:13px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.4,0,.2,1),box-shadow .3s ease,border-color .3s ease}
       .pg-shot:hover{transform:translateY(-5px);box-shadow:0 22px 50px -22px rgba(18,41,178,.35);border-color:color-mix(in srgb,var(--accent) 35%,var(--card-bd))}
       .pg-img{aspect-ratio:16/10;border-bottom:1px solid var(--line);background:#0F1A30;overflow:hidden}
       [data-theme="light"] .pg-img{background:#F1F5FF}
-      .pg-img img{width:100%;height:100%;object-fit:contain;object-position:center;display:block;transition:transform .45s cubic-bezier(.4,0,.2,1)}
-      .pg-shot:hover .pg-img img{transform:scale(1.04)}
+      .pg-img img{width:100%;height:100%;object-fit:contain;object-position:center;display:block}
       .pg-cap{padding:13px 15px}
       .pg-cap h4{font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:var(--ink);margin:0 0 4px}
       .pg-cap p{font-family:'Inter',sans-serif;font-size:12.5px;color:var(--text);line-height:1.5;margin:0}
-      @media(max-width:980px){.pg-grid{grid-template-columns:repeat(2,1fr)}}
-      @media(max-width:600px){.pg-grid{grid-template-columns:1fr}}
+      @keyframes pgscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+      @media(max-width:520px){.pg-shot{flex-basis:240px}}
+      @media(prefers-reduced-motion:reduce){.pg-marquee{overflow-x:auto;mask-image:none;-webkit-mask-image:none}.pg-track{animation:none}.pg-shot[aria-hidden]{display:none}}
     </style>
-    <div class="pg-grid">
+    <div class="pg-marquee" aria-label="Product screenshots, auto-scrolling">
+      <div class="pg-track">
       <div class="pg-shot"><div class="pg-img"><img src="/Dashboard.jpg" alt="Daily dashboard" loading="lazy"></div><div class="pg-cap"><h4>Daily dashboard</h4><p>Your focus for the day, deals that need a next step, and one click to every tool.</p></div></div>
       <div class="pg-shot"><div class="pg-img"><img src="/Sales%20Copilot.jpg" alt="Sales Copilot" loading="lazy"></div><div class="pg-cap"><h4>Sales Copilot</h4><p>Eight real-time deal tools: call guide, objections, battle card, email, proposal, follow-up, CRM notes, research.</p></div></div>
       <div class="pg-shot"><div class="pg-img"><img src="/Outreach%20Builder.jpg" alt="Outreach Builder" loading="lazy"></div><div class="pg-cap"><h4>Outreach Builder</h4><p>Six channels per ICP: cold email, LinkedIn, social, referral, re-engage, DM/WhatsApp.</p></div></div>
@@ -442,53 +445,22 @@
       <div class="pg-shot"><div class="pg-img"><img src="/certification-engine.jpg" alt="Rep Certification" loading="lazy"></div><div class="pg-cap"><h4>Rep Certification</h4><p>Generate modules, set the pass score, and see who is field-ready in Manager View.</p></div></div>
       <div class="pg-shot"><div class="pg-img"><img src="/campaign-assign-publish.jpg" alt="Campaigns" loading="lazy"></div><div class="pg-cap"><h4>Campaigns</h4><p>Paste a client brief, generate the Campaign Pack, then publish and assign to specific agents.</p></div></div>
       <div class="pg-shot"><div class="pg-img"><img src="/campaign-cert-result.jpg" alt="Audit-ready certificate" loading="lazy"></div><div class="pg-cap"><h4>Audit-ready certificate</h4><p>Every certification becomes a branded record with a verification ID, exportable to PDF and Word.</p></div></div>
+      <div class="pg-shot" aria-hidden="true"><div class="pg-img"><img src="/Dashboard.jpg" alt="" loading="lazy"></div><div class="pg-cap"><h4>Daily dashboard</h4><p>Your focus for the day, deals that need a next step, and one click to every tool.</p></div></div>
+      <div class="pg-shot" aria-hidden="true"><div class="pg-img"><img src="/Sales%20Copilot.jpg" alt="" loading="lazy"></div><div class="pg-cap"><h4>Sales Copilot</h4><p>Eight real-time deal tools: call guide, objections, battle card, email, proposal, follow-up, CRM notes, research.</p></div></div>
+      <div class="pg-shot" aria-hidden="true"><div class="pg-img"><img src="/Outreach%20Builder.jpg" alt="" loading="lazy"></div><div class="pg-cap"><h4>Outreach Builder</h4><p>Six channels per ICP: cold email, LinkedIn, social, referral, re-engage, DM/WhatsApp.</p></div></div>
+      <div class="pg-shot" aria-hidden="true"><div class="pg-img"><img src="/New%20Deal.jpg" alt="" loading="lazy"></div><div class="pg-cap"><h4>My Deals</h4><p>Track each deal and get the CRO's read and the next best move.</p></div></div>
+      <div class="pg-shot" aria-hidden="true"><div class="pg-img"><img src="/Virtual%20CRO.png" alt="" loading="lazy"></div><div class="pg-cap"><h4>Ask the CRO</h4><p>A 24/7 AI CRO that knows your program, your deals, and your campaigns.</p></div></div>
+      <div class="pg-shot" aria-hidden="true"><div class="pg-img"><img src="/manager-dashboard.jpg" alt="" loading="lazy"></div><div class="pg-cap"><h4>Manager command center</h4><p>Build the program, launch campaigns, and see the whole team at a glance.</p></div></div>
+      <div class="pg-shot" aria-hidden="true"><div class="pg-img"><img src="/rep-dashboard.jpg" alt="" loading="lazy"></div><div class="pg-cap"><h4>Rep dashboard</h4><p>Reps land on their materials, today's priorities, and any certification assigned to them.</p></div></div>
+      <div class="pg-shot" aria-hidden="true"><div class="pg-img"><img src="/certification-engine.jpg" alt="" loading="lazy"></div><div class="pg-cap"><h4>Rep Certification</h4><p>Generate modules, set the pass score, and see who is field-ready in Manager View.</p></div></div>
+      <div class="pg-shot" aria-hidden="true"><div class="pg-img"><img src="/campaign-assign-publish.jpg" alt="" loading="lazy"></div><div class="pg-cap"><h4>Campaigns</h4><p>Paste a client brief, generate the Campaign Pack, then publish and assign to specific agents.</p></div></div>
+      <div class="pg-shot" aria-hidden="true"><div class="pg-img"><img src="/campaign-cert-result.jpg" alt="" loading="lazy"></div><div class="pg-cap"><h4>Audit-ready certificate</h4><p>Every certification becomes a branded record with a verification ID, exportable to PDF and Word.</p></div></div>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="solid">
-  <div class="section-inner">
-    <div class="section-head-center">
-      <p class="eyebrow">What DealMentor brings to your floor</p>
-      <h2 class="section-h2">Built for the way <em>BPOs actually run.</em></h2>
-      <p class="section-sub">Per-campaign workflow. Audit-ready records. Transactional coaching by default - scripted, one-call-close, not consultative B2B.</p>
-    </div>
-    <div class="cf-grid">
-      <div class="cf-card">
-        <div class="cf-ico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h6"/></svg></div>
-        <h3>Campaign Pack from a client brief</h3>
-        <p>Paste the client's script. In about a minute, get an agent cheat-sheet, a rebuttal library (8-second quick + 30-second full), and a campaign certification - all grounded in that brief. Tune anything with one-click regenerate.</p>
-      </div>
-      <div class="cf-card">
-        <div class="cf-ico"><svg viewBox="0 0 24 24"><path d="M12 2 3 7v6c0 5 4 9 9 10 5-1 9-5 9-10V7z"/><path d="m9 12 2 2 4-4"/></svg></div>
-        <h3>Audit-ready certification records</h3>
-        <p>Every certified agent gets a record branded with your company logo and a unique verification ID. Export single agents or whole campaigns to PDF or Word. The cleaner the records, the more your client trusts your floor.</p>
-      </div>
-      <div class="cf-card">
-        <div class="cf-ico"><svg viewBox="0 0 24 24"><path d="M9 11H5a2 2 0 0 0-2 2v7h18v-7a2 2 0 0 0-2-2h-4"/><path d="M9 11V5a3 3 0 0 1 6 0v6"/></svg></div>
-        <h3>Coaching cards from misses</h3>
-        <p>Click "Coach" on any failed certification result. Get a 5-minute, campaign-specific coaching plan built from exactly what the agent got wrong. No more guessing where to start the conversation.</p>
-      </div>
-      <div class="cf-card">
-        <div class="cf-ico"><svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1v-6h3z"/><path d="M3 19a2 2 0 0 0 2 2h1v-6H3z"/></svg></div>
-        <h3>Practice the call before they dial</h3>
-        <p>Agents rehearse the live call against a realistic AI prospect - campaign-aware, market-aware - and get a scored debrief. Run it 2-3 times before the first real shift. Confidence comes from reps.</p>
-      </div>
-      <div class="cf-card">
-        <div class="cf-ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h3>Compliance must-says, per market</h3>
-        <p>Every cheat-sheet ships with the right DNC, opt-out, and disclosure language for the campaign's market - US, UK, AU, CA, or "Other". Operational guidance to brief your agents; confirm specifics with your compliance team.</p>
-      </div>
-      <div class="cf-card">
-        <div class="cf-ico"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <h3>A real CRO. Bundled in.</h3>
-        <p>Four 30-minute strategy sessions a month with a real revenue leader for your ops or training lead. Plus 24/7 Ask-the-CRO AI advisor in-app for the moments between - campaign mix, escalations, client account growth.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="solid-2">
   <div class="section-inner">
     <div class="section-head-center">
       <p class="eyebrow">Day in the life</p>
@@ -499,23 +471,23 @@
       <div class="role-card">
         <p class="role-sub">The agent</p>
         <h3>Cheat-sheet. Rebuttals. Practice.</h3>
-        <p>Logs in, opens today's campaign. Reads the cheat-sheet - opening word-for-word, qualifying questions, compliance must-says. Skims the rebuttals - 8-second quick answer + 30-second full answer for every objection they'll hear. Runs Practice-a-Call once or twice before the first live dial. By call 5 the rebuttals are automatic.</p>
+        <p>Opens today's campaign: cheat-sheet, an 8-second and 30-second rebuttal for every objection, and a Practice-a-Call rep or two before the first dial. By call 5 the rebuttals are automatic.</p>
       </div>
       <div class="role-card">
         <p class="role-sub">The team lead</p>
         <h3>Coach by exception. Audit-ready every time.</h3>
-        <p>Opens the readiness overview at standup. Sees which agents are still uncertified on the active campaigns, who failed yesterday's cert, who needs a 5-minute coaching card built from their misses. Pulls the failed records, runs the coaching card, gets the agent back into Practice-a-Call. End of week: client asks for the audit pack - export to PDF, send.</p>
+        <p>The readiness overview shows who's uncertified and who failed yesterday. One click builds a coaching card from their misses. End of week, the client wants the audit pack: export to PDF, send.</p>
       </div>
       <div class="role-card">
         <p class="role-sub">The ops director</p>
         <h3>New campaign live in an afternoon.</h3>
-        <p>Client signs a new campaign Monday morning. By Monday afternoon: pasted the client's brief into a New Campaign, generated the Pack, edited the questions and rebuttals, set the pass score. It stays a draft until you publish it - then assign it to the whole floor or just the agents on this client, and they get a certification notice on their dashboard. Tuesday: agents certify in, results rolling up to the Records tab. Wednesday: live calls. On the next strategy call with Tal - margin push, client expansion, comp plan - direct judgment from a real revenue leader.</p>
+        <p>Monday: paste the client brief, generate the Pack, publish, assign to the floor or specific agents. Tuesday: agents certify in, results in Records. Wednesday: live calls. Next CRO call with Tal: margin and client expansion.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="solid" id="compare">
+<section class="solid-2" id="compare">
   <div class="section-inner">
     <div class="section-head-center">
       <p class="eyebrow">Side by side</p>
@@ -558,7 +530,7 @@
   </div>
 </section>
 
-<section class="solid-2">
+<section class="solid">
   <div class="section-inner">
     <div class="section-head-center">
       <p class="eyebrow">How it deploys</p>
@@ -598,7 +570,7 @@
   </div>
 </section>
 
-<section class="solid" id="roi">
+<section class="solid-2" id="roi">
   <div class="section-inner">
     <div class="section-head-center">
       <p class="eyebrow">Run the math for your floor</p>
@@ -664,7 +636,7 @@
   </div>
 </section>
 
-<section class="solid-2" id="faq">
+<section class="solid" id="faq">
   <div class="section-inner">
     <div class="section-head-center">
       <p class="eyebrow">What ops directors ask first</p>
@@ -682,20 +654,6 @@
       <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq9" type="button" aria-expanded="false" aria-controls="bpoa9" onclick="toggleFaq(this)">What are the contract terms? Can we cancel? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa9" role="region" aria-labelledby="bpoq9" hidden>Monthly billing by default, starting at $999/month, with a 3-month minimum to start. After that, pause or cancel any campaign with 7 days notice; the campaign records (and your audit-ready certificates) stay in your account. Per-campaign pricing scoped on the call - run one campaign or twenty, unlimited agents on every active campaign, volume discount at 10+. 12-month terms with a 10-15% discount are available for centers that want them. No multi-year lock-in, no per-seat fees.</div></div>
       <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="bpoq10" type="button" aria-expanded="false" aria-controls="bpoa10" onclick="toggleFaq(this)">What does our IT team need to deploy this? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="bpoa10" role="region" aria-labelledby="bpoq10" hidden>Almost nothing. DealMentor is web-based - any modern browser (Chrome, Edge, Firefox, Safari). No client install, no agent-side software, no firewall rules beyond standard HTTPS. Each agent signs in with their own account; SSO and SAML for enterprise IdPs are on the roadmap, not in production yet. We do not require CTI integration with your dialer for the pilot - DealMentor runs in a tab beside it. Deeper integrations (call-log import, CRM sync) are on the roadmap for scaled deployments. IT typically signs off in 1-2 sessions.</div></div>
     </div>
-  </div>
-</section>
-
-<section class="solid">
-  <div class="section-inner">
-    <div class="section-head-center">
-      <p class="eyebrow">90 seconds from Tal</p>
-      <h2 class="section-h2">Straight from the practitioner. <em>Not a deck.</em></h2>
-      <p class="section-sub">Short walkthrough of who DealMentor is for, what it does, and why we built it for centers like yours.</p>
-    </div>
-    <a href="#" onclick="event.preventDefault();openCalendar()" class="video-frame" aria-label="Watch the founder video (TODO: embed)">
-      <div class="vf-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      <div class="vf-label">Founder video · placeholder<br>Click to book a call directly with Tal</div>
-    </a>
   </div>
 </section>
 
