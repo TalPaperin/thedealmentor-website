@@ -249,3 +249,31 @@ function toggleFaq(btn){
   }else{cards.forEach(function(c){c.classList.add('tc-seen');});}
   if(reduce)cards.forEach(function(c){c.classList.add('tc-seen');});
 })();
+
+
+/* ===== Stat count-up on scroll-into-view ===== */
+(function(){
+  if(!document.documentElement.classList.contains('js'))return;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nums=[].slice.call(document.querySelectorAll('.stat-num'));
+  if(!nums.length)return;
+  nums.forEach(function(el){
+    var raw=el.textContent.trim(),m=raw.match(/^(\D*)([\d,]+)(.*)$/);
+    el.__raw=raw;
+    if(!m){el.__target=null;return;}
+    el.__pre=m[1];el.__suf=m[3];el.__target=parseInt(m[2].replace(/,/g,''),10);
+    if(!reduce)el.textContent=m[1]+'0'+m[3];
+  });
+  function run(el){
+    if(reduce||el.__target==null){el.textContent=el.__raw;return;}
+    var dur=1500,t0=null;
+    function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1);var e=1-Math.pow(1-p,3);
+      el.textContent=el.__pre+Math.round(e*el.__target).toLocaleString('en-US')+el.__suf;
+      if(p<1)requestAnimationFrame(step);else el.textContent=el.__raw;}
+    requestAnimationFrame(step);
+  }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){run(e.target);io.unobserve(e.target);}});},{threshold:.5});
+    nums.forEach(function(n){io.observe(n);});
+  }else nums.forEach(run);
+})();

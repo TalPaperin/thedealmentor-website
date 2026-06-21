@@ -745,3 +745,22 @@ html.js [data-reveal]{transform:translateY(34px);transition:opacity .6s cubic-be
   .tg-card [aria-hidden],.tg-card[aria-hidden]{display:none}
   .tg-demo::after{animation:none}
 }
+
+
+/* ============================================================
+   CUSTOMER MARQUEE  (scrolling "used by" strip under the stats)
+   ============================================================ */
+.trust-marquee{padding:26px 0 30px;border-bottom:1px solid var(--line);position:relative;z-index:2;overflow:hidden}
+.trust-lead{text-align:center;font-family:'Geist Mono',ui-monospace,monospace;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 16px}
+.trust-viewport{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.trust-track{display:flex;align-items:center;width:max-content;animation:trustScroll 34s linear infinite}
+.trust-viewport:hover .trust-track{animation-play-state:paused}
+.trust-item{font-family:var(--font-display);font-weight:400;font-size:clamp(20px,2.6vw,34px);letter-spacing:.012em;color:var(--ink);opacity:.5;white-space:nowrap;transition:opacity .3s,color .3s}
+.trust-item:hover{opacity:1;color:var(--brand-blue)}
+.trust-dot{color:var(--brand-blue);padding:0 24px;opacity:.7}
+@keyframes trustScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion: reduce){
+  .trust-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto;gap:6px 0}
+  .trust-track [aria-hidden]{display:none}
+  .trust-viewport{overflow:visible;-webkit-mask-image:none;mask-image:none}
+}
