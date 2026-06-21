@@ -793,3 +793,34 @@ html.js [data-reveal]{transform:translateY(34px);transition:opacity .6s cubic-be
 .testi-scroller > *{flex:0 0 clamp(280px,32%,360px);scroll-snap-align:center;align-self:stretch}
 .testi-scroller .video-testi-card,.testi-scroller .testi-card{height:100%;margin:0}
 @media(max-width:760px){.testi-scroller > *{flex-basis:84%}}
+
+
+/* ============================================================
+   PERF + SCROLL-DRIVEN MOTION (2026)
+   Jank fixes: drop the animated heavy blur, gentler snap, layer hints.
+   Cinematic motion via compositor-driven animation-timeline (off main thread).
+   ============================================================ */
+/* 1) Aurora: soft radial, NO animated filter:blur (was the main scroll-jank source) */
+.hero-aurora{filter:none;opacity:.34;animation:none;
+  background:radial-gradient(46% 50% at 50% 26%,color-mix(in srgb,var(--brand-blue) 42%,transparent),transparent 70%)}
+[data-theme="light"] .hero-aurora{opacity:.22}
+
+/* 2) Reveal: composited props only (no filter), keep it light */
+html.js [data-reveal]{filter:none;will-change:transform,opacity}
+
+/* 3) Testimonials: proximity snap (mandatory felt sticky); promote marquees to their own layer */
+.testi-scroller{scroll-snap-type:x proximity}
+.tg-track,.trust-track,.pain-row,.testi-scroller{will-change:transform}
+
+/* 4) Scroll-driven cinematic motion - runs on the compositor, so smooth */
+@supports (animation-timeline: scroll()){
+  @media (prefers-reduced-motion: no-preference){
+    /* Hero parallax drift on scroll (no opacity - content stays readable the whole way) */
+    .hero{animation:heroExit linear both;animation-timeline:scroll(root);animation-range:0 100vh}
+    @keyframes heroExit{from{transform:translateY(0)}to{transform:translateY(-60px)}}
+    /* Big headings settle in as they enter - subtle 3D unfold, composited */
+    .section-h2{transform-origin:50% 100%;animation:h2Unfold linear both;animation-timeline:view();animation-range:entry 0% entry 50%}
+    @keyframes h2Unfold{from{transform:perspective(1000px) rotateX(9deg) translateY(16px)}to{transform:none}}
+    /* Platform lanes drift horizontally with page scroll (parallax on top of auto-scroll) */
+  }
+}
