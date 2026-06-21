@@ -202,7 +202,7 @@ nav.shrink .wordmark img{height:26px}
 @media (max-width: 640px){.gallery-arrow{width:44px;height:44px}.gallery-arrow svg{width:18px;height:18px}.gallery-arrow-left{left:6px}.gallery-arrow-right{right:6px}}
 @media (prefers-reduced-motion: reduce){.gallery-image{transition:opacity .25s}.gallery-image,.gallery-image.is-out{transform:none}}
 @media (max-width: 640px){.gallery-frame{border-radius:14px}}
-.morph-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:16px}
+.morph-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,310px),1fr));gap:16px}
 .morph-card{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius-lg);padding:26px;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s}
 .morph-card:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:var(--shadow-hi)}
 .morph-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:18px;font-family:'Geist Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
@@ -261,7 +261,7 @@ nav.shrink .wordmark img{height:26px}
 .tools-group-h{font-family:'Inter',ui-sans-serif,sans-serif;font-size:clamp(20px,2vw,26px);font-weight:700;color:var(--ink);letter-spacing:-.015em;margin:0}
 
 /* The Wall / What Changes problem-solution cards */
-.wall-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:48px}
+.wall-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:18px;margin-top:48px}
 .wall-card{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius-lg);padding:32px 28px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:14px;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s;position:relative;overflow:hidden}
 .wall-card::before{display:none}
 .wall-card-fix::before{display:block;content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--accent-2);opacity:.9}
@@ -287,8 +287,8 @@ nav.shrink .wordmark img{height:26px}
 [data-theme="light"] .cro-header strong{color:var(--accent)}
 
 /* ===== TESTIMONIALS ===== */
-.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;margin-top:40px}
-.testimonials-grid-2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr));max-width:980px;margin-left:auto;margin-right:auto;margin-top:32px}
+.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px;margin-top:40px}
+.testimonials-grid-2{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));max-width:980px;margin-left:auto;margin-right:auto;margin-top:32px}
 
 /* Video testimonial strip */
 .video-testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
@@ -531,4 +531,17 @@ footer{background:var(--bg-2);border-top:1px solid var(--line);padding:50px 24px
 @media(prefers-reduced-motion:reduce){
   .what-card,.mode-card,.pain-card-c,.cf-card,.role-card,.reason,.fit-card,.price-cell,.shot-frame,.enterprise-inner{transition:box-shadow .35s,border-color .35s}
   .what-card:hover,.mode-card:hover,.pain-card-c:hover,.cf-card:hover,.role-card:hover,.reason:hover,.fit-card:hover,.price-cell:hover,.shot-frame:hover,.enterprise-inner:hover{transform:none}
+}
+
+/* ===== SMALL-SCREEN POLISH (mobile sweep) ===== */
+/* Roomier footer tap targets once the footer goes single-column */
+@media(max-width:720px){
+  .footer-links a{padding:6px 0;display:inline-block}
+}
+/* Tighter side gutters and a smaller hero on small phones so nothing crowds/clips */
+@media(max-width:480px){
+  .hero,.solid,.solid-2,.together,.final-cta,footer{padding-left:18px;padding-right:18px}
+}
+@media(max-width:380px){
+  .hero-h1{font-size:clamp(26px,8vw,32px)}
 }
