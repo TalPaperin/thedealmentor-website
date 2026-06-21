@@ -87,7 +87,8 @@ nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px soli
 .wordmark{font-family:'Inter',sans-serif;font-weight:600;font-size:20px;letter-spacing:-.025em;color:var(--ink);text-decoration:none;display:inline-flex;align-items:center}
 .wordmark b{background:linear-gradient(110deg,var(--chr-1),var(--chr-2),var(--chr-3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;font-weight:600}
 /* Logo image swap — white on dark, blue on light. Drop /DealMentor horizontal logo blue.jpg into the repo to activate light mode. */
-.wordmark img{height:30px;width:auto;display:block}
+.wordmark img{height:36px;width:auto;display:block}
+@media(max-width:359px){.wordmark img{height:30px}}
 .wordmark .logo-light{display:none}
 [data-theme="light"] .wordmark .logo-dark{display:none}
 [data-theme="light"] .wordmark .logo-light{display:block}
