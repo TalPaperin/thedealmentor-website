@@ -516,3 +516,19 @@ footer{background:var(--bg-2);border-top:1px solid var(--line);padding:50px 24px
 .stats-grid .stat-num{font-family:'Inter',ui-sans-serif,sans-serif;font-size:clamp(36px,5.5vw,56px);font-weight:800;color:var(--accent);letter-spacing:-.04em;line-height:1;margin-bottom:10px}
 .stats-grid .stat-band-lbl{font-family:'Inter',sans-serif;font-size:13.5px;color:var(--text);line-height:1.4;max-width:200px;margin:0 auto}
 @media(max-width:720px){.stats-grid{grid-template-columns:repeat(2,1fr);gap:36px 16px}.stats-grid .stat-num{font-size:38px}.stats-band{padding:36px 20px}}
+
+/* ===== POLISH PASS: house hover recipe for cards that were flat ===== */
+/* These class names are page-unique; centralizing here keeps one source of truth. */
+.what-card,.mode-card,.pain-card-c,.cf-card,.role-card,.reason,.fit-card,.price-cell{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s}
+.what-card:hover,.mode-card:hover,.pain-card-c:hover,.cf-card:hover,.role-card:hover,.reason:hover,.fit-card:hover,.price-cell:hover{transform:translateY(-4px);box-shadow:var(--shadow-hi);border-color:var(--accent)}
+.shot-frame{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s}
+.shot-frame:hover{transform:translateY(-4px);box-shadow:var(--shadow-hi);border-color:var(--accent)}
+.enterprise-inner{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s}
+.enterprise-inner:hover{transform:translateY(-3px);box-shadow:var(--shadow-hi);border-color:var(--accent)}
+/* Comparison-table row hover (whyus + vs/*) */
+.compare-table tbody tr{transition:background .15s ease}
+.compare-table tbody tr:hover{background:color-mix(in srgb,var(--accent) 5%,transparent)}
+@media(prefers-reduced-motion:reduce){
+  .what-card,.mode-card,.pain-card-c,.cf-card,.role-card,.reason,.fit-card,.price-cell,.shot-frame,.enterprise-inner{transition:box-shadow .35s,border-color .35s}
+  .what-card:hover,.mode-card:hover,.pain-card-c:hover,.cf-card:hover,.role-card:hover,.reason:hover,.fit-card:hover,.price-cell:hover,.shot-frame:hover,.enterprise-inner:hover{transform:none}
+}
