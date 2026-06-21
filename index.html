@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Mulish:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/spine.css?v=20260621t">
+<link rel="stylesheet" href="/spine.css?v=20260621u">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"TheDealMentor.AI","legalName":"KSW Solutions","url":"https://www.thedealmentor.ai","logo":"https://www.thedealmentor.ai/DealMentor%20horizontal%20logo%20white.jpg","description":"A sales platform that pairs a live fractional CRO and a 24/7 Ask-the-CRO advisor with twenty AI sales tools, on every plan.","founder":{"@type":"Person","name":"Tal Paperin","url":"https://ksw.solutions"},"sameAs":["https://www.linkedin.com/company/thedealmentor","https://www.facebook.com/thedealmentor","https://www.youtube.com/@thedealmentoryt"]}
 </script>
@@ -124,17 +124,17 @@
       <p class="section-sub">Twenty years across four continents. Hundreds of teams. Thousands of deals. Every revenue org, from a solo founder to a 500-agent contact center, hits the same three walls. They stay stuck there until something changes.</p>
     </div>
     <div class="wall-grid">
-      <article class="wall-card gsap-wall" data-num="01">
+      <article class="wall-card tile-flip" data-num="01">
         <div class="wall-tag">Wall 01</div>
         <h3 class="wall-h">Nobody has <em>the right words.</em></h3>
         <p class="wall-body">Founders freeze on the call. Reps wing the email. Agents fumble the objection. Theory doesn't help. Frameworks don't help. You need <strong>the actual words</strong>, per buyer, per stage, per objection.</p>
       </article>
-      <article class="wall-card gsap-wall" data-num="02">
+      <article class="wall-card tile-flip" data-num="02">
         <div class="wall-tag">Wall 02</div>
         <h3 class="wall-h">A real CRO is <em>out of reach or out of focus.</em></h3>
         <p class="wall-body">A full-time CRO costs <strong>$300K to $500K a year.</strong> Fractional runs <strong>$6,000 to $20,000 a month.</strong> Founders can't afford one. Sales managers have one but never see them on a deal. BPO ops directors have an Ops VP, not a revenue leader who owns the script. Same hole, three different shapes.</p>
       </article>
-      <article class="wall-card gsap-wall" data-num="03">
+      <article class="wall-card tile-flip" data-num="03">
         <div class="wall-tag">Wall 03</div>
         <h3 class="wall-h">Your stack doesn't <em>tell anyone what to do.</em></h3>
         <p class="wall-body">Gong records what already happened. Salesloft sequences the email. HubSpot stores the deal. Cogito and Balto listen to live calls but never wrote the script. None of them tell the seller or the agent what to <strong>do</strong>, and all of them assume the playbook already exists.</p>
@@ -150,7 +150,7 @@
       <h2 class="section-h2" id="changes-title">Three walls. <em>Down.</em></h2>
       <p class="section-sub">Each wall mapped to specific features in the platform. Not theory. Outcomes.</p>
     </div>
-    <div class="wall-grid">
+    <div class="wall-grid wall-grid--mirror">
       <article class="wall-card wall-card-fix tile-flip" data-num="01">
         <div class="wall-tag">Now you have the words</div>
         <h3 class="wall-h">Sales Copilot. ICP Scripts. <em>Outreach Builder.</em></h3>
@@ -380,7 +380,7 @@
   </div>
 </footer>
 
-<script src="/spine.js?v=20260621t"></script>
+<script src="/spine.js?v=20260621u"></script>
 
 
 <script>
@@ -500,25 +500,6 @@
     setTimeout(function(){i=(i+1)%words.length;el.textContent=words[i];el.classList.remove('out');},360);
   },2200);
 })();
-</script>
-
-<!-- GSAP: sticky three-walls scroll story (desktop, motion-on only) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-<script>
-window.addEventListener('load',function(){
-  if(!window.gsap||!window.ScrollTrigger)return;
-  if(!window.matchMedia('(min-width:900px) and (prefers-reduced-motion: no-preference)').matches)return;
-  var sec=document.querySelector('#the-wall');
-  if(!sec)return;
-  var cards=sec.querySelectorAll('.gsap-wall');
-  if(cards.length<3)return;
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.set(cards,{opacity:0,y:64});
-  var tl=gsap.timeline({scrollTrigger:{trigger:sec,start:'top top',end:'+=90%',pin:true,scrub:0.6,anticipatePin:1,invalidateOnRefresh:true}});
-  cards.forEach(function(c,idx){tl.to(c,{opacity:1,y:0,ease:'power2.out',duration:1},idx*0.8);});
-  ScrollTrigger.refresh();
-});
 </script>
 </body>
 </html>

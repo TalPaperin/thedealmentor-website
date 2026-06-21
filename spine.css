@@ -764,3 +764,21 @@ html.js [data-reveal]{transform:translateY(34px);transition:opacity .6s cubic-be
   .trust-track [aria-hidden]{display:none}
   .trust-viewport{overflow:visible;-webkit-mask-image:none;mask-image:none}
 }
+
+
+/* ============================================================
+   THREE WALLS - bento (featured full-width tile + split pair)
+   ============================================================ */
+.wall-grid{display:grid;gap:16px;grid-template-columns:1fr 1fr;align-items:stretch}
+.wall-grid > .wall-card:first-child{grid-column:1 / -1}
+.wall-grid--mirror > .wall-card:first-child{grid-column:auto}
+.wall-grid--mirror > .wall-card:last-child{grid-column:1 / -1}
+/* featured tiles read bigger */
+.wall-grid > .wall-card:first-child .wall-h,
+.wall-grid--mirror > .wall-card:last-child .wall-h{font-size:clamp(22px,2.4vw,30px)}
+.wall-grid > .wall-card:first-child,
+.wall-grid--mirror > .wall-card:last-child{background:linear-gradient(160deg,color-mix(in srgb,var(--brand-blue) 8%,var(--bg-card)),var(--bg-card))}
+@media(max-width:760px){
+  .wall-grid,.wall-grid--mirror{grid-template-columns:1fr}
+  .wall-grid > .wall-card,.wall-grid--mirror > .wall-card{grid-column:auto!important}
+}
