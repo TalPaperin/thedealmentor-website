@@ -91,8 +91,8 @@ function toggleFaq(btn){
       p.x+=vx;p.y+=vy;p.age++;
       var lifeA=(1-p.age/p.life);
       if(lifeA<=0||p.x<-20||p.x>W+20||p.y<-20||p.y>H+20){if(p.injected){particles.splice(i,1);i--;continue}makeP(p);continue}
-      /* Brand hue range: teal #00B9C7 (~184°) -> deep royal #1229B2 (~228°) */
-      var hue=184+p.seed*44;
+      /* Monochrome blue range: bright blue (~212°) -> deep royal #1229B2 (~228°) */
+      var hue=212+p.seed*16;
       var alpha=isLight()?(.04+.06*lifeA):(.05+.10*lifeA);
       var sat=isLight()?70:90,light=isLight()?42:60;
       ctx.fillStyle='hsla('+hue.toFixed(1)+','+sat+'%,'+light+'%,'+alpha.toFixed(3)+')';
@@ -186,4 +186,27 @@ function toggleFaq(btn){
     btn.addEventListener('pointermove',function(e){var r=btn.getBoundingClientRect();var mx=e.clientX-(r.left+r.width/2),my=e.clientY-(r.top+r.height/2);btn.style.transform='translate('+(mx*0.28).toFixed(1)+'px,'+(my*0.4).toFixed(1)+'px)';});
     btn.addEventListener('pointerleave',function(){btn.style.transform='';});
   });
+})();
+
+
+/* ===== SVG line-icon draw-in on scroll ===== */
+(function(){
+  if(!document.documentElement.classList.contains('js'))return;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  if(!('IntersectionObserver' in window))return;
+  var paths=[];
+  [].forEach.call(document.querySelectorAll('section [class*="ico"] svg path, section [class*="card"] svg path'),function(p){
+    try{
+      var st=getComputedStyle(p).stroke;
+      if(!st||st==='none')return;                 // only stroked line icons
+      var L=p.getTotalLength();
+      if(!L||L>4000)return;
+      p.style.strokeDasharray=L;p.style.strokeDashoffset=L;
+      p.style.transition='stroke-dashoffset .9s ease';
+      p.setAttribute('data-draw','1');paths.push(p);
+    }catch(e){}
+  });
+  if(!paths.length)return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.style.strokeDashoffset='0';io.unobserve(e.target);}});},{threshold:0.3});
+  paths.forEach(function(p){io.observe(p)});
 })();

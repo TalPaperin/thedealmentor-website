@@ -621,3 +621,43 @@ html.js [data-reveal].rv-in{opacity:1;transform:none;filter:none}
 .hero-rotator .rot-word{display:inline-block;font-family:var(--font-display);font-weight:400;letter-spacing:.01em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;transition:opacity .35s ease,transform .35s cubic-bezier(.2,.7,.2,1)}
 .hero-rotator .rot-word.out{opacity:0;transform:translateY(-12px)}
 @media (prefers-reduced-motion: reduce){.hero-rotator .rot-word{transition:none}}
+
+
+/* ============================================================
+   DE-CLICHE PASS  (monochrome brand: white type · ONE electric blue · near-black)
+   Kills the generic teal->blue->indigo gradient-on-text and the purple aurora.
+   ============================================================ */
+:root{--brand-blue:#3D9BFF;--brand-blue-2:#2563EB}
+[data-theme="light"]{--brand-blue:#1D6FE0;--brand-blue-2:#1229B2}
+
+/* Headline emphasis = solid white (ink), not gradient. Like the shot. */
+.hero-h1 .real,.hero-h1 em,
+.section-h2 em,.wall-h em,.final-cta h2 em,
+.hero-sub-fix{background:none!important;-webkit-text-fill-color:var(--ink);color:var(--ink)}
+
+/* Blue reserved for numbers, the rotator, the eyebrow, the underline - used sparingly */
+.stats-grid .stat-num{color:var(--brand-blue);-webkit-text-fill-color:var(--brand-blue)}
+.hero-rotator .rot-word{background:none!important;-webkit-text-fill-color:var(--brand-blue);color:var(--brand-blue)}
+.grad-text,.wordmark b{background:none!important;-webkit-text-fill-color:var(--brand-blue);color:var(--brand-blue)}
+.hero-h1 .hero-promise::after{background:var(--brand-blue)}
+.hero-eyebrow,.tools-group-eyebrow,.gallery-label,.founder-label{color:var(--brand-blue)}
+
+/* Buttons + progress bar: solid blue, drop the teal */
+.btn-primary,[data-theme="light"] .btn-primary{background:linear-gradient(180deg,var(--brand-blue),var(--brand-blue-2))}
+.scroll-progress{background:linear-gradient(90deg,var(--brand-blue),var(--brand-blue-2))}
+
+/* Section headings uppercase (shot energy) */
+.section-h2{text-transform:uppercase;letter-spacing:.014em}
+
+/* Aurora: one subtle blue glow, not a purple/teal AI blob */
+.hero-aurora{filter:blur(80px);opacity:.26;background:radial-gradient(48% 52% at 50% 28%,color-mix(in srgb,var(--brand-blue) 60%,transparent),transparent 72%);background-repeat:no-repeat}
+[data-theme="light"] .hero-aurora{opacity:.16}
+
+/* De-AOS the reveal: no blur, no scale, snappier - reads bespoke, not library-default */
+html.js [data-reveal]{opacity:0;transform:translateY(22px);filter:none;transition:opacity .55s cubic-bezier(.22,.61,.36,1),transform .55s cubic-bezier(.22,.61,.36,1)}
+
+/* Line-icon draw-in (set up by spine.js) */
+@media (prefers-reduced-motion: reduce){
+  .hero-aurora{opacity:.14}
+  [data-draw]{stroke-dashoffset:0!important}
+}
