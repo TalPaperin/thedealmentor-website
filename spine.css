@@ -77,12 +77,8 @@ html.js .tile-flip.is-in{animation:tileFlip 2.6s cubic-bezier(.22,.65,.25,1) for
 
 /* ===== FLOW FIELD BACKGROUND ===== */
 #field{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.85;transition:opacity .4s}
-[data-theme="light"] #field{opacity:.4}
+[data-theme="light"] #field{opacity:.55}
 .veil{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(70% 50% at 50% 35%,transparent 0%,color-mix(in srgb,var(--bg) 55%,transparent) 70%,var(--bg) 100%);transition:background .4s ease}
-/* Light mode: gentle edge-only fade so there's no opaque top cap that reads
-   as a horizontal band under the nav. Center stays clear; only the far
-   corners get a light veil. */
-[data-theme="light"] .veil{background:radial-gradient(150% 120% at 50% 28%,transparent 62%,color-mix(in srgb,var(--bg) 30%,transparent) 100%)}
 
 /* ===== NAV ===== */
 nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line);padding:14px clamp(20px,3vw,32px);display:flex;justify-content:space-between;align-items:center;gap:16px;transition:padding .25s ease}
@@ -111,8 +107,8 @@ nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px soli
 .nav-toggle{display:none;width:40px;height:40px;border-radius:10px;background:transparent;align-items:center;justify-content:center;flex-direction:column;gap:5px}
 .nav-toggle span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:transform .2s,opacity .2s}
 @media (max-width:920px){
-  .nav-links{position:absolute;top:100%;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;padding:8px 0;max-height:0;overflow:hidden;transition:max-height .25s ease;box-shadow:0 8px 24px rgba(0,0,0,.30)}
-  .nav-links.open{max-height:560px}
+  .nav-links{position:absolute;top:100%;left:0;right:0;background:var(--bg);flex-direction:column;align-items:stretch;gap:0;padding:8px 0;max-height:0;overflow:hidden;transition:max-height .25s ease}
+  .nav-links.open{max-height:560px;border-bottom:1px solid var(--line);box-shadow:0 8px 24px rgba(0,0,0,.30)}
   .nav-links a{padding:14px 28px;font-size:16px}
   .nav-links a::after{display:none}
   .nav-links a.nav-login-m{display:flex!important;align-items:center;justify-content:center;margin:14px 20px 10px!important;padding:14px 22px!important;background:var(--accent)!important;color:#fff!important;font-weight:700!important;font-size:16px;border-radius:10px;border:none;opacity:1!important}
