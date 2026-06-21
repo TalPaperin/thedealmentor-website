@@ -661,3 +661,14 @@ html.js [data-reveal]{opacity:0;transform:translateY(22px);filter:none;transitio
   .hero-aurora{opacity:.14}
   [data-draw]{stroke-dashoffset:0!important}
 }
+
+
+/* ============================================================
+   TOOL-CARD HOVER TERMINAL  (types a real-style output on hover)
+   ============================================================ */
+.tool-card{position:relative}
+.tool-demo{margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-family:'Geist Mono',ui-monospace,monospace;font-size:12px;line-height:1.5;color:var(--brand-blue);min-height:2.5em;opacity:0;transform:translateY(4px);transition:opacity .3s ease,transform .3s ease;word-break:break-word}
+.tool-card:hover .tool-demo,.tool-card.demo-show .tool-demo,.tool-card:focus-within .tool-demo{opacity:1;transform:none}
+.tool-demo .caret{display:inline-block;width:.5ch;height:1.05em;background:var(--brand-blue);vertical-align:-.18em;margin-left:1px;animation:tdblink 1s steps(1) infinite}
+@keyframes tdblink{50%{opacity:0}}
+@media (prefers-reduced-motion: reduce){.tool-demo{opacity:1;transform:none}.tool-demo .caret{animation:none}}
