@@ -695,3 +695,24 @@ html.js [data-reveal]{opacity:0;transform:translateY(22px);filter:none;transitio
   .section-h2{overflow-wrap:break-word;word-break:normal}
   .hero-aurora{top:-12%;height:120%;filter:blur(60px)}    /* keep the glow inside the shorter mobile hero */
 }
+
+
+/* ============================================================
+   TOOL-CARD 3D HOVER FLIP  (front -> terminal back)
+   ============================================================ */
+.tools-grid .tool-card.tc-flip{position:relative;transform-style:preserve-3d;opacity:0;transform:translateY(26px);transition:opacity .5s ease,transform .6s cubic-bezier(.2,.7,.2,1);min-height:138px}
+.tools-grid .tool-card.tc-flip.tc-seen{opacity:1;transform:none}
+.tools-grid .tool-card.tc-flip.tc-seen:hover,.tools-grid .tool-card.tc-flip.tc-show{transform:rotateY(180deg)}
+.tc-face{backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.tc-front{position:relative;z-index:2}
+.tc-back{position:absolute;inset:22px;transform:rotateY(180deg);display:flex;flex-direction:column;justify-content:center;z-index:1}
+.tc-back .tool-demo{opacity:1;transform:none;border-top:none;margin:0;padding:0;min-height:0;font-size:13px}
+.tool-card.tc-flip:hover{box-shadow:var(--shadow-hi);border-color:var(--accent)}
+.tool-card.tc-flip:hover::before,.tool-card.tc-flip.tc-show::before{opacity:0}
+@media (prefers-reduced-motion: reduce){
+  .tools-grid .tool-card.tc-flip{opacity:1;transform:none;transition:none}
+  .tools-grid .tool-card.tc-flip.tc-seen:hover{transform:none}
+}
+
+/* A little more travel on the section reveals so motion reads clearly */
+html.js [data-reveal]{transform:translateY(34px);transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .65s cubic-bezier(.22,.61,.36,1)}

@@ -162,7 +162,7 @@ function toggleFaq(btn){
   /* Scroll-reveal: section heads + any card not already handled by tile-flip */
   var vh=window.innerHeight;
   var nodes=[].slice.call(document.querySelectorAll('.section-head-center,.section-head,section [class*="card"]'))
-    .filter(function(el){return !el.classList.contains('tile-flip')&&!el.classList.contains('aud-card')&&!el.classList.contains('gsap-wall')&&!el.closest('.hero')&&!el.closest('.pg-track');});
+    .filter(function(el){return !el.classList.contains('tile-flip')&&!el.classList.contains('aud-card')&&!el.classList.contains('gsap-wall')&&!el.classList.contains('tool-card')&&!el.closest('.hero')&&!el.closest('.pg-track');});
   var io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('rv-in');io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -7% 0px'}):null;
   var idx=new Map();
   nodes.forEach(function(el){
@@ -214,27 +214,38 @@ function toggleFaq(btn){
 })();
 
 
-/* ===== Tool-card hover "terminal" micro-demo ===== */
+/* ===== Tool-card HOVER FLIP to a terminal micro-demo ===== */
 (function(){
   if(!document.documentElement.classList.contains('js'))return;
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hover=window.matchMedia('(hover:hover) and (pointer:fine)').matches;
   var cards=document.querySelectorAll('.tool-card[data-demo]');
   if(!cards.length)return;
   cards.forEach(function(card){
+    card.classList.remove('spotlight');           // the flip owns this card now
+    card.classList.add('tc-flip');
     var txt=card.getAttribute('data-demo')||'';
+    var front=document.createElement('div');front.className='tc-face tc-front';
+    while(card.firstChild){front.appendChild(card.firstChild);}
+    var back=document.createElement('div');back.className='tc-face tc-back';
     var demo=document.createElement('div');demo.className='tool-demo';
     var span=document.createElement('span');demo.appendChild(span);
     var caret=document.createElement('span');caret.className='caret';caret.setAttribute('aria-hidden','true');demo.appendChild(caret);
-    card.appendChild(demo);
+    back.appendChild(demo);
+    card.appendChild(front);card.appendChild(back);
     if(reduce){span.textContent=txt;return;}
-    var timer=null;
-    function type(){clearInterval(timer);var i=0;span.textContent='';timer=setInterval(function(){span.textContent=txt.slice(0,++i);if(i>=txt.length)clearInterval(timer);},26);}
-    function reset(){clearInterval(timer);span.textContent='';}
-    card.addEventListener('pointerenter',type);
-    card.addEventListener('pointerleave',reset);
+    if(hover){
+      var t=null;
+      card.addEventListener('pointerenter',function(){clearInterval(t);var i=0;span.textContent='';t=setInterval(function(){span.textContent=txt.slice(0,++i);if(i>=txt.length)clearInterval(t);},26);});
+      card.addEventListener('pointerleave',function(){clearInterval(t);span.textContent='';});
+    }else{
+      span.textContent=txt;                        // touch: no flip, demo prefilled (shown if tapped)
+    }
   });
-  if(!reduce && window.matchMedia('(hover:none)').matches && 'IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var c=e.target;c.classList.add('demo-show');var sp=c.querySelector('.tool-demo span');if(sp)sp.textContent=c.getAttribute('data-demo');io.unobserve(c);}});},{threshold:.5});
+  /* Entrance fade (opacity only - never fights the flip transform) */
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('tc-seen');io.unobserve(e.target);}});},{threshold:.18,rootMargin:'0px 0px -6% 0px'});
     cards.forEach(function(c){io.observe(c)});
-  }
+  }else{cards.forEach(function(c){c.classList.add('tc-seen');});}
+  if(reduce)cards.forEach(function(c){c.classList.add('tc-seen');});
 })();
