@@ -277,3 +277,22 @@ function toggleFaq(btn){
     nums.forEach(function(n){io.observe(n);});
   }else nums.forEach(run);
 })();
+
+
+/* ===== Testimonials auto-advancing carousel ===== */
+(function(){
+  if(!document.documentElement.classList.contains('js'))return;
+  var sc=document.getElementById('testiScroller');if(!sc)return;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var paused=false;
+  ['pointerenter','pointerdown','touchstart','focusin'].forEach(function(ev){sc.addEventListener(ev,function(){paused=true;},{passive:true});});
+  sc.addEventListener('pointerleave',function(){paused=false;});
+  document.addEventListener('visibilitychange',function(){paused=document.hidden;});
+  setInterval(function(){
+    if(paused)return;
+    var first=sc.children[0];if(!first)return;
+    var step=first.getBoundingClientRect().width+18;
+    if(sc.scrollLeft+sc.clientWidth>=sc.scrollWidth-10){sc.scrollTo({left:0,behavior:'smooth'});}
+    else{sc.scrollBy({left:step,behavior:'smooth'});}
+  },4200);
+})();

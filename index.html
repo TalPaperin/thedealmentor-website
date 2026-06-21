@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Mulish:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/spine.css?v=20260621u">
+<link rel="stylesheet" href="/spine.css?v=20260621v">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"TheDealMentor.AI","legalName":"KSW Solutions","url":"https://www.thedealmentor.ai","logo":"https://www.thedealmentor.ai/DealMentor%20horizontal%20logo%20white.jpg","description":"A sales platform that pairs a live fractional CRO and a 24/7 Ask-the-CRO advisor with twenty AI sales tools, on every plan.","founder":{"@type":"Person","name":"Tal Paperin","url":"https://ksw.solutions"},"sameAs":["https://www.linkedin.com/company/thedealmentor","https://www.facebook.com/thedealmentor","https://www.youtube.com/@thedealmentoryt"]}
 </script>
@@ -279,7 +279,8 @@
       <h2 class="section-h2">What our customers <em>actually say.</em></h2>
       <p class="section-sub">Founders, sales-team members, operators. Filter for the voice that matches your setup. If you don't see your shape yet, that's because the first BPO and team-lead testimonials are being filmed right now.</p>
     </div>
-    <div class="video-testi-grid">
+    <div class="testi-carousel">
+      <div class="testi-scroller" id="testiScroller">
       <button class="video-testi-card" type="button" data-video="O_qLEEd27Is" aria-label="Play video testimonial from Alex Reznichenko">
         <div class="video-testi-thumb">
           <img src="https://img.youtube.com/vi/O_qLEEd27Is/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/O_qLEEd27Is/mqdefault.jpg'" alt="Video testimonial: Alex Reznichenko, Botshare.ai" width="1280" height="720" loading="lazy">
@@ -302,7 +303,7 @@
           <div class="video-testi-role">SDR → AE, ClinicMind</div>
         </div>
       </button>
-      <button class="video-testi-card video-testi-extra" type="button" data-video="abYYocEK_6E" aria-label="Play video testimonial from Avi Cohen">
+      <button class="video-testi-card" type="button" data-video="abYYocEK_6E" aria-label="Play video testimonial from Avi Cohen">
         <div class="video-testi-thumb">
           <img src="https://img.youtube.com/vi/abYYocEK_6E/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/abYYocEK_6E/mqdefault.jpg'" alt="Video testimonial: Avi Cohen, SDR" width="1280" height="720" loading="lazy">
           <span class="video-play-btn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
@@ -313,17 +314,15 @@
           <div class="video-testi-role">SDR, ClinicMind</div>
         </div>
       </button>
-    </div>
-    <button class="video-testi-more" type="button" id="videoTestiMore" aria-expanded="false" aria-controls="product-gallery">+ One more video testimonial</button>
-    <div class="testimonials-grid testimonials-grid-2">
-      <figure class="testi-card tile-flip">
+      <figure class="testi-card">
         <blockquote class="testi-quote">"DealMentor brings real value by helping teams improve the way they prepare, communicate, and close deals. Better sales conversations, stronger strategy, more confidence throughout the process."</blockquote>
         <figcaption class="testi-author"><picture><source srcset="/edward.webp" type="image/webp"><img src="/edward.jpg" alt="Edward Sussan" width="48" height="48" loading="lazy"></picture><div><div class="icp-tag">Solo Founder</div><div class="testi-name">Edward Sussan</div><div class="testi-role">Founder &amp; CEO, MakhSuss</div></div></figcaption>
       </figure>
-      <figure class="testi-card tile-flip">
+      <figure class="testi-card">
         <blockquote class="testi-quote">"I wanted to ease the work of our sales team and prepared a sales outreach plan/template for them. I am quite happy with the result."</blockquote>
         <figcaption class="testi-author"><div class="testi-avatar-initials" aria-hidden="true">JL</div><div><div class="testi-name">Julia Lerner</div><div class="testi-role">CEO &amp; Founder, Lotix Smart Warehouse</div></div></figcaption>
       </figure>
+      </div>
     </div>
   </div>
 </section>
@@ -380,7 +379,7 @@
   </div>
 </footer>
 
-<script src="/spine.js?v=20260621u"></script>
+<script src="/spine.js?v=20260621v"></script>
 
 
 <script>
