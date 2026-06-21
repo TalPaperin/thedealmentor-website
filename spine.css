@@ -81,7 +81,8 @@ html.js .tile-flip.is-in{animation:tileFlip 2.6s cubic-bezier(.22,.65,.25,1) for
 .veil{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(70% 50% at 50% 35%,transparent 0%,color-mix(in srgb,var(--bg) 55%,transparent) 70%,var(--bg) 100%);transition:background .4s ease}
 
 /* ===== NAV ===== */
-nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 96%,transparent);border-bottom:1px solid var(--line);padding:14px clamp(20px,3vw,32px);display:flex;justify-content:space-between;align-items:center;gap:16px;transition:padding .25s ease}
+nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line);padding:14px clamp(20px,3vw,32px);display:flex;justify-content:space-between;align-items:center;gap:16px;transition:padding .25s ease}
+[data-theme="light"] nav{border-bottom-color:transparent;box-shadow:0 6px 20px -16px rgba(18,18,18,.18)}
 nav.shrink{padding:10px clamp(20px,3vw,32px);background:color-mix(in srgb,var(--bg) 98%,transparent)}
 .nav-logo{display:flex;align-items:center}
 .wordmark{font-family:'Inter',sans-serif;font-weight:600;font-size:20px;letter-spacing:-.025em;color:var(--ink);text-decoration:none;display:inline-flex;align-items:center}
@@ -537,6 +538,14 @@ footer{background:var(--bg-2);border-top:1px solid var(--line);padding:50px 24px
 /* Roomier footer tap targets once the footer goes single-column */
 @media(max-width:720px){
   .footer-links a{padding:6px 0;display:inline-block}
+}
+/* Phones: the desktop hero/section vertical rhythm is far too tall - tighten it
+   so there isn't a huge dead gap between the hero and the first section. */
+@media(max-width:640px){
+  .hero{padding-top:44px;padding-bottom:40px}
+  .solid,.solid-2,.together{padding-top:52px;padding-bottom:52px}
+  .final-cta{padding-top:60px;padding-bottom:60px}
+  .plans-grid{margin-top:28px}
 }
 /* Tighter side gutters and a smaller hero on small phones so nothing crowds/clips */
 @media(max-width:480px){
