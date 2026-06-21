@@ -80,6 +80,9 @@ Last refreshed: 2026-06-19, after the multi-ICP website rebuild.
 
 Pushed in commits `9f068be` · `86eb630` · `7116d19` · `8ac02d0` · `9d2238b` · `0372b10` · `ec71b29` · `2f45744` · `6379f67` · (latest)
 
+Including:
+- **BPO 7-day self-serve trial CTA wired site-wide** — primary "Try BPO mode free · 7 days" on `/bpo-and-centers` hero + final-CTA and on the `/pricing` BPO panel, links to `https://app.thedealmentor.ai/register`. Trial is "see it work" (1 campaign + sample audit-ready cert); rolling out across the floor is still sales-led from $999/month, scoped on a call. FAQ #6 on `/index` (+ JSON-LD) and the BPO answer block updated to name the trial. Final-CTA trial lines on `/index`, `/about`, `/pricing`, `/platform`, `/whyus` now name all three trials (Founder 7d / Team & Growth 14d / BPO 7d).
+
 Including the multi-ICP rebalance of core pages:
 - `/pricing` BPO now pulled out of the self-serve plans grid (Paddle is wired to Founder/Team/Growth only) and shown as a horizontal **sales-led panel: "From $999/month, per-campaign pricing, 3-month minimum, unlimited agents"** with "Best for / Not for" disqualifier and "Book a call · scope it" CTA
 - `/platform` modes-grid expanded to **3 modes** (Founder / Team / BPO)
