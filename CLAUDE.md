@@ -12,7 +12,7 @@ The **marketing site** at https://www.thedealmentor.ai. Static HTML/CSS/JS, no b
 
 ## Cross-repo relationship — READ THIS BEFORE CHANGING PRODUCT CLAIMS
 
-This is the **marketing** site. The **product app** lives in a **sibling repo** at `app.thedealmentor.ai` (repo slug: *TODO: Tal, fill in once the second repo is wired into the environment*).
+This is the **marketing** site. The **product app** lives in a **sibling repo** at `app.thedealmentor.ai` (repo slug: `TalPaperin/thedealmentor`).
 
 **Hard rule:** any copy on this site that makes a product claim (feature names, mode behavior, trial flow, what the app actually does) must match what's actually shipped in the app repo. When in doubt, grep the app repo before changing the claim. Marketing copy promising features that don't exist is the single fastest way to break buyer trust on a $999/mo, 3-month-commit sale.
 
@@ -20,9 +20,10 @@ This is the **marketing** site. The **product app** lives in a **sibling repo** 
 
 These have been verified-by-Tal-against-the-app and are safe to claim in copy:
 
-- **BPO mode works self-serve end-to-end.** Signup at `app.thedealmentor.ai/register` → pick "I run a call center / BPO" at onboarding → lands on Campaigns → paste/upload client brief → two AI calls via `/api/chat` → Campaign Pack output (cheat-sheet + rebuttal library + 10-question certification) saved to the `outputs` table → cert is PASS/FAIL with a branded certificate, unique Verification ID, PDF (print) + Word export, single or batch.
-- **Founder / Team / Growth** sign up self-serve via Paddle (`/register` → pick mode → Paddle checkout). Founder Mode ships 4 docs (GTM Plan, Sales Playbook, Marketing Plan, Daily Workflow). Team Mode ships 7 docs.
-- **Coaching cards, readiness overview, regenerate-on-script, brief-privacy toggle, "Practice this call"** — all built.
+- **BPO mode works self-serve end-to-end.** Signup at `app.thedealmentor.ai/register` → pick "I run a call center / BPO" at onboarding → lands on Campaigns → paste/upload client brief → two AI calls via `/api/chat` → Campaign Pack output (cheat-sheet + rebuttal library + certification, **configurable 3-25 questions, default 10**) saved to the `outputs` table → cert is PASS/FAIL with a branded certificate, unique Verification ID, PDF (print) + Word export, single or batch.
+- **Founder / Team / Growth** sign up self-serve via Paddle (`/register` → pick mode → Paddle checkout). Founder Mode ships **4 docs** (GTM Plan, Sales Playbook, Marketing Plan, Daily Workflow). Team Mode ships **6 docs** (Sales Playbook, Why-Buy, Marketing Plan, Vertical Intel, SDR Guide, AE Guide), plus ICP Scripts. **NOT 7.**
+- **Campaigns are available to all team managers** (not BPO-only). A campaign is a **draft until published**; the manager can **assign it to all or specific agents**; assigned reps/agents get a **certification notice on their dashboard**; results roll up to the manager's **Records** tab. Optional **"Use my company context"** toggle (off by default) folds the team's own intake into generation.
+- **Coaching cards, readiness overview, regenerate-on-script (with live timer + streaming preview), brief-privacy toggle, "Practice this call"** — all built. Ask-the-CRO is role-aware (manager vs rep) and sees the user's campaigns.
 
 If a new copy claim doesn't appear in this list, treat it as unverified and ask Tal before shipping it.
 
@@ -35,7 +36,9 @@ If a new copy claim doesn't appear in this list, treat it as unverified and ask 
 | Growth | $999/mo (annual) / $1,199/mo (monthly), up to 15 reps | Paddle self-serve, 14-day trial |
 | **BPO / Centers** | **From $999/mo, sales-led**, monthly billing, 3-month minimum, unlimited agents per campaign | **7-day see-it-work trial** (1 campaign, no auto-convert) → book a call to scope rollout |
 
-The BPO plan is deliberately **NOT in the self-serve plans grid** on `/pricing` — it lives in a horizontal sales-led panel below the grid. Paddle is wired to Founder/Team/Growth only; BPO conversion requires a call. This was decided after a long debate (search session log for "the 4th one is not connecting to anything"). Do not put BPO back in the Paddle grid.
+The BPO plan is deliberately **NOT in the self-serve plans grid** on `/pricing` — it lives in a horizontal sales-led panel below the grid. BPO conversion requires a call (no Paddle product). This was decided after a long debate (search session log for "the 4th one is not connecting to anything"). Do not put BPO back in the Paddle grid.
+
+**Naming + the hidden Scale plan (verified against Paddle 2026-06-21):** the website uses the marketing name **Team** for what Paddle and the app call **Starter** (the 5-rep plan). Paddle also has a 4th self-serve plan, **Scale** ($2,999/mo monthly, $29,988/yr ≈ $2,499/mo annual, up to 40 reps, 14-day trial), which is **intentionally hidden from the public website pricing grid** (kept for in-app upsell only — do not surface it on the site). Prices above are correct against Paddle (Founder $149 monthly / $1,430-yr; Team/Starter $449 / $4,788-yr; Growth $1,199 / $11,988-yr).
 
 ## Locked positioning + ICPs
 
@@ -60,7 +63,7 @@ When real BPO logos land, swap the "first wave" framing on `/bpo-and-centers` fo
 - **No "AI slurp" filler** — words like "seamlessly," "revolutionize," "unlock," "supercharge," "leverage" (as a verb), "in today's fast-paced world." If you'd be embarrassed to read it on stage, don't ship it.
 - **Tricolon / pain-verb leads** in heroes (e.g. "Founders need senior judgment they can't afford. Managers need certification they can't deliver. BPOs need audit-ready records their QA spreadsheet can't produce.").
 - **20 AI tools + 1 live CRO** is the bundle count — keep tool count consistent across surfaces.
-- **Founder docs = 4**, **Team docs = 7**, **BPO output = Campaign Pack** (not "playbook"). Match the in-app naming.
+- **Founder docs = 4**, **Team docs = 6**, **BPO output = Campaign Pack** (not "playbook"). Match the in-app naming.
 
 ## FAQ + JSON-LD discipline
 
