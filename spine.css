@@ -543,12 +543,12 @@ footer{background:var(--bg-2);border-top:1px solid var(--line);padding:50px 24px
 /* Phones: the desktop hero/section vertical rhythm is far too tall - tighten it
    so there isn't a huge dead gap between the hero and the first section. */
 @media(max-width:640px){
-  .hero{padding-top:38px;padding-bottom:36px}
-  .hero-h1{margin-bottom:18px}
-  .hero-h1 .hero-promise{margin-bottom:24px}
-  .hero-h1 .hero-promise::after{margin:16px auto 0}
-  .hero-sub{margin-bottom:20px}
-  .hero-proof{margin-top:16px}
+  .hero{padding-top:50px;padding-bottom:48px}
+  .hero-h1{margin-bottom:26px}
+  .hero-h1 .hero-promise{margin-bottom:32px}
+  .hero-h1 .hero-promise::after{margin:24px auto 0}
+  .hero-sub{margin-bottom:30px}
+  .audience-strip{margin-top:34px}
   .solid,.solid-2,.together{padding-top:52px;padding-bottom:52px}
   .final-cta{padding-top:60px;padding-bottom:60px}
   .plans-grid{margin-top:28px}
