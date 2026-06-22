@@ -39,7 +39,7 @@ function toggleFaq(btn){
     document.addEventListener('click',function(e){if(!links.contains(e.target)&&!toggle.contains(e.target)){links.classList.remove('open');toggle.setAttribute('aria-expanded','false')}});
   }
   var nav=document.querySelector('nav');
-  if(nav){var onScroll=function(){nav.classList.toggle('shrink',window.scrollY>200)};window.addEventListener('scroll',onScroll,{passive:true});onScroll()}
+  if(nav){var onScroll=function(){nav.classList.toggle('shrink',window.scrollY>24)};window.addEventListener('scroll',onScroll,{passive:true});onScroll()}
 })();
 
 /* ----- HERO REVEAL ----- */
@@ -91,8 +91,8 @@ function toggleFaq(btn){
       p.x+=vx;p.y+=vy;p.age++;
       var lifeA=(1-p.age/p.life);
       if(lifeA<=0||p.x<-20||p.x>W+20||p.y<-20||p.y>H+20){if(p.injected){particles.splice(i,1);i--;continue}makeP(p);continue}
-      /* Brand hue range: teal #00B9C7 (~184°) -> deep royal #1229B2 (~228°) */
-      var hue=184+p.seed*44;
+      /* Monochrome blue range: bright blue (~212°) -> deep royal #1229B2 (~228°) */
+      var hue=212+p.seed*16;
       var alpha=isLight()?(.04+.06*lifeA):(.05+.10*lifeA);
       var sat=isLight()?70:90,light=isLight()?42:60;
       ctx.fillStyle='hsla('+hue.toFixed(1)+','+sat+'%,'+light+'%,'+alpha.toFixed(3)+')';
@@ -141,4 +141,163 @@ function toggleFaq(btn){
       if(r.top<window.innerHeight*0.85&&r.bottom>50){c.classList.add('is-in');io.unobserve(c)}
     });
   },6000);
+})();
+
+
+/* ===== MOTION SYSTEM v2 (scroll-reveal · spotlight · magnetic · progress) ===== */
+(function(){
+  var root=document.documentElement;
+  if(!root.classList.contains('js'))return;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Scroll-progress bar */
+  if(!reduce){
+    var bar=document.createElement('div');bar.className='scroll-progress';document.body.appendChild(bar);
+    var ticking=false;
+    var upd=function(){var h=document.documentElement;var max=h.scrollHeight-h.clientHeight;var p=max>0?h.scrollTop/max:0;bar.style.transform='scaleX('+p.toFixed(4)+')';ticking=false;};
+    window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(upd);}},{passive:true});upd();
+  }
+  if(reduce)return;
+
+  /* Scroll-reveal: section heads + any card not already handled by tile-flip */
+  var vh=window.innerHeight;
+  var nodes=[].slice.call(document.querySelectorAll('.section-head-center,.section-head,section [class*="card"]'))
+    .filter(function(el){return !el.classList.contains('tile-flip')&&!el.classList.contains('aud-card')&&!el.classList.contains('gsap-wall')&&!el.classList.contains('tool-card')&&!el.closest('.hero')&&!el.closest('.pg-track')&&!el.closest('.tg-track')&&!el.closest('.testi-scroller')&&!el.closest('.wall-scroller');});
+  var io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('rv-in');io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -7% 0px'}):null;
+  var idx=new Map(),dir=0;
+  nodes.forEach(function(el){
+    el.setAttribute('data-reveal','');
+    el.classList.add((dir++%2)?'rv-right':'rv-left');
+    var p=el.parentNode,i=idx.get(p)||0;idx.set(p,i+1);
+    el.style.transitionDelay=(Math.min(i,6)*70)+'ms';
+    var r=el.getBoundingClientRect();
+    if(!io||r.top<vh*0.92){el.classList.add('rv-in');}else{io.observe(el);}
+  });
+
+  /* Spotlight glow follows the cursor across cards */
+  [].forEach.call(document.querySelectorAll('section [class*="card"]'),function(c){
+    if(c.closest('.pg-track')||c.closest('.tg-track')||c.closest('.testi-scroller')||c.closest('.wall-scroller'))return;
+    c.classList.add('spotlight');
+    c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');},{passive:true});
+  });
+
+  /* Magnetic CTAs - hover/fine-pointer devices only (no nudge on touch taps) */
+  if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+    [].forEach.call(document.querySelectorAll('.btn-primary,.btn-secondary'),function(btn){
+      btn.classList.add('magnetic');
+      btn.addEventListener('pointermove',function(e){var r=btn.getBoundingClientRect();var mx=e.clientX-(r.left+r.width/2),my=e.clientY-(r.top+r.height/2);btn.style.transform='translate('+(mx*0.28).toFixed(1)+'px,'+(my*0.4).toFixed(1)+'px)';});
+      btn.addEventListener('pointerleave',function(){btn.style.transform='';});
+    });
+  }
+})();
+
+
+/* ===== SVG line-icon draw-in on scroll ===== */
+(function(){
+  if(!document.documentElement.classList.contains('js'))return;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  if(!('IntersectionObserver' in window))return;
+  var paths=[];
+  [].forEach.call(document.querySelectorAll('section [class*="ico"] svg path, section [class*="card"] svg path'),function(p){
+    try{
+      var st=getComputedStyle(p).stroke;
+      if(!st||st==='none')return;                 // only stroked line icons
+      var L=p.getTotalLength();
+      if(!L||L>4000)return;
+      p.style.strokeDasharray=L;p.style.strokeDashoffset=L;
+      p.style.transition='stroke-dashoffset .9s ease';
+      p.setAttribute('data-draw','1');paths.push(p);
+    }catch(e){}
+  });
+  if(!paths.length)return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.style.strokeDashoffset='0';io.unobserve(e.target);}});},{threshold:0.3});
+  paths.forEach(function(p){io.observe(p)});
+})();
+
+
+/* ===== Tool-card HOVER FLIP to a terminal micro-demo ===== */
+(function(){
+  if(!document.documentElement.classList.contains('js'))return;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hover=window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  var cards=document.querySelectorAll('.tool-card[data-demo]');
+  if(!cards.length)return;
+  cards.forEach(function(card){
+    card.classList.remove('spotlight');           // the flip owns this card now
+    card.classList.add('tc-flip');
+    var txt=card.getAttribute('data-demo')||'';
+    var front=document.createElement('div');front.className='tc-face tc-front';
+    while(card.firstChild){front.appendChild(card.firstChild);}
+    var back=document.createElement('div');back.className='tc-face tc-back';
+    var demo=document.createElement('div');demo.className='tool-demo';
+    var span=document.createElement('span');demo.appendChild(span);
+    var caret=document.createElement('span');caret.className='caret';caret.setAttribute('aria-hidden','true');demo.appendChild(caret);
+    back.appendChild(demo);
+    card.appendChild(front);card.appendChild(back);
+    if(reduce){span.textContent=txt;return;}
+    if(hover){
+      var t=null;
+      card.addEventListener('pointerenter',function(){clearInterval(t);var i=0;span.textContent='';t=setInterval(function(){span.textContent=txt.slice(0,++i);if(i>=txt.length)clearInterval(t);},26);});
+      card.addEventListener('pointerleave',function(){clearInterval(t);span.textContent='';});
+    }else{
+      span.textContent=txt;                        // touch: no flip, demo prefilled (shown if tapped)
+    }
+  });
+  /* Entrance fade (opacity only - never fights the flip transform) */
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('tc-seen');io.unobserve(e.target);}});},{threshold:.18,rootMargin:'0px 0px -6% 0px'});
+    cards.forEach(function(c){io.observe(c)});
+  }else{cards.forEach(function(c){c.classList.add('tc-seen');});}
+  if(reduce)cards.forEach(function(c){c.classList.add('tc-seen');});
+})();
+
+
+/* ===== Stat count-up on scroll-into-view ===== */
+(function(){
+  if(!document.documentElement.classList.contains('js'))return;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nums=[].slice.call(document.querySelectorAll('.stat-num'));
+  if(!nums.length)return;
+  nums.forEach(function(el){
+    var raw=el.textContent.trim(),m=raw.match(/^(\D*)([\d,]+)(.*)$/);
+    el.__raw=raw;
+    if(!m){el.__target=null;return;}
+    el.__pre=m[1];el.__suf=m[3];el.__target=parseInt(m[2].replace(/,/g,''),10);
+    if(!reduce)el.textContent=m[1]+'0'+m[3];
+  });
+  function run(el){
+    if(reduce||el.__target==null){el.textContent=el.__raw;return;}
+    var dur=1500,t0=null;
+    function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1);var e=1-Math.pow(1-p,3);
+      el.textContent=el.__pre+Math.round(e*el.__target).toLocaleString('en-US')+el.__suf;
+      if(p<1)requestAnimationFrame(step);else el.textContent=el.__raw;}
+    requestAnimationFrame(step);
+  }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){run(e.target);io.unobserve(e.target);}});},{threshold:.5});
+    nums.forEach(function(n){io.observe(n);});
+  }else nums.forEach(run);
+})();
+
+
+/* ===== Auto-advancing carousels (testimonials + wall rails) =====
+   Each scroller still works as a plain swipeable carousel if motion is off. */
+(function(){
+  if(!document.documentElement.classList.contains('js'))return;
+  var els=[].slice.call(document.querySelectorAll('[data-autoscroll]'));
+  var t=document.getElementById('testiScroller');if(t&&els.indexOf(t)<0)els.push(t);
+  if(!els.length)return;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  els.forEach(function(sc){
+    var paused=false;
+    ['pointerenter','pointerdown','touchstart','focusin'].forEach(function(ev){sc.addEventListener(ev,function(){paused=true;},{passive:true});});
+    sc.addEventListener('pointerleave',function(){paused=false;});
+    setInterval(function(){
+      if(paused||document.hidden)return;
+      var first=sc.children[0];if(!first)return;
+      var step=first.getBoundingClientRect().width+18;
+      if(sc.scrollLeft+sc.clientWidth>=sc.scrollWidth-10){sc.scrollTo({left:0,behavior:'smooth'});}
+      else{sc.scrollBy({left:step,behavior:'smooth'});}
+    },4600);
+  });
 })();

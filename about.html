@@ -16,31 +16,34 @@
 <link rel="icon" href="https://www.thedealmentor.ai/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/spine.css?v=20260621g">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Mulish:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/spine.css?v=20260622m">
 <script>document.documentElement.classList.add('js');var __dmTheme=localStorage.getItem('dm-theme');if(__dmTheme==='light')document.documentElement.setAttribute('data-theme','light');</script>
 <style>
 .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:32px}
 .stat-card{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius);padding:24px;text-align:center;box-shadow:var(--shadow)}
-.stat-val{font-family:'Inter',ui-sans-serif,sans-serif;font-size:36px;font-weight:700;color:var(--accent-2);letter-spacing:-.02em;line-height:1;margin-bottom:6px}
+.stat-val{font-family:'Mulish',ui-sans-serif,sans-serif;font-size:36px;font-weight:700;color:var(--accent-2);letter-spacing:-.02em;line-height:1;margin-bottom:6px}
 [data-theme="light"] .stat-val{color:var(--accent)}
 .stat-lbl{font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:500}
 .story{max-width:780px;margin:0 auto}
-.story p{font-family:'Inter',sans-serif;font-size:16px;line-height:1.8;color:var(--text);margin-bottom:18px}
+.story p{font-family:'Mulish',sans-serif;font-size:16px;line-height:1.8;color:var(--text);margin-bottom:18px}
 .story p strong{color:var(--ink);font-weight:600}
 .visit-link{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-family:'Geist Mono',monospace;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-2);font-weight:600;border-bottom:1px solid transparent;transition:border-color .2s,color .2s}
 [data-theme="light"] .visit-link{color:var(--accent)}
 .visit-link:hover{border-bottom-color:currentColor}
 .ksw-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;margin-top:40px}
+.ksw-grid-3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.ksw-grid-3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.ksw-grid-3{grid-template-columns:1fr}}
 .ksw-card{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius-lg);padding:28px;display:flex;flex-direction:column;gap:10px;text-decoration:none;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s}
 .ksw-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hi);border-color:var(--accent)}
 .ksw-icon{width:44px;height:44px;border-radius:12px;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent-2);display:inline-flex;align-items:center;justify-content:center;margin-bottom:8px}
 [data-theme="light"] .ksw-icon{color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
 .ksw-icon svg{width:22px;height:22px}
-.ksw-card h3{font-family:'Inter',ui-sans-serif,sans-serif;font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.015em;margin:0;line-height:1.28}
+.ksw-card h3{font-family:'Mulish',ui-sans-serif,sans-serif;font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.015em;margin:0;line-height:1.28}
 .ksw-card h3 em{font-style:normal;font-weight:700;color:var(--accent-2);background:none;-webkit-text-fill-color:currentColor;padding:0;margin:0}
 [data-theme="light"] .ksw-card h3 em{color:var(--accent)}
-.ksw-card p{font-family:'Inter',sans-serif;font-size:14.5px;color:var(--muted);line-height:1.6;margin:0}
+.ksw-card p{font-family:'Mulish',sans-serif;font-size:14.5px;color:var(--muted);line-height:1.6;margin:0}
 .ksw-link{margin-top:auto;padding-top:14px;font-family:'Geist Mono',monospace;font-size:12.5px;letter-spacing:.06em;color:var(--accent-2);font-weight:600;display:inline-flex;align-items:center;gap:6px}
 [data-theme="light"] .ksw-link{color:var(--accent)}
 </style>
@@ -73,6 +76,7 @@
 </nav>
 
 <header class="hero">
+  <div class="hero-aurora" aria-hidden="true"></div>
   <h1 class="hero-h1">
     <span class="line">Your revenue is stuck.</span>
     <span class="line"><em>We can help.</em></span>
@@ -83,8 +87,8 @@
 
 <section class="solid-2">
   <div class="section-inner story">
-    <p class="eyebrow" style="justify-content:center">From the founder</p>
-    <h2 class="section-h2" style="text-align:center;margin-bottom:36px">I started as an <em>SDR.</em></h2>
+    <p class="eyebrow" style="justify-content:center;margin-bottom:6px">From the founder</p>
+    <h2 class="section-h2" style="text-align:center;margin:0 auto 36px">I started as an <em>SDR.</em></h2>
     <p>SDR. Then AE. Then Team Leader. Then VP Global Sales and Business Development - a role I held at both multinational corporations and early-stage startups across four continents. Twenty years. Hundreds of sales teams. Thousands of deals.</p>
     <p>Throughout all of it, I kept seeing the same problem at three very different scales. The <strong>solo founder</strong> closing deals herself with no playbook. The <strong>sales manager</strong> riding shotgun on 1 of every 8 of his reps' calls and guessing about the rest. The <strong>BPO ops director</strong> launching a new client campaign Monday with no audit-ready certification by Friday. Different headcounts, different KPIs, same wall: <strong>they don't have the actual words</strong> for the call, the email, the follow-up. Not theory. Not frameworks. The words.</p>
     <p>The big companies solve this by hiring a CRO at $300K to $500K a year. But what about the founder closing deals themselves? The startup with three reps that can't afford a full-time CRO? The 200-agent BPO whose ops director is firefighting six campaigns at once? That is who we built this for - three of them, under one platform.</p>
@@ -100,7 +104,7 @@
     <div class="founder-text">
       <div class="founder-label">Tal Paperin · Founder &amp; CEO, KSW Solutions</div>
       <blockquote>Born in the USSR in 1981, immigrated to Israel in 1990. After serving as an officer in the Israeli Air Force, I earned a dual BA from Hebrew University in International Relations and Chinese Studies. I speak Russian, Hebrew, English, and Chinese. I have spent my career selling and building sales teams across four continents.</blockquote>
-      <p style="font-family:'Inter',sans-serif;font-size:15px;color:var(--muted);line-height:1.65">My career has covered global consumer brands, healthcare SaaS, pharmaceuticals, medical devices, and dozens of B2B technology companies - at every stage from seed to public. I have five kids.</p>
+      <p style="font-family:'Mulish',sans-serif;font-size:15px;color:var(--muted);line-height:1.65">My career has covered global consumer brands, healthcare SaaS, pharmaceuticals, medical devices, and dozens of B2B technology companies - at every stage from seed to public. I have five kids.</p>
       <a href="https://ksw.solutions" target="_blank" rel="noopener" class="visit-link">Full background at ksw.solutions →</a>
     </div>
   </figure>
@@ -145,9 +149,9 @@
     <div class="section-head-center">
       <p class="eyebrow">How we work</p>
       <h2 class="section-h2">Practitioners, <em>not theorists.</em></h2>
-      <p class="section-sub">Four principles that shape every engagement at KSW Solutions - and every output inside DealMentor.</p>
+      <p class="section-sub">What shapes every engagement at KSW Solutions - and every output inside DealMentor.</p>
     </div>
-    <div class="ksw-grid">
+    <div class="ksw-grid ksw-grid-3">
       <div class="ksw-card tile-flip">
         <div class="ksw-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
         <h3>Senior practitioners. <em>Not junior consultants.</em></h3>
@@ -172,6 +176,11 @@
         <div class="ksw-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
         <h3>BPO &amp; contact-center floors.</h3>
         <p>Personally trained agents on BPO floors in the Philippines, Eastern Europe, and Mexico. Specific engagements under NDA. DealMentor is in use today at <a href="https://clinicmind.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px">ClinicMind</a> (SDRs and AEs in healthcare SaaS) and in active pilots with other sales teams and BPOs. <a href="/bpo-and-centers" style="color:var(--accent-2);text-decoration:underline;text-underline-offset:3px">See DealMentor for centers →</a></p>
+      </div>
+      <div class="ksw-card tile-flip">
+        <div class="ksw-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+        <h3>Methodology. <em>Not improvisation.</em></h3>
+        <p>Every play is grounded in 50 proven sales frameworks - SPIN, MEDDIC, Challenger, Gap Selling, Sandler and more - with a strict anti-hallucination rule. Nothing made up on the spot, in an engagement or in the product.</p>
       </div>
     </div>
   </div>
@@ -211,7 +220,7 @@
   </div>
 </footer>
 
-<script src="/spine.js?v=20260603n"></script>
-<a href="https://wa.me/972545308119?text=Hi%20Tal%2C%20I%20saw%20DealMentor%20and%20want%20to%20chat." target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp Tal directly"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 0C7.2 0 0 7.2 0 16c0 2.8.8 5.5 2.2 7.9L0 32l8.4-2.2c2.3 1.3 4.9 2 7.6 2 8.8 0 16-7.2 16-16S24.8 0 16 0zm0 29.3c-2.4 0-4.8-.6-6.8-1.9l-.5-.3-5 1.3 1.3-4.9-.3-.5C3.5 21 2.7 18.5 2.7 16 2.7 8.7 8.7 2.7 16 2.7S29.3 8.7 29.3 16 23.3 29.3 16 29.3zm7.3-9.9c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.6-.2.3-.5.3-.9.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.7.1-.3.1-.5 0-.7-.1-.2-.9-2.2-1.3-3-.3-.8-.7-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4s1.5 4 1.7 4.2c.2.3 2.9 4.5 7.1 6.3 1 .4 1.8.7 2.4.9.9.3 1.8.3 2.5.2.7-.1 2.4-1 2.7-1.9.3-1 .3-1.7.2-1.9-.1-.3-.4-.4-.8-.6z"/></svg></a>
+<script src="/spine.js?v=20260622m"></script>
+<a href="https://wa.me/972545308119?text=Hi%20Tal%2C%20I%20saw%20DealMentor%20and%20want%20to%20chat." target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp us"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 0C7.2 0 0 7.2 0 16c0 2.8.8 5.5 2.2 7.9L0 32l8.4-2.2c2.3 1.3 4.9 2 7.6 2 8.8 0 16-7.2 16-16S24.8 0 16 0zm0 29.3c-2.4 0-4.8-.6-6.8-1.9l-.5-.3-5 1.3 1.3-4.9-.3-.5C3.5 21 2.7 18.5 2.7 16 2.7 8.7 8.7 2.7 16 2.7S29.3 8.7 29.3 16 23.3 29.3 16 29.3zm7.3-9.9c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.6-.2.3-.5.3-.9.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.7.1-.3.1-.5 0-.7-.1-.2-.9-2.2-1.3-3-.3-.8-.7-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4s1.5 4 1.7 4.2c.2.3 2.9 4.5 7.1 6.3 1 .4 1.8.7 2.4.9.9.3 1.8.3 2.5.2.7-.1 2.4-1 2.7-1.9.3-1 .3-1.7.2-1.9-.1-.3-.4-.4-.8-.6z"/></svg></a>
 </body>
 </html>
