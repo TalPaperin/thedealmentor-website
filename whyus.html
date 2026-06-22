@@ -63,6 +63,14 @@
 .bpo-ribbon .bpo-ribbon-tag{font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--brand-blue);padding:4px 9px;border-radius:999px;font-weight:700;flex-shrink:0}
 .bpo-ribbon .bpo-ribbon-arrow{color:var(--brand-blue);font-weight:800;flex-shrink:0;padding-right:6px}
 @media(max-width:560px){.bpo-ribbon{font-size:12.5px;gap:8px;padding:7px 8px}.bpo-ribbon .bpo-ribbon-tag{font-size:9px;padding:4px 7px}}
+.bpo-panel{position:relative;overflow:hidden;max-width:1000px;margin:0 auto;border-radius:22px;padding:40px clamp(24px,4vw,48px);background:linear-gradient(135deg,color-mix(in srgb,var(--brand-blue) 18%,var(--bg-card)),var(--bg-card) 64%);border:1px solid color-mix(in srgb,var(--brand-blue) 34%,transparent);box-shadow:0 26px 64px -26px rgba(0,0,0,.7)}
+.bpo-panel::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--grad)}
+.bpo-panel .bpo-eyebrow{font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--brand-blue);font-weight:700;margin:0 0 12px}
+.bpo-panel h2{font-family:var(--font-display),'Anton',sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.012em;font-size:clamp(24px,3.2vw,38px);color:var(--ink);line-height:1.06;margin:0 0 16px}
+.bpo-panel h2 em{font-style:normal;color:var(--brand-blue)}
+.bpo-panel p{font-family:'Mulish',sans-serif;font-size:16px;color:var(--text);line-height:1.7;max-width:72ch;margin:0 0 24px}
+.bpo-panel .bpo-stats{display:flex;flex-wrap:wrap;gap:10px 12px;margin:0 0 26px;list-style:none;padding:0}
+.bpo-panel .bpo-stats li{font-family:'Mulish',sans-serif;font-size:13.5px;font-weight:600;color:var(--ink);background:color-mix(in srgb,var(--brand-blue) 10%,transparent);border:1px solid color-mix(in srgb,var(--brand-blue) 28%,transparent);border-radius:999px;padding:8px 14px}
 </style>
 </head>
 <body>
@@ -180,6 +188,23 @@
       </table>
     </div>
     <p class="compare-footnote">For solo founders, sales teams up to 15 reps, and BPOs / contact centers up to 500 agents: pick DealMentor. For 15+ reps or 500+ agents with custom needs: <a href="/contact">talk to us about Enterprise</a>.</p>
+  </div>
+</section>
+
+<section class="solid">
+  <div class="section-inner">
+    <div class="bpo-panel">
+      <p class="bpo-eyebrow">For BPOs &amp; contact centers</p>
+      <h2>Run a floor of agents? <em>This was built for you, too.</em></h2>
+      <p>The whole platform reshapes around the per-campaign workflow. Paste a client's brief and get a Campaign Pack - cheat-sheet, rebuttal library, and certification - in about a minute. Certify every agent with branded, audit-ready records and verification IDs your client can check. Coaching cards from the misses, Practice-a-Call roleplay, and a readiness view across the floor. The same live CRO and 24/7 advisor every other plan gets.</p>
+      <ul class="bpo-stats">
+        <li>Campaign Pack in ~1 minute</li>
+        <li>Audit-ready certs + verification IDs</li>
+        <li>Unlimited agents per campaign</li>
+        <li>From $999/mo, sales-led</li>
+      </ul>
+      <a href="/bpo-and-centers" class="btn-primary btn-lg">See DealMentor for Centers <svg class="ico btn-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+    </div>
   </div>
 </section>
 
