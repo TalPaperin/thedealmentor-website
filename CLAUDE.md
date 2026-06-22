@@ -34,7 +34,7 @@ If a new copy claim doesn't appear in this list, treat it as unverified and ask 
 | Founder | $119/mo (annual) / $149/mo (monthly) | Paddle self-serve, 7-day trial |
 | Team | $399/mo (annual) / $449/mo (monthly), up to 5 reps | Paddle self-serve, 14-day trial |
 | Growth | $999/mo (annual) / $1,199/mo (monthly), up to 15 reps | Paddle self-serve, 14-day trial |
-| **BPO / Centers** | **From $999/mo, sales-led**, monthly billing, 3-month minimum, unlimited agents per campaign | **7-day see-it-work trial** (1 campaign, no auto-convert) → book a call to scope rollout |
+| **BPO / Centers** | **From $999/mo, sales-led**, monthly billing, 3-month minimum, unlimited agents per campaign | **14-day see-it-work trial** (1 campaign, no auto-convert) → book a call to scope rollout |
 
 The BPO plan is deliberately **NOT in the self-serve plans grid** on `/pricing` — it lives in a horizontal sales-led panel below the grid. BPO conversion requires a call (no Paddle product). This was decided after a long debate (search session log for "the 4th one is not connecting to anything"). Do not put BPO back in the Paddle grid.
 
