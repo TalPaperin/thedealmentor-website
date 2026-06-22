@@ -162,7 +162,7 @@ function toggleFaq(btn){
   /* Scroll-reveal: section heads + any card not already handled by tile-flip */
   var vh=window.innerHeight;
   var nodes=[].slice.call(document.querySelectorAll('.section-head-center,.section-head,section [class*="card"]'))
-    .filter(function(el){return !el.classList.contains('tile-flip')&&!el.classList.contains('aud-card')&&!el.classList.contains('gsap-wall')&&!el.classList.contains('tool-card')&&!el.closest('.hero')&&!el.closest('.pg-track')&&!el.closest('.tg-track')&&!el.closest('.testi-scroller')&&!el.closest('.wall-track');});
+    .filter(function(el){return !el.classList.contains('tile-flip')&&!el.classList.contains('aud-card')&&!el.classList.contains('gsap-wall')&&!el.classList.contains('tool-card')&&!el.closest('.hero')&&!el.closest('.pg-track')&&!el.closest('.tg-track')&&!el.closest('.testi-scroller')&&!el.closest('.wall-scroller');});
   var io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('rv-in');io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -7% 0px'}):null;
   var idx=new Map(),dir=0;
   nodes.forEach(function(el){
@@ -176,7 +176,7 @@ function toggleFaq(btn){
 
   /* Spotlight glow follows the cursor across cards */
   [].forEach.call(document.querySelectorAll('section [class*="card"]'),function(c){
-    if(c.closest('.pg-track')||c.closest('.tg-track')||c.closest('.testi-scroller')||c.closest('.wall-track'))return;
+    if(c.closest('.pg-track')||c.closest('.tg-track')||c.closest('.testi-scroller')||c.closest('.wall-scroller'))return;
     c.classList.add('spotlight');
     c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');},{passive:true});
   });
@@ -280,20 +280,24 @@ function toggleFaq(btn){
 })();
 
 
-/* ===== Testimonials auto-advancing carousel ===== */
+/* ===== Auto-advancing carousels (testimonials + wall rails) =====
+   Each scroller still works as a plain swipeable carousel if motion is off. */
 (function(){
   if(!document.documentElement.classList.contains('js'))return;
-  var sc=document.getElementById('testiScroller');if(!sc)return;
+  var els=[].slice.call(document.querySelectorAll('[data-autoscroll]'));
+  var t=document.getElementById('testiScroller');if(t&&els.indexOf(t)<0)els.push(t);
+  if(!els.length)return;
   if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  var paused=false;
-  ['pointerenter','pointerdown','touchstart','focusin'].forEach(function(ev){sc.addEventListener(ev,function(){paused=true;},{passive:true});});
-  sc.addEventListener('pointerleave',function(){paused=false;});
-  document.addEventListener('visibilitychange',function(){paused=document.hidden;});
-  setInterval(function(){
-    if(paused)return;
-    var first=sc.children[0];if(!first)return;
-    var step=first.getBoundingClientRect().width+18;
-    if(sc.scrollLeft+sc.clientWidth>=sc.scrollWidth-10){sc.scrollTo({left:0,behavior:'smooth'});}
-    else{sc.scrollBy({left:step,behavior:'smooth'});}
-  },4200);
+  els.forEach(function(sc){
+    var paused=false;
+    ['pointerenter','pointerdown','touchstart','focusin'].forEach(function(ev){sc.addEventListener(ev,function(){paused=true;},{passive:true});});
+    sc.addEventListener('pointerleave',function(){paused=false;});
+    setInterval(function(){
+      if(paused||document.hidden)return;
+      var first=sc.children[0];if(!first)return;
+      var step=first.getBoundingClientRect().width+18;
+      if(sc.scrollLeft+sc.clientWidth>=sc.scrollWidth-10){sc.scrollTo({left:0,behavior:'smooth'});}
+      else{sc.scrollBy({left:step,behavior:'smooth'});}
+    },4600);
+  });
 })();
