@@ -39,7 +39,7 @@ function toggleFaq(btn){
     document.addEventListener('click',function(e){if(!links.contains(e.target)&&!toggle.contains(e.target)){links.classList.remove('open');toggle.setAttribute('aria-expanded','false')}});
   }
   var nav=document.querySelector('nav');
-  if(nav){var onScroll=function(){nav.classList.toggle('shrink',window.scrollY>200)};window.addEventListener('scroll',onScroll,{passive:true});onScroll()}
+  if(nav){var onScroll=function(){nav.classList.toggle('shrink',window.scrollY>24)};window.addEventListener('scroll',onScroll,{passive:true});onScroll()}
 })();
 
 /* ----- HERO REVEAL ----- */
