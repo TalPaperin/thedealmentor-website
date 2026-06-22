@@ -10,24 +10,8 @@
  *  - Tile flip-in (per-card IntersectionObserver)
  * ===================================================================== */
 
-/* ----- LINKEDIN INSIGHT TAG (conversion tracking + retargeting, partner 9287930) -----
- * Loaded site-wide via spine.js (which every content page includes right before </body>,
- * the placement LinkedIn recommends). Marketing pages only - the app, and any page that
- * doesn't include spine.js (e.g. checkout), are intentionally not tagged. */
-(function(){
-  window._linkedin_partner_id = "9287930";
-  window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
-  window._linkedin_data_partner_ids.push("9287930");
-  if(!window.lintrk){
-    window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
-    window.lintrk.q = [];
-  }
-  var s = document.getElementsByTagName("script")[0];
-  var b = document.createElement("script");
-  b.type = "text/javascript"; b.async = true;
-  b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
-  s.parentNode.insertBefore(b, s);
-})();
+/* LinkedIn Insight Tag now lives inline before </body> on every page (the form
+ * LinkedIn's verifier expects), not here - so it isn't loaded twice. */
 
 /* ----- THEME TOGGLE ----- */
 (function(){
