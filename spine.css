@@ -110,8 +110,8 @@ nav.shrink{background:var(--bg);border-bottom-color:var(--line);box-shadow:0 6px
 .nav-toggle{display:none;width:40px;height:40px;border-radius:10px;background:transparent;align-items:center;justify-content:center;flex-direction:column;gap:5px}
 .nav-toggle span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:transform .2s,opacity .2s}
 @media (max-width:920px){
-  .nav-links{position:absolute;top:100%;left:0;right:0;background:var(--bg);flex-direction:column;align-items:stretch;gap:0;padding:8px 0;max-height:0;overflow:hidden;transition:max-height .25s ease}
-  .nav-links.open{max-height:560px;border-bottom:1px solid var(--line);box-shadow:0 8px 24px rgba(0,0,0,.30)}
+  .nav-links{position:absolute;top:100%;left:0;right:0;background:transparent;flex-direction:column;align-items:stretch;gap:0;padding:0;max-height:0;overflow:hidden;transition:max-height .25s ease,padding .25s ease}
+  .nav-links.open{background:var(--bg);padding:8px 0;max-height:560px;border-bottom:1px solid var(--line);box-shadow:0 8px 24px rgba(0,0,0,.30)}
   .nav-links a{padding:14px 28px;font-size:16px}
   .nav-links a::after{display:none}
   .nav-links a.nav-login-m{display:flex!important;align-items:center;justify-content:center;margin:14px 20px 10px!important;padding:14px 22px!important;background:var(--accent)!important;color:#fff!important;font-weight:700!important;font-size:16px;border-radius:10px;border:none;opacity:1!important}
