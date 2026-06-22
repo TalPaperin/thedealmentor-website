@@ -147,7 +147,7 @@ nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px soli
 .hero-h1 .real::after{display:none}
 .hero-sub-problem{margin-bottom:24px}
 .hero-sub-fix{margin:0 0 56px;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;font-size:clamp(32px,4.5vw,56px);letter-spacing:.005em;line-height:1.1;text-transform:uppercase}
-.hero-sub{font-family:var(--font-body),sans-serif;font-size:clamp(16px,1.4vw,20px);color:var(--text);max-width:62ch;margin:0 auto 18px;line-height:1.55}
+.hero-sub{font-family:var(--font-body),sans-serif;font-size:clamp(16px,1.4vw,20px);color:var(--text);max-width:60ch;margin:0 auto 30px;line-height:1.55}
 .hero-bpo{font-family:var(--font-body),sans-serif;font-size:14px;color:var(--muted);margin:32px auto 0;line-height:1.6;letter-spacing:.01em}
 .hero-bpo span{color:var(--muted)}
 .hero-bpo a{color:var(--accent-2);font-weight:600;text-decoration:underline;text-underline-offset:4px;text-decoration-color:color-mix(in srgb,var(--accent-2) 50%,transparent);transition:text-decoration-color .2s,color .2s}
@@ -547,7 +547,7 @@ footer{background:var(--bg-2);border-top:1px solid var(--line);padding:50px 24px
   .hero-h1{margin-bottom:18px}
   .hero-h1 .hero-promise{margin-bottom:24px}
   .hero-h1 .hero-promise::after{margin:16px auto 0}
-  .hero-sub{margin-bottom:12px}
+  .hero-sub{margin-bottom:20px}
   .hero-proof{margin-top:16px}
   .solid,.solid-2,.together{padding-top:52px;padding-bottom:52px}
   .final-cta{padding-top:60px;padding-bottom:60px}
