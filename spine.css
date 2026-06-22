@@ -140,7 +140,7 @@ nav.shrink{background:var(--bg);border-bottom-color:var(--line);box-shadow:0 6px
 .hero-eyebrow::before{content:'';width:9px;height:9px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 14px var(--accent-2);animation:heroDot 1.8s ease-in-out infinite}
 [data-theme="light"] .hero-eyebrow::before{background:var(--accent);box-shadow:0 0 14px var(--accent)}
 @keyframes heroDot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.5}}
-.hero-h1{font-family:var(--font-body),ui-sans-serif,sans-serif;font-size:clamp(32px,6.4vw,86px);font-weight:300;line-height:1.08;letter-spacing:-.035em;color:var(--ink);margin-bottom:32px;padding:.02em 0 .04em;text-wrap:balance}
+.hero-h1{font-family:var(--font-body),ui-sans-serif,sans-serif;font-size:clamp(30px,5.2vw,66px);font-weight:300;line-height:1.08;letter-spacing:-.035em;color:var(--ink);margin-bottom:32px;padding:.02em 0 .04em}
 .hero-h1 .line{display:block}
 .hero-h1 .line:not(.hero-promise){font-size:.7em}
 .hero-h1 .hero-promise{margin-bottom:48px;text-transform:uppercase;letter-spacing:-.02em}
@@ -226,7 +226,7 @@ nav.shrink{background:var(--bg);border-bottom-color:var(--line);box-shadow:0 6px
 .founder{padding:clamp(70px,9vh,120px) 24px;max-width:var(--maxw);margin:0 auto;position:relative;z-index:2;border-top:1px solid var(--line);scroll-margin-top:80px}
 .founder-card{display:grid;grid-template-columns:300px 1fr;gap:40px;align-items:center;background:var(--bg-card);border:1px solid var(--card-bd);border-radius:24px;padding:36px;box-shadow:var(--shadow);position:relative;overflow:hidden}
 .founder-card picture{display:block}
-.founder-photo{width:100%;height:auto;aspect-ratio:1/1;border-radius:18px;object-fit:cover;object-position:center 20%;box-shadow:0 14px 34px rgba(0,0,0,.42)}
+.founder-photo{width:100%;height:auto;aspect-ratio:1/1;border-radius:18px;object-fit:cover;object-position:center 8%;box-shadow:0 14px 34px rgba(0,0,0,.42)}
 @media(max-width:760px){.founder-card{grid-template-columns:1fr;gap:24px}.founder-card picture{max-width:340px;margin:0 auto}}
 [data-theme="light"] .founder-photo{box-shadow:0 10px 28px rgba(4,6,15,.14)}
 .founder-text{flex:1;min-width:260px}
@@ -841,11 +841,15 @@ html.js [data-reveal]{filter:none;will-change:transform,opacity}
    ============================================================ */
 /* Walls: horizontal auto-scroll strips (no more vertical bento) */
 /* Walls: clear, swipeable snap carousel (full readable cards; auto-advances when motion allowed) */
-.wall-rail{margin-top:34px;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}
-.wall-scroller{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x proximity;scroll-behavior:smooth;padding:6px 4px 18px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.wall-rail{margin-top:34px;position:relative}
+.wall-scroller{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.wall-scroller > .wall-card{margin:0}
 .wall-scroller::-webkit-scrollbar{display:none}
-.wall-scroller > .wall-card{flex:0 0 clamp(290px,46%,440px);scroll-snap-align:center;margin:0}
-@media(max-width:760px){.wall-scroller > .wall-card{flex-basis:86%}.wall-rail{-webkit-mask-image:none;mask-image:none}}
+/* Mobile: a clean swipe carousel; desktop stays a 3-up grid so nothing clips */
+@media(max-width:760px){
+  .wall-scroller{display:flex;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x proximity;scroll-behavior:smooth;padding:6px 4px 18px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .wall-scroller > .wall-card{flex:0 0 86%;scroll-snap-align:center}
+}
 
 /* Giant kinetic statement band */
 .mega-marquee{overflow:hidden;padding:34px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(180deg,var(--bg),var(--bg-2));position:relative;z-index:2}
