@@ -14,12 +14,12 @@
   /* Brand palette */
   --primary:#1229B2;       /* core brand — buttons / CTAs / links on light */
   --accent:#2563EB;        /* brighter blue — CTAs / hover / accent on dark */
-  --accent-2:#00B9C7;      /* brand teal — secondary pop, eyebrows, icon tints */
+  --accent-2:#3D9BFF;      /* bright sky blue — secondary pop, eyebrows, icon tints (was teal) */
   --accent-dark:#1229B2;
   --emphasis:#2563EB;
-  /* Brand gradient — teal -> mid blue -> deep royal (used on italic emphasis + buttons) */
-  --chr-1:#00B9C7; --chr-2:#2563EB; --chr-3:#1229B2;
-  --grad:linear-gradient(110deg,#00B9C7 0%,#2563EB 50%,#1229B2 100%);
+  /* Brand gradient — bright blue -> mid blue -> deep royal (monochrome blue) */
+  --chr-1:#3D9BFF; --chr-2:#2563EB; --chr-3:#1229B2;
+  --grad:linear-gradient(110deg,#3D9BFF 0%,#2563EB 50%,#1229B2 100%);
   --warm:#FF6B7A;
   --good:#5BD7A8;
   --accent-soft:rgba(37,99,235,.10);
@@ -34,11 +34,11 @@
   --card-bd:rgba(18,18,18,.10);
   --primary:#1229B2;
   --accent:#1229B2;        /* deep royal pops on white */
-  --accent-2:#00B9C7;
+  --accent-2:#1D6FE0;
   --accent-dark:#0A1A7A;
   --emphasis:#1229B2;
-  --chr-1:#1229B2; --chr-2:#2563EB; --chr-3:#00B9C7;
-  --grad:linear-gradient(110deg,#1229B2 0%,#2563EB 50%,#00B9C7 100%);
+  --chr-1:#1229B2; --chr-2:#2563EB; --chr-3:#3D9BFF;
+  --grad:linear-gradient(110deg,#1229B2 0%,#2563EB 50%,#3D9BFF 100%);
   --warm:#C8273A;
   --good:#1A8E5C;
   --accent-soft:rgba(18,41,178,.08);
