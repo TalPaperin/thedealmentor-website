@@ -31,8 +31,8 @@
 .res-tag .res-status.soon{background:rgba(255,107,122,.12);color:var(--warm)}
 .res-card h3{font-family:'Mulish',sans-serif;font-size:19px;font-weight:700;color:var(--ink);margin:6px 0 4px}
 .res-card p{font-family:'Mulish',sans-serif;font-size:14.5px;color:var(--text);line-height:1.6;margin:0}
-.res-card a{font-family:'Mulish',sans-serif;font-size:13.5px;color:var(--accent-2);font-weight:600;margin-top:8px;display:inline-flex;align-items:center;gap:6px;text-decoration:none}
-[data-theme="light"] .res-card a{color:var(--accent)}
+.res-card .res-cta{font-family:'Mulish',sans-serif;font-size:13.5px;color:var(--accent-2);font-weight:600;margin-top:auto;padding-top:8px;display:inline-flex;align-items:center;gap:6px;text-decoration:none}
+[data-theme="light"] .res-card .res-cta{color:var(--accent)}
 </style>
 </head>
 <body>
@@ -82,25 +82,25 @@
         <div class="res-tag"><span>For BPOs &amp; Centers</span><span class="res-status">Live</span></div>
         <h3>DealMentor for BPOs and Contact Centers</h3>
         <p>The full operator pitch: pain points, what we cover, screenshots, day-in-the-life, 4-week pilot timeline, interactive ROI calculator, and a 30-second fit check.</p>
-        <a>Read the page <span aria-hidden="true">→</span></a>
+        <span class="res-cta">Read the page <span aria-hidden="true">→</span></span>
       </a>
       <a href="/vs/" class="res-card">
         <div class="res-tag"><span>Comparisons</span><span class="res-status">Live</span></div>
         <h3>DealMentor vs the alternatives</h3>
         <p>Honest comparisons against Cogito, Balto, Observe.AI, and Second Nature. We tell you who each is genuinely better for - including the ones where we are not the right fit.</p>
-        <a>Read the comparisons <span aria-hidden="true">→</span></a>
+        <span class="res-cta">Read the comparisons <span aria-hidden="true">→</span></span>
       </a>
       <a href="/bpo-and-centers#roi" class="res-card" onclick="event.preventDefault();window.location='/bpo-and-centers';setTimeout(function(){var el=document.getElementById('roi-campaigns');if(el)el.scrollIntoView({behavior:'smooth',block:'center'})},600)">
         <div class="res-tag"><span>Interactive Tool</span><span class="res-status">Live</span></div>
         <h3>BPO ROI Calculator</h3>
         <p>Move four sliders - active campaigns, agents, attrition cost, hires per year. Get the DealMentor starting price (from $999/mo, sales-led), estimated annual saving from reduced attrition, and payback time. Email the analysis to your finance team.</p>
-        <a>Run the math <span aria-hidden="true">→</span></a>
+        <span class="res-cta">Run the math <span aria-hidden="true">→</span></span>
       </a>
       <a href="/whyus" class="res-card">
         <div class="res-tag"><span>Positioning</span><span class="res-status">Live</span></div>
         <h3>Why DealMentor: seven reasons</h3>
         <p>What makes DealMentor structurally different from Gong, Salesloft, ChatGPT, and standalone fractional CRO services. A category-of-one breakdown for the procurement deck.</p>
-        <a>Read why <span aria-hidden="true">→</span></a>
+        <span class="res-cta">Read why <span aria-hidden="true">→</span></span>
       </a>
     </div>
   </div>
