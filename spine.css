@@ -143,7 +143,7 @@ nav.shrink{background:var(--bg);border-bottom-color:var(--line);box-shadow:0 6px
 .hero-h1{font-family:var(--font-body),ui-sans-serif,sans-serif;font-size:clamp(30px,5.2vw,66px);font-weight:300;line-height:1.08;letter-spacing:-.035em;color:var(--ink);margin-bottom:32px;padding:.02em 0 .04em}
 .hero-h1 .line{display:block}
 .hero-h1 .line:not(.hero-promise){font-size:.7em}
-.hero-h1 .hero-promise{margin-bottom:48px;text-transform:uppercase;letter-spacing:-.02em;line-height:1.18}
+.hero-h1 .hero-promise{margin-bottom:48px;text-transform:uppercase;letter-spacing:-.02em;line-height:1.32}
 .hero-h1 .hero-promise::after{content:'';display:block;width:72px;height:3px;background:var(--grad);border-radius:2px;margin:36px auto 0}
 .hero-h1 .real,.hero-h1 em{font-style:normal;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;padding:0;margin:0}
 .hero-h1 .real::after{display:none}
