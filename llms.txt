@@ -1,0 +1,35 @@
+# TheDealMentor.AI
+
+> A sales platform that pairs one live fractional CRO and a 24/7 Ask-the-CRO AI advisor with twenty AI sales tools, on every plan. Built by KSW Solutions and by Tal Paperin, a working fractional CRO. It turns his CRO methodology into software, with him on call for the strategy that cannot be automated.
+
+TheDealMentor.AI serves three audiences: BPOs and contact centers, sales teams, and solo founders. Every plan includes the same core: twenty AI sales tools plus direct access to a real fractional CRO (not only an AI). The AI is grounded in proven sales methodologies and follows a strict anti-hallucination rule, so it never invents client names, numbers, or results.
+
+## What it does
+- [Platform overview](https://www.thedealmentor.ai/platform): The twenty AI sales tools plus the live CRO. Sales program generation, ICP scripts, Sales Copilot (real-time selling tools), Outreach Builder (6 channels), a built-in CRM, Practice-a-Call simulation, Rep Certification, Knowledge Base, marketing and demand-gen, and Ask-the-CRO.
+- [For solo founders](https://www.thedealmentor.ai/for-founders): Founder Mode generates a 4-document program (GTM Plan, Sales Playbook, Marketing Plan, Daily Workflow) plus the full toolkit.
+- [For sales teams](https://www.thedealmentor.ai/for-teams): Team Mode generates a 6-document program (Sales Playbook, Why-Buy, Marketing Plan, Vertical Intel, SDR Guide, AE Guide) plus ICP scripts, Practice-a-Call, per-rep Certification, and campaigns a manager assigns to all or specific reps.
+- [For BPOs and contact centers](https://www.thedealmentor.ai/bpo-and-centers): BPO Mode is per-campaign. Paste a client brief and get a Campaign Pack (cheat-sheet, rebuttal library, and certification) in about a minute, with branded, audit-ready certification records.
+
+## Pricing
+- [Pricing](https://www.thedealmentor.ai/pricing): Founder from $119/month (annual). Team from $399/month (annual, up to 5 reps). Growth from $999/month (annual, up to 15 reps). BPO / Centers from $999/month, sales-led, monthly billing, 3-month minimum, unlimited agents per campaign. Founder has a 7-day trial; Team, Growth, and BPO have a 14-day trial. Reps and agents you invite are covered by your seat and do not pay separately.
+
+## Why DealMentor
+- [Why us](https://www.thedealmentor.ai/whyus): The case for one live CRO plus twenty AI tools versus point tools that assume you already have a playbook.
+- [About](https://www.thedealmentor.ai/about): KSW Solutions and Tal Paperin, the fractional CRO behind the platform.
+
+## Comparisons
+- [Compare](https://www.thedealmentor.ai/vs/): How DealMentor differs from real-time call AI, post-call QA, and role-play tools.
+- [vs Cogito](https://www.thedealmentor.ai/vs/cogito): Real-time call AI versus a bundled playbook and CRO.
+- [vs Balto](https://www.thedealmentor.ai/vs/balto): Real-time call prompts versus a full sales toolkit.
+- [vs Observe.AI](https://www.thedealmentor.ai/vs/observe-ai): Post-call QA analytics versus an upstream sales toolkit.
+- [vs Second Nature](https://www.thedealmentor.ai/vs/second-nature): Sales role-play AI versus a full sales toolkit.
+
+## Contact and start
+- [Contact](https://www.thedealmentor.ai/contact): Talk to KSW Solutions.
+- [Start free trial](https://app.thedealmentor.ai/register): Sign up and pick your mode (founder, team, or BPO).
+- [Log in](https://app.thedealmentor.ai/login): Existing accounts.
+
+## Legal
+- [Terms](https://www.thedealmentor.ai/terms)
+- [Privacy](https://www.thedealmentor.ai/privacy)
+- [Refund policy](https://www.thedealmentor.ai/refund)
