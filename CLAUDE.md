@@ -26,6 +26,15 @@ These have been verified-by-Tal-against-the-app and are safe to claim in copy:
 - **Coaching cards, readiness overview, regenerate-on-script (with live timer + streaming preview), brief-privacy toggle, "Practice this call"** — all built. Ask-the-CRO is role-aware (manager vs rep) and sees the user's campaigns.
 - **Built-in CRM** (in-app nav: **CRM**, second after Dashboard; was "My Deals"). A real lightweight CRM, identical for founders/managers/reps/BPO agents. Three tabs — **Deals, Contacts, Tasks**. Deals: stages New→Discovery→Proposal→Negotiation→Won→Lost, **List + Kanban Board** views (drag to change stage), search/filter, weighted forecast. **Contacts** are reusable many-to-many (a contact on many deals, a deal with many contacts), with notes read by the CRO/Copilot; **+ Create deal** converts a contact. **Activity** (call/email/meeting/note, day-grouped) + **Tasks** (typed, mandatory due date, editable). Per-deal **CRO read** reads all activity/tasks/contacts and shows a freshness signal. **Won/Lost** stamps a close date + captures a lost reason; stage changes auto-log. **Managers** get a read-only **Team deals** scope (every rep's pipeline) and a dashboard split of **Your pipeline** vs **Your team**. Positioning reframed from "Not a CRM" to **"a CRM that thinks"** (per Tal, 2026-07-05).
 
+### Security, data & integrations (verified against the app repo 2026-07-09 - safe to claim exactly as written)
+
+- **Auth:** Supabase Auth, **email + password only** (`signInWithPassword` / `resetPasswordForEmail`). **No SSO/SAML, no OAuth, no magic link** yet. Do not claim SSO; it is roadmap.
+- **Data & isolation:** hosted on **Supabase (managed Postgres)** with **row-level security** enforced at the DB (`crm_schema.sql` policies `own_all` = owner-only, `mgr_read` = a manager can read only their own reps' rows). Each account's data is isolated; a rep sees only what they own. TLS in transit. Paddle billing webhooks are signature-verified, fail-closed.
+- **AI data handling:** generation runs through the Anthropic API (`/api/chat`); anti-hallucination rule + CRO sign-off on every output. API data is **not used to train public models** - safe to say "your data isn't used to train public AI models."
+- **Compliance:** **no formal SOC 2 / ISO / DPA is in the code or claimable today.** Supabase (the host) is SOC2/HIPAA-capable, but DealMentor itself is not certified - **never claim a certification.** For enterprise security questions, the honest answer is "we'll walk your security team through the architecture on a call."
+- **Integrations:** **none.** No Salesforce/Gong/Google/O365/dialer connectors; runs standalone in the browser. "No integrations, no IT" is literally true - frame it as a strength (nothing to wire up), and be honest that two-way email/calendar/dialer **sync is roadmap**.
+- **Migration & export:** CSV **import** exists and auto-maps Salesforce/HubSpot exports (`crm.js` `mapCsvRowsToDeals`). **There is no CRM data-export button yet** (only certificate PDF/Word export exists). So do **not** claim self-serve export; "full export on request" + "one-click export on the roadmap" is the honest line. (If we want to back the no-lock-in claim properly, build CSV export in the app - it's small.)
+
 If a new copy claim doesn't appear in this list, treat it as unverified and ask Tal before shipping it.
 
 ## Pricing model (locked — do not recombine without asking)
@@ -41,14 +50,19 @@ The BPO plan is deliberately **NOT in the self-serve plans grid** on `/pricing` 
 
 **Naming + the hidden Scale plan (verified against Paddle 2026-06-21):** the website uses the marketing name **Team** for what Paddle and the app call **Starter** (the 5-rep plan). Paddle also has a 4th self-serve plan, **Scale** ($2,999/mo monthly, $29,988/yr ≈ $2,499/mo annual, up to 40 reps, 14-day trial), which is **intentionally hidden from the public website pricing grid** (kept for in-app upsell only — do not surface it on the site). Prices above are correct against Paddle (Founder $149 monthly / $1,430-yr; Team/Starter $449 / $4,788-yr; Growth $1,199 / $11,988-yr).
 
-## Locked positioning + ICPs
+## Locked positioning + ICPs (repositioned 2026-07-09)
 
-Three ICPs, named in this order on the home `audience-strip`: **BPOs · Sales Teams · Solo Founders.**
+**The category line is now: "a CRM with a real CRO inside."** The product is a real CRM (pipeline, contacts, activity, tasks) whose every deal is read by an AI CRO that hands back the next move, the script, and the research - a **system of judgment**, not a **system of record**. The old framing ("20 tools + a CRO", "we're the whole system") is retired: the buyer already owns a CRM and a call recorder, so the wedge is **replace-the-stack**, not add-another-tool. Twenty AI tools + one live CRO still sit *around* the CRM spine (keep the count at twenty).
 
-Keystone claim: *one real fractional CRO + twenty AI sales tools, on every plan.* Tal is a working CRO charging up to $20K/mo; the platform is his methodology in software, with him on call for what can't be automated.
-
+- **Spear ICP is Sales Teams; BPO is its own lane; Founders are the low-friction on-ramp** (Founder is still a paid plan at $119/mo annual - **never call it free**; there is only a 7-day trial). Home + platform `audience-strip` order is now **Sales Teams · BPOs · Solo Founders** (changed from the old BPOs-first order). `?icp=` deep-link map: `{team:0,teams:0,sales:0,bpo:1,bpos:1,center:1,centers:1,contact:1,founder:2,founders:2,solo:2}`.
+- **Stack-math (canonical figure - keep consistent):** to assemble what DealMentor does a team buys CRM ($18-24K) + conversation intelligence/Gong ($21-30K) + enablement/Mindtickle-Highspot ($6-15K) + AI roleplay ($10-18K) + outreach ($12-25K) = **~$67-112K software**, plus a fractional CRO at $6-20K/mo = **$140-290K/yr all in** for ~10 reps. DealMentor is all of it from $399/mo, under $12K/yr for up to 15 reps. Competitor prices are **list/reported** figures - always hedge them. The stack-math applies to **founders/teams only**, never the BPO lane (BPOs buy per-campaign, not a CRM stack).
+- Keystone claim still true: *one real fractional CRO + twenty AI sales tools, on every plan.* Tal is a working CRO charging up to $20K/mo; the platform is his methodology in software, with him on call for what can't be automated.
 - `/index` keystone Tal-voice quote (do not paraphrase without asking): *"I'm a working CRO. I charge up to $20,000 a month. Most teams can't afford me. So I built this. Every CRO function in software, with me on call for the strategy that can't be automated."*
 - `/whyus` reason #07 is the 3-ICP unification line — keep all three named.
+
+## Comparison pages (`/vs/`)
+
+Two lanes. **Stack (teams/founders):** `vs/salesforce`, `vs/hubspot`, `vs/gong`, `vs/mindtickle`, `vs/fractional-cro`. **Floor tools (BPO):** `vs/cogito`, `vs/balto`, `vs/observe-ai`, `vs/second-nature`. `vs/index.html` groups them. Every stack page is an **honest read** (who the competitor is genuinely better for, then who we're better for) - keep that tone; do not turn them into hit pieces. `vs/gong` honestly concedes we do **not** do live call recording / conversation intelligence - keep that concession; it is the one thing the stack-math over-claims if you're not careful.
 
 ## Named customers (use these, don't invent)
 
