@@ -10,6 +10,8 @@
     { "source": "/founder",        "destination": "https://app.thedealmentor.ai/founder",        "permanent": false },
     { "source": "/intake",         "destination": "https://app.thedealmentor.ai/intake",         "permanent": false },
     { "source": "/team",           "destination": "https://app.thedealmentor.ai/team",           "permanent": false },
+    { "source": "/campaigns",      "destination": "https://app.thedealmentor.ai/campaigns",      "permanent": false },
+    { "source": "/deals",          "destination": "https://app.thedealmentor.ai/deals",          "permanent": false },
     { "source": "/copilot",        "destination": "https://app.thedealmentor.ai/copilot",        "permanent": false },
     { "source": "/simulation",     "destination": "https://app.thedealmentor.ai/simulation",     "permanent": false },
     { "source": "/certification",  "destination": "https://app.thedealmentor.ai/certification",  "permanent": false },
