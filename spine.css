@@ -890,6 +890,16 @@ html.js [data-reveal].rv-in{transform:none;opacity:1}
 .lt-name{display:block;font-family:var(--font-body),sans-serif;font-size:15px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
 .lt-demo{display:block;font-family:'Mulish',sans-serif;font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.45}
 @media(max-width:880px){.layers{grid-template-columns:1fr}}
+.cro-spanner{display:flex;align-items:center;gap:22px;margin-top:18px;padding:24px clamp(20px,3vw,34px);border-radius:var(--radius-lg);border:1px solid color-mix(in srgb,var(--accent) 42%,transparent);background:linear-gradient(120deg,color-mix(in srgb,var(--accent) 16%,var(--bg-card)),var(--bg-card) 72%);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.cro-spanner::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:linear-gradient(180deg,#17b3a5,var(--brand-blue))}
+.cro-spanner-num{font-family:'Geist Mono',monospace;font-size:clamp(30px,4vw,46px);font-weight:700;color:color-mix(in srgb,var(--accent) 62%,var(--ink));line-height:1;flex-shrink:0;letter-spacing:-.02em}
+.cro-spanner-body{flex:1;min-width:0}
+.cro-spanner-top{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+.cro-spanner-eyebrow{font-family:'Geist Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-2);font-weight:700}
+[data-theme="light"] .cro-spanner-eyebrow{color:var(--accent)}
+.cro-spanner-h{font-family:var(--font-body),sans-serif;font-size:clamp(18px,1.8vw,22px);font-weight:800;color:var(--ink);margin:0;letter-spacing:-.015em}
+.cro-spanner-p{font-family:'Mulish',sans-serif;font-size:14px;color:var(--text);line-height:1.55;margin:0}
+@media(max-width:620px){.cro-spanner{flex-direction:column;align-items:flex-start;gap:10px}}
 
 
 /* ============================================================
