@@ -902,9 +902,12 @@ html.js [data-reveal].rv-in{transform:none;opacity:1}
 .layer-idx{font-family:'Geist Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--brand-blue);font-weight:600}
 .layer-head .tools-group-eyebrow{margin:12px 0 4px}
 .layer-head .tools-group-h{margin:0;font-size:clamp(17px,1.4vw,20px)}
-.layer-tools{list-style:none;padding:0;margin:16px 0 0;display:flex;flex-direction:column;gap:8px}
-.ltool{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:color-mix(in srgb,var(--brand-blue) 4%,transparent);transition:border-color .25s,transform .25s,background .25s}
-.ltool:hover{border-color:color-mix(in srgb,var(--brand-blue) 45%,transparent);transform:translateX(3px);background:color-mix(in srgb,var(--brand-blue) 9%,transparent)}
+.layer-tools{list-style:none;padding:0;margin:8px 0 0;display:flex;flex-direction:column;gap:0}
+.ltool{display:flex;gap:14px;align-items:flex-start;padding:15px 2px;border-top:1px solid var(--line);transition:transform .2s ease}
+.layer-tools .ltool:first-child{border-top:none}
+.ltool:hover{transform:translateX(4px)}
+.ltool:hover .lt-name{color:var(--accent-2)}
+[data-theme="light"] .ltool:hover .lt-name{color:var(--accent)}
 .lt-num{font-family:'Geist Mono',monospace;font-size:11px;color:var(--brand-blue);font-weight:700;padding-top:2px;flex-shrink:0}
 .lt-body{min-width:0}
 .lt-name{display:block;font-family:var(--font-body),sans-serif;font-size:16px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
@@ -918,7 +921,7 @@ html.js [data-reveal].rv-in{transform:none;opacity:1}
 .cro-spanner-eyebrow{font-family:'Geist Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-2);font-weight:700}
 [data-theme="light"] .cro-spanner-eyebrow{color:var(--accent)}
 .cro-spanner-h{font-family:var(--font-body),sans-serif;font-size:clamp(18px,1.8vw,22px);font-weight:800;color:var(--ink);margin:0;letter-spacing:-.015em}
-.cro-spanner-p{font-family:'Mulish',sans-serif;font-size:14px;color:var(--text);line-height:1.55;margin:0}
+.cro-spanner-p{font-family:'Mulish',sans-serif;font-size:15px;color:var(--text);line-height:1.6;margin:0}
 @media(max-width:620px){.cro-spanner{flex-direction:column;align-items:flex-start;gap:10px}}
 
 
