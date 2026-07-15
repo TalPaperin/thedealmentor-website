@@ -25,7 +25,7 @@
   --accent-soft:rgba(37,99,235,.10);
   --shadow:0 12px 40px rgba(0,0,0,.45);
   --shadow-hi:0 18px 60px rgba(0,0,0,.60);
-  --radius:14px; --radius-lg:20px; --maxw:1180px;
+  --radius:14px; --radius-lg:20px; --maxw:1320px;
 }
 [data-theme="light"]{
   --bg:#FFFFFF; --bg-2:#F0F1F4; --bg-card:#FFFFFF;
@@ -154,7 +154,7 @@ nav.shrink{background:var(--bg);border-bottom-color:var(--line);box-shadow:0 6px
 .btn-icon{width:18px;height:18px;flex-shrink:0}
 
 /* ===== HERO ===== */
-.hero{position:relative;z-index:2;padding:clamp(80px,12vh,140px) 24px clamp(80px,11vh,130px);text-align:center;max-width:1240px;margin:0 auto}
+.hero{position:relative;z-index:2;padding:clamp(80px,12vh,140px) 24px clamp(80px,11vh,130px);text-align:center;max-width:1320px;margin:0 auto}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:'Geist Mono',ui-monospace,monospace;font-size:clamp(11px,1vw,13px);letter-spacing:.22em;text-transform:uppercase;color:var(--accent-2);font-weight:500;margin-bottom:32px}
 [data-theme="light"] .hero-eyebrow{color:var(--accent)}
 .hero-eyebrow::before{content:'';width:9px;height:9px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 14px var(--accent-2);animation:heroDot 1.8s ease-in-out infinite}
