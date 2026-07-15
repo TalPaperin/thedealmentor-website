@@ -17,17 +17,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/spine.css?v=20260714c">
+<link rel="stylesheet" href="/spine.css?v=20260714d">
 <script>document.documentElement.classList.add('js');var __dmTheme=localStorage.getItem('dm-theme');if(__dmTheme==='light')document.documentElement.setAttribute('data-theme','light');</script>
 <style>
 .vs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:36px}
-.vs-card{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px;transition:border-color .2s,transform .2s}
-.vs-card:hover{border-color:var(--accent);transform:translateY(-2px)}
-.vs-card .vs-label{font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:700}
-.vs-card h3{font-family:'Inter',sans-serif;font-size:20px;font-weight:700;color:var(--ink);margin:6px 0 4px}
-.vs-card p{font-family:'Inter',sans-serif;font-size:14.5px;color:var(--text);line-height:1.6;margin:0}
-.vs-card a{font-family:'Inter',sans-serif;font-size:13.5px;color:var(--accent-2);font-weight:600;margin-top:8px;display:inline-flex;align-items:center;gap:6px}
-[data-theme="light"] .vs-card a{color:var(--accent)}
+.vs-card{background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px;text-decoration:none;transition:border-color .25s,transform .25s,box-shadow .25s}
+.vs-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:var(--shadow-hi)}
+.vs-card .vs-label{font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.vs-card h3{font-family:'Inter',sans-serif;font-size:21px;font-weight:700;color:var(--ink);margin:6px 0 2px;letter-spacing:-.01em;line-height:1.28}
+.vs-card p{font-family:'Inter',sans-serif;font-size:15.5px;color:var(--text);line-height:1.6;margin:0}
+.vs-go{font-family:'Inter',sans-serif;font-size:14px;color:var(--accent-2);font-weight:700;margin-top:auto;padding-top:14px;display:inline-flex;align-items:center;gap:7px;transition:gap .2s}
+[data-theme="light"] .vs-go{color:var(--accent)}
+.vs-card:hover .vs-go{gap:11px}
+.vs-card:hover .vs-go span{transform:translateX(2px)}
 @media(max-width:720px){.vs-grid{grid-template-columns:1fr}}
 </style>
 <script type="application/ld+json">
@@ -88,31 +90,31 @@
         <p class="vs-label">DealMentor vs Salesforce</p>
         <h3>System of record vs system of judgment</h3>
         <p>Salesforce stores the deal and makes reps fill in fields. DealMentor reads every deal and hands back the next move - and imports your Salesforce pipeline from a CSV.</p>
-        <a href="/vs/salesforce">Read the comparison <span aria-hidden="true">→</span></a>
+        <span class="vs-go">Read the comparison <span aria-hidden="true">→</span></span>
       </a>
       <a href="/vs/hubspot" class="vs-card">
         <p class="vs-label">DealMentor vs HubSpot</p>
         <h3>A great database vs a CRO in your CRM</h3>
         <p>HubSpot is a strong CRM and marketing engine that stores the deal. DealMentor coaches the rep on every deal and certifies the team. Keep HubSpot for marketing if you want.</p>
-        <a href="/vs/hubspot">Read the comparison <span aria-hidden="true">→</span></a>
+        <span class="vs-go">Read the comparison <span aria-hidden="true">→</span></span>
       </a>
       <a href="/vs/gong" class="vs-card">
         <p class="vs-label">DealMentor vs Gong</p>
         <h3>Records the call vs coaches the rep</h3>
         <p>Gong grades calls after they happen and needs volume to shine. DealMentor coaches before the call, builds the playbook, and works on day one from zero.</p>
-        <a href="/vs/gong">Read the comparison <span aria-hidden="true">→</span></a>
+        <span class="vs-go">Read the comparison <span aria-hidden="true">→</span></span>
       </a>
       <a href="/vs/mindtickle" class="vs-card">
         <p class="vs-label">DealMentor vs Mindtickle</p>
         <h3>Enterprise enablement vs readiness + CRM + CRO</h3>
         <p>Mindtickle is enterprise readiness with six-figure contracts. DealMentor gives you certification, simulation, the CRM and a live CRO, from $399/month.</p>
-        <a href="/vs/mindtickle">Read the comparison <span aria-hidden="true">→</span></a>
+        <span class="vs-go">Read the comparison <span aria-hidden="true">→</span></span>
       </a>
       <a href="/vs/fractional-cro" class="vs-card">
         <p class="vs-label">DealMentor vs a fractional CRO</p>
         <h3>The human vs the human, productized</h3>
         <p>A fractional CRO is $6-20K a month and can't be in every deal. DealMentor productizes the daily 80% and includes a real CRO on call for the rest.</p>
-        <a href="/vs/fractional-cro">Read the comparison <span aria-hidden="true">→</span></a>
+        <span class="vs-go">Read the comparison <span aria-hidden="true">→</span></span>
       </a>
     </div>
   </div>
@@ -130,25 +132,25 @@
         <p class="vs-label">DealMentor vs Cogito</p>
         <h3>Real-time call AI vs the bundle</h3>
         <p>Cogito listens to live calls and coaches on tone and empathy at enterprise scale. DealMentor covers everything around the call at a fraction of the cost.</p>
-        <a href="/vs/cogito">Read the comparison <span aria-hidden="true">→</span></a>
+        <span class="vs-go">Read the comparison <span aria-hidden="true">→</span></span>
       </a>
       <a href="/vs/balto" class="vs-card">
         <p class="vs-label">DealMentor vs Balto</p>
         <h3>Real-time prompts vs full toolkit</h3>
         <p>Balto enforces a playbook with on-screen real-time prompts. DealMentor generates the playbook in the first place, then trains and copilots.</p>
-        <a href="/vs/balto">Read the comparison <span aria-hidden="true">→</span></a>
+        <span class="vs-go">Read the comparison <span aria-hidden="true">→</span></span>
       </a>
       <a href="/vs/observe-ai" class="vs-card">
         <p class="vs-label">DealMentor vs Observe.AI</p>
         <h3>Post-call QA vs upstream sales toolkit</h3>
         <p>Observe.AI scores 100% of your calls automatically. DealMentor shapes the calls before they happen - playbook, training, copilot.</p>
-        <a href="/vs/observe-ai">Read the comparison <span aria-hidden="true">→</span></a>
+        <span class="vs-go">Read the comparison <span aria-hidden="true">→</span></span>
       </a>
       <a href="/vs/second-nature" class="vs-card">
         <p class="vs-label">DealMentor vs Second Nature</p>
         <h3>Specialist simulation vs bundled arc</h3>
         <p>Second Nature is best-of-breed AI role-play. DealMentor includes simulation as one tool inside a bundle that also covers playbook, copilot, and CRO.</p>
-        <a href="/vs/second-nature">Read the comparison <span aria-hidden="true">→</span></a>
+        <span class="vs-go">Read the comparison <span aria-hidden="true">→</span></span>
       </a>
     </div>
   </div>
