@@ -508,7 +508,7 @@ footer{background:var(--bg-2);border-top:1px solid var(--line);padding:50px 24px
 @media(max-width:520px){.wa-float{bottom:18px;right:18px;width:52px;height:52px}.wa-float svg{width:26px;height:26px}}
 
 /* ===== AUDIENCE STRIP (home hero) ===== */
-.audience-strip{margin:52px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:26px;max-width:1140px;padding:0 24px}
+.audience-strip{margin:52px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:26px;max-width:1320px;padding:0 24px}
 .aud-card{position:relative;overflow:hidden;background:var(--bg-card);border:1px solid var(--card-bd);border-radius:18px;padding:32px 28px 34px;text-decoration:none;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow);transition:border-color .2s,transform .2s,box-shadow .2s;text-align:left}
 .aud-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);opacity:.9}
 .aud-card:hover{border-color:var(--brand-blue);transform:translateY(-6px);box-shadow:var(--shadow-hi)}
