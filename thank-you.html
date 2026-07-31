@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W3V8MSWN20"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W3V8MSWN20');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thanks - you're almost in | TheDealMentor.AI</title>
+<meta name="description" content="Your DealMentor account is created. Check your inbox for the activation link to start your trial.">
+<!-- Post-signup confirmation page: never index it. -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Mulish:wght@400;500;600;700;800;900&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#070b14; --bg-card:#0e1524; --line:#1e2a3f; --ink:#f4f7fb;
+    --muted:#9fb0c7; --accent:#2f7bff; --accent-hi:#5b9bff; --green:#22c55e;
+    --font-display:'Anton',sans-serif; --font-ui:'Mulish',sans-serif; --font-mono:'Geist Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{max-width:100%;overflow-x:hidden;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--font-ui);line-height:1.65;
+    min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 20px;}
+  .wrap{width:100%;max-width:560px;text-align:center;}
+  .logo{font-family:var(--font-display);font-size:22px;letter-spacing:.02em;color:var(--ink);
+    text-decoration:none;display:inline-block;margin-bottom:36px;}
+  .logo span{color:var(--accent);}
+  .badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--green);
+    border:1px solid #1c3a2a;background:#0c1a13;border-radius:999px;padding:7px 15px;margin-bottom:24px;}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--green);}
+  h1{font-family:var(--font-display);font-size:clamp(34px,7vw,52px);line-height:1.02;
+    letter-spacing:.005em;margin-bottom:18px;}
+  .lead{font-size:17px;color:var(--muted);max-width:460px;margin:0 auto 30px;}
+  .card{background:var(--bg-card);border:1px solid var(--line);border-radius:16px;
+    padding:26px 24px;text-align:left;margin-bottom:30px;}
+  .step{display:flex;gap:14px;align-items:flex-start;padding:12px 0;}
+  .step:not(:last-child){border-bottom:1px solid var(--line);}
+  .num{flex:0 0 26px;height:26px;border-radius:50%;background:#12203a;color:var(--accent-hi);
+    font-family:var(--font-mono);font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;}
+  .step b{color:var(--ink);}
+  .step p{font-size:14.5px;color:var(--muted);margin-top:2px;}
+  .cta{display:inline-block;background:var(--accent);color:#fff;font-weight:800;font-size:15px;
+    text-decoration:none;padding:14px 30px;border-radius:10px;transition:background .2s ease,transform .2s ease;}
+  .cta:hover{background:var(--accent-hi);transform:translateY(-1px);}
+  .sub{margin-top:18px;font-size:13px;color:var(--muted);}
+  .sub a{color:var(--accent-hi);text-decoration:none;}
+  .foot{margin-top:40px;font-size:11.5px;color:#5b6b82;font-family:var(--font-mono);letter-spacing:.03em;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="logo" href="https://www.thedealmentor.ai/">The<span>Deal</span>Mentor.AI</a>
+    <div class="badge"><span class="dot"></span> Account created</div>
+    <h1>You're almost in.</h1>
+    <p class="lead">Your DealMentor account is set up. We just sent an activation link to your email - one click and your trial starts.</p>
+
+    <div class="card">
+      <div class="step">
+        <div class="num">1</div>
+        <div><b>Open your inbox</b><p>Look for "Activate your DealMentor account" from tal@thedealmentor.ai. It usually lands within a minute.</p></div>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <div><b>Click the activation link</b><p>That confirms your email and signs you straight in - no password to re-enter.</p></div>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <div><b>Pick your mode and go</b><p>Answer one quick question at onboarding and your Virtual CRO builds your program.</p></div>
+      </div>
+    </div>
+
+    <a class="cta" href="https://app.thedealmentor.ai/login">Go to the login page &rarr;</a>
+    <p class="sub">Don't see the email? Check your spam folder and mark us as safe, or <a href="https://app.thedealmentor.ai/register">request a new link</a>.</p>
+
+    <p class="foot">TheDealMentor.AI&trade; is a trademark of Tal Paperin.</p>
+  </div>
+
+  <!-- Fire an explicit GA4 event so registration completions can be marked as a key event /
+       conversion, and pass the campaign through so it attributes correctly. The UTM params are
+       carried onto this URL by the app after signup. -->
+  <script>
+    (function(){
+      try{
+        var p = new URLSearchParams(window.location.search);
+        gtag('event', 'registration_complete', {
+          campaign: p.get('utm_campaign') || '(none)',
+          source: p.get('utm_source') || '(direct)',
+          medium: p.get('utm_medium') || '(none)'
+        });
+      }catch(e){}
+    })();
+  </script>
+
+  <!-- ═══ REDDIT CONVERSION PIXEL ═══════════════════════════════════════════════════
+       To count Reddit-ad sign-ups: paste the Reddit Pixel base snippet here, then fire the
+       SignUp conversion, e.g.  rdt('track', 'SignUp');
+       (Ask me and I'll wire it once you have the Reddit advertiser/pixel ID.)
+  ═══════════════════════════════════════════════════════════════════════════════════ -->
+</body>
+</html>
