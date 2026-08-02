@@ -10,6 +10,11 @@
 
   gtag('config', 'G-W3V8MSWN20');
 </script>
+<!-- Reddit Pixel -->
+<script>
+!function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);rdt('init','a2_jeyd5pv296m4');rdt('track','PageVisit');
+</script>
+<!-- End Reddit Pixel -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Thanks - you're almost in | TheDealMentor.AI</title>
@@ -101,10 +106,8 @@
     })();
   </script>
 
-  <!-- ═══ REDDIT CONVERSION PIXEL ═══════════════════════════════════════════════════
-       To count Reddit-ad sign-ups: paste the Reddit Pixel base snippet here, then fire the
-       SignUp conversion, e.g.  rdt('track', 'SignUp');
-       (Ask me and I'll wire it once you have the Reddit advertiser/pixel ID.)
-  ═══════════════════════════════════════════════════════════════════════════════════ -->
+  <!-- Reddit Pixel: this is the conversion page, so fire the SignUp event. The base pixel
+       (init + PageVisit) is in <head>; rdt queues the call until pixel.js loads. -->
+  <script>try{ if(window.rdt){ rdt('track','SignUp'); } }catch(e){}</script>
 </body>
 </html>
