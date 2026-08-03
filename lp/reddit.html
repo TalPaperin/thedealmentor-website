@@ -421,15 +421,5 @@ document.addEventListener('keydown', function(e) {
 })();
 </script>
 
-<script>
-/* Carry Reddit's ad-click id (rdt_cid) from this landing URL onto the Start Free links so it
-   reaches the app, which forwards it to the Conversions API as the click_id (best match signal). */
-(function(){ try{
-  var cid=new URLSearchParams(location.search).get('rdt_cid'); if(!cid) return;
-  document.querySelectorAll('a[href*="app.thedealmentor.ai/register"]').forEach(function(a){
-    var u=new URL(a.href); if(!u.searchParams.get('rdt_cid')){ u.searchParams.set('rdt_cid',cid); a.href=u.toString(); }
-  });
-}catch(e){} })();
-</script>
 </body>
 </html>
