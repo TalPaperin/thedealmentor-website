@@ -106,8 +106,9 @@
     })();
   </script>
 
-  <!-- Reddit Pixel: this is the conversion page, so fire the SignUp event. The base pixel
-       (init + PageVisit) is in <head>; rdt queues the call until pixel.js loads. -->
-  <script>try{ if(window.rdt){ rdt('track','SignUp'); } }catch(e){}</script>
+  <!-- Reddit Pixel: this is the conversion page, so fire the SignUp event. If the app passed
+       a conversionId (?cid=), send it so Reddit can deduplicate this browser event against the
+       matching server-side Conversions API event. Base pixel (init + PageVisit) is in <head>. -->
+  <script>try{ if(window.rdt){ var _cid=new URLSearchParams(location.search).get('cid'); rdt('track','SignUp', _cid?{conversionId:_cid}:undefined); } }catch(e){}</script>
 </body>
 </html>
