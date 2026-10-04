@@ -1,32 +1,48 @@
 # TheDealMentor.AI
 
-> A sales platform that pairs one live fractional CRO and a 24/7 Ask-the-CRO AI advisor with twenty AI sales tools, on every plan. Built by KSW Solutions and by Tal Paperin, a working fractional CRO. It turns his CRO methodology into software, with him on call for the strategy that cannot be automated.
+> A CRM with a real CRO inside. DealMentor is a real CRM (pipeline, contacts, activity, tasks) whose every deal is read by an AI CRO that hands back the next move, the script, and the research. Around that spine sit twenty AI sales tools plus a live fractional CRO. It is a system of judgment, not just a system of record. Built by senior sales operators at KSW Solutions.
 
-TheDealMentor.AI serves three audiences: BPOs and contact centers, sales teams, and solo founders. Every plan includes the same core: twenty AI sales tools plus direct access to a real fractional CRO (not only an AI). The AI is grounded in proven sales methodologies and follows a strict anti-hallucination rule, so it never invents client names, numbers, or results.
+TheDealMentor.AI serves three audiences: sales teams, BPOs and contact centers, and solo founders. The product is a lightweight but real CRM; what makes it different is that an AI CRO reads each deal and tells the rep what to do next, writes the script, and does the research. The AI is grounded in proven sales methodologies and follows a strict anti-hallucination rule, so it never invents client names, numbers, or results. A live fractional CRO is included as a supporting benefit, not the headline.
 
 ## What it does
-- [Platform overview](https://www.thedealmentor.ai/platform): The twenty AI sales tools plus the live CRO. Sales program generation, ICP scripts, Sales Copilot (real-time selling tools), Outreach Builder (6 channels), a built-in CRM, Practice-a-Call simulation, Rep Certification, Knowledge Base, marketing and demand-gen, and Ask-the-CRO.
+- [Platform overview](https://www.thedealmentor.ai/platform): The CRM spine plus twenty AI sales tools and a live fractional CRO. The CRM has Deals (stages New to Discovery to Proposal to Negotiation to Won/Lost, with List and Kanban board views, weighted forecast), reusable many-to-many Contacts, a Leads board with one-tap status and one-tap dialing from a contact, LinkedIn profile capture, Activity logging, and typed Tasks. CSV import auto-maps Salesforce and HubSpot exports; one-click CSV export any time. The AI toolkit: sales program generation, ICP scripts, Sales Copilot, Outreach Builder (6 channels), Practice-a-Call simulation, Rep Certification, Knowledge Base, marketing and demand-gen, and Ask-the-CRO (role-aware for managers and reps).
+- [For sales teams](https://www.thedealmentor.ai/for-teams): Team Mode generates a 6-document program (Sales Playbook, Why-Buy, Marketing Plan, Vertical Intel, SDR Guide, AE Guide) plus ICP scripts, Practice-a-Call, per-rep Certification, and campaigns a manager assigns to all or specific reps. Managers get a read-only team-pipeline view.
+- [For BPOs and contact centers](https://www.thedealmentor.ai/bpo-and-centers): BPO Mode is per-campaign. Paste a client brief and get a Campaign Pack (cheat-sheet, rebuttal library, and certification, a configurable 3-25 questions, default 10) in about a minute, with branded, audit-ready certification records, unique Verification IDs, and PDF or Word export.
 - [For solo founders](https://www.thedealmentor.ai/for-founders): Founder Mode generates a 4-document program (GTM Plan, Sales Playbook, Marketing Plan, Daily Workflow) plus the full toolkit.
-- [For sales teams](https://www.thedealmentor.ai/for-teams): Team Mode generates a 6-document program (Sales Playbook, Why-Buy, Marketing Plan, Vertical Intel, SDR Guide, AE Guide) plus ICP scripts, Practice-a-Call, per-rep Certification, and campaigns a manager assigns to all or specific reps.
-- [For BPOs and contact centers](https://www.thedealmentor.ai/bpo-and-centers): BPO Mode is per-campaign. Paste a client brief and get a Campaign Pack (cheat-sheet, rebuttal library, and certification) in about a minute, with branded, audit-ready certification records.
 
 ## Pricing
-- [Pricing](https://www.thedealmentor.ai/pricing): Founder from $119/month (annual). Team from $399/month (annual, up to 5 reps). Growth from $999/month (annual, up to 15 reps). BPO / Centers from $999/month, sales-led, monthly billing, 3-month minimum, unlimited agents per campaign. Founder has a 7-day trial; Team, Growth, and BPO have a 14-day trial. Reps and agents you invite are covered by your seat and do not pay separately.
+- [Pricing](https://www.thedealmentor.ai/pricing): Founder from $119/month (annual) or $149 monthly, 7-day trial. Team from $399/month (annual, up to 5 reps) or $449 monthly, 14-day trial. Growth from $999/month (annual, up to 15 reps) or $1,199 monthly, 14-day trial. BPO / Centers from $999/month, sales-led, monthly billing, 3-month minimum, unlimited agents per campaign, with a 14-day see-it-work trial. Founder, Team, and Growth are self-serve via Paddle. BPO is sales-led: book a call to scope rollout. Reps and agents you invite are covered by your seat and do not pay separately.
 
 ## Why DealMentor
-- [Why us](https://www.thedealmentor.ai/whyus): The case for one live CRO plus twenty AI tools versus point tools that assume you already have a playbook.
-- [About](https://www.thedealmentor.ai/about): KSW Solutions and Tal Paperin, the fractional CRO behind the platform.
+- [Why us](https://www.thedealmentor.ai/whyus): To assemble what DealMentor does, a team would otherwise buy a CRM, conversation intelligence, enablement, AI roleplay, and outreach tooling (roughly $67K-112K/year in software by list prices) plus a fractional CRO ($6K-20K/month), which lands around $140K-290K/year all in for about ten reps. DealMentor replaces that stack from $399/month, under $12K/year for up to 15 reps. (Competitor figures are list or reported; the stack comparison applies to teams and founders, not the per-campaign BPO lane.)
+- [About](https://www.thedealmentor.ai/about): KSW Solutions and the founder's two decades running this playbook as a fractional CRO.
+
+## Guides and resources
+- [Resources hub](https://www.thedealmentor.ai/resources): Long-form guides and a sales glossary.
+- [Sales glossary](https://www.thedealmentor.ai/resources/glossary): Plain-language definitions of key modern-selling terms.
+- [AI CRM for sales teams: a buyer's guide](https://www.thedealmentor.ai/resources/ai-crm-for-sales-teams-guide): What an AI CRM is, what to look for, and how a CRO-in-the-CRM differs from bolt-on AI.
+- [Fractional CRO vs fractional CRO software](https://www.thedealmentor.ai/resources/fractional-cro-vs-software): When a team needs a human CRO, when software covers the judgment, and how to combine them.
+- [AI sales tooling for BPOs and call centers](https://www.thedealmentor.ai/resources/bpo-ai-sales-tooling-guide): AI call-center QA, agent certification, and how per-campaign tooling differs from floor tools.
+- [How to build a sales playbook in 15 minutes](https://www.thedealmentor.ai/resources/sales-playbook-in-15-minutes): A step-by-step method and what a generated playbook should contain.
 
 ## Comparisons
-- [Compare](https://www.thedealmentor.ai/vs/): How DealMentor differs from real-time call AI, post-call QA, and role-play tools.
-- [vs Cogito](https://www.thedealmentor.ai/vs/cogito): Real-time call AI versus a bundled playbook and CRO.
+- [Compare](https://www.thedealmentor.ai/vs/): How DealMentor differs from the tools teams and BPOs usually buy.
+- [vs Salesforce](https://www.thedealmentor.ai/vs/salesforce): A CRM with a CRO inside versus a configurable system of record.
+- [vs HubSpot](https://www.thedealmentor.ai/vs/hubspot): Built-in judgment versus an all-in-one you still have to operate.
+- [vs Gong](https://www.thedealmentor.ai/vs/gong): Honest read: DealMentor does not do live call recording or conversation intelligence; it acts on the deal, not the call audio.
+- [vs Mindtickle](https://www.thedealmentor.ai/vs/mindtickle): Generated enablement and certification versus a standalone enablement suite.
+- [vs a fractional CRO](https://www.thedealmentor.ai/vs/fractional-cro): Software that scales the CRO's judgment across every deal versus hours of a human's time.
+- [vs Cogito](https://www.thedealmentor.ai/vs/cogito): Real-time call AI versus a bundled playbook, CRM, and CRO.
 - [vs Balto](https://www.thedealmentor.ai/vs/balto): Real-time call prompts versus a full sales toolkit.
 - [vs Observe.AI](https://www.thedealmentor.ai/vs/observe-ai): Post-call QA analytics versus an upstream sales toolkit.
 - [vs Second Nature](https://www.thedealmentor.ai/vs/second-nature): Sales role-play AI versus a full sales toolkit.
 
+## Security and data
+DealMentor runs standalone in the browser with no third-party integrations to wire up (no IT project). Hosted on Supabase (managed Postgres) with row-level security, so each account's data is isolated and a rep sees only what they own. Auth is email and password (no SSO yet). AI generation runs through the Anthropic API and your data is not used to train public AI models. DealMentor holds no SOC 2 or ISO certification today; security architecture is walked through on a call for enterprise buyers.
+
 ## Contact and start
 - [Contact](https://www.thedealmentor.ai/contact): Talk to KSW Solutions.
-- [Start free trial](https://app.thedealmentor.ai/register): Sign up and pick your mode (founder, team, or BPO).
+- [Start a trial](https://app.thedealmentor.ai/register): Sign up and pick your mode (team, BPO, or founder).
 - [Log in](https://app.thedealmentor.ai/login): Existing accounts.
 
 ## Legal
