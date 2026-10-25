@@ -23,8 +23,9 @@
   --warm:#FF6B7A;
   --good:#5BD7A8;
   --accent-soft:rgba(37,99,235,.10);
-  --shadow:0 12px 40px rgba(0,0,0,.45);
-  --shadow-hi:0 18px 60px rgba(0,0,0,.60);
+  /* Layered two-part shadow (tight contact + soft ambient) - matches the product app's depth language */
+  --shadow:0 2px 4px rgba(0,0,0,.40),0 16px 44px rgba(0,0,0,.46);
+  --shadow-hi:0 4px 10px rgba(0,0,0,.42),0 24px 64px rgba(0,0,0,.58);
   --radius:14px; --radius-lg:20px; --maxw:1320px;
 }
 [data-theme="light"]{
@@ -42,8 +43,8 @@
   --warm:#C8273A;
   --good:#1A8E5C;
   --accent-soft:rgba(18,41,178,.08);
-  --shadow:0 8px 28px rgba(18,18,18,.08);
-  --shadow-hi:0 18px 48px rgba(18,18,18,.14);
+  --shadow:0 1px 2px rgba(18,18,18,.06),0 12px 32px rgba(18,18,18,.09);
+  --shadow-hi:0 4px 10px rgba(18,18,18,.07),0 22px 52px rgba(18,18,18,.13);
 }
 
 /* ===== RESET / BASE ===== */
@@ -340,7 +341,7 @@ nav.shrink{background:var(--bg);border-bottom-color:var(--line);box-shadow:0 6px
 /* Video lightbox modal */
 .video-modal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:24px}
 .video-modal[hidden]{display:none}
-.video-modal-overlay{position:absolute;inset:0;background:rgba(0,0,0,.86);border:none;cursor:pointer;padding:0;margin:0}
+.video-modal-overlay{position:absolute;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:none;cursor:pointer;padding:0;margin:0}
 .video-modal-content{position:relative;z-index:2;width:100%;max-width:960px;animation:videoModalIn .22s ease-out}
 @keyframes videoModalIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
 .video-modal-frame{position:relative;aspect-ratio:16/9;background:#000;border-radius:14px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6)}
