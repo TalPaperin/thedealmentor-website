@@ -101,6 +101,10 @@ nav.shrink{background:var(--bg);border-bottom-color:var(--line);box-shadow:0 6px
 .nav-links a::after{content:'';position:absolute;left:4px;right:4px;bottom:-2px;height:1.5px;background:var(--accent);transform:scaleX(0);transform-origin:center;transition:transform .25s ease}
 .nav-links a:hover,.nav-links a.active{color:var(--ink)}
 .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+/* Contact: a prominent accent pill so the primary "talk to us" action is unmistakable in the nav */
+.nav-links a.nav-contact{color:var(--accent);border:1.5px solid var(--accent-bd);border-radius:9px;padding:6px 15px;font-weight:700;opacity:1}
+.nav-links a.nav-contact::after{display:none}
+.nav-links a.nav-contact:hover{background:var(--accent-soft);border-color:var(--accent);opacity:1}
 .nav-login-m{display:none}
 .nav-right{display:flex;align-items:center;gap:10px}
 .theme-toggle{width:38px;height:38px;border-radius:50%;border:1px solid var(--line-hi);color:var(--ink);display:inline-flex;align-items:center;justify-content:center;transition:border-color .2s,background .2s}
@@ -125,7 +129,7 @@ nav.shrink{background:var(--bg);border-bottom-color:var(--line);box-shadow:0 6px
 .nav-dd-menu a span{display:block;font-size:12.5px;font-weight:500;color:var(--muted);margin-top:2px}
 @media (max-width:920px){
   .nav-links{position:absolute;top:100%;left:0;right:0;background:transparent;flex-direction:column;align-items:stretch;gap:0;padding:0;max-height:0;overflow:hidden;transition:max-height .25s ease,padding .25s ease}
-  .nav-links.open{background:var(--bg);padding:8px 0;max-height:560px;border-bottom:1px solid var(--line);box-shadow:0 8px 24px rgba(0,0,0,.30)}
+  .nav-links.open{background:var(--bg);padding:8px 0;max-height:85vh;overflow-y:auto;border-bottom:1px solid var(--line);box-shadow:0 8px 24px rgba(0,0,0,.30)}
   .nav-links a{padding:14px 28px;font-size:16px}
   .nav-links a::after{display:none}
   .nav-dd{display:block;width:100%}
@@ -137,6 +141,8 @@ nav.shrink{background:var(--bg);border-bottom-color:var(--line);box-shadow:0 6px
   .nav-dd-menu a span{display:none}
   .nav-links a.nav-login-m{display:flex!important;align-items:center;justify-content:center;margin:14px 20px 10px!important;padding:14px 22px!important;background:var(--accent)!important;color:#fff!important;font-weight:700!important;font-size:16px;border-radius:10px;border:none;opacity:1!important}
   .nav-links a.nav-login-m:hover{background:var(--primary)!important;color:#fff!important}
+  .nav-links a.nav-contact{display:block;margin:6px 20px 12px!important;padding:14px 22px!important;background:var(--accent)!important;color:#fff!important;border:none;border-radius:10px;text-align:center;font-weight:700!important;opacity:1!important}
+  .nav-links a.nav-contact:hover{background:var(--primary)!important;color:#fff!important}
   .nav-toggle{display:flex}
   .nav-right .btn-ghost{display:none!important}
   .nav-right .btn-primary{display:none!important}
