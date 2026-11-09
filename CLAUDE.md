@@ -94,7 +94,7 @@ These have side effects beyond the marketing site — don't change without Tal's
 - WhatsApp number: `972545308119`
 - App URLs: `https://app.thedealmentor.ai/register`, `https://app.thedealmentor.ai/login`
 - `sitemap.xml` + `robots.txt` — coordinate any URL changes
-- `og-image.svg` + `favicon.ico`
+- `og-image.jpg` (social share card, 1200x630) + `favicon.ico` (+ `apple-touch-icon.png`, `favicon-32.png`) - restored 2026-11-09 from Sam's originals; og:image/twitter:image switched from the old missing `.svg` to `.jpg` (SVG doesn't render on most social platforms)
 - Trademark line in the footer: *"TheDealMentor.AI™ is a trademark of Tal Paperin."*
 
 ## Where to find live state
