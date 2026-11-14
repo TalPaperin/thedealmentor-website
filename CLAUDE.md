@@ -43,7 +43,9 @@ If a new copy claim doesn't appear in this list, treat it as unverified and ask 
 |---|---|---|
 | Founder | $119/mo (annual) / $149/mo (monthly) | Paddle self-serve, 7-day trial |
 | Team | $399/mo (annual) / $449/mo (monthly), up to 5 reps | Paddle self-serve, 14-day trial |
-| Growth | $999/mo (annual) / $1,199/mo (monthly), up to 15 reps | Paddle self-serve, 14-day trial |
+| Growth | $999/mo (annual) / $1,199/mo (monthly), up to 15 reps | **Sales-led (contact)** - scoped on a call, from the Growth price |
+
+**Self-serve is Founder + Team only (Tal, 2026-11-14).** Growth and Scale are now **sales-led - "Talk to sales," not self-checkout** - to kill the 5->6 rep cliff ($399 Team -> $999 Growth for one extra rep). On `/pricing` the Growth card's CTA is "Talk to sales" -> `/contact` (price still shown so teams self-qualify); in the app, PaywallPage (trial-end) offers only Founder/Starter checkout plus a "More than 5 reps? Talk to sales" panel, and PricingPage renders Growth/Scale with a "Talk to sales" button (the `salesLed` flag). Paddle products for growth/scale are untouched, so a direct checkout link still works if we hand one out. Founder (solo on-ramp) and Team (up to 5) stay self-serve.
 | **BPO / Centers** | **From $999/mo, sales-led**, monthly billing, 3-month minimum, unlimited agents per campaign | **14-day see-it-work trial** (1 campaign, no auto-convert) → book a call to scope rollout |
 
 The BPO plan is deliberately **NOT in the self-serve plans grid** on `/pricing` — it lives in a horizontal sales-led panel below the grid. BPO conversion requires a call (no Paddle product). This was decided after a long debate (search session log for "the 4th one is not connecting to anything"). Do not put BPO back in the Paddle grid.
