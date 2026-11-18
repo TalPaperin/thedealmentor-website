@@ -69,7 +69,7 @@ Two lanes. **Stack (teams/founders):** `vs/salesforce`, `vs/hubspot`, `vs/gong`,
 
 ## Named customers (use these, don't invent)
 
-**Current customers** (safe to claim): **ClinicMind** (Adam Hulkower + Avi Cohen used DealMentor there — SDRs and AEs in healthcare SaaS), **Botshare.ai**, **MakhSuss**, **Lotix Smart Warehouse**.
+**Current customers** (safe to claim): **ClinicMind** (Adam Hulkower + Avi Cohen used DealMentor there — SDRs and AEs in healthcare SaaS), **Botshare.ai**, **MakhSuss**, **Lotix Smart Warehouse**, **Hindsight** (added by Sammy, 2026-11-18).
 
 **Do NOT claim:** Mars, IDT, Headcounter as a "current customer." Tal's BPO floor work in the Philippines / Eastern Europe / Mexico is under NDA — describe it as practitioner experience, not as named DealMentor deployments.
 
