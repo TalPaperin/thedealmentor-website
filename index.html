@@ -85,6 +85,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .dmw-btn-ghost{display:inline-flex;align-items:center;min-height:52px;padding:0 26px;border-radius:10px;background:var(--accent-soft);border:1.5px solid color-mix(in srgb,var(--accent) 55%,transparent);color:var(--ink);font:inherit;font-weight:600;font-size:15px;cursor:pointer;text-decoration:none}
 .dmw-btn-ghost:hover{border-color:var(--accent)}
 .dmw-cta{margin-top:48px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.dmw-stuck-p p{margin:0 0 14px}.dmw-stuck-p p:last-child{margin:0}.dmw-stuck-p strong{color:var(--ink)}
+.dmw-process-in{max-width:760px;margin:0 auto}
+.dmw-process-in > p{margin:0 0 16px;font-size:clamp(17px,1.6vw,19px);line-height:1.65;color:var(--text)}
+.dmw-process-in .section-h2{margin-bottom:26px}
+.dmw-process-big{font-weight:800;color:var(--ink)!important}
+.dmw-process-key{margin:24px 0!important;padding:22px 24px;border-radius:var(--radius-lg);background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 55%,transparent);font-size:clamp(19px,2vw,23px)!important;font-weight:800;line-height:1.4!important;color:var(--ink)!important}
+.dmw-process-no{list-style:none;margin:0 0 22px;padding:0;display:flex;flex-direction:column;gap:10px}
+.dmw-process-no li{display:flex;gap:12px;align-items:baseline;font-size:clamp(17px,1.6vw,19px);color:var(--ink);font-weight:700}
+.dmw-process-no li::before{content:'';flex:none;width:12px;height:2px;background:var(--accent-2);transform:translateY(-5px)}
+.dmw-process-edge{margin-top:26px!important;padding-top:22px;border-top:1px solid var(--line);color:var(--muted)!important}
 .dmw-reassure{margin:0;font-size:14px;font-weight:600;color:var(--muted)}
 .dmw-arrow{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
 .dmw-sub{font-size:clamp(17px,1.5vw,19px);color:var(--text);max-width:720px;margin:18px auto 0;line-height:1.65}
@@ -243,9 +253,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="dmw-stuck" id="dmwStuck" role="status" hidden>
     <p class="dmw-stuck-h">Most teams pick this.</p>
     <p class="dmw-stuck-h">That’s why most teams stay stuck.</p>
-    <p class="dmw-stuck-p">Adding another tool won’t fix a broken process. It just makes the broken process more expensive.</p>
+    <div class="dmw-stuck-p">
+      <p>Adding another tool rarely fixes a broken process.<br>It usually just makes the broken process more expensive, and more annoying.</p>
+      <p><strong>The real cost isn’t the login.</strong><br>It’s another quarter of the same stalled deals while everyone pretends the new dashboard will change behaviour.</p>
+    </div>
     <div class="dmw-actions">
-      <a href="#how" class="btn-primary btn-lg">Show me how the process should change<svg class="dmw-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"/><path d="M6 13l6 6 6-6"/></svg></a>
+      <a href="#process" class="btn-primary btn-lg" id="dmwShowProcess" aria-controls="process">Show me how the process should actually change<svg class="dmw-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
       <button type="button" class="dmw-btn-ghost" id="dmwStuckClose">I’ll keep hunting for tools</button>
     </div>
   </div>
@@ -258,6 +271,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="trust-marquee" aria-label="Teams using DealMentor">
   <p class="trust-lead">Trusted by founders and teams at</p>
   <div class="trust-viewport"><div class="trust-track"><span class="trust-item">HireMatch AI</span><span class="trust-dot">&middot;</span><span class="trust-item">ClinicMind</span><span class="trust-dot">&middot;</span><span class="trust-item">Botshare.ai</span><span class="trust-dot">&middot;</span><span class="trust-item">MakhSuss</span><span class="trust-dot">&middot;</span><span class="trust-item">Lotix Smart Warehouse</span><span class="trust-dot">&middot;</span><span class="trust-item">Hindsight</span><span class="trust-dot">&middot;</span><span class="trust-item">HireMatch AI</span><span class="trust-dot">&middot;</span><span class="trust-item">ClinicMind</span><span class="trust-dot">&middot;</span><span class="trust-item">Botshare.ai</span><span class="trust-dot">&middot;</span><span class="trust-item">MakhSuss</span><span class="trust-dot">&middot;</span><span class="trust-item">Lotix Smart Warehouse</span><span class="trust-dot">&middot;</span><span class="trust-item">Hindsight</span><span class="trust-dot">&middot;</span><span class="trust-item">HireMatch AI</span><span class="trust-dot">&middot;</span><span class="trust-item">ClinicMind</span><span class="trust-dot">&middot;</span><span class="trust-item">Botshare.ai</span><span class="trust-dot">&middot;</span><span class="trust-item">MakhSuss</span><span class="trust-dot">&middot;</span><span class="trust-item">Lotix Smart Warehouse</span><span class="trust-dot">&middot;</span><span class="trust-item">Hindsight</span><span class="trust-dot">&middot;</span><span class="trust-item" aria-hidden="true">HireMatch AI</span><span class="trust-dot" aria-hidden="true">&middot;</span><span class="trust-item" aria-hidden="true">ClinicMind</span><span class="trust-dot" aria-hidden="true">&middot;</span><span class="trust-item" aria-hidden="true">Botshare.ai</span><span class="trust-dot" aria-hidden="true">&middot;</span><span class="trust-item" aria-hidden="true">MakhSuss</span><span class="trust-dot" aria-hidden="true">&middot;</span><span class="trust-item" aria-hidden="true">Lotix Smart Warehouse</span><span class="trust-dot" aria-hidden="true">&middot;</span><span class="trust-item" aria-hidden="true">Hindsight</span><span class="trust-dot" aria-hidden="true">&middot;</span><span class="trust-item" aria-hidden="true">HireMatch AI</span><span class="trust-dot" aria-hidden="true">&middot;</span><span class="trust-item" aria-hidden="true">ClinicMind</span><span class="trust-dot" aria-hidden="true">&middot;</span><span class="trust-item" aria-hidden="true">Botshare.ai</span><span class="trust-dot" aria-hidden="true">&middot;</span><span class="trust-item" aria-hidden="true">MakhSuss</span><span class="trust-dot" aria-hidden="true">&middot;</span><span class="trust-item" aria-hidden="true">Lotix Smart Warehouse</span><span class="trust-dot" aria-hidden="true">&middot;</span><span class="trust-item" aria-hidden="true">Hindsight</span><span class="trust-dot" aria-hidden="true">&middot;</span><span class="trust-item" aria-hidden="true">HireMatch AI</span><span class="trust-dot" aria-hidden="true">&middot;</span><span class="trust-item" aria-hidden="true">ClinicMind</span><span class="trust-dot" aria-hidden="true">&middot;</span><span class="trust-item" aria-hidden="true">Botshare.ai</span><span class="trust-dot" aria-hidden="true">&middot;</span><span class="trust-item" aria-hidden="true">MakhSuss</span><span class="trust-dot" aria-hidden="true">&middot;</span><span class="trust-item" aria-hidden="true">Lotix Smart Warehouse</span><span class="trust-dot" aria-hidden="true">&middot;</span><span class="trust-item" aria-hidden="true">Hindsight</span><span class="trust-dot" aria-hidden="true">&middot;</span></div></div>
+</section>
+
+<section class="solid dmw-process" id="process" hidden>
+  <div class="section-inner">
+    <div class="dmw-process-in">
+      <p class="eyebrow">How the process should actually change</p>
+      <h2 class="section-h2">You’re right to hate <em>learning another tool.</em></h2>
+      <p>Most “sales platforms” ask your team to change how they work for the tool.</p>
+      <p class="dmw-process-big">DealMentor is built the other way around.</p>
+      <p>It doesn’t ask anyone to become more disciplined, fill in more fields, or adopt a new methodology.</p>
+      <p>It takes the deals and activity you already have, and after every call or email it does the one job that actually moves revenue:</p>
+      <p class="dmw-process-key">It tells the salesperson the single next move, and gives them the words to make it.</p>
+      <p class="dmw-process-big">That’s it.</p>
+      <ul class="dmw-process-no">
+        <li>No new process to enforce.</li>
+        <li>No pipeline hygiene theatre.</li>
+        <li>No “AI assistant” they have to prompt.</li>
+      </ul>
+      <p>Just the answer they were going to interrupt their manager for anyway, delivered the moment the call is logged.</p>
+      <p class="dmw-process-edge">If that still sounds like “another tool,” it probably isn’t worth your time.<br>If the alternative is another quarter of the same results… five minutes might be.</p>
+      <div class="dmw-actions" style="justify-content:flex-start">
+        <a href="#how" class="btn-primary btn-lg">See the next-move view<svg class="dmw-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="solid" id="skeptical">
@@ -578,6 +616,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
   btns.forEach(function(b){b.addEventListener('click',function(){pick(Number(b.getAttribute('data-answer')))})});
   if(close)close.addEventListener('click',function(){pick(0);btns[0].focus()});
+  var show=document.getElementById('dmwShowProcess'),proc=document.getElementById('process');
+  if(show&&proc)show.addEventListener('click',function(e){e.preventDefault();proc.hidden=false;proc.scrollIntoView({behavior:'smooth',block:'start'});try{if(window.gtag)gtag('event','hero_process_open',{cta_variant:v});}catch(err){}});
 })();
 </script>
 
