@@ -71,7 +71,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .hp-proof .hp-proof-card{display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
 .hp-proof .hp-proof-val{white-space:nowrap;font-size:clamp(26px,2.6vw,36px)}
 .hp-proof .hp-proof-lbl{min-height:2.6em;margin-top:8px}
-@media(max-width:760px){.hp-proof .hp-proof-card:last-child{grid-column:1/-1}}
+.hp-proof .hp-proof-grid{grid-template-columns:repeat(4,1fr)}
+@media(max-width:760px){.hp-proof .hp-proof-grid{grid-template-columns:1fr 1fr}}
 .dmw-three-2{grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr))}
 .dmw-cro-band{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(36px,6vw,88px);align-items:center}
 .dmw-cro-copy .section-h2{margin-bottom:18px}
@@ -332,9 +333,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="hp-proof-card"><div class="hp-proof-val">2×</div><div class="hp-proof-lbl">meetings booked<br>by SDRs</div></div>
         <div class="hp-proof-card"><div class="hp-proof-val">2×</div><div class="hp-proof-lbl">AE close<br>rate</div></div>
         <div class="hp-proof-card"><div class="hp-proof-val">2–3 days</div><div class="hp-proof-lbl">to new hire<br><span style="white-space:nowrap">phone-ready</span></div></div>
-        <div class="hp-proof-card"><div class="hp-proof-val">100%</div><div class="hp-proof-lbl">of interactions<br>run through it</div></div>
       </div>
-      <p class="hp-proof-cap">Early alpha, one team, six to eight months.</p>
     </div>
 
   </div>
