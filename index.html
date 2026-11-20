@@ -72,6 +72,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .hp-proof .hp-proof-val{white-space:nowrap;font-size:clamp(26px,2.6vw,36px)}
 .hp-proof .hp-proof-lbl{min-height:2.6em;margin-top:8px}
 @media(max-width:760px){.hp-proof .hp-proof-card:last-child{grid-column:1/-1}}
+.dmw-three-2{grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr))}
+.dmw-cro-band{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(36px,6vw,88px);align-items:center}
+.dmw-cro-copy .section-h2{margin-bottom:18px}
+.dmw-cro-lead{margin:0;font-size:clamp(17px,1.6vw,19px);line-height:1.65;color:var(--text);max-width:52ch}
+.dmw-cro-card{padding:28px;border-color:color-mix(in srgb,var(--accent) 50%,transparent);box-shadow:0 24px 60px color-mix(in srgb,var(--accent) 22%,transparent)}
+.dmw-cro-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.dmw-live{display:inline-flex;align-items:center;gap:8px;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink);padding:6px 10px;border-radius:999px;background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 45%,transparent)}
+.dmw-live i{width:8px;height:8px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 4px rgba(34,197,94,.2)}
+@media (max-width:900px){.dmw-cro-band{grid-template-columns:minmax(0,1fr)}}
 .dmw-rule{width:52px;height:2px;background:var(--accent);margin:30px auto 0;border-radius:2px}
 .dmw-lead{max-width:760px;margin:38px auto 0;display:flex;flex-direction:column;gap:12px}
 .dmw-lead-1{font-size:clamp(20px,2.2vw,24.5px);line-height:1.35;font-weight:800;color:var(--ink);margin:0}
@@ -389,7 +398,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </ul>
       </div>
     </div>
-    <div class="dmw-three" style="margin-top:20px">
+    <div class="dmw-three dmw-three-2" style="margin-top:20px">
       <div>
         <div class="dmw-card dmw-mock" role="img" aria-label="Example of today's priorities: four deals, each with one next move">
           <p class="dmw-tag">Today's priorities</p>
@@ -424,16 +433,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <p class="dmw-mock-cap"><strong>Team view:</strong> every salesperson's pipeline, readiness score, the deals at risk this week, and activity (calls, emails, meetings) over 24h / 7d / 30d.</p>
       </div>
-      <div>
-        <div class="dmw-card dmw-mock" role="img" aria-label="Example of a live CRO session with its agenda">
-          <p class="dmw-tag">A live human CRO</p>
-          <div class="dmw-cro"><div class="dmw-cro-badge" aria-hidden="true">CRO</div><div><b>Pipeline review session</b><span>With a working revenue leader</span></div></div>
-          <div class="dmw-agenda"><b>On the agenda</b>· Two deals stuck at proposal<br>· Leah's readiness score<br>· This week's forecast call</div>
-        </div>
-        <p class="dmw-mock-cap"><strong>A live human CRO:</strong> real sessions with a working revenue leader, on every plan.</p>
-      </div>
     </div>
     <p class="dmw-note" style="text-align:center;margin-top:20px">Illustrative examples. Fictional companies and people.</p>
+  </div>
+</section>
+
+<section class="solid" id="live-cro">
+  <div class="section-inner dmw-cro-band">
+    <div class="dmw-cro-copy">
+      <p class="eyebrow">Included on every plan</p>
+      <h2 class="section-h2">Other platforms give you software. <em>This one comes with a CRO.</em></h2>
+      <p class="dmw-cro-lead">Real, live sessions with a working revenue leader who reviews your pipeline, your team and your forecast with you. Plus Ask the CRO in the app, 24/7, on every screen.</p>
+      <ul class="dmw-list" style="margin-top:22px">
+        <li><svg class="dmw-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg><span><strong style="color:var(--ink)">A human, not a chatbot.</strong> Someone who has run sales teams sits across the table.</span></li>
+        <li><svg class="dmw-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg><span><strong style="color:var(--ink)">On every plan.</strong> Not an enterprise <span style="white-space:nowrap">add-on.</span></span></li>
+      </ul>
+    </div>
+    <div class="dmw-cro-visual">
+      <div class="dmw-card dmw-cro-card" role="img" aria-label="Example of a live CRO pipeline review session and its agenda">
+        <div class="dmw-cro-top">
+          <span class="dmw-live"><i aria-hidden="true"></i>Live session</span>
+          <span class="dmw-mono">Tue · 10:00</span>
+        </div>
+        <div class="dmw-cro" style="margin-top:20px"><div class="dmw-cro-badge" aria-hidden="true" style="width:56px;height:56px;font-size:19px">CRO</div><div><b style="font-size:18px">Pipeline review session</b><span style="font-size:14px">With a working revenue leader</span></div></div>
+        <div class="dmw-agenda" style="margin-top:20px;font-size:14.5px;line-height:1.8"><b>On the agenda</b>· Two deals stuck at proposal<br>· Leah's readiness score<br>· This week's forecast call</div>
+      </div>
+      <p class="dmw-note">Illustrative example.</p>
+    </div>
   </div>
 </section>
 
