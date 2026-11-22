@@ -45,6 +45,107 @@ function toggleFaq(btn){
   if(nav){var onScroll=function(){nav.classList.toggle('shrink',window.scrollY>24)};window.addEventListener('scroll',onScroll,{passive:true});onScroll()}
 })();
 
+/* ----- SITE SEARCH (nav) -----
+ * Searches /search-index.json (site pages, built by scripts/sync-nav.py) and
+ * /blog/search-index.json (blog posts, served by the blog). Both load on
+ * first open. Enter with nothing matched falls back to the blog's own search.
+ */
+(function(){
+  var btn=document.getElementById('navSearchBtn'),panel=document.getElementById('navSearch'),
+      input=document.getElementById('navSearchInput'),list=document.getElementById('navSearchResults'),
+      close=document.getElementById('navSearchClose');
+  if(!btn||!panel||!input||!list)return;
+  var items=null,loading=null,results=[],active=-1;
+
+  function load(){
+    if(loading)return loading;
+    var get=function(url,kind){
+      return fetch(url).then(function(r){return r.ok?r.json():[]})
+        .then(function(a){return (Array.isArray(a)?a:[]).map(function(x){x.k=kind;return x})})
+        .catch(function(){return []});
+    };
+    loading=Promise.all([get('/search-index.json','Page'),get('/blog/search-index.json','Blog')])
+      .then(function(r){items=r[0].concat(r[1]);return items});
+    return loading;
+  }
+  function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/®/g,'')}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function mark(text,words){
+    var out=esc(text);
+    words.forEach(function(w){ if(w.length<2)return;
+      out=out.replace(new RegExp('('+w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig'),'<mark>$1</mark>'); });
+    return out;
+  }
+  function search(q){
+    var words=norm(q).split(/\s+/).filter(Boolean);
+    if(!words.length||!items)return [];
+    var phrase=words.join(' ');
+    return items.map(function(it){
+      var t=norm(it.t),d=norm(it.d),s=0;
+      for(var i=0;i<words.length;i++){
+        var inT=t.indexOf(words[i])>-1,inD=d.indexOf(words[i])>-1;
+        if(!inT&&!inD)return null;
+        s+=inT?3:1;
+      }
+      if(t.indexOf(phrase)>-1)s+=10;
+      return {it:it,s:s};
+    }).filter(Boolean).sort(function(a,b){return b.s-a.s}).slice(0,8).map(function(x){return x.it});
+  }
+  function render(){
+    var q=input.value.trim(),words=norm(q).split(/\s+/).filter(Boolean);
+    active=-1;
+    if(!q){list.innerHTML='';input.setAttribute('aria-expanded','false');return}
+    if(!items){list.innerHTML='<li class="r-note">Searching…</li>';return}
+    results=search(q);
+    input.setAttribute('aria-expanded',results.length?'true':'false');
+    if(!results.length){
+      list.innerHTML='<li class="r-note">No matches for "'+esc(q)+'". Try other words, or browse <a href="/blog">all blog posts</a>.</li>';
+      return;
+    }
+    list.innerHTML=results.map(function(r,i){
+      return '<li role="option" id="navSearchOpt'+i+'" aria-selected="false"><a href="'+esc(r.u)+'">'+
+        '<span class="r-top"><span class="r-title">'+mark(r.t,words)+'</span><span class="r-type">'+r.k+'</span></span>'+
+        (r.d?'<span class="r-desc">'+esc(r.d)+'</span>':'')+'</a></li>';
+    }).join('');
+  }
+  function setActive(i){
+    var opts=list.querySelectorAll('li[role="option"]');
+    if(!opts.length)return;
+    active=(i+opts.length)%opts.length;
+    opts.forEach(function(o,j){o.setAttribute('aria-selected',j===active?'true':'false')});
+    input.setAttribute('aria-activedescendant','navSearchOpt'+active);
+    opts[active].scrollIntoView({block:'nearest'});
+  }
+  function open(){
+    panel.hidden=false;btn.setAttribute('aria-expanded','true');
+    var links=document.getElementById('navLinks'),tog=document.getElementById('navToggle');
+    if(links){links.classList.remove('open');if(tog)tog.setAttribute('aria-expanded','false')}
+    input.focus();load().then(render);
+  }
+  function shut(){
+    panel.hidden=true;btn.setAttribute('aria-expanded','false');
+    input.removeAttribute('aria-activedescendant');
+  }
+  btn.addEventListener('click',function(e){e.stopPropagation();panel.hidden?open():shut()});
+  if(close)close.addEventListener('click',shut);
+  input.addEventListener('input',render);
+  input.addEventListener('keydown',function(e){
+    if(e.key==='ArrowDown'){e.preventDefault();setActive(active+1)}
+    else if(e.key==='ArrowUp'){e.preventDefault();setActive(active-1)}
+    else if(e.key==='Escape'){shut();btn.focus()}
+    else if(e.key==='Enter'){
+      var pick=results[active>-1?active:0];
+      if(pick&&input.value.trim()){e.preventDefault();window.location.href=pick.u}
+      // nothing matched: the form submits to /blog?search=... (the blog's own search)
+    }
+  });
+  document.addEventListener('click',function(e){if(!panel.hidden&&!panel.contains(e.target)&&!btn.contains(e.target))shut()});
+  document.addEventListener('keydown',function(e){
+    var tag=(e.target&&e.target.tagName)||'';
+    if(e.key==='/'&&panel.hidden&&!/INPUT|TEXTAREA|SELECT/.test(tag)&&!(e.target&&e.target.isContentEditable)){e.preventDefault();open()}
+  });
+})();
+
 /* ----- HERO REVEAL ----- */
 (function(){
   if(!document.documentElement.classList.contains('js'))return;

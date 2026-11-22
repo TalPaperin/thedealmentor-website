@@ -9,6 +9,7 @@ The **marketing site** at https://www.thedealmentor.ai. Static HTML/CSS/JS, no b
 - Stylesheet: `spine.css` — cache-busted via `?v=YYYYMMDDx` query string. Bump the suffix when CSS changes; do not bump just to bump.
 - Shared JS: `spine.js` — same versioning rule.
 - Page convention: every page links nav + footer + WhatsApp floating button via the same partial pattern (inline, not server-rendered).
+- **Top nav = one source** (Sammy, 2026-11-22): markup in `partials/nav.html`, styles in `nav.css`, behavior (menu, theme, search) in `spine.js`. Never edit the `<nav>` on a page directly: edit the partial, then run `python3 scripts/sync-nav.py` (stamps it into every page, marks the current link, rebuilds `search-index.json`). The blog at `/blog` renders the same partial + `nav.css` from this site. `lp/`, `checkout` and `thank-you` stay nav-less on purpose.
 
 ## Cross-repo relationship — READ THIS BEFORE CHANGING PRODUCT CLAIMS
 

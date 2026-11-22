@@ -1,0 +1,113 @@
+/* =====================================================================
+ * DealMentor - shared top nav (www.thedealmentor.ai + /blog)
+ * One stylesheet for the nav on every page. The markup lives in
+ * partials/nav.html; run `python3 scripts/sync-nav.py` after editing either.
+ * The blog loads this file from www, so changes reach it too.
+ * Uses the colour tokens (--bg, --ink, --accent ...) from spine.css; the blog
+ * defines the same tokens.
+ * ===================================================================== */
+.site-nav{line-height:1.65}
+.site-nav{position:sticky;top:0;z-index:50;background:transparent;border-bottom:1px solid transparent;padding:14px clamp(20px,3vw,32px);display:flex;justify-content:space-between;align-items:center;gap:16px;transition:background .3s ease,border-color .3s ease,box-shadow .3s ease,padding .25s ease}
+.site-nav.shrink{background:var(--bg);border-bottom-color:var(--line);box-shadow:0 6px 22px rgba(0,0,0,.30)}
+[data-theme="light"] .site-nav.shrink{box-shadow:0 6px 22px rgba(4,6,15,.10)}
+[data-theme="light"] .site-nav{border-bottom-color:transparent}
+.site-nav .nav-logo{display:flex;align-items:center}
+.site-nav .wordmark{font-family:var(--font-body),sans-serif;font-weight:600;font-size:20px;letter-spacing:-.025em;color:var(--ink);text-decoration:none;display:inline-flex;align-items:center}
+.site-nav .wordmark b{background:linear-gradient(110deg,var(--chr-1),var(--chr-2),var(--chr-3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;font-weight:600}
+/* Logo image swap: white on dark, blue on light. */
+.site-nav .wordmark img{height:44px;width:auto;display:block}
+@media(max-width:359px){.site-nav .wordmark img{height:38px}}
+.site-nav .wordmark .logo-light{display:none}
+[data-theme="light"] .site-nav .wordmark .logo-dark{display:none}
+[data-theme="light"] .site-nav .wordmark .logo-light{display:block}
+.site-nav .nav-links{display:flex;align-items:center;gap:28px}
+.site-nav .nav-links a{color:var(--ink);font-family:var(--font-body),sans-serif;font-size:18px;font-weight:500;padding:6px 4px;position:relative;transition:opacity .15s,color .15s;opacity:.92}
+.site-nav .nav-links a:hover,.site-nav .nav-links a.active{opacity:1}
+.site-nav .nav-links a::after{content:'';position:absolute;left:4px;right:4px;bottom:-2px;height:1.5px;background:var(--accent);transform:scaleX(0);transform-origin:center;transition:transform .25s ease}
+.site-nav .nav-links a:hover,.site-nav .nav-links a.active{color:var(--ink)}
+.site-nav .nav-links a:hover::after,.site-nav .nav-links a.active::after{transform:scaleX(1)}
+/* Contact: a prominent accent pill so the primary "talk to us" action is unmistakable in the nav */
+.site-nav .nav-links a.nav-contact{color:var(--accent);border:1.5px solid var(--accent-bd);border-radius:9px;padding:6px 15px;font-weight:700;opacity:1}
+.site-nav .nav-links a.nav-contact::after{display:none}
+.site-nav .nav-links a.nav-contact:hover{background:var(--accent-soft);border-color:var(--accent);opacity:1}
+.site-nav .nav-login-m{display:none}
+.site-nav .nav-right{display:flex;align-items:center;gap:10px}
+.site-nav .theme-toggle{width:38px;height:38px;border-radius:50%;border:1px solid var(--line-hi);color:var(--ink);display:inline-flex;align-items:center;justify-content:center;transition:border-color .2s,background .2s}
+.site-nav .theme-toggle:hover{border-color:var(--accent);background:var(--accent-soft)}
+.site-nav .theme-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.site-nav .theme-toggle .sun,[data-theme="light"] .site-nav .theme-toggle .moon{display:none}
+[data-theme="light"] .site-nav .theme-toggle .sun{display:block}
+.site-nav .nav-toggle{display:none;width:40px;height:40px;border-radius:10px;background:transparent;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.site-nav .nav-toggle span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:transform .2s,opacity .2s}
+/* Nav dropdown - "Who it's for" (all three ICPs) */
+.site-nav .nav-dd{position:relative;display:inline-flex;align-items:center}
+.site-nav .nav-dd-t{display:inline-flex;align-items:center;gap:5px;color:var(--ink);font-family:var(--font-body),sans-serif;font-size:18px;font-weight:500;padding:6px 4px;opacity:.92;background:none;border:none;cursor:pointer;transition:opacity .15s}
+.site-nav .nav-dd:hover .nav-dd-t,.site-nav .nav-dd:focus-within .nav-dd-t{opacity:1}
+.site-nav .nav-dd-caret{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s ease}
+.site-nav .nav-dd:hover .nav-dd-caret,.site-nav .nav-dd:focus-within .nav-dd-caret{transform:rotate(180deg)}
+.site-nav .nav-dd::before{content:'';position:absolute;top:100%;left:-12px;right:-12px;height:14px}
+.site-nav .nav-dd-menu{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(6px);min-width:236px;background:var(--bg-card);border:1px solid var(--card-bd);border-radius:14px;box-shadow:var(--shadow-hi);padding:8px;display:flex;flex-direction:column;gap:2px;opacity:0;visibility:hidden;transition:opacity .2s ease,transform .2s ease,visibility .2s;z-index:60}
+.site-nav .nav-dd:hover .nav-dd-menu,.site-nav .nav-dd:focus-within .nav-dd-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.site-nav .nav-dd-menu a{display:block;padding:11px 14px!important;border-radius:9px;font-size:15px!important;font-weight:600;color:var(--text);opacity:1}
+.site-nav .nav-dd-menu a::after{display:none!important}
+.site-nav .nav-dd-menu a:hover{background:var(--accent-soft);color:var(--ink)}
+.site-nav .nav-dd-menu a span{display:block;font-size:12.5px;font-weight:500;color:var(--muted);margin-top:2px}
+@media (max-width:920px){
+  .site-nav .nav-links{position:absolute;top:100%;left:0;right:0;background:transparent;flex-direction:column;align-items:stretch;gap:0;padding:0;max-height:0;overflow:hidden;transition:max-height .25s ease,padding .25s ease}
+  .site-nav .nav-links.open{background:var(--bg);padding:8px 0;max-height:85vh;overflow-y:auto;border-bottom:1px solid var(--line);box-shadow:0 8px 24px rgba(0,0,0,.30)}
+  .site-nav .nav-links a{padding:14px 28px;font-size:16px}
+  .site-nav .nav-links a::after{display:none}
+  .site-nav .nav-dd{display:block;width:100%}
+  .site-nav .nav-dd-t{width:100%;justify-content:space-between;padding:14px 28px;font-size:16px}
+  .site-nav .nav-dd-caret{display:none}
+  .site-nav .nav-dd::before{display:none}
+  .site-nav .nav-dd-menu{position:static;transform:none;opacity:1;visibility:visible;min-width:0;background:transparent;border:none;box-shadow:none;border-radius:0;padding:0}
+  .site-nav .nav-dd-menu a{padding:11px 28px 11px 40px!important;font-size:15px!important}
+  .site-nav .nav-dd-menu a span{display:none}
+  .site-nav .nav-links a.nav-login-m{display:flex!important;align-items:center;justify-content:center;margin:14px 20px 10px!important;padding:14px 22px!important;background:var(--accent)!important;color:#fff!important;font-weight:700!important;font-size:16px;border-radius:10px;border:none;opacity:1!important}
+  .site-nav .nav-links a.nav-login-m:hover{background:var(--primary)!important;color:#fff!important}
+  .site-nav .nav-links a.nav-contact{display:block;margin:6px 20px 12px!important;padding:14px 22px!important;background:var(--accent)!important;color:#fff!important;border:none;border-radius:10px;text-align:center;font-weight:700!important;opacity:1!important}
+  .site-nav .nav-links a.nav-contact:hover{background:var(--primary)!important;color:#fff!important}
+  .site-nav .nav-toggle{display:flex}
+  .site-nav .nav-right .btn-ghost{display:none!important}
+  .site-nav .nav-right .btn-primary{display:none!important}
+}
+
+/* Log In button (same as .btn-primary in spine.css, repeated here so the
+   blog, which doesn't load spine.css, gets it too) */
+.site-nav .btn-primary{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(110deg,var(--chr-1),var(--chr-2));color:#fff;font-family:var(--font-body),sans-serif;font-weight:600;font-size:14.5px;padding:10px 22px;border-radius:10px;box-shadow:0 8px 22px rgba(37,99,235,.35);transition:transform .2s cubic-bezier(.2,.7,.2,1),box-shadow .2s}
+.site-nav .btn-primary:hover{transform:translateY(-1px);box-shadow:0 12px 30px rgba(37,99,235,.55)}
+[data-theme="light"] .site-nav .btn-primary{background:linear-gradient(110deg,var(--accent),var(--chr-2));color:#fff}
+.site-nav .btn-primary{position:relative;overflow:hidden}
+.site-nav .btn-primary{position:relative;overflow:hidden}
+.site-nav .btn-primary::after{content:'';position:absolute;top:-10%;left:-130%;width:55%;height:120%;background:linear-gradient(110deg,transparent,rgba(255,255,255,.42),transparent);transform:skewX(-18deg);pointer-events:none}
+.site-nav .btn-primary:hover::after{animation:navBtnSheen .85s ease}
+@keyframes navBtnSheen{from{left:-130%}to{left:170%}}
+
+/* ===== Site search ===== */
+.site-nav .nav-search[hidden]{display:none}
+.site-nav .nav-search{position:absolute;top:calc(100% + 8px);right:clamp(20px,3vw,32px);width:min(480px,calc(100vw - 40px));background:var(--bg-card);border:1px solid var(--card-bd);border-radius:14px;box-shadow:var(--shadow-hi);padding:10px;z-index:70}
+.site-nav .nav-search-box{display:flex;align-items:center;gap:10px;padding:4px 6px 4px 12px;border:1px solid var(--line-hi);border-radius:10px;background:var(--bg)}
+.site-nav .nav-search-box:focus-within{border-color:var(--accent)}
+.site-nav .nav-search-box>svg{width:17px;height:17px;flex-shrink:0;fill:none;stroke:var(--muted);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.site-nav .nav-search-box input{flex:1;min-width:0;background:transparent;border:none;outline:none;color:var(--ink);font-family:var(--font-body),sans-serif;font-size:16px;padding:9px 0}
+.site-nav .nav-search-box input::placeholder{color:var(--faint,var(--muted))}
+.site-nav .nav-search-box input::-webkit-search-cancel-button{display:none}
+.site-nav .nav-search-close{width:32px;height:32px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;color:var(--muted);background:none;border:none;cursor:pointer}
+.site-nav .nav-search-close:hover{background:var(--accent-soft);color:var(--ink)}
+.site-nav .nav-search-close svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
+.site-nav .nav-search-results{list-style:none;margin:0;padding:0;max-height:min(60vh,460px);overflow-y:auto}
+.site-nav .nav-search-results:not(:empty){margin-top:8px}
+.site-nav .nav-search-results a{display:block;padding:10px 12px;border-radius:9px;color:var(--text);text-decoration:none}
+.site-nav .nav-search-results li[aria-selected="true"] a,.site-nav .nav-search-results a:hover{background:var(--accent-soft)}
+.site-nav .nav-search-results .r-top{display:flex;align-items:baseline;gap:8px}
+.site-nav .nav-search-results .r-title{color:var(--ink);font-weight:600;font-size:15px;line-height:1.35}
+.site-nav .nav-search-results .r-type{flex-shrink:0;margin-left:auto;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-2,var(--accent))}
+.site-nav .nav-search-results .r-desc{display:block;margin-top:2px;font-size:13px;line-height:1.45;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.site-nav .nav-search-results .r-note{padding:10px 12px;font-size:14px;color:var(--muted)}
+.site-nav .nav-search-results .r-note a{display:inline;padding:0;color:var(--accent);background:none}
+.site-nav .nav-search-results mark{background:none;color:var(--accent-2,var(--accent));font-weight:700}
+@media (max-width:920px){
+  .site-nav .nav-search{left:12px;right:12px;width:auto}
+}
+@media (prefers-reduced-motion:reduce){.site-nav .btn-primary::after{display:none}}
