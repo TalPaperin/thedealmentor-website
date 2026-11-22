@@ -19,7 +19,17 @@
     { "source": "/outputs",        "destination": "https://app.thedealmentor.ai/outputs",        "permanent": false },
     { "source": "/knowledge",      "destination": "https://app.thedealmentor.ai/knowledge",      "permanent": false },
     { "source": "/materials",      "destination": "https://app.thedealmentor.ai/materials",      "permanent": false },
-    { "source": "/help",           "destination": "https://app.thedealmentor.ai/help",           "permanent": false }
+    { "source": "/help",           "destination": "https://app.thedealmentor.ai/help",           "permanent": false },
+    { "source": "/2026/06/07/what-is-a-sales-plan-why-do-i-need-one-and-other-questions-to-improve-your-sales", "destination": "https://www.thedealmentor.ai/blog/what-is-a-sales-plan-why-do-i-need-one-and-other-questions-to-improve-your-sales", "statusCode": 301 },
+    { "source": "/2026/05/26/how-dealmentors-knowledge-base-beats-genai-for-creating-smarter-outputs", "destination": "https://www.thedealmentor.ai/blog/how-dealmentor-s-knowledge-base-beats-genai-for-creating-smarter-outputs", "statusCode": 301 },
+    { "source": "/2026/05/20/the-ai-cold-call-script-that-actually-works", "destination": "https://www.thedealmentor.ai/blog/the-ai-cold-call-script-generator-that-actually-works", "statusCode": 301 },
+    { "source": "/2026/05/17/how-to-build-a-sales-playbook-in-15-mins-and-why-most-playbooks-fail", "destination": "https://www.thedealmentor.ai/blog/how-to-build-a-sales-playbook-in-15-mins-and-why-most-playbooks-fail", "statusCode": 301 },
+    { "source": "/2026/05/11/why-dealmentor-beats-chatgpt-for-sales-tool-by-tool", "destination": "https://www.thedealmentor.ai/blog/why-dealmentor-beats-chatgpt-for-sales-tool-by-tool", "statusCode": 301 },
+    { "source": "/2026/06/09/looking-for-a-gong-alternative-you-might-need-something-different-entirely-for-your-sales", "destination": "https://www.thedealmentor.ai/blog/looking-for-a-gong-alternative-you-might-need-something-different-entirely-for-your-sales", "statusCode": 301 }
+  ],
+  "rewrites": [
+    { "source": "/blog",         "destination": "https://blog-dealmentor.vercel.app/blog" },
+    { "source": "/blog/:path*",  "destination": "https://blog-dealmentor.vercel.app/blog/:path*" }
   ],
   "headers": [
     {

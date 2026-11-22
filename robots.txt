@@ -33,3 +33,4 @@ User-agent: CCBot
 Allow: /
 
 Sitemap: https://www.thedealmentor.ai/sitemap.xml
+Sitemap: https://www.thedealmentor.ai/blog/sitemap.xml
