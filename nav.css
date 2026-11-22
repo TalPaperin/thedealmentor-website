@@ -52,7 +52,7 @@
 .site-nav .nav-dd-menu a::after{display:none!important}
 .site-nav .nav-dd-menu a:hover{background:var(--accent-soft);color:var(--ink)}
 .site-nav .nav-dd-menu a span{display:block;font-size:12.5px;font-weight:500;color:var(--muted);margin-top:2px}
-@media (max-width:920px){
+@media (max-width:1000px){
   .site-nav .nav-links{position:absolute;top:100%;left:0;right:0;background:transparent;flex-direction:column;align-items:stretch;gap:0;padding:0;max-height:0;overflow:hidden;transition:max-height .25s ease,padding .25s ease}
   .site-nav .nav-links.open{background:var(--bg);padding:8px 0;max-height:85vh;overflow-y:auto;border-bottom:1px solid var(--line);box-shadow:0 8px 24px rgba(0,0,0,.30)}
   .site-nav .nav-links a{padding:14px 28px;font-size:16px}
@@ -84,6 +84,23 @@
 .site-nav .btn-primary:hover::after{animation:navBtnSheen .85s ease}
 @keyframes navBtnSheen{from{left:-130%}to{left:170%}}
 
+/* Keep the nav on one line between the mobile breakpoint and wide screens:
+   links never break mid-label, and spacing/size step down on mid widths. */
+.site-nav .nav-links a,.site-nav .nav-dd-t{white-space:nowrap}
+@media (min-width:1001px) and (max-width:1320px){
+  .site-nav .nav-links{gap:18px}
+  .site-nav .nav-links a,.site-nav .nav-dd-t{font-size:16px}
+  .site-nav .nav-right{gap:8px}
+}
+@media (min-width:1001px) and (max-width:1120px){
+  .site-nav{gap:12px}
+  .site-nav .nav-links{gap:12px}
+  .site-nav .nav-links a,.site-nav .nav-dd-t{font-size:15px}
+  .site-nav .wordmark img{height:36px}
+  .site-nav .nav-links a.nav-contact{padding:5px 11px}
+  .site-nav .btn-primary{padding:9px 16px}
+}
+
 /* ===== Site search ===== */
 .site-nav .nav-search[hidden]{display:none}
 .site-nav .nav-search{position:absolute;top:calc(100% + 8px);right:clamp(20px,3vw,32px);width:min(480px,calc(100vw - 40px));background:var(--bg-card);border:1px solid var(--card-bd);border-radius:14px;box-shadow:var(--shadow-hi);padding:10px;z-index:70}
@@ -107,7 +124,7 @@
 .site-nav .nav-search-results .r-note{padding:10px 12px;font-size:14px;color:var(--muted)}
 .site-nav .nav-search-results .r-note a{display:inline;padding:0;color:var(--accent);background:none}
 .site-nav .nav-search-results mark{background:none;color:var(--accent-2,var(--accent));font-weight:700}
-@media (max-width:920px){
+@media (max-width:1000px){
   .site-nav .nav-search{left:12px;right:12px;width:auto}
 }
 @media (prefers-reduced-motion:reduce){.site-nav .btn-primary::after{display:none}}
