@@ -53,7 +53,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"TheDealMentor.AI","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://www.thedealmentor.ai","image":"https://www.thedealmentor.ai/og-image.jpg","description":"The CRM with a real CRO inside. A built-in CRM (pipeline, contacts, tasks, per-deal CRO read, one-click prospect research) that tells reps what to do next, plus Sales Copilot (call guide, objection handler, battle cards, proposals, follow-up, email, research), Outreach Builder (6 channels), Practice-a-Call roleplay, Rep Certification, Ask-the-CRO, and a live fractional CRO on every plan. From $399/month for teams, $999/month for growing orgs, $119/month for solo founders, and from $999/month sales-led for BPOs and contact centers.","offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"119","highPrice":"999","offerCount":"3","offers":[{"@type":"Offer","name":"Founder Plan","price":"119","priceCurrency":"USD","url":"https://www.thedealmentor.ai/pricing"},{"@type":"Offer","name":"Team Plan","price":"399","priceCurrency":"USD","url":"https://www.thedealmentor.ai/pricing"},{"@type":"Offer","name":"Growth Plan","price":"999","priceCurrency":"USD","url":"https://www.thedealmentor.ai/pricing"}]},"creator":{"@type":"Organization","name":"KSW Solutions","url":"https://ksw.solutions"},"featureList":["Built-in CRM with per-deal CRO read","Leads pipeline board","Click-to-call","CSV import and export","One-click prospect research","Sales Copilot","Outreach Builder","Practice-a-Call","Rep Certification","Ask the CRO 24/7","Live Human CRO Access"]}
 </script>
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do I have to switch off my current CRM?", "acceptedAnswer": {"@type": "Answer", "text": "No forced migration. Import from a CSV whenever you’re ready, export back any time."}}, {"@type": "Question", "name": "Will my team actually use it?", "acceptedAnswer": {"@type": "Answer", "text": "They open it because it gives them something every time: the next move, the script, and the research on the deal in front of them."}}, {"@type": "Question", "name": "How long does setup take?", "acceptedAnswer": {"@type": "Answer", "text": "Four core questions plus your website. Live in minutes, no integrations."}}, {"@type": "Question", "name": "Is there really a human CRO?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every plan includes live sessions with a working revenue leader, plus Ask the CRO in the app around the clock."}}, {"@type": "Question", "name": "Does the AI make things up?", "acceptedAnswer": {"@type": "Answer", "text": "No. It never invents client names, numbers, or results. It only uses proof you provide and flags what’s missing. DealMentor was also built on the top 50 sales methodologies, so every answer comes from tried-and-true sales processes and practices, not guesswork."}}, {"@type": "Question", "name": "Who is it for?", "acceptedAnswer": {"@type": "Answer", "text": "Sales teams and their managers, plus founders selling their own product."}}, {"@type": "Question", "name": "Is this another vibe-coded AI tool?", "acceptedAnswer": {"@type": "Answer", "text": "No. DealMentor has been in development for 18 months, built by sales leaders rather than engineers guessing at sales, and the team that built it runs it on live deals every day. We keep improving it from what happens on real calls."}}]}
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do I have to switch off my current CRM?", "acceptedAnswer": {"@type": "Answer", "text": "No forced migration. Import from a CSV whenever you’re ready, export back any time."}}, {"@type": "Question", "name": "Will my team actually use it?", "acceptedAnswer": {"@type": "Answer", "text": "They open it because it gives them something every time: the next move, the script, and the research on the deal in front of them."}}, {"@type": "Question", "name": "How long does setup take?", "acceptedAnswer": {"@type": "Answer", "text": "Four core questions plus your website. Live in minutes."}}, {"@type": "Question", "name": "Is there really a human CRO?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every plan includes live sessions with a working revenue leader, plus Ask the CRO in the app around the clock."}}, {"@type": "Question", "name": "Does the AI make things up?", "acceptedAnswer": {"@type": "Answer", "text": "No. It never invents client names, numbers, or results. It only uses proof you provide and flags what’s missing. DealMentor was also built on the top 50 sales methodologies, so every answer comes from tried-and-true sales processes and practices, not guesswork."}}, {"@type": "Question", "name": "Who is it for?", "acceptedAnswer": {"@type": "Answer", "text": "Sales teams and their managers, plus founders selling their own product."}}, {"@type": "Question", "name": "Is this another vibe-coded AI tool?", "acceptedAnswer": {"@type": "Answer", "text": "No. DealMentor has been in development for 18 months, built by sales leaders rather than engineers guessing at sales, and the team that built it runs it on live deals every day. We keep improving it from what happens on real calls."}}]}
 </script>
 <script>document.documentElement.classList.add('js');var __dmTheme=localStorage.getItem('dm-theme');if(__dmTheme==='light')document.documentElement.setAttribute('data-theme','light');</script>
 <script type="application/ld+json">
@@ -292,7 +292,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="https://app.thedealmentor.ai/register" class="btn-primary btn-lg">Let me see for myself<svg class="dmw-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
       <a href="#proof" class="btn-secondary btn-lg">Tell me more</a>
     </div>
-    <p class="dmw-reassure">No credit card. Live in minutes, no integrations.</p>
+    <p class="dmw-reassure">No credit card. Live in minutes.</p>
   </div>
 </header>
 
@@ -634,16 +634,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <section class="solid-2" id="cost">
+  <style>
+    .hp-go{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1160px;margin:48px auto 0;list-style:none;padding:0}
+    .hp-go::before{content:"";position:absolute;left:12%;right:12%;top:27px;height:2px;background:linear-gradient(90deg,var(--line-hi),var(--accent));z-index:0}
+    .hp-go li{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center}
+    .hp-go-dot{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--bg-card);border:2px solid var(--line-hi);font-family:'Mulish',sans-serif;font-size:20px;font-weight:900;color:var(--ink);box-shadow:var(--shadow)}
+    .hp-go-card{margin-top:18px;flex:1;width:100%;background:var(--bg-card);border:1px solid var(--card-bd);border-radius:var(--radius-lg);padding:22px 20px;box-shadow:var(--shadow)}
+    .hp-go-card h3{font-family:'Mulish',sans-serif;font-size:18px;font-weight:900;color:var(--ink);line-height:1.25;margin:0 0 8px}
+    .hp-go-card p{font-family:'Mulish',sans-serif;font-size:15px;line-height:1.55;color:var(--text);margin:0}
+    .hp-go-end .hp-go-dot{width:auto;min-width:56px;padding:0 16px;border:0;background:var(--grad);color:#fff;font-size:17px;white-space:nowrap;border-radius:28px;box-shadow:0 8px 24px rgba(37,99,235,.4)}
+    .hp-go-end .hp-go-card{border:1px solid transparent;background:linear-gradient(var(--bg-card),var(--bg-card)) padding-box,var(--grad) border-box}
+    .hp-go-end h3{font-family:var(--font-display);font-weight:400;font-size:clamp(26px,2.6vw,34px);line-height:1.05;text-transform:uppercase;letter-spacing:.01em}
+    .hp-go-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:30px auto 0;padding:0;list-style:none}
+    .hp-go-chips li{display:flex;align-items:center;gap:8px;font-family:'Mulish',sans-serif;font-size:14.5px;font-weight:700;color:var(--ink);background:var(--bg-card);border:1px solid var(--card-bd);border-radius:999px;padding:9px 16px}
+    .hp-go-chips svg{width:16px;height:16px;fill:none;stroke:var(--good);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+    @media(max-width:860px){
+      .hp-go{grid-template-columns:1fr;gap:14px}
+      .hp-go::before{left:27px;right:auto;top:28px;bottom:28px;width:2px;height:auto;background:linear-gradient(180deg,var(--line-hi),var(--accent))}
+      .hp-go li{flex-direction:row;align-items:flex-start;text-align:left;gap:14px}
+      .hp-go-dot{flex:0 0 56px}
+      .hp-go-end .hp-go-dot{flex:0 0 56px;width:56px;min-width:0;padding:0;font-size:13px}
+      .hp-go-card{margin-top:0}
+    }
+  </style>
   <div class="section-inner">
     <div class="section-head-center">
-      <p class="eyebrow">Why it isn't more work</p>
-      <h2 class="section-h2">What it costs you <em>to try it.</em></h2>
+      <p class="eyebrow">Getting started</p>
+      <h2 class="section-h2">Working in 15 minutes. <em>No commitment.</em></h2>
+      <p class="dmw-sub">No credit card, no setup project, nobody to call first. Sign up, answer four questions and you're working your deals. If it's not for you, export your data and walk away.</p>
     </div>
-    <div class="dmw-four">
-      <div class="dmw-card"><p class="dmw-tag">01</p><h3 class="dmw-card-h">No migration.</h3><p>Import your pipeline or contacts from a CSV (Salesforce, HubSpot, Excel exports). Export everything back to CSV any time. No lock-in.</p></div>
-      <div class="dmw-card"><p class="dmw-tag">02</p><h3 class="dmw-card-h">Setup is four questions.</h3><p>What you sell, who you sell to, the #1 pain, your value proposition. Add your website and the CRO drafts the rest for you to confirm.</p></div>
-      <div class="dmw-card"><p class="dmw-tag">03</p><h3 class="dmw-card-h">Live in minutes, no integrations.</h3><p>No IT project, no implementation partner.</p></div>
-    </div>
+    <ol class="hp-go">
+      <li><span class="hp-go-dot" aria-hidden="true">1</span><div class="hp-go-card"><h3>Sign up.</h3><p>No credit card. No sales call. Just your email.</p></div></li>
+      <li><span class="hp-go-dot" aria-hidden="true">2</span><div class="hp-go-card"><h3>Answer four questions.</h3><p>What you sell, who you sell to, the #1 pain and your value proposition. Add your website and the CRO drafts the rest for you to approve.</p></div></li>
+      <li><span class="hp-go-dot" aria-hidden="true">3</span><div class="hp-go-card"><h3>Bring your pipeline in.</h3><p>Import deals or contacts from a CSV (Salesforce, HubSpot, Excel), or start from scratch.</p></div></li>
+      <li class="hp-go-end"><span class="hp-go-dot" aria-hidden="true">15 min</span><div class="hp-go-card"><h3>You're working deals.</h3><p>Log a call and get the next move.</p></div></li>
+    </ol>
+    <ul class="hp-go-chips">
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>No credit card to start</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Export everything any time</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>14-day trial for teams</li>
+    </ul>
   </div>
 </section>
 
@@ -710,7 +740,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="faq-list" style="max-width:900px;margin-left:auto;margin-right:auto">
       <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="faqq1" type="button" aria-expanded="false" aria-controls="faqa1" onclick="toggleFaq(this)">Do I have to switch off my current CRM? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="faqa1" role="region" aria-labelledby="faqq1" hidden>No forced migration. Import from a CSV whenever you’re ready, export back any time.</div></div>
       <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="faqq2" type="button" aria-expanded="false" aria-controls="faqa2" onclick="toggleFaq(this)">Will my team actually use it? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="faqa2" role="region" aria-labelledby="faqq2" hidden>They open it because it gives them something every time: the next move, the script, and the research on the deal in front of them.</div></div>
-      <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="faqq3" type="button" aria-expanded="false" aria-controls="faqa3" onclick="toggleFaq(this)">How long does setup take? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="faqa3" role="region" aria-labelledby="faqq3" hidden>Four core questions plus your website. Live in minutes, no integrations.</div></div>
+      <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="faqq3" type="button" aria-expanded="false" aria-controls="faqa3" onclick="toggleFaq(this)">How long does setup take? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="faqa3" role="region" aria-labelledby="faqq3" hidden>Four core questions plus your website. Live in minutes.</div></div>
       <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="faqq4" type="button" aria-expanded="false" aria-controls="faqa4" onclick="toggleFaq(this)">Is there really a human CRO? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="faqa4" role="region" aria-labelledby="faqq4" hidden>Yes. Every plan includes live sessions with a working revenue leader, plus Ask the CRO in the app around the clock.</div></div>
       <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="faqq5" type="button" aria-expanded="false" aria-controls="faqa5" onclick="toggleFaq(this)">Does the AI make things up? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="faqa5" role="region" aria-labelledby="faqq5" hidden>No. It never invents client names, numbers, or results. It only uses proof you provide and flags what’s missing. DealMentor was also built on the top 50 sales methodologies, so every answer comes from tried-and-true sales processes and practices, not guesswork.</div></div>
       <div class="faq-item"><h3 class="faq-h"><button class="faq-q" id="faqq6" type="button" aria-expanded="false" aria-controls="faqa6" onclick="toggleFaq(this)">Who is it for? <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h3><div class="faq-a" id="faqa6" role="region" aria-labelledby="faqq6" hidden>Sales teams and their managers, plus founders selling their own product.</div></div>
